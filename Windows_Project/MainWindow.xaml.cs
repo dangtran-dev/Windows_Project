@@ -1,4 +1,4 @@
-using Microsoft.UI.Xaml;
+﻿using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
 using Microsoft.UI.Xaml.Controls.Primitives;
 using Microsoft.UI.Xaml.Data;
@@ -7,6 +7,7 @@ using Microsoft.UI.Xaml.Media;
 using Microsoft.UI.Xaml.Navigation;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
@@ -23,14 +24,64 @@ namespace Windows_Project
     /// </summary>
     public sealed partial class MainWindow : Window
     {
+        private DispatcherTimer timer;
+        public ObservableCollection<string> Pictures { get; set; }
+        private bool isReversing = false; // Biến theo dõi trạng thái tiến hoặc lùi
         public MainWindow()
         {
             this.InitializeComponent();
+
+            // Danh sách hình ảnh
+            Pictures = new ObservableCollection<string>
+            {
+                "Assets/mazda3.jpg",
+                "Assets/mercedes.jpg",
+                "Assets/honda.jpg",
+                "Assets/audi.jpg",
+            };
+
+            Gallery.ItemsSource = Pictures; // Gán danh sách hình ảnh vào FlipView
+
+            // Khởi tạo timer với khoảng 1 giây
+            timer = new DispatcherTimer();
+            timer.Interval = TimeSpan.FromSeconds(2.5); // Mỗi 1 giây
+            timer.Tick += Timer_Tick; // Gán sự kiện Timer_Tick cho timer
+            timer.Start(); // Bắt đầu timer
         }
 
-        private void myButton_Click(object sender, RoutedEventArgs e)
+        // Phương thức Timer_Tick sẽ được gọi mỗi giây
+        private void Timer_Tick(object sender, object e)
         {
-            myButton.Content = "Clicked";
+            // Nếu đang không chạy ngược
+            if (!isReversing)
+            {
+                // Tiến tới hình tiếp theo
+                if (Gallery.SelectedIndex < Pictures.Count - 1)
+                {
+                    Gallery.SelectedIndex++;
+                }
+                else
+                {
+                    // Đến ảnh cuối cùng thì đổi chiều
+                    isReversing = true;
+                    Gallery.SelectedIndex--;
+                }
+            }
+            else
+            {
+                // Đang chạy ngược
+                if (Gallery.SelectedIndex > 0)
+                {
+                    Gallery.SelectedIndex--;
+                }
+                else
+                {
+                    // Đến ảnh đầu tiên thì đổi chiều
+                    isReversing = false;
+                    Gallery.SelectedIndex++;
+                }
+            }
         }
+
     }
 }
