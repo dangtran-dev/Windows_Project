@@ -83,5 +83,25 @@ namespace Windows_Project
             }
         }
 
+        private void OnCarOldButtonClick(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void OnCarNewButtonClick(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void OnPriceButtonClick(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void OnSellCarButtonClick(object sender, RoutedEventArgs e)
+        {
+
+        }
+
     }
 }
