@@ -103,5 +103,11 @@ namespace Windows_Project
 
         }
 
+        private void Post_News_Click(object sender, RoutedEventArgs e)
+        {
+            var screen = new PostWindow();
+            screen.Activate();
+            this.Close();
+        }
     }
 }
