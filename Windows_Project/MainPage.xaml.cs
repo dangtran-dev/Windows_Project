@@ -76,7 +76,6 @@ namespace Windows_Project
             }
         }
 
-        // Ph??ng th?c Timer_Tick s? ???c g?i m?i gi�y
         private void Timer_Tick(object sender, object e)
         {
             if (!isReversing)
