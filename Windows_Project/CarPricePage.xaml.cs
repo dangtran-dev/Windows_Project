@@ -24,6 +24,8 @@ namespace Windows_Project
     public sealed partial class CarPricePage : Page
     {
         public List<Cars> Cars { get; set; }
+        private int currentPage = 1;
+        private int itemsPerPage = 4;
         public CarPricePage()
         {
             this.InitializeComponent();
@@ -37,6 +39,8 @@ namespace Windows_Project
             {
                 Cars = selectedManufacturer.Cars;
                 ManufacturerNameTextBlock.Text = selectedManufacturer.ManufacturerName;
+
+                LoadPage(currentPage);
             }
         }
 
@@ -46,6 +50,42 @@ namespace Windows_Project
             {
                 Frame.GoBack();
             }
+        }
+
+        private void PreviousPage_Click(object sender, RoutedEventArgs e)
+        {
+            if (currentPage > 1)
+            {
+                currentPage--;
+                LoadPage(currentPage);
+            }
+        }
+
+        private void NextPage_Click(object sender, RoutedEventArgs e)
+        {
+            int totalPages = (int)Math.Ceiling((double)Cars.Count / itemsPerPage);
+            if (currentPage < totalPages)
+            {
+                currentPage++;
+                LoadPage(currentPage);
+            }
+        }
+
+        private void LoadPage(int currentPage)
+        {
+            int startIndex = (currentPage - 1) * itemsPerPage;
+            var carsToDisplay = Cars.Skip(startIndex).Take(itemsPerPage).ToList();
+            PageNumberTextBlock.Text = $"Trang {currentPage}";
+            CarsListGridView.ItemsSource = carsToDisplay;
+
+
+        }
+
+        private void UpdateNavigationButtons()
+        {
+            int totalPages = (int)Math.Ceiling((double)Cars.Count / itemsPerPage);
+            PreviousPageButton.IsEnabled = currentPage > 1;
+            NextPageButton.IsEnabled = currentPage < totalPages;
         }
     }
 }

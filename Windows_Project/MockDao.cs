@@ -14,106 +14,138 @@ public class MockDao : IDao
         {
             new Manufacturers()
             {
-                ManufacturerName = "TOYOTA",
+                ManufacturerName = "Toyota",
                 ManufacturerPicture = "Assets/toyota_logo.jpg",
                 Cars = new List<Cars>()
                 {
                     new Cars()
                     {
-                        Model = "Corolla",
+                        Model = "Toyota Vios",
                         Manufacturer = "Toyota",
-                        Year = "2021",
-                        Price = "20,000",
-                        Picture = "Assets/toyota_corolla.jpg"
+                        Price = "458.000.000 VNĐ",
+                        Picture = "Assets/toyota_vios.png"
                     },
                     new Cars()
                     {
-                        Model = "Camry",
+                        Model = "Toyota Yaris Cross",
                         Manufacturer = "Toyota",
-                        Year = "2021",
-                        Price = "25,000",
-                        Picture = "Assets/toyota_camry.jpg"
+                        Price = "650.000.000 VNĐ",
+                        Picture = "Assets/toyota_yaris_corolla.png"
                     },
                     new Cars()
                     {
-                        Model = "RAV4",
+                        Model = "Toyota Camry",
                         Manufacturer = "Toyota",
-                        Year = "2021",
-                        Price = "30,000",
-                        Picture = "Assets/toyota_rav4.jpg"
+                        Price = "1.220.000.000 VNĐ",
+                        Picture = "Assets/toyota_camry.png"
                     },
                     new Cars()
                     {
-                        Model = "Highlander",
+                        Model = "Toyota Innova",
                         Manufacturer = "Toyota",
-                        Year = "2021",
-                        Price = "35,000",
-                        Picture = "Assets/toyota_highlander.jpg"
+                        Price = "810.000.000 VNĐ",
+                        Picture = "Assets/toyota_innova.png"
                     },
                     new Cars()
                     {
-                        Model = "Sienna",
+                        Model = "Toyota Fortuner",
                         Manufacturer = "Toyota",
-                        Year = "2021",
-                        Price = "40,000",
-                        Picture = "Assets/toyota_sienna.jpg"
+                        Price = "1.055.000.000 VNĐ",
+                        Picture = "Assets/toyota_fortuner.png"
                     },
                     new Cars()
                     {
-                        Model = "Tacoma",
+                        Model = "Toyota Land Cruiser Prado",
                         Manufacturer = "Toyota",
-                        Year = "2021",
-                        Price = "45,000",
-                        Picture = "Assets/toyota_tacoma.jpg"
+                        Price = "3.480.000.000 VNĐ",
+                        Picture = "Assets/toyota_land_cruiser_prado.png"
                     },
                     new Cars()
                     {
-                        Model = "Tundra",
+                        Model = "Toyota Land Cruiser",
                         Manufacturer = "Toyota",
-                        Year = "2021",
-                        Price = "50,000",
-                        Picture = "Assets/toyota_tundra.jpg"
+                        Price = "4.286.000.000 VNĐ",
+                        Picture = "Assets/toyota_land_cruiser.png"
+                    },
+                    new Cars()
+                    {
+                        Model = "Toyota Corolla Altis",
+                        Manufacturer = "Toyota",
+                        Price = "725.000.000 VNĐ",
+                        Picture = "Assets/toyota_corolla_altis.png"
+                    }
+
+                }
+            },
+            new Manufacturers()
+            {
+                ManufacturerName = "Wolkswagen",
+                ManufacturerPicture = "Assets/wolkswagen_logo.jpg",
+                Cars = new List<Cars>()
+                {
+                    new Cars()
+                    {
+                        Model = "Volkswagen Teramont",
+                        Manufacturer = "Wolkswagen",
+                        Price = "2.399.000.000 VNĐ",
+                        Picture = "Assets/volkswagen_teramont.png"
+                    },
+                    new Cars()
+                    {
+                        Model = "Volkswagen Tiguan",
+                        Manufacturer = "Wolkswagen",
+                        Price = "1.688.000.000 VNĐ",
+                        Picture = "Assets/volkswagen_tiguan.png"
+                    },
+                    new Cars()
+                    {
+                        Model = "Volkswagen Passat",
+                        Manufacturer = "Wolkswagen",
+                        Price = "1.399.000.000 VNĐ",
+                        Picture = "Assets/volkswagen_passat.png"
+                    },
+                    new Cars()
+                    {
+                        Model = "Volkswagen Polo",
+                        Manufacturer = "Wolkswagen",
+                        Price = "699.000.000 VNĐ",
+                        Picture = "Assets/volkswagen_polo.png"
                     },
                 }
             },
             new Manufacturers()
             {
-                ManufacturerName = "WOLKSWAGEN",
-                ManufacturerPicture = "Assets/wolkswagen_logo.jpg"
-            },
-            new Manufacturers()
-            {
-                ManufacturerName = "FORD",
+                ManufacturerName = "Ford",
                 ManufacturerPicture = "Assets/ford_logo.jpg"
             },
             new Manufacturers()
             {
-                ManufacturerName = "CHEVROLET",
+                ManufacturerName = "Chevrolet",
                 ManufacturerPicture = "Assets/chevrolet_logo.jpg"
             },
             new Manufacturers()
             {
-                ManufacturerName = "NISSAN",
+                ManufacturerName = "Nissan",
                 ManufacturerPicture = "Assets/nissan_logo.jpg"
             },
             new Manufacturers()
             {
-                ManufacturerName = "HYUNDAI",
+                ManufacturerName = "Hyundai",
                 ManufacturerPicture = "Assets/hyundai_logo.jpg"
             },
             new Manufacturers()
             {
-                ManufacturerName = "KIA",
+                ManufacturerName = "Kia",
                 ManufacturerPicture = "Assets/kia_logo.jpg"
             },
             new Manufacturers()
             {
-                ManufacturerName = "SUBARU",
+                ManufacturerName = "Subaru",
                 ManufacturerPicture = "Assets/subaru_logo.jpg"
             },
             new Manufacturers()
             {
-                ManufacturerName = "MERCEDES-BENZ",
+                ManufacturerName = "Mercedes Benz",
                 ManufacturerPicture = "Assets/mercedes_benz_logo.jpg"
             },
             new Manufacturers()
@@ -123,32 +155,32 @@ public class MockDao : IDao
             },
             new Manufacturers()
             {
-                ManufacturerName = "LEXUS",
+                ManufacturerName = "Lexus",
                 ManufacturerPicture = "Assets/lexus_logo.jpg"
             },
             new Manufacturers()
             {
-                ManufacturerName = "PORSCHE",
+                ManufacturerName = "Porsche",
                 ManufacturerPicture = "Assets/porsche_logo.jpg"
             },
             new Manufacturers()
             {
-                ManufacturerName = "TESLA",
+                ManufacturerName = "Tesla",
                 ManufacturerPicture = "Assets/tesla_logo.jpg"
             },
             new Manufacturers()
             {
-                ManufacturerName = "MAZDA",
+                ManufacturerName = "Mazda",
                 ManufacturerPicture = "Assets/mazda_logo.jpg"
             },
             new Manufacturers()
             {
-                ManufacturerName = "HONDA",
+                ManufacturerName = "Honda",
                 ManufacturerPicture = "Assets/honda_logo.jpg"
             },
             new Manufacturers()
             {
-                ManufacturerName = "AUDI",
+                ManufacturerName = "Audi",
                 ManufacturerPicture = "Assets/audi_logo.jpg"
             },
         };

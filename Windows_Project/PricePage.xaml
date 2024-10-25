@@ -30,8 +30,8 @@
                     </GridView.ItemContainerStyle>
                     <GridView.ItemTemplate>
                         <DataTemplate x:DataType="local:Manufacturers">
-                            <Border BorderBrush="Gray" BorderThickness="2" CornerRadius="15">
-                                <Grid x:Name="connectedElement" Height="200" Width="200" AutomationProperties.Name="{x:Bind ManufacturerName}">
+                            <Border BorderBrush="#E9E9E9" BorderThickness="1" CornerRadius="16">
+                                <Grid x:Name="connectedElement" Height="181" Width="209" AutomationProperties.Name="{x:Bind ManufacturerName}">
                                     <Grid.RowDefinitions>
                                         <RowDefinition Height="*" />
                                         <RowDefinition Height="Auto" />
@@ -40,7 +40,7 @@
                                         <Image Source="{x:Bind ManufacturerPicture}" HorizontalAlignment="Center" VerticalAlignment="Center" Stretch="UniformToFill"/>
                                     </Grid>
                                     <Grid Height="50" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Grid.Row="1">
-                                        <TextBlock Text="{x:Bind ManufacturerName}" FontSize="16" FontWeight="Bold" Foreground="Gray" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                        <TextBlock Text="{x:Bind ManufacturerName}" FontSize="18" FontWeight="Bold" Foreground="#050B20" HorizontalAlignment="Center" VerticalAlignment="Center"/>
                                     </Grid>
                                 </Grid>
                             </Border>
