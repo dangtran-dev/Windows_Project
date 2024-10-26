@@ -16,7 +16,8 @@
     <AllowUnsafeBlocks>True</AllowUnsafeBlocks>
   </PropertyGroup>
   <ItemGroup>
-    <None Remove="PostWindow.xaml" />
+    <None Remove="MainPage.xaml" />
+    <None Remove="PostPage.xaml" />
   </ItemGroup>
 
   <ItemGroup>
@@ -45,7 +46,12 @@
     <ProjectCapability Include="Msix" />
   </ItemGroup>
   <ItemGroup>
-    <Page Update="PostWindow.xaml">
+    <Page Update="PostPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <Page Update="MainPage.xaml">
       <Generator>MSBuild:Compile</Generator>
     </Page>
   </ItemGroup>

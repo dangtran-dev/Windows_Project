@@ -1,18 +1,18 @@
-﻿using Microsoft.UI.Xaml;
+﻿using System;
+using System.Collections.Generic;
+using System.IO;
+using System.Linq;
+using System.Runtime.InteropServices.WindowsRuntime;
+using Windows.Foundation;
+using Windows.Foundation.Collections;
+using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
 using Microsoft.UI.Xaml.Controls.Primitives;
 using Microsoft.UI.Xaml.Data;
 using Microsoft.UI.Xaml.Input;
 using Microsoft.UI.Xaml.Media;
 using Microsoft.UI.Xaml.Navigation;
-using System;
-using System.Collections.Generic;
 using System.ComponentModel;
-using System.IO;
-using System.Linq;
-using System.Runtime.InteropServices.WindowsRuntime;
-using Windows.Foundation;
-using Windows.Foundation.Collections;
 
 // To learn more about WinUI, the WinUI project structure,
 // and more about our project templates, see: http://aka.ms/winui-project-info.
@@ -20,9 +20,9 @@ using Windows.Foundation.Collections;
 namespace Windows_Project
 {
     /// <summary>
-    /// An empty window that can be used on its own or navigated to within a Frame.
+    /// An empty page that can be used on its own or navigated to within a Frame.
     /// </summary>
-    public sealed partial class PostWindow : Window, INotifyPropertyChanged
+    public sealed partial class PostPage : Page, INotifyPropertyChanged
     {
         public class DashboardViewModel
         {
@@ -32,7 +32,7 @@ namespace Windows_Project
         }
         public DashboardViewModel ViewModel { get; set; }
 
-        public PostWindow()
+        public PostPage()
         {
             this.InitializeComponent();
             ViewModel = new DashboardViewModel()
@@ -55,7 +55,7 @@ namespace Windows_Project
             };
         }
         public event PropertyChangedEventHandler PropertyChanged;
-          
+
 
         private void Post_News_Click(object sender, RoutedEventArgs e)
         {
@@ -92,7 +92,7 @@ namespace Windows_Project
             warningOriginCar.Visibility = Visibility.Collapsed;
         }
 
-        
+
         private void Preview_Click(object sender, RoutedEventArgs e)
         {
 
@@ -153,7 +153,7 @@ namespace Windows_Project
 
         private void texboxPrice_TextChanged(object sender, TextChangedEventArgs e)
         {
-            if(string.IsNullOrEmpty(texboxPrice.Text))
+            if (string.IsNullOrEmpty(texboxPrice.Text))
             {
                 warningPriceCar.Visibility = Visibility.Visible;
             }
