@@ -1,17 +1,53 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Page
     x:Class="Windows_Project.MainPage"
+    Loaded="Page_Loaded"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:local="using:Windows_Project"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    mc:Ignorable="d"
-    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+    mc:Ignorable="d">
 
     <ScrollViewer>
 
         <StackPanel Orientation="Vertical">
+
+            <ContentDialog x:Name="LoginDialog"
+                   PrimaryButtonText="Đăng nhập"
+                   SecondaryButtonText="Hủy"
+                   PrimaryButtonClick="LoginDialog_PrimaryButtonClick"
+                   SecondaryButtonClick="LoginDialog_SecondaryButtonClick">
+                <StackPanel>
+                    <TextBlock HorizontalAlignment="Center" FontWeight="Bold" Margin="0 20">Đăng nhập</TextBlock>
+                    <TextBox Header="Tên đăng nhập" x:Name="UsernameLogin" PlaceholderText="Nhập tên đăng nhập" />
+                    <PasswordBox Header="Mật khẩu" x:Name="PasswordLogin" PlaceholderText="Nhập mật khẩu" />
+                    <CheckBox x:Name="rememberCheckBox" Content="Remember"/>
+                </StackPanel>
+            </ContentDialog>
+
+
+            <ContentDialog x:Name="RegisterDialog"
+                           PrimaryButtonText="Đăng ký"
+                           SecondaryButtonText="Hủy"
+                           PrimaryButtonClick="RegisterDialog_PrimaryButtonClick"
+                           SecondaryButtonClick="RegisterDialog_SecondaryButtonClick">
+                <StackPanel>
+                    <TextBlock Text="Đăng ký tài khoản" FontWeight="Bold" FontSize="18" HorizontalAlignment="Center" />
+                    <TextBox Header="Tên đăng nhập" x:Name="UsernameRegister" PlaceholderText="Nhập tên đăng nhập" />
+                    <PasswordBox Header="Mật khẩu" x:Name="PasswordRegister" PlaceholderText="Nhập mật khẩu" />
+                    <PasswordBox Header="Xác nhận mật khẩu" x:Name="RepasswordRegister" PlaceholderText="Nhập lại mật khẩu" />
+                </StackPanel>
+            </ContentDialog>
+
+            <ContentDialog x:Name="failedDialog"
+                    Title="Warning"
+                    PrimaryButtonText="OK"
+                    PrimaryButtonClick="FailLogin_PrimaryButtonClick">
+                <StackPanel>
+                    <TextBlock x:Name="Noti" Text="Đăng nhập thất bại" />
+                </StackPanel>
+            </ContentDialog>
 
             <Grid VerticalAlignment="Top" Height="100" BorderBrush="Gray" BorderThickness="0, 0, 0, 0.3" Padding="50, 0, 50, 0">
                 <Grid.ColumnDefinitions>
@@ -27,24 +63,51 @@
                 <Image Grid.Column="0" Source="/Assets/car-logo.png" VerticalAlignment="Center"/>
 
                 <!-- Nút đăng tin -->
-                <Button Grid.Column="1" x:Name="Post_News" VerticalAlignment="Center" HorizontalAlignment="Right" Padding="10" Style="{StaticResource AccentButtonStyle}" Background="#4DB848" Click="Post_News_Click">
+                <Button Grid.Column="1" x:Name="Post_News" VerticalAlignment="Center" HorizontalAlignment="Right" Padding="10" Style="{StaticResource AccentButtonStyle}" Background="#4DB848">
                     <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
                         <FontIcon Glyph="&#xE804;" Foreground="White"/>
                         <TextBlock Margin="10, 0, 0, 0" Foreground="White">
-                        <Bold>ĐĂNG TIN</Bold>
+            <Bold>ĐĂNG TIN</Bold>
                         </TextBlock>
                     </StackPanel>
                 </Button>
 
                 <!-- Các nút đăng nhập, yêu thích, đăng ký -->
-                <StackPanel Grid.Column="2" Orientation="Horizontal" VerticalAlignment="Center">
-                    <HyperlinkButton x:Name="Favourite" VerticalAlignment="Center" Margin="30, 0, 10, 0">
+                <StackPanel x:Name="UnLoginPanel" Grid.Column="2" Orientation="Horizontal" VerticalAlignment="Center">
+                    <HyperlinkButton x:Name="Favourite1" VerticalAlignment="Center" Margin="30, 0, 10, 0">
                         <FontIcon Glyph="&#xEB51;" Foreground="Black"/>
                     </HyperlinkButton>
-                    <HyperlinkButton x:Name="Login" VerticalAlignment="Center" Content="Đăng nhập" Foreground="Black" Margin="0, 0, 5, 0"/>
-                    <TextBlock Text="/" Foreground="Black" VerticalAlignment="Center" Margin="0, 0, 5, 0"/>
-                    <HyperlinkButton x:Name="Register" VerticalAlignment="Center" Content="Đăng ký" Foreground="Black"/>
+                    <StackPanel x:Name="ControlLogin" Orientation="Horizontal" VerticalAlignment="Center">
+                        <HyperlinkButton x:Name="Login" VerticalAlignment="Center" Content="Đăng nhập" Foreground="Black" Margin="0, 0, 5, 0" Click="onLoginButtonClick"/>
+                        <TextBlock Text="/" Foreground="Black" VerticalAlignment="Center" Margin="0, 0, 5, 0"/>
+                        <HyperlinkButton x:Name="Register" VerticalAlignment="Center" Content="Đăng ký" Foreground="Black" Click="onRegisterButtonClick"/>
+                    </StackPanel>
                 </StackPanel>
+
+                <StackPanel x:Name="LoginPanel" Grid.Column="2" Orientation="Horizontal" VerticalAlignment="Center" Visibility="Collapsed">
+                    <HyperlinkButton x:Name="Favourite2" VerticalAlignment="Center" Margin="30, 0, 10, 0">
+                        <FontIcon Glyph="&#xEB51;" Foreground="Black"/>
+                    </HyperlinkButton>
+                    <Button x:Name="Info" VerticalAlignment="Center" Foreground="Black" Margin="0, 0, 5, 0" MinWidth="100" MinHeight="30">
+                        <StackPanel Orientation="Horizontal">
+                            <FontIcon Glyph="&#xEA8C;"/>
+                            <!--Database lay anh sau-->
+                            <TextBlock x:Name="InfoName" Text="" Foreground="Black" Margin="10 0 5 0"/>
+                            <FontIcon Glyph="&#xE972;" Margin="0 3 0 0"/>
+                        </StackPanel>
+
+                        <Button.Flyout>
+                            <MenuFlyout>
+                                <MenuFlyoutItem Text="Thông tin cá nhân"></MenuFlyoutItem>
+                                <MenuFlyoutItem Text="Option 2"></MenuFlyoutItem>
+                                <MenuFlyoutItem Text="Đăng xuất" Click="onLogoutClick"></MenuFlyoutItem>
+                            </MenuFlyout>
+                        </Button.Flyout>
+                        
+                    </Button>
+                </StackPanel>
+
+
             </Grid>
 
 

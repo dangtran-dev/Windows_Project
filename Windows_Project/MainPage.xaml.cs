@@ -13,6 +13,8 @@ using Microsoft.UI.Xaml.Input;
 using Microsoft.UI.Xaml.Media;
 using Microsoft.UI.Xaml.Navigation;
 using System.Collections.ObjectModel;
+using Windows.Storage;
+
 
 // To learn more about WinUI, the WinUI project structure,
 // and more about our project templates, see: http://aka.ms/winui-project-info.
@@ -24,32 +26,59 @@ namespace Windows_Project
     /// </summary>
     public sealed partial class MainPage : Page
     {
+        private bool isLoggedIn = false;
+        private string loggedInUser = "";
+
         private DispatcherTimer timer;
         public ObservableCollection<string> Pictures { get; set; }
-        private bool isReversing = false; // Biến theo dõi trạng thái tiến hoặc lùi
+        private bool isReversing = false;
         public MainPage()
         {
             this.InitializeComponent();
+            UpdateLoginButtons();
 
             // Danh sách hình ảnh
             Pictures = new ObservableCollection<string>
             {
-                "Assets/mazda3.jpg",
-                "Assets/mercedes.jpg",
-                "Assets/honda.jpg",
-                "Assets/audi.jpg",
+                "Assets/mazda_bg.jpg",
+                "Assets/mercedes_bg.jpg",
+                "Assets/honda_bg.jpg",
+                "Assets/audi_bg.jpg",
             };
 
-            Gallery.ItemsSource = Pictures; // Gán danh sách hình ảnh vào FlipView
+            Gallery.ItemsSource = Pictures;
 
             // Khởi tạo timer với khoảng 1 giây
             timer = new DispatcherTimer();
-            timer.Interval = TimeSpan.FromSeconds(2.5); // Mỗi 1 giây
-            timer.Tick += Timer_Tick; // Gán sự kiện Timer_Tick cho timer
-            timer.Start(); // Bắt đầu timer
+            timer.Interval = TimeSpan.FromSeconds(2.5);
+            timer.Tick += Timer_Tick;
+            timer.Start();
         }
 
-        // Phương thức Timer_Tick sẽ được gọi mỗi giây
+        
+        //mo lai khi tat ung dung
+        private void Page_Loaded(object sender, RoutedEventArgs e)
+        {
+            var localSettings = ApplicationData.Current.LocalSettings;
+
+            if (localSettings.Values.ContainsKey("Username"))
+            {
+                UsernameLogin.Text = localSettings.Values["Username"].ToString();
+            }
+
+            if (localSettings.Values.ContainsKey("Password"))
+            {
+                PasswordLogin.Password = localSettings.Values["Password"].ToString(); // Lưu ý: Mật khẩu nên được mã hóa
+            }
+
+            // Tải trạng thái của checkbox
+            if (localSettings.Values.ContainsKey("RememberMe"))
+            {
+                rememberCheckBox.IsChecked = (bool)localSettings.Values["RememberMe"];
+            }
+        }
+
+        // Ph??ng th?c Timer_Tick s? ???c g?i m?i gi�y
         private void Timer_Tick(object sender, object e)
         {
             // Nếu đang không chạy ngược
@@ -95,18 +124,154 @@ namespace Windows_Project
 
         private void OnPriceButtonClick(object sender, RoutedEventArgs e)
         {
-
+            Frame.Navigate(typeof(PricePage));
         }
 
         private void OnSellCarButtonClick(object sender, RoutedEventArgs e)
         {
-
-        }
-
-        private void Post_News_Click(object sender, RoutedEventArgs e)
-        {
             Frame.Navigate(typeof(PostPage));
         }
+
+        private async void onLoginButtonClick(object sender, RoutedEventArgs e)
+        {
+            while (true)
+            {
+                // Hiển thị hộp thoại đăng nhập
+                var result = await LoginDialog.ShowAsync();
+
+                // Kiểm tra kết quả khi người dùng nhấn nút
+                if (result == ContentDialogResult.Primary)
+                {
+
+                    // Xử lý đăng nhập ở đây
+                    string username = UsernameLogin.Text;
+                    string password = PasswordLogin.Password;
+
+                    // Kiểm tra thông tin đăng nhập
+                    if (username == "admin" && password == "123")
+                    {
+                        isLoggedIn = true;
+                        loggedInUser = username;
+
+                        // Đổi nội dung của các nút "Đăng nhập" và "Đăng ký"
+                        UpdateLoginButtons();
+
+                        // Đóng Dialog đăng nhập
+                        break;
+                    }
+                    else
+                    {
+                        Noti.Text = "Đăng nhập thất bại, xin thử lại.";
+                        await failedDialog.ShowAsync();
+                    }
+                }
+                else
+                {
+                    // Người dùng nhấn nút "Hủy"
+                    break;
+                }
+            }
+        }
+
+        private void LoginDialog_PrimaryButtonClick(ContentDialog sender, ContentDialogButtonClickEventArgs args)
+        {
+            var localSettings = ApplicationData.Current.LocalSettings;
+
+            // Lưu thông tin đăng nhập và trạng thái của checkbox nếu được chọn
+            if (rememberCheckBox.IsChecked == true)
+            {
+                // Lưu tên đăng nhập
+                localSettings.Values["Username"] = UsernameLogin.Text;
+   
+                localSettings.Values["Password"] = PasswordLogin.Password; // Lưu mật khẩu
+                                                                          
+                localSettings.Values["RememberMe"] = true;  // Lưu trạng thái checkbox
+            }
+            else
+            {
+                // Nếu không nhớ, xóa thông tin đăng nhập
+                localSettings.Values.Remove("Username");
+                localSettings.Values.Remove("Password");
+                // Xóa trạng thái checkbox
+                localSettings.Values.Remove("RememberMe");
+            }
+        }
+
+        private void LoginDialog_SecondaryButtonClick(ContentDialog sender, ContentDialogButtonClickEventArgs args)
+        {
+            // Xử lý khi nhấn nút "Hủy"
+        }
+
+        private void UpdateLoginButtons()
+        {
+            if (isLoggedIn)
+            {
+                UnLoginPanel.Visibility = Visibility.Collapsed;
+                InfoName.Text = loggedInUser;
+                LoginPanel.Visibility = Visibility.Visible;
+            }
+            else
+            {
+                UnLoginPanel.Visibility = Visibility.Visible;
+                LoginPanel.Visibility = Visibility.Collapsed;
+            }
+        }
+
+        private async void onRegisterButtonClick(object sender, RoutedEventArgs e)
+        {
+            while (true)
+            {
+                // Hiển thị hộp thoại đăng nhập
+                var result = await RegisterDialog.ShowAsync();
+
+                // Kiểm tra kết quả khi người dùng nhấn nút
+                if (result == ContentDialogResult.Primary)
+                {
+                    string username = UsernameRegister.Text;
+                    string password = PasswordRegister.Password;
+                    string repassword = RepasswordRegister.Password;
+
+                    if(password == repassword && password != "")
+                    {
+                        break;
+                    }
+                    else
+                    {
+                        Noti.Text = "Đăng ký thất bại";
+                        await failedDialog.ShowAsync();
+                    }
+
+                }
+                else
+                {
+                    // Người dùng nhấn nút "Hủy"
+                    break;
+                }
+            }
+        }
+
+        private void RegisterDialog_PrimaryButtonClick(ContentDialog sender, ContentDialogButtonClickEventArgs args)
+        {
+
+        }
+
+
+        private void RegisterDialog_SecondaryButtonClick(ContentDialog sender, ContentDialogButtonClickEventArgs args)
+        {
+
+        }
+        private void FailLogin_PrimaryButtonClick(ContentDialog sender, ContentDialogButtonClickEventArgs args)
+        {
+
+        }
+
+        private void onLogoutClick(object sender, RoutedEventArgs e)
+        {
+            isLoggedIn = false;
+            UpdateLoginButtons();
+        }
+
+        //User click vao ca nhan de chon
+
     }
 }
-

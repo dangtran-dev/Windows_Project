@@ -13,6 +13,11 @@ using Microsoft.UI.Xaml.Input;
 using Microsoft.UI.Xaml.Media;
 using Microsoft.UI.Xaml.Navigation;
 using System.ComponentModel;
+using Microsoft.UI.Xaml.Media.Imaging;
+using System.Diagnostics;
+using System.Text.Json;
+using System.Threading.Tasks;
+using System.Reflection;
 
 // To learn more about WinUI, the WinUI project structure,
 // and more about our project templates, see: http://aka.ms/winui-project-info.
@@ -56,12 +61,6 @@ namespace Windows_Project
         }
         public event PropertyChangedEventHandler PropertyChanged;
 
-
-        private void Post_News_Click(object sender, RoutedEventArgs e)
-        {
-
-        }
-
         private void newCar_Checked(object sender, RoutedEventArgs e)
         {
             oldCar.IsChecked = false;
@@ -92,15 +91,65 @@ namespace Windows_Project
             warningOriginCar.Visibility = Visibility.Collapsed;
         }
 
-
         private void Preview_Click(object sender, RoutedEventArgs e)
         {
+            var textYear = YearCarTextBox.Text;
+            var selectedManufacturer = (comboboxManufacturer.SelectedItem as ComboBoxItem)?.Content.ToString();
+            var selectedModel = (comboboxModelCar.SelectedItem as ComboBoxItem)?.Content.ToString();
+            var textPrice = texboxPrice.Text;
+            var textStyle = (comboboxStyleCar.SelectedItem as ComboBoxItem)?.Content.ToString();
+            var textKm = "";
+            var textCondition = "";
+            var textOrigin = "";
+            var textCity = (comboboxCitySeller.SelectedItem as ComboBoxItem)?.Content.ToString();
+            var textDistrict = (comboboxDistrictSeller.SelectedItem as ComboBoxItem)?.Content.ToString();
+            var textGearBox = (comboboxGearBoxCar.SelectedItem as ComboBoxItem)?.Content.ToString();
+            var textFuel = (comboboxFuelCar.SelectedItem as ComboBoxItem)?.Content.ToString();
+            var textDes = textDescription.Text;
 
+            if (newCar.IsChecked == true)
+            {
+                textCondition = "Xe mới";
+                textKm = "0 km";
+            }
+            else
+            {
+                textCondition = "Xe cũ";
+                textKm = $"{textBox_Km.Text} km";
+            }
+
+            if (internalCar.IsChecked == true)
+            {
+                textOrigin = "Trong nước";
+            }
+            else
+            {
+                textOrigin = "Nhập khẩu";
+            }
+
+            YearCarTextBlock.Text = $"{textYear}";
+            CarNameTextBlock.Text = $"{selectedManufacturer} {selectedModel}";
+            CarPriceTextBlock.Text = $"{textPrice} triệu";
+            StyleCarTextBlock.Text = $"{textStyle}";
+            ConditionCarTextBlock.Text = $"{textCondition}";
+            OriginCarTextBlock.Text = $"{textOrigin}";
+            KmCarTextBlock.Text = $"{textKm}";
+            CityCarTextBlock.Text = $"{textCity}";
+            DistrictCarTextBlock.Text = $"{textDistrict}";
+            GearBoxCarTextBlock.Text = $"{textGearBox}";
+            FuelCarTextBlock.Text = $"{textFuel}";
+            DescriptionCarTextBlock.Text = $"{textDes}";
+
+            PreviewPopup.HorizontalOffset = 150;
+            PreviewPopup.VerticalOffset = 200;
+            PreviewPopup.IsOpen = true;
+            AllPage.Opacity = 0.5;
         }
 
-        private void Continue_Click(object sender, RoutedEventArgs e)
+        private void ClosePopup_Click(object sender, RoutedEventArgs e)
         {
-
+            PreviewPopup.IsOpen = false;
+            AllPage.Opacity = 1;
         }
 
         private void comboboxManufacturer_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -148,6 +197,18 @@ namespace Windows_Project
             else
             {
                 warningGearBoxCar.Visibility = Visibility.Collapsed;
+            }
+        }
+
+        private void YearCarTextBox_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            if (string.IsNullOrEmpty(YearCarTextBox.Text))
+            {
+                warningYearCar.Visibility = Visibility.Visible;
+            }
+            else
+            {
+                warningYearCar.Visibility = Visibility.Collapsed;
             }
         }
 
@@ -223,9 +284,9 @@ namespace Windows_Project
             }
         }
 
-        private void ccomboboxCitySeller_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        private void comboboxCitySeller_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            if (ccomboboxCitySeller.SelectedIndex == -1)
+            if (comboboxCitySeller.SelectedIndex == -1)
             {
                 warningCitySeller.Visibility = Visibility.Visible;
             }
@@ -244,6 +305,77 @@ namespace Windows_Project
             else
             {
                 warningDistrictSeller.Visibility = Visibility.Collapsed;
+            }
+        }
+
+        private void backButton_Click(object sender, RoutedEventArgs e)
+        {
+            if (Frame.CanGoBack)
+            {
+                Frame.GoBack();
+            }
+        }
+
+        private void UploadButton_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private async Task SaveCar(Cars car)
+        {
+            string assemblyLocation = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
+            string filePath = Path.Combine(assemblyLocation, "Cars.json");
+
+            List<Cars> carList;
+
+            if (File.Exists(filePath))
+            {
+                string existingJson = await File.ReadAllTextAsync(filePath);
+                carList = JsonSerializer.Deserialize<List<Cars>>(existingJson) ?? new List<Cars>();
+            }
+            else
+            {
+                carList = new List<Cars>();
+            }
+            carList.Add(car);
+
+            string newJson = JsonSerializer.Serialize(carList, new JsonSerializerOptions { WriteIndented = true });
+            await File.WriteAllTextAsync(filePath, newJson);
+        }
+
+        private async void PostButton_Click(object sender, RoutedEventArgs e)
+        {
+            string message = "Bạn có muốn đăng tin?";
+            var dialog = new ContentDialog()
+            {
+                XamlRoot = this.Content.XamlRoot,
+                Content = message,
+                PrimaryButtonText = "Đồng ý",
+                CloseButtonText = "Hủy",
+            };
+            var result = await dialog.ShowAsync();
+            if (result == ContentDialogResult.Primary)
+            {
+                var car = new Cars()
+                {
+                    Year = YearCarTextBox.Text,
+                    Manufacturer = (comboboxManufacturer.SelectedItem as ComboBoxItem)?.Content.ToString(),
+                    Model = (comboboxModelCar.SelectedItem as ComboBoxItem)?.Content.ToString(),
+                    Price = texboxPrice.Text,
+                    Picture = "",
+                };
+                await SaveCar(car);
+                var newdialog = new ContentDialog()
+                {
+                    XamlRoot = this.Content.XamlRoot,
+                    Content = "Đăng tin thành công!",
+                    CloseButtonText = "Đóng",
+                };
+                var result2 = await newdialog.ShowAsync();
+                if (result2 == ContentDialogResult.None)
+                {
+                    ClosePopup_Click(sender, e);
+                }
             }
         }
     }
