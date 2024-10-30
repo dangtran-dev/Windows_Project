@@ -186,4 +186,14 @@ public class MockDao : IDao
         };
         return result;
     }
+
+    public List<Users> GetUsers()
+    {
+        var users = new List<Users>()
+        {
+            new Users() { Username = "admin", Password = "123" },
+            new Users() { Username = "lebao", Password = "hihi" }
+        };
+        return users;
+    }
 }

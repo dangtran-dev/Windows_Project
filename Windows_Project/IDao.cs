@@ -9,4 +9,6 @@ namespace Windows_Project;
 public interface IDao
 {
     List<Manufacturers> GetManufacturers();
+
+    List<Users> GetUsers();
 }

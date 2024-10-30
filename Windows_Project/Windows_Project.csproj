@@ -16,6 +16,47 @@
     <AllowUnsafeBlocks>True</AllowUnsafeBlocks>
   </PropertyGroup>
   <ItemGroup>
+    <Content Remove="Assets\next_icon.png" />
+    <Content Remove="Assets\previous_icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="Assets\audi_bg.jpg" />
+    <None Remove="Assets\audi_logo.jpg" />
+    <None Remove="Assets\bmw_logo.jpg" />
+    <None Remove="Assets\car-logo.png" />
+    <None Remove="Assets\chevrolet_logo.jpg" />
+    <None Remove="Assets\ford_logo.jpg" />
+    <None Remove="Assets\honda_bg.jpg" />
+    <None Remove="Assets\honda_logo.jpg" />
+    <None Remove="Assets\hyundai_logo.jpg" />
+    <None Remove="Assets\kia_logo.jpg" />
+    <None Remove="Assets\lexus_logo.jpg" />
+    <None Remove="Assets\mazda_bg.jpg" />
+    <None Remove="Assets\mazda_logo.jpg" />
+    <None Remove="Assets\menu-bg1.png" />
+    <None Remove="Assets\menu-bg2.png" />
+    <None Remove="Assets\menu-bg3.png" />
+    <None Remove="Assets\menu-bg4.png" />
+    <None Remove="Assets\mercedes_benz_logo.jpg" />
+    <None Remove="Assets\mercedes_bg.jpg" />
+    <None Remove="Assets\nissan_logo.jpg" />
+    <None Remove="Assets\porsche_logo.jpg" />
+    <None Remove="Assets\subaru_logo.jpg" />
+    <None Remove="Assets\tesla_logo.jpg" />
+    <None Remove="Assets\toyota_camry.png" />
+    <None Remove="Assets\toyota_corolla_altis.png" />
+    <None Remove="Assets\toyota_fortuner.png" />
+    <None Remove="Assets\toyota_innova.png" />
+    <None Remove="Assets\toyota_land_cruiser.png" />
+    <None Remove="Assets\toyota_land_cruiser_prado.png" />
+    <None Remove="Assets\toyota_logo.jpg" />
+    <None Remove="Assets\toyota_vios.png" />
+    <None Remove="Assets\toyota_yaris_corolla.png" />
+    <None Remove="Assets\volkswagen_passat.png" />
+    <None Remove="Assets\volkswagen_polo.png" />
+    <None Remove="Assets\volkswagen_teramont.png" />
+    <None Remove="Assets\volkswagen_tiguan.png" />
+    <None Remove="Assets\wolkswagen_logo.jpg" />
     <None Remove="CarPricePage.xaml" />
     <None Remove="MainPage.xaml" />
     <None Remove="PricePage.xaml" />
@@ -23,7 +64,6 @@
 
   <ItemGroup>
     <Content Include="Assets\SplashScreen.scale-200.png" />
-    <Content Include="Assets\LockScreenLogo.scale-200.png" />
     <Content Include="Assets\Square150x150Logo.scale-200.png" />
     <Content Include="Assets\Square44x44Logo.scale-200.png" />
     <Content Include="Assets\Square44x44Logo.targetsize-24_altform-unplated.png" />
@@ -104,18 +144,51 @@
     <Content Update="Assets\mercedes_bg.jpg">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Update="Assets\next_icon.png">
+    <Content Update="Assets\toyota_camry.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <Content Update="Assets\toyota_corolla_altis.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Update="Assets\toyota_fortuner.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Update="Assets\toyota_innova.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Update="Assets\toyota_land_cruiser.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Update="Assets\toyota_land_cruiser_prado.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Update="Assets\toyota_vios.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Update="Assets\volkswagen_passat.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Update="Assets\volkswagen_polo.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Update="Assets\volkswagen_teramont.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Update="Assets\volkswagen_tiguan.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <None Update="Assets\next_icon.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
     <Content Update="Assets\nissan_logo.jpg">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Update="Assets\porsche_logo.jpg">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Update="Assets\previous_icon.png">
+    <None Update="Assets\previous_icon.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
+    </None>
     <Content Update="Assets\subaru_logo.jpg">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
