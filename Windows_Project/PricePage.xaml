@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Page
+    x:Class="Windows_Project.PricePage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:Windows_Project"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
+
+    <ScrollViewer>
+        <Grid Padding="20">
+            <StackPanel>
+                <Button Click="Back_Click">
+                    <FontIcon Glyph="&#xE830;" Foreground="Gray"
+                                  HorizontalAlignment="Center" VerticalAlignment="Center" />
+                </Button>
+
+                <TextBlock Text="BẢNG GIÁ XE Ô TÔ" FontSize="26" FontWeight="Bold" 
+                               HorizontalAlignment="Center" VerticalAlignment="Center" 
+                               Margin="0, 0, 0, 20"/>
+
+                <GridView x:Name="collection" ItemsSource="{x:Bind ViewModel.Manufacturers}" IsItemClickEnabled="True" ItemClick="TipsGrid_ItemClick" HorizontalAlignment="Center" MaxWidth="1400">
+                    <GridView.ItemContainerStyle>
+                        <Style BasedOn="{StaticResource GridViewItemRevealStyle}" TargetType="GridViewItem">
+                            <Style.Setters>
+                                <Setter Property="Margin" Value="12"/>
+                            </Style.Setters>
+                        </Style>
+                    </GridView.ItemContainerStyle>
+                    <GridView.ItemTemplate>
+                        <DataTemplate x:DataType="local:Manufacturers">
+                            <Border BorderBrush="#E9E9E9" BorderThickness="1" CornerRadius="16">
+                                <Grid x:Name="connectedElement" Height="181" Width="209" AutomationProperties.Name="{x:Bind ManufacturerName}">
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="*" />
+                                        <RowDefinition Height="Auto" />
+                                    </Grid.RowDefinitions>
+                                    <Grid HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+                                        <Image Source="{x:Bind ManufacturerPicture}" HorizontalAlignment="Center" VerticalAlignment="Center" Stretch="UniformToFill"/>
+                                    </Grid>
+                                    <Grid Height="50" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Grid.Row="1">
+                                        <TextBlock Text="{x:Bind ManufacturerName}" FontSize="18" FontWeight="Bold" Foreground="#050B20" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                    </Grid>
+                                </Grid>
+                            </Border>
+                        </DataTemplate>
+                    </GridView.ItemTemplate>
+
+                    <GridView.ItemsPanel>
+                        <ItemsPanelTemplate>
+                            <WrapGrid Orientation="Horizontal" MaximumRowsOrColumns="4"/>
+                        </ItemsPanelTemplate>
+                    </GridView.ItemsPanel>
+                </GridView>
+            </StackPanel>
+        </Grid>
+    </ScrollViewer>
+</Page>
