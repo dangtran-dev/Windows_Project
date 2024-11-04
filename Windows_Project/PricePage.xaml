@@ -11,15 +11,15 @@
     <ScrollViewer>
         <Grid Padding="20">
             <StackPanel>
-                <Button Click="Back_Click">
-                    <FontIcon Glyph="&#xE830;" Foreground="Gray"
-                                  HorizontalAlignment="Center" VerticalAlignment="Center" />
-                </Button>
+                <Grid VerticalAlignment="Top" Height="100" BorderBrush="Gray" BorderThickness="0, 0, 0, 1" Padding="50, 0, 50, 0">
+                    <Button Click="Back_Click" VerticalAlignment="Center">
+                        <FontIcon Glyph="&#xE830;" Foreground="Gray"
+                                      HorizontalAlignment="Center" VerticalAlignment="Center" />
+                    </Button>
 
-                <TextBlock Text="BẢNG GIÁ XE Ô TÔ" FontSize="26" FontWeight="Bold" 
-                               HorizontalAlignment="Center" VerticalAlignment="Center" 
-                               Margin="0, 0, 0, 20"/>
-
+                    <TextBlock Text="BẢNG GIÁ XE Ô TÔ" FontSize="26" FontWeight="Bold" 
+                                   HorizontalAlignment="Center" VerticalAlignment="Center" />
+                </Grid>
                 <GridView x:Name="collection" ItemsSource="{x:Bind ViewModel.Manufacturers}" IsItemClickEnabled="True" ItemClick="TipsGrid_ItemClick" HorizontalAlignment="Center" MaxWidth="1400">
                     <GridView.ItemContainerStyle>
                         <Style BasedOn="{StaticResource GridViewItemRevealStyle}" TargetType="GridViewItem">
