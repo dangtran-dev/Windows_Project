@@ -186,4 +186,108 @@ public class MockDao : IDao
         };
         return result;
     }
+    public List<IsExpanderExpaned> GetIsExpanderExpaned()
+    {
+        var result = new List<IsExpanderExpaned>()
+        {
+            new IsExpanderExpaned()
+            {
+                isExpanderExpanded = true,
+                toggleText = "Thu gọn",
+            },
+            new IsExpanderExpaned()
+            {
+                isExpanderExpanded = true,
+                toggleText = "Thu gọn",
+            },
+            new IsExpanderExpaned()
+            {
+                isExpanderExpanded = true,
+                toggleText = "Thu gọn",
+            },
+        };
+        return result;
+    }
+
+    public List<Location> GetLocations()
+    {
+        var result = new List<Location>()
+        {
+            new Location()
+            {
+                City = "Hà Nội",
+                District = new List<string>()
+                {
+                    "Ba Đình",
+                    "Hoàn Kiếm",
+                    "Hai Bà Trưng",
+                    "Đống Đa",
+                    "Tây Hồ",
+                    "Cầu Giấy",
+                    "Thanh Xuân",
+                    "Hoàng Mai",
+                    "Long Biên",
+                    "Bắc Từ Liêm",
+                    "Nam Từ Liêm",
+                    "Hà Đông",
+                    "Sơn Tây",
+                    "Ba Vì",
+                    "Phúc Thọ",
+                    "Thạch Thất",
+                    "Quốc Oai",
+                    "Chương Mỹ",
+                    "Thanh Oai",
+                    "Thường Tín",
+                    "Phú Xuyên",
+                    "Ứng Hòa",
+                    "Mỹ Đức"
+                }
+            },
+            new Location()
+            {
+                City = "Hồ Chí Minh",
+                District = new List<string>()
+                {
+                    "Quận 1",
+                    "Quận 2",
+                    "Quận 3",
+                    "Quận 4",
+                    "Quận 5",
+                    "Quận 6",
+                    "Quận 7",
+                    "Quận 8",
+                    "Quận 9",
+                    "Quận 10",
+                    "Quận 11",
+                    "Quận 12",
+                    "Quận Bình Tân",
+                    "Quận Bình Thạnh",
+                    "Quận Gò Vấp",
+                    "Quận Phú Nhuận",
+                    "Quận Tân Bình",
+                    "Quận Tân Phú",
+                    "Quận Thủ Đức",
+                    "Huyện Bình Chánh",
+                    "Huyện Cần Giờ",
+                    "Huyện Củ Chi",
+                    "Huyện Hóc Môn",
+                    "Huyện Nhà Bè"
+                }
+            },
+            new Location()
+            {
+                City = "Đà Nẵng",
+                District = new List<string>()
+                {
+                     "Quận Hải Châu", 
+                    "Quận Thanh Khê", 
+                    "Quận Sơn Trà", 
+                    "Quận Ngũ Hành Sơn", 
+                    "Quận Liên Chiểu", 
+                    "Huyện Hoàng Sa"
+                }
+            },
+        };
+        return result;
+    }
 }

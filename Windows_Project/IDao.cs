@@ -9,4 +9,7 @@ namespace Windows_Project;
 public interface IDao
 {
     List<Manufacturers> GetManufacturers();
+    List<IsExpanderExpaned> GetIsExpanderExpaned();
+    List<Location> GetLocations();
+ 
 }
