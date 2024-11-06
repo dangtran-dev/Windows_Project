@@ -11,5 +11,6 @@ public interface IDao
     List<Manufacturers> GetManufacturers();
     List<IsExpanderExpaned> GetIsExpanderExpaned();
     List<Location> GetLocations();
- 
+    List<Users> GetUsers();
+
 }
