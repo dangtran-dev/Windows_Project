@@ -123,7 +123,7 @@ namespace Windows_Project
 
         private void OnPriceButtonClick(object sender, RoutedEventArgs e)
         {
-            Frame.Navigate(typeof(PricePage));
+            Frame.Navigate(typeof(PricePage), this.ViewModel);
         }
 
         private void OnSellCarButtonClick(object sender, RoutedEventArgs e)
