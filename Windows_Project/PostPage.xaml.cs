@@ -18,7 +18,11 @@ using System.Diagnostics;
 using System.Text.Json;
 using System.Threading.Tasks;
 using System.Reflection;
+using Windows.Storage.Pickers;
 using Windows.Storage;
+using Windows.Storage.AccessCache;
+using Windows.Storage.Provider;
+
 
 // To learn more about WinUI, the WinUI project structure,
 // and more about our project templates, see: http://aka.ms/winui-project-info.
@@ -28,40 +32,21 @@ namespace Windows_Project
     /// <summary>
     /// An empty page that can be used on its own or navigated to within a Frame.
     /// </summary>
-    public sealed partial class PostPage : Page, INotifyPropertyChanged
+    public sealed partial class PostPage : Page
     {
-        public class DashboardViewModel
-        {
-            public IsExpanderExpaned Current1 { get; set; }
-            public IsExpanderExpaned Current2 { get; set; }
-            public IsExpanderExpaned Current3 { get; set; }
-        }
-        public DashboardViewModel ViewModel { get; set; }
+        public MainViewModel ViewModel { get; set; }
 
         public PostPage()
         {
             this.InitializeComponent();
-            ViewModel = new DashboardViewModel()
-            {
-                Current1 = new IsExpanderExpaned()
-                {
-                    isExpanderExpanded = true,
-                    toggleText = "Thu gọn",
-                },
-                Current2 = new IsExpanderExpaned()
-                {
-                    isExpanderExpanded = true,
-                    toggleText = "Thu gọn",
-                },
-                Current3 = new IsExpanderExpaned()
-                {
-                    isExpanderExpanded = true,
-                    toggleText = "Thu gọn",
-                }
-            };
+            ViewModel = new MainViewModel();
+            //đặt itemsoure cho các combobox lấy dữ liệu từ mockdao
+            comboboxCitySeller.ItemsSource = ViewModel.Locations;
+            comboboxCitySeller.DisplayMemberPath = "City";
+            comboboxManufacturer.ItemsSource = ViewModel.Manufacturers;
+            comboboxManufacturer.DisplayMemberPath = "ManufacturerName";
         }
-        public event PropertyChangedEventHandler PropertyChanged;
-
+        //kiểm tra chọn xe mới
         private void newCar_Checked(object sender, RoutedEventArgs e)
         {
             oldCar.IsChecked = false;
@@ -70,7 +55,7 @@ namespace Windows_Project
             text_Km.IsHitTestVisible = false;
             text_Km.Opacity = 0.5;
         }
-
+        //kiểm tra chọn xe cũ
         private void oldCar_Checked(object sender, RoutedEventArgs e)
         {
             newCar.IsChecked = false;
@@ -79,31 +64,38 @@ namespace Windows_Project
             text_Km.IsHitTestVisible = true;
             text_Km.Opacity = 1;
         }
-
+        //kiểm tra chọn trong nước
         private void internalCar_Checked(object sender, RoutedEventArgs e)
         {
             externalCar.IsChecked = false;
             warningOriginCar.Visibility = Visibility.Collapsed;
         }
-
+        //kiểm tra chọn nhập khẩu
         private void externalCar_Checked(object sender, RoutedEventArgs e)
         {
             internalCar.IsChecked = false;
             warningOriginCar.Visibility = Visibility.Collapsed;
         }
-
+        //xử lý sự kiện cho nút xem trước tin đăng
         private void Preview_Click(object sender, RoutedEventArgs e)
         {
+            // lấy các dữ liệu từ các textbox, combobox, radiobutton để hiển thị lên popup
             var textYear = YearCarTextBox.Text;
-            var selectedManufacturer = (comboboxManufacturer.SelectedItem as ComboBoxItem)?.Content.ToString();
-            var selectedModel = (comboboxModelCar.SelectedItem as ComboBoxItem)?.Content.ToString();
+
+            var selectedManufacturer = comboboxManufacturer.SelectedItem as Manufacturers;
+            var textManufacturer = selectedManufacturer?.ManufacturerName;
+            var textModel = comboboxModelCar.SelectedItem as string;
+
             var textPrice = texboxPrice.Text;
             var textStyle = (comboboxStyleCar.SelectedItem as ComboBoxItem)?.Content.ToString();
             var textKm = "";
             var textCondition = "";
             var textOrigin = "";
-            var textCity = (comboboxCitySeller.SelectedItem as ComboBoxItem)?.Content.ToString();
-            var textDistrict = (comboboxDistrictSeller.SelectedItem as ComboBoxItem)?.Content.ToString();
+
+            var selectedCity = comboboxCitySeller.SelectedItem as Location;
+            var textCity = selectedCity?.City;
+            var textDistrict = comboboxDistrictSeller.SelectedItem as string;
+
             var textGearBox = (comboboxGearBoxCar.SelectedItem as ComboBoxItem)?.Content.ToString();
             var textFuel = (comboboxFuelCar.SelectedItem as ComboBoxItem)?.Content.ToString();
             var textDes = textDescription.Text;
@@ -128,8 +120,9 @@ namespace Windows_Project
                 textOrigin = "Nhập khẩu";
             }
 
+            //gán giá trị cho các textblock trong popup
             YearCarTextBlock.Text = $"{textYear}";
-            CarNameTextBlock.Text = $"{selectedManufacturer} {selectedModel}";
+            CarNameTextBlock.Text = $"{textModel} {textYear}";
             CarPriceTextBlock.Text = $"{textPrice} triệu";
             StyleCarTextBlock.Text = $"{textStyle}";
             ConditionCarTextBlock.Text = $"{textCondition}";
@@ -141,18 +134,21 @@ namespace Windows_Project
             FuelCarTextBlock.Text = $"{textFuel}";
             DescriptionCarTextBlock.Text = $"{textDes}";
 
+            //vị tri hiển thị popup, làm mờ phần còn lại của trang khi popup hiển thị
             PreviewPopup.HorizontalOffset = 150;
             PreviewPopup.VerticalOffset = 200;
             PreviewPopup.IsOpen = true;
             AllPage.Opacity = 0.5;
         }
 
+        // đóng popup
         private void ClosePopup_Click(object sender, RoutedEventArgs e)
         {
             PreviewPopup.IsOpen = false;
             AllPage.Opacity = 1;
         }
 
+        //xử lý sự kiện chọn hãng xe
         private void comboboxManufacturer_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             if (comboboxManufacturer.SelectedIndex == -1)
@@ -163,8 +159,16 @@ namespace Windows_Project
             {
                 warningManufacturerCar.Visibility = Visibility.Collapsed;
             }
+
+            var selectedManufacturer = comboboxManufacturer.SelectedItem as Manufacturers;
+
+            if (selectedManufacturer != null)
+            {
+                comboboxModelCar.ItemsSource = selectedManufacturer.Cars.Select(car => car.Model).ToList();
+            }
         }
 
+        // xử lý sự kiện chọn dòng xe
         private void comboboxModelCar_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             if (comboboxModelCar.SelectedIndex == -1)
@@ -177,6 +181,7 @@ namespace Windows_Project
             }
         }
 
+        // xử lý sự kiện chọn nhiên liệu
         private void comboboxFuelCar_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             if (comboboxFuelCar.SelectedIndex == -1)
@@ -189,6 +194,7 @@ namespace Windows_Project
             }
         }
 
+        // xử lý sự kiện chọn loại hộp số
         private void comboboxGearBoxCar_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             if (comboboxGearBoxCar.SelectedIndex == -1)
@@ -201,6 +207,7 @@ namespace Windows_Project
             }
         }
 
+        // xử lý sự kiện nhập năm sản xuất
         private void YearCarTextBox_TextChanged(object sender, TextChangedEventArgs e)
         {
             if (string.IsNullOrEmpty(YearCarTextBox.Text))
@@ -213,6 +220,7 @@ namespace Windows_Project
             }
         }
 
+        // xử lý sự kiện nhập giá xe
         private void texboxPrice_TextChanged(object sender, TextChangedEventArgs e)
         {
             if (string.IsNullOrEmpty(texboxPrice.Text))
@@ -225,6 +233,7 @@ namespace Windows_Project
             }
         }
 
+        // xử lý sự kiện nhập tiêu đề
         private void texBoxTitle_TextChanged(object sender, TextChangedEventArgs e)
         {
             if (string.IsNullOrEmpty(texBoxTitle.Text))
@@ -237,6 +246,7 @@ namespace Windows_Project
             }
         }
 
+        // xử lý sự kiện nhập mô tả
         private void textDescription_TextChanged(object sender, TextChangedEventArgs e)
         {
             if (string.IsNullOrEmpty(textDescription.Text))
@@ -249,6 +259,7 @@ namespace Windows_Project
             }
         }
 
+        // xử lý sự kiện nhập tên người bán
         private void textboxNameSeller_TextChanged(object sender, TextChangedEventArgs e)
         {
             if (string.IsNullOrEmpty(textboxNameSeller.Text))
@@ -261,6 +272,7 @@ namespace Windows_Project
             }
         }
 
+        // xử lý sự kiện nhập số điện thoại người bán
         private void textboxPhoneSeller_TextChanged(object sender, TextChangedEventArgs e)
         {
             if (string.IsNullOrEmpty(textboxPhoneSeller.Text))
@@ -273,6 +285,7 @@ namespace Windows_Project
             }
         }
 
+        // xử lý sự kiện nhập địa chỉ người bán
         private void textboxAddressSeller_TextChanged(object sender, TextChangedEventArgs e)
         {
             if (string.IsNullOrEmpty(textboxAddressSeller.Text))
@@ -285,6 +298,7 @@ namespace Windows_Project
             }
         }
 
+        // xử lý sự kiện chọn thành phố
         private void comboboxCitySeller_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             if (comboboxCitySeller.SelectedIndex == -1)
@@ -295,8 +309,15 @@ namespace Windows_Project
             {
                 warningCitySeller.Visibility = Visibility.Collapsed;
             }
+
+            var selectedLocation = comboboxCitySeller.SelectedItem as Location;
+            if (selectedLocation != null)
+            {
+                 comboboxDistrictSeller.ItemsSource = selectedLocation.District.Select(district => district).ToList();
+            }
         }
 
+        // xử lý sự kiện chọn quận
         private void comboboxDistrictSeller_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             if (comboboxDistrictSeller.SelectedIndex == -1)
@@ -309,6 +330,7 @@ namespace Windows_Project
             }
         }
 
+        // nút quay lại
         private void backButton_Click(object sender, RoutedEventArgs e)
         {
             if (Frame.CanGoBack)
@@ -317,11 +339,7 @@ namespace Windows_Project
             }
         }
 
-        private void UploadButton_Click(object sender, RoutedEventArgs e)
-        {
-
-        }
-
+        // lưu thông tin xe vào file json
         private async Task SaveCar(Cars car)
         {
             string assemblyLocation = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
@@ -344,6 +362,7 @@ namespace Windows_Project
             await File.WriteAllTextAsync(filePath, newJson);
         }
 
+        // xử lý sự kiện đăng tin
         private async void PostButton_Click(object sender, RoutedEventArgs e)
         {
             string message = "Bạn có muốn đăng tin?";
@@ -357,13 +376,15 @@ namespace Windows_Project
             var result = await dialog.ShowAsync();
             if (result == ContentDialogResult.Primary)
             {
+                var selectedManufacturer = comboboxManufacturer.SelectedItem as Manufacturers;
                 var car = new Cars()
                 {
+
                     Year = YearCarTextBox.Text,
-                    Manufacturer = (comboboxManufacturer.SelectedItem as ComboBoxItem)?.Content.ToString(),
-                    Model = (comboboxModelCar.SelectedItem as ComboBoxItem)?.Content.ToString(),
+                    Manufacturer = selectedManufacturer?.ManufacturerName,
+                    Model = comboboxModelCar.SelectedItem as string,
                     Price = texboxPrice.Text,
-                    Picture = "",
+                    Picture = PathText.Text,
                 };
                 await SaveCar(car);
                 var newdialog = new ContentDialog()
@@ -377,6 +398,48 @@ namespace Windows_Project
                 {
                     ClosePopup_Click(sender, e);
                 }
+            }
+        }
+
+        //lưu ảnh vừa upload vào thư mục Assets ở solution explorer của project
+        private async Task SaveImage(StorageFile file)
+        {
+            var folder = Windows.ApplicationModel.Package.Current.InstalledLocation;
+            var newFolder = await folder.GetFolderAsync("Assets");
+            var newFile = await file.CopyAsync(newFolder, file.Name, NameCollisionOption.ReplaceExisting);
+        }
+
+        //xử lý sự kiện upload ảnh
+        private async void UploadButton_Click(object sender, RoutedEventArgs e)
+        {
+            var openPicker = new Windows.Storage.Pickers.FileOpenPicker();
+
+            var window = App.m_window;
+
+            var hWnd = WinRT.Interop.WindowNative.GetWindowHandle(window);
+
+            WinRT.Interop.InitializeWithWindow.Initialize(openPicker, hWnd);
+
+            openPicker.ViewMode = PickerViewMode.Thumbnail;
+            openPicker.SuggestedStartLocation = PickerLocationId.PicturesLibrary;
+            openPicker.FileTypeFilter.Add(".jpg");
+            openPicker.FileTypeFilter.Add(".jpeg");
+            openPicker.FileTypeFilter.Add(".png");
+
+            var file = await openPicker.PickSingleFileAsync();
+            if (file != null)
+            {
+                await SaveImage(file);
+                UploadedImage.Visibility = Visibility.Visible;
+                var stream = await file.OpenAsync(Windows.Storage.FileAccessMode.Read);
+                var bitmapImage = new BitmapImage();
+                bitmapImage.SetSource(stream);
+                UploadedImage.Source = bitmapImage;
+                PathText.Text = $"Assets/{file.Name}";
+            }
+            else
+            {
+                //do nothing
             }
         }
     }

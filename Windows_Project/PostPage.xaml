@@ -7,7 +7,7 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d">
-
+    
     <ScrollViewer>
         <StackPanel x:Name="AllPage" Orientation="Vertical">
             <!--đầu trang-->
@@ -29,8 +29,8 @@
                 <StackPanel Grid.Column="0" HorizontalAlignment="Center" Orientation="Vertical"
                    Width="auto" Height="auto">
                     <!--Thông tin xe-->
-                    <Expander x:Name="MyExpander1" IsExpanded="{x:Bind ViewModel.Current1.isExpanderExpanded, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" 
-                          HorizontalAlignment="Stretch">
+                    <Expander x:Name="MyExpander1" IsExpanded="{x:Bind ViewModel.IsExpanderExpaneds[0].isExpanderExpanded, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" 
+                                    HorizontalAlignment="Stretch">
                         <!--Header-->
                         <Expander.Header>
                             <Grid>
@@ -40,13 +40,13 @@
                                 </Grid.ColumnDefinitions>
 
                                 <TextBlock Grid.Column="0" Text="THÔNG TIN XE" 
-                                       FontWeight="Bold" FontSize="18" Padding="10" 
-                                       HorizontalAlignment="Left" Foreground="#135EAC" 
-                                       FontFamily="Roboto"/>
+                                           FontWeight="Bold" FontSize="18" Padding="10" 
+                                           HorizontalAlignment="Left" Foreground="#135EAC" 
+                                           FontFamily="Roboto"/>
 
-                                <TextBlock Grid.Column="1" Text="{x:Bind ViewModel.Current1.toggleText, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" 
-                                        FontSize="14" Padding="10" HorizontalAlignment="Right" 
-                                        Foreground="#135EAC" FontFamily="Roboto"/>
+                                <TextBlock Grid.Column="1" Text="{x:Bind ViewModel.IsExpanderExpaneds[0].toggleText, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" 
+                                           FontSize="14" Padding="10" HorizontalAlignment="Right" 
+                                           Foreground="#135EAC" FontFamily="Roboto"/>
                             </Grid>
                         </Expander.Header>
                         <!--Nội dung-->
@@ -75,36 +75,18 @@
                                     <TextBlock Text="Hãng xe" FontSize="16" FontWeight="Bold" FontFamily="Roboto" VerticalAlignment="Center"/>
                                     <TextBlock Text="*" FontSize="16" Foreground="Red"/>
                                     <ComboBox x:Name="comboboxManufacturer" Width="200" Margin="25,0,0,0" 
-                                          SelectionChanged="comboboxManufacturer_SelectionChanged" PlaceholderText="Chọn hãng xe">
-                                        <ComboBoxItem Content="Audi"/>
-                                        <ComboBoxItem Content="BMW"/>
-                                        <ComboBoxItem Content="Chevrolet"/>
-                                        <ComboBoxItem Content="Ford"/>
-                                        <ComboBoxItem Content="Honda"/>
-                                        <ComboBoxItem Content="Hyundai"/>
-                                        <ComboBoxItem Content="Kia"/>
-                                        <ComboBoxItem Content="Lexus"/>
-                                        <ComboBoxItem Content="Mazda"/>
-                                        <ComboBoxItem Content="Mercedes-Benz"/>
-                                        <ComboBoxItem Content="Mitsubishi"/>
-                                        <ComboBoxItem Content="Nissan"/>
-                                        <ComboBoxItem Content="Peugeot"/>
-                                        <ComboBoxItem Content="Subaru"/>
-                                        <ComboBoxItem Content="Suzuki"/>
-                                        <ComboBoxItem Content="Toyota"/>
-                                        <ComboBoxItem Content="Volkswagen"/>
-                                        <ComboBoxItem Content="Volvo"/>
+                                              SelectionChanged="comboboxManufacturer_SelectionChanged" PlaceholderText="Chọn hãng xe">
                                     </ComboBox>
                                 </StackPanel>
 
                                 <!--Cảnh báo nếu không chọn hãng xe-->
                                 <StackPanel x:Name="warningManufacturerCar" Grid.Column="0" Grid.Row="1"
-                                        Orientation="Horizontal" HorizontalAlignment="Right" Visibility="Visible">
+                                            Orientation="Horizontal" HorizontalAlignment="Right" Visibility="Visible">
                                     <FontIcon Glyph="&#xE7BA;" Margin="0,5,0,0" Foreground="Red" FontStyle="Italic" FontSize="14"/>
                                     <TextBlock HorizontalAlignment="Right" Margin="5,5,40,0"
-                                           FontStyle="Italic" Foreground="Red"
-                                           FontSize="14" >
-                                       Vui lòng chọn hãng xe
+                                               FontStyle="Italic" Foreground="Red"
+                                               FontSize="14" >
+                                          Vui lòng chọn hãng xe
                                     </TextBlock>
                                 </StackPanel>
 
@@ -113,27 +95,18 @@
                                     <TextBlock Text="Dòng xe" FontSize="16" FontWeight="Bold" FontFamily="Roboto" VerticalAlignment="Center"/>
                                     <TextBlock Text="*" FontSize="16" Foreground="Red"/>
                                     <ComboBox x:Name="comboboxModelCar" Width="200" Margin="25,0,0,0" 
-                                          SelectionChanged="comboboxModelCar_SelectionChanged" PlaceholderText="Chọn dòng xe">
-                                        <ComboBoxItem Content="Sedan"/>
-                                        <ComboBoxItem Content="SUV"/>
-                                        <ComboBoxItem Content="Crossover"/>
-                                        <ComboBoxItem Content="Coupe"/>
-                                        <ComboBoxItem Content="Convertible"/>
-                                        <ComboBoxItem Content="Hatchback"/>
-                                        <ComboBoxItem Content="Van/Minivan"/>
-                                        <ComboBoxItem Content="Truck"/>
-                                        <ComboBoxItem Content="Wagon"/>
+                                              SelectionChanged="comboboxModelCar_SelectionChanged" PlaceholderText="Chọn dòng xe">
                                     </ComboBox>
                                 </StackPanel>
 
                                 <!--Cảnh báo nếu không chọn dòng xe-->
                                 <StackPanel x:Name="warningModelCar" Grid.Column="1" Grid.Row="1"
-                                        Orientation="Horizontal" HorizontalAlignment="Right" Visibility="Visible">
+                                            Orientation="Horizontal" HorizontalAlignment="Right" Visibility="Visible">
                                     <FontIcon Glyph="&#xE7BA;" Margin="0,5,0,0" Foreground="Red" FontStyle="Italic" FontSize="14"/>
                                     <TextBlock HorizontalAlignment="Right" Margin="5,5,40,0"
-                                           FontStyle="Italic" Foreground="Red"
-                                           FontSize="14" >
-                                    Vui lòng chọn dòng xe
+                                               FontStyle="Italic" Foreground="Red"
+                                               FontSize="14" >
+                                        Vui lòng chọn dòng xe
                                     </TextBlock>
                                 </StackPanel>
 
@@ -148,14 +121,14 @@
                                         </Grid.ColumnDefinitions>
 
                                         <ToggleButton Grid.Column="0" x:Name="newCar" 
-                                                  Margin="10,0,0,0" Checked="newCar_Checked" 
-                                                  Width="95" CornerRadius="15">
+                                                      Margin="10,0,0,0" Checked="newCar_Checked" 
+                                                      Width="95" CornerRadius="15">
                                             Xe mới
                                         </ToggleButton>
 
                                         <ToggleButton Grid.Column="1" x:Name="oldCar"
-                                                  Margin="10,0,0,0" Checked="oldCar_Checked"
-                                                  Width="95" CornerRadius="15">
+                                                      Margin="10,0,0,0" Checked="oldCar_Checked"
+                                                      Width="95" CornerRadius="15">
                                             Xe cũ
                                         </ToggleButton>
                                     </Grid>
@@ -163,12 +136,12 @@
 
                                 <!--Cảnh báo nếu không chọn tình trạng-->
                                 <StackPanel x:Name="warningConditionCar" Grid.Column="0" Grid.Row="3"
-                                       Orientation="Horizontal" HorizontalAlignment="Right" Visibility="Visible">
+                                            Orientation="Horizontal" HorizontalAlignment="Right" Visibility="Visible">
                                     <FontIcon Glyph="&#xE7BA;" Margin="0,5,0,0" Foreground="Red" FontStyle="Italic" FontSize="14"/>
                                     <TextBlock HorizontalAlignment="Right" Margin="5,5,40,0"
-                                           FontStyle="Italic" Foreground="Red"
-                                           FontSize="14" >
-                                     Vui lòng chọn tình trạng
+                                               FontStyle="Italic" Foreground="Red"
+                                              FontSize="14" >
+                                        Vui lòng chọn tình trạng
                                     </TextBlock>
                                 </StackPanel>
 
@@ -183,14 +156,14 @@
                                         </Grid.ColumnDefinitions>
 
                                         <ToggleButton Grid.Column="0" x:Name="internalCar" 
-                                                  Margin="10,0,0,0" Checked="internalCar_Checked" 
-                                                  Width="95" CornerRadius="15">
+                                                      Margin="10,0,0,0" Checked="internalCar_Checked" 
+                                                      Width="95" CornerRadius="15">
                                             Trong nước
                                         </ToggleButton>
 
                                         <ToggleButton Grid.Column="1" x:Name="externalCar"
-                                                  Margin="10,0,0,0" Checked="externalCar_Checked"
-                                                  Width="95" CornerRadius="15">
+                                                      Margin="10,0,0,0" Checked="externalCar_Checked"
+                                                      Width="95" CornerRadius="15">
                                             Nhập khẩu
                                         </ToggleButton>
                                     </Grid>
@@ -198,23 +171,23 @@
 
                                 <!--Cảnh báo nếu không chọn xuất xứ-->
                                 <StackPanel x:Name="warningOriginCar" Grid.Column="1" Grid.Row="3"
-                                        Orientation="Horizontal" HorizontalAlignment="Right" Visibility="Visible">
+                                            Orientation="Horizontal" HorizontalAlignment="Right" Visibility="Visible">
                                     <FontIcon Glyph="&#xE7BA;" Margin="0,5,0,0" Foreground="Red" FontStyle="Italic" FontSize="14"/>
                                     <TextBlock HorizontalAlignment="Right" Margin="5,5,40,0"
-                                           FontStyle="Italic" Foreground="Red"
-                                           FontSize="14" >
-                                      Vui lòng chọn xuất xứ
+                                               FontStyle="Italic" Foreground="Red"
+                                               FontSize="14" >
+                                        Vui lòng chọn xuất xứ
                                     </TextBlock>
                                 </StackPanel>
 
                                 <!--Nhập số Km đã đi-->
                                 <StackPanel Orientation="Horizontal" Grid.Column="0" Grid.Row="4" HorizontalAlignment="Left" Margin="10,10,0,0">
                                     <TextBlock x:Name="text_Km" Text="Km đã đi" 
-                                           FontSize="16" FontWeight="Bold"
-                                           FontFamily="Roboto" VerticalAlignment="Center"/>
+                                               FontSize="16" FontWeight="Bold"
+                                               FontFamily="Roboto" VerticalAlignment="Center"/>
                                     <TextBlock Text="*" FontSize="16" Foreground="Red"/>
                                     <TextBox x:Name="textBox_Km"
-                                    Margin="19,0,0,0" PlaceholderText="Nhập số km đã đi" Width="200"/>
+                                             Margin="19,0,0,0" PlaceholderText="Nhập số km đã đi" Width="200"/>
                                 </StackPanel>
 
                                 <!--Chọn màu xe-->
@@ -242,8 +215,8 @@
                                     <TextBlock Text="Hộp số" FontSize="16" FontWeight="Bold" FontFamily="Roboto" VerticalAlignment="Center"/>
                                     <TextBlock Text="*" FontSize="16" Foreground="Red"/>
                                     <ComboBox x:Name="comboboxGearBoxCar" SelectionChanged="comboboxGearBoxCar_SelectionChanged"
-                                          Margin="32,0,0,0" Width="200" 
-                                          PlaceholderText="Chọn loại hộp số">
+                                              Margin="32,0,0,0" Width="200" 
+                                              PlaceholderText="Chọn loại hộp số">
                                         <ComboBoxItem Content="Số tự động"/>
                                         <ComboBoxItem Content="Số sàn"/>
                                         <ComboBoxItem Content="Số hỗn hợp"/>
@@ -252,12 +225,12 @@
 
                                 <!--Cảnh báo nếu không chọn hộp số-->
                                 <StackPanel x:Name="warningGearBoxCar" Grid.Column="0" Grid.Row="6"
-                                        Orientation="Horizontal" HorizontalAlignment="Right" Visibility="Visible">
+                                            Orientation="Horizontal" HorizontalAlignment="Right" Visibility="Visible">
                                     <FontIcon Glyph="&#xE7BA;" Margin="0,5,0,0" Foreground="Red" FontStyle="Italic" FontSize="14"/>
                                     <TextBlock HorizontalAlignment="Right" Margin="5,5,40,0"
-                                           FontStyle="Italic" Foreground="Red"
-                                           FontSize="14" >
-                                    Vui lòng chọn hộp số
+                                               FontStyle="Italic" Foreground="Red"
+                                               FontSize="14" >
+                                        Vui lòng chọn hộp số
                                     </TextBlock>
                                 </StackPanel>
 
@@ -266,8 +239,8 @@
                                     <TextBlock Text="Nhiên liệu" FontSize="16" FontWeight="Bold" FontFamily="Roboto" VerticalAlignment="Center"/>
                                     <TextBlock Text="*" FontSize="16" Foreground="Red"/>
                                     <ComboBox x:Name="comboboxFuelCar" SelectionChanged="comboboxFuelCar_SelectionChanged"
-                                          Margin="11,0,0,0" Width="200" 
-                                          PlaceholderText="Chọn loại nhiên liệu">
+                                               Margin="11,0,0,0" Width="200" 
+                                               PlaceholderText="Chọn loại nhiên liệu">
                                         <ComboBoxItem Content="Xăng"/>
                                         <ComboBoxItem Content="Diesel"/>
                                         <ComboBoxItem Content="Điện"/>
@@ -278,12 +251,12 @@
 
                                 <!--Cảnh báo nếu không chọn nhiên liệu-->
                                 <StackPanel x:Name="warningFuelCar" Grid.Column="1" Grid.Row="6"
-                                        Orientation="Horizontal" HorizontalAlignment="Right" Visibility="Visible">
+                                            Orientation="Horizontal" HorizontalAlignment="Right" Visibility="Visible">
                                     <FontIcon Glyph="&#xE7BA;" Margin="0,5,0,0" Foreground="Red" FontStyle="Italic" FontSize="14"/>
                                     <TextBlock HorizontalAlignment="Right" Margin="5,5,40,0"
-                                           FontStyle="Italic" Foreground="Red"
-                                           FontSize="14" >
-                                    Vui lòng chọn nhiên liệu
+                                               FontStyle="Italic" Foreground="Red"
+                                               FontSize="14" >
+                                          Vui lòng chọn nhiên liệu
                                     </TextBlock>
                                 </StackPanel>
 
@@ -335,7 +308,7 @@
                                     <TextBlock HorizontalAlignment="Right" Margin="5,5,40,0"
                                                FontStyle="Italic" Foreground="Red"
                                                FontSize="14" >
-                                        Vui lòng nhập năm sản xuất
+                                       Vui lòng nhập năm sản xuất
                                     </TextBlock>
                                 </StackPanel>
 
@@ -344,8 +317,8 @@
                     </Expander>
 
                     <!--Giá bán và mô tả xe-->
-                    <Expander x:Name="MyExpander2" IsExpanded="{x:Bind ViewModel.Current2.isExpanderExpanded, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" 
-                          HorizontalAlignment="Stretch" Margin="0,10,0,0">
+                    <Expander x:Name="MyExpander2" IsExpanded="{x:Bind ViewModel.IsExpanderExpaneds[1].isExpanderExpanded, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" 
+                              HorizontalAlignment="Stretch" Margin="0,10,0,0">
                         <!--Header-->
                         <Expander.Header>
                             <Grid>
@@ -355,13 +328,13 @@
                                 </Grid.ColumnDefinitions>
 
                                 <TextBlock Grid.Column="0" Text="GIÁ BÁN VÀ MÔ TẢ XE" 
-                                       FontWeight="Bold" FontSize="18" Padding="10" 
-                                       HorizontalAlignment="Left" Foreground="#135EAC" 
-                                       FontFamily="Roboto"/>
+                                           FontWeight="Bold" FontSize="18" Padding="10" 
+                                           HorizontalAlignment="Left" Foreground="#135EAC" 
+                                           FontFamily="Roboto"/>
 
-                                <TextBlock Grid.Column="1" Text="{x:Bind ViewModel.Current2.toggleText, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" 
-                                       FontSize="14" Padding="10" HorizontalAlignment="Right" 
-                                       Foreground="#135EAC" FontFamily="Roboto"/>
+                                <TextBlock Grid.Column="1" Text="{x:Bind ViewModel.IsExpanderExpaneds[1].toggleText, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" 
+                                           FontSize="14" Padding="10" HorizontalAlignment="Right" 
+                                           Foreground="#135EAC" FontFamily="Roboto"/>
                             </Grid>
                         </Expander.Header>
 
@@ -387,15 +360,15 @@
                                     </Grid>
 
                                     <TextBox x:Name="texboxPrice" TextChanged="texboxPrice_TextChanged" Margin="0,5,0,0" 
-                                         PlaceholderText="Nhập giá bán xe" Width="640"/>
+                                             PlaceholderText="Nhập giá bán xe" Width="640"/>
                                     <!--Cảnh báo nếu không nhập giá bán-->
                                     <StackPanel x:Name="warningPriceCar"
-                                            Orientation="Horizontal" HorizontalAlignment="Right" Visibility="Visible">
+                                                Orientation="Horizontal" HorizontalAlignment="Right" Visibility="Visible">
                                         <FontIcon Glyph="&#xE7BA;" Margin="0,5,0,0" Foreground="Red" FontStyle="Italic" FontSize="14"/>
                                         <TextBlock HorizontalAlignment="Right" Margin="5,5,0,0"
-                                               FontStyle="Italic" Foreground="Red"
-                                               FontSize="14" >
-                                         Vui lòng nhập Giá bán
+                                                   FontStyle="Italic" Foreground="Red"
+                                                   FontSize="14" >
+                                               Vui lòng nhập Giá bán
                                         </TextBlock>
                                     </StackPanel>
                                 </StackPanel>
@@ -407,15 +380,15 @@
                                         <TextBlock Text="*" FontSize="16" Foreground="Red"/>
                                     </StackPanel>
                                     <TextBox x:Name="texBoxTitle" TextChanged="texBoxTitle_TextChanged" Margin="0,5,0,0" 
-                                         PlaceholderText="Ngắn gọn, đầy đủ, từ khóa quan trọng gây chú ý" Width="640"/>
+                                              PlaceholderText="Ngắn gọn, đầy đủ, từ khóa quan trọng gây chú ý" Width="640"/>
                                     <!--Cảnh báo nếu không nhập tiêu đề-->
                                     <StackPanel x:Name="warningTitleCar"
-                                            Orientation="Horizontal" HorizontalAlignment="Right" Visibility="Visible">
+                                                Orientation="Horizontal" HorizontalAlignment="Right" Visibility="Visible">
                                         <FontIcon Glyph="&#xE7BA;" Margin="0,5,0,0" Foreground="Red" FontStyle="Italic" FontSize="14"/>
                                         <TextBlock HorizontalAlignment="Right" Margin="5,5,0,0"
-                                               FontStyle="Italic" Foreground="Red"
-                                               FontSize="14" >
-                                        Vui lòng nhập tiêu đề
+                                                   FontStyle="Italic" Foreground="Red"
+                                                   FontSize="14" >
+                                            Vui lòng nhập tiêu đề
                                         </TextBlock>
                                     </StackPanel>
                                 </StackPanel>
@@ -427,15 +400,15 @@
                                         <TextBlock Text="*" FontSize="16" Foreground="Red"/>
                                     </StackPanel>
                                     <TextBox x:Name="textDescription" TextChanged="textDescription_TextChanged" Margin="0,5,0,0" 
-                                         PlaceholderText= "Mô tả chi tiết xe" Width="640" Height="150" TextWrapping="Wrap"/>
+                                              PlaceholderText= "Mô tả chi tiết xe" Width="640" Height="150" TextWrapping="Wrap"/>
                                     <!--Cảnh báo nếu không nhập mô tả-->
                                     <StackPanel x:Name="warningDescriptionCar"
-                                            Orientation="Horizontal" HorizontalAlignment="Right" Visibility="Visible">
+                                                Orientation="Horizontal" HorizontalAlignment="Right" Visibility="Visible">
                                         <FontIcon Glyph="&#xE7BA;" Margin="0,5,0,0" Foreground="Red" FontStyle="Italic" FontSize="14"/>
                                         <TextBlock HorizontalAlignment="Right" Margin="5,5,0,0"
-                                               FontStyle="Italic" Foreground="Red"
-                                               FontSize="14" >
-                                        Vui lòng nhập mô tả
+                                                   FontStyle="Italic" Foreground="Red"
+                                                   FontSize="14" >
+                                            Vui lòng nhập mô tả
                                         </TextBlock>
                                     </StackPanel>
                                 </StackPanel>
@@ -445,8 +418,8 @@
                     </Expander>
 
                     <!--Thông tin người bán-->
-                    <Expander x:Name="MyExpander3" IsExpanded="{x:Bind ViewModel.Current3.isExpanderExpanded, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" 
-                          HorizontalAlignment="Stretch" Margin="0,10,0,0" >
+                    <Expander x:Name="MyExpander3" IsExpanded="{x:Bind ViewModel.IsExpanderExpaneds[2].isExpanderExpanded, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" 
+                              HorizontalAlignment="Stretch" Margin="0,10,0,0" >
                         <Expander.Header>
                             <Grid>
                                 <Grid.ColumnDefinitions>
@@ -455,13 +428,13 @@
                                 </Grid.ColumnDefinitions>
 
                                 <TextBlock Grid.Column="0" Text="THÔNG TIN NGƯỜI BÁN" 
-                                       FontWeight="Bold" FontSize="18" Padding="10" 
-                                       HorizontalAlignment="Left" Foreground="#135EAC" 
-                                       FontFamily="Roboto"/>
+                                           FontWeight="Bold" FontSize="18" Padding="10" 
+                                           HorizontalAlignment="Left" Foreground="#135EAC" 
+                                           FontFamily="Roboto"/>
 
-                                <TextBlock Grid.Column="1" Text="{x:Bind ViewModel.Current3.toggleText, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" 
-                                       FontSize="14" Padding="10" HorizontalAlignment="Right" 
-                                       Foreground="#135EAC" FontFamily="Roboto"/>
+                                <TextBlock Grid.Column="1" Text="{x:Bind ViewModel.IsExpanderExpaneds[2].toggleText, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" 
+                                           FontSize="14" Padding="10" HorizontalAlignment="Right" 
+                                           Foreground="#135EAC" FontFamily="Roboto"/>
                             </Grid>
                         </Expander.Header>
 
@@ -486,17 +459,17 @@
                                     <TextBlock Text="Tên người bán" FontSize="16" FontWeight="Bold" FontFamily="Roboto" VerticalAlignment="Center" Width="80" TextWrapping="Wrap"/>
                                     <TextBlock Text="*" FontSize="16" Foreground="Red"/>
                                     <TextBox x:Name="textboxNameSeller" TextChanged="textboxNameSeller_TextChanged" Margin="10,0,0,0" 
-                                         PlaceholderText="Nhập tên người bán" Width="200"/>
+                                             PlaceholderText="Nhập tên người bán" Width="200"/>
                                 </StackPanel>
 
                                 <!--Cảnh báo nếu không nhập tên người bán-->
                                 <StackPanel x:Name="warningNameSeller" Grid.Column="0" Grid.Row="1"
-                                        Orientation="Horizontal" HorizontalAlignment="Right" Visibility="Visible">
+                                            Orientation="Horizontal" HorizontalAlignment="Right" Visibility="Visible">
                                     <FontIcon Glyph="&#xE7BA;" Margin="0,5,0,0" Foreground="Red" FontStyle="Italic" FontSize="14"/>
                                     <TextBlock HorizontalAlignment="Right" Margin="5,5,40,0"
-                                           FontStyle="Italic" Foreground="Red"
-                                           FontSize="14" >
-                                     Vui lòng nhập tên người bán
+                                               FontStyle="Italic" Foreground="Red"
+                                               FontSize="14" >
+                                         Vui lòng nhập tên người bán
                                     </TextBlock>
                                 </StackPanel>
 
@@ -505,17 +478,17 @@
                                     <TextBlock Text="Số điện thoại" FontSize="16" FontWeight="Bold" FontFamily="Roboto" VerticalAlignment="Center" Width="60" TextWrapping="Wrap"/>
                                     <TextBlock Text="*" FontSize="16" Foreground="Red"/>
                                     <TextBox x:Name="textboxPhoneSeller" TextChanged="textboxPhoneSeller_TextChanged" Margin="27,0,0,0" 
-                                         PlaceholderText="Nhập số điện thoại" Width="200"/>
+                                             PlaceholderText="Nhập số điện thoại" Width="200"/>
                                 </StackPanel>
 
                                 <!--Cảnh báo nếu không nhập số điện thoại-->
                                 <StackPanel x:Name="warningPhoneSeller" Grid.Column="1" Grid.Row="1"
-                                        Orientation="Horizontal" HorizontalAlignment="Right" Visibility="Visible">
+                                            Orientation="Horizontal" HorizontalAlignment="Right" Visibility="Visible">
                                     <FontIcon Glyph="&#xE7BA;" Margin="0,5,0,0" Foreground="Red" FontStyle="Italic" FontSize="14"/>
                                     <TextBlock HorizontalAlignment="Right" Margin="5,5,40,0"
-                                           FontStyle="Italic" Foreground="Red"
-                                           FontSize="14" >
-                                    Vui lòng nhập số điện thoại
+                                               FontStyle="Italic" Foreground="Red"
+                                               FontSize="14" >
+                                         Vui lòng nhập số điện thoại
                                     </TextBlock>
                                 </StackPanel>
 
@@ -524,17 +497,17 @@
                                     <TextBlock Text="Địa chỉ người bán" FontSize="16" FontWeight="Bold" FontFamily="Roboto" VerticalAlignment="Center" Width="80" TextWrapping="Wrap"/>
                                     <TextBlock Text="*" FontSize="16" Foreground="Red"/>
                                     <TextBox x:Name="textboxAddressSeller" TextChanged="textboxAddressSeller_TextChanged" Margin="10,0,0,0" 
-                                         PlaceholderText="Nhập địa chỉ người bán" Width="537"/>
+                                             PlaceholderText="Nhập địa chỉ người bán" Width="537"/>
                                 </StackPanel>
 
                                 <!--Cảnh báo nếu không nhập địa chỉ người bán-->
                                 <StackPanel x:Name="warningAddressSeller" Grid.Column="0" Grid.Row="3" Grid.ColumnSpan="2"
-                                        Orientation="Horizontal" HorizontalAlignment="Right" Visibility="Visible">
+                                            Orientation="Horizontal" HorizontalAlignment="Right" Visibility="Visible">
                                     <FontIcon Glyph="&#xE7BA;" Margin="0,5,0,0" Foreground="Red" FontStyle="Italic" FontSize="14"/>
                                     <TextBlock HorizontalAlignment="Right" Margin="5,5,40,0"
-                                           FontStyle="Italic" Foreground="Red"
-                                           FontSize="14" >
-                                     Vui lòng nhập số điện thoại
+                                               FontStyle="Italic" Foreground="Red"
+                                               FontSize="14" >
+                                         Vui lòng nhập số điện thoại
                                     </TextBlock>
                                 </StackPanel>
 
@@ -543,20 +516,19 @@
                                     <TextBlock Text="Tỉnh/Thành" FontSize="16" FontWeight="Bold" FontFamily="Roboto" VerticalAlignment="Center"/>
                                     <TextBlock Text="*" FontSize="16" Foreground="Red"/>
                                     <ComboBox x:Name="comboboxCitySeller" SelectionChanged="comboboxCitySeller_SelectionChanged"
-                                          Margin="3,0,0,0" Width="200" 
-                                          PlaceholderText="Chọn Tỉnh/Thành">
-                                        <ComboBoxItem Content="TP Hồ Chí Minh"/>
+                                              Margin="3,0,0,0" Width="200"
+                                              PlaceholderText="Chọn Tỉnh/Thành">
                                     </ComboBox>
                                 </StackPanel>
 
                                 <!--Cảnh báo nếu không chọn tỉnh/thành-->
                                 <StackPanel x:Name="warningCitySeller" Grid.Column="0" Grid.Row="5"
-                                        Orientation="Horizontal" HorizontalAlignment="Right" Visibility="Visible">
+                                            Orientation="Horizontal" HorizontalAlignment="Right" Visibility="Visible">
                                     <FontIcon Glyph="&#xE7BA;" Margin="0,5,0,0" Foreground="Red" FontStyle="Italic" FontSize="14"/>
                                     <TextBlock HorizontalAlignment="Right" Margin="5,5,40,0"
-                                           FontStyle="Italic" Foreground="Red"
-                                           FontSize="14" >
-                                      Vui lòng chọn tỉnh/thành
+                                               FontStyle="Italic" Foreground="Red"
+                                               FontSize="14" >
+                                          Vui lòng chọn tỉnh/thành
                                     </TextBlock>
                                 </StackPanel>
 
@@ -565,20 +537,19 @@
                                     <TextBlock Text="Quận/Huyện" FontSize="16" FontWeight="Bold" FontFamily="Roboto" VerticalAlignment="Center"/>
                                     <TextBlock Text="*" FontSize="16" Foreground="Red"/>
                                     <ComboBox x:Name="comboboxDistrictSeller" SelectionChanged="comboboxDistrictSeller_SelectionChanged"
-                                          Margin="3,0,0,0" Width="187" 
-                                          PlaceholderText="Chọn Quận/Huyện">
-                                        <ComboBoxItem Content="Thủ Đức"/>
+                                              Margin="3,0,0,0" Width="187"
+                                              PlaceholderText="Chọn Quận/Huyện">
                                     </ComboBox>
                                 </StackPanel>
 
                                 <!--Cảnh báo nếu không chọn quận/huyện-->
                                 <StackPanel x:Name="warningDistrictSeller" Grid.Column="1" Grid.Row="5"
-                                        Orientation="Horizontal" HorizontalAlignment="Right" Visibility="Visible">
+                                            Orientation="Horizontal" HorizontalAlignment="Right" Visibility="Visible">
                                     <FontIcon Glyph="&#xE7BA;" Margin="0,5,0,0" Foreground="Red" FontStyle="Italic" FontSize="14"/>
                                     <TextBlock HorizontalAlignment="Right" Margin="5,5,40,0"
-                                           FontStyle="Italic" Foreground="Red"
-                                           FontSize="14" >
-                                    Vui lòng chọn quận/huyện
+                                               FontStyle="Italic" Foreground="Red"
+                                               FontSize="14" >
+                                        Vui lòng chọn quận/huyện
                                     </TextBlock>
                                 </StackPanel>
 
@@ -605,118 +576,119 @@
                     </Grid>
                 </StackPanel>
 
+                <!--Xem trước tin đăng-->
                 <Popup x:Name="PreviewPopup">
-                    <StackPanel Orientation="Vertical" BorderBrush="Gray" BorderThickness="1" Background="White" CornerRadius="4">
-                        <StackPanel BorderBrush="Green" BorderThickness="0,0,0,2">
-                            <TextBlock Text="XEM TRƯỚC TIN ĐĂNG" FontWeight="Bold" FontSize="20" HorizontalAlignment="Center" Margin="0,10,0,10"/>
+                    <ScrollViewer>
+                        <StackPanel Orientation="Vertical" BorderBrush="Gray" BorderThickness="1" Background="White" CornerRadius="4">
+                            <StackPanel BorderBrush="Green" BorderThickness="0,0,0,2">
+                                <TextBlock Text="XEM TRƯỚC TIN ĐĂNG" FontWeight="Bold" FontSize="20" HorizontalAlignment="Center" Margin="0,10,0,10"/>
+                            </StackPanel>
+                            <TextBlock x:Name="CarNameTextBlock" HorizontalAlignment="Left" FontSize="20" FontWeight="Bold" Margin="10,5,0,0"/>
+                            <TextBlock x:Name="CarPriceTextBlock" HorizontalAlignment="Left" FontSize="20" FontWeight="Bold" Foreground="Red" Margin="10,5,0,0"/>
+
+                            <Image x:Name="PreviewImage" Source="{x:Bind UploadedImage.Source, Mode=OneWay}" Margin="0,10,0,5" 
+                                   Width="700" Height="400" HorizontalAlignment="Center" VerticalAlignment="Center" Stretch="Fill"/>
+
+                            <Grid BorderBrush="#E1E1E1" BorderThickness="1" CornerRadius="4" Margin="10,5,10,0">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="*"/>
+                                </Grid.ColumnDefinitions>
+
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="*"/>
+                                    <RowDefinition Height="*"/>
+                                    <RowDefinition Height="*"/>
+                                </Grid.RowDefinitions>
+
+                                <StackPanel Grid.Column="0" Grid.Row="0" HorizontalAlignment="Left" Orientation="Horizontal" Padding="5" Margin="10,0,0,0">
+                                    <FontIcon Glyph="&#xE787;" Foreground="Gray"/>
+                                    <TextBlock Text="Năm SX" Margin="10,0,0,0" FontWeight="Bold"/>
+                                </StackPanel>
+                                <TextBlock Grid.Column="1" Grid.Row="0" x:Name="YearCarTextBlock" Padding="5"/>
+
+                                <StackPanel Grid.Column="2" Grid.Row="0" HorizontalAlignment="Left" Orientation="Horizontal" Padding="5">
+                                    <FontIcon Glyph="&#xE804;" Foreground="Gray"/>
+                                    <TextBlock Text="Kiểu dáng" Margin="10,0,0,0" FontWeight="Bold"/>
+                                </StackPanel>
+                                <TextBlock Grid.Column="3" Grid.Row="0" x:Name="StyleCarTextBlock" Padding="5"/>
+
+                                <StackPanel Grid.Column="4" Grid.Row="0" HorizontalAlignment="Left" Orientation="Horizontal" Padding="5">
+                                    <FontIcon Glyph="&#xEA8B;" Foreground="Gray"/>
+                                    <TextBlock Text="Tình trạng" Margin="10,0,0,0" FontWeight="Bold"/>
+                                </StackPanel>
+                                <TextBlock Grid.Column="5" Grid.Row="0" x:Name="ConditionCarTextBlock" Padding="5"/>
+
+                                <StackPanel Grid.Column="0" Grid.Row="1" HorizontalAlignment="Left" Orientation="Horizontal" Padding="5" Margin="10,0,0,0">
+                                    <FontIcon Glyph="&#xE7C1;" Foreground="Gray"/>
+                                    <TextBlock Text="Xuất xứ" Margin="10,0,0,0" FontWeight="Bold"/>
+                                </StackPanel>
+                                <TextBlock Grid.Column="1" Grid.Row="1" x:Name="OriginCarTextBlock" Padding="5"/>
+
+                                <StackPanel Grid.Column="2" Grid.Row="1" HorizontalAlignment="Left" Orientation="Horizontal" Padding="5">
+                                    <FontIcon Glyph="&#xEC48;" Foreground="Gray"/>
+                                    <TextBlock Text="Km đã đi" Margin="10,0,0,0" FontWeight="Bold"/>
+                                </StackPanel>
+                                <TextBlock Grid.Column="3" Grid.Row="1" x:Name="KmCarTextBlock" Padding="5"/>
+
+                                <StackPanel Grid.Column="4" Grid.Row="1" HorizontalAlignment="Left" Orientation="Horizontal" Padding="5">
+                                    <FontIcon Glyph="&#xECAF;" Foreground="Gray"/>
+                                    <TextBlock Text="Tỉnh thành" Margin="10,0,0,0" FontWeight="Bold"/>
+                                </StackPanel>
+                                <TextBlock Grid.Column="5" Grid.Row="1" x:Name="CityCarTextBlock" Padding="5"/>
+
+                                <StackPanel Grid.Column="0" Grid.Row="2" HorizontalAlignment="Left" Orientation="Horizontal" Padding="5" Margin="10,0,0,0">
+                                    <FontIcon Glyph="&#xEC06;" Foreground="Gray"/>
+                                    <TextBlock Text="Quận huyện" Margin="10,0,0,0" FontWeight="Bold"/>
+                                </StackPanel>
+                                <TextBlock Grid.Column="1" Grid.Row="2" x:Name="DistrictCarTextBlock" Padding="5"/>
+
+                                <StackPanel Grid.Column="2" Grid.Row="2" HorizontalAlignment="Left" Orientation="Horizontal" Padding="5">
+                                    <FontIcon Glyph="&#xE707;" Foreground="Gray"/>
+                                    <TextBlock Text="Hộp số" Margin="10,0,0,0" FontWeight="Bold"/>
+                                </StackPanel>
+                                <TextBlock Grid.Column="3" Grid.Row="2" x:Name="GearBoxCarTextBlock" Padding="5"/>
+
+                                <StackPanel Grid.Column="4" Grid.Row="2" HorizontalAlignment="Left" Orientation="Horizontal" Padding="5">
+                                    <FontIcon Glyph="&#xF604;" Foreground="Gray"/>
+                                    <TextBlock Text="Nhiên liệu" Margin="10,0,0,0" FontWeight="Bold"/>
+                                </StackPanel>
+                                <TextBlock Grid.Column="5" Grid.Row="2" x:Name="FuelCarTextBlock" Padding="5"/>
+
+                            </Grid>
+
+                            <Border BorderBrush="Blue" BorderThickness="0,0,0,2">
+                                <TextBlock Text="Mô tả" FontSize="15" FontWeight="Bold" HorizontalAlignment="Left" Margin="10,10,0,0"/>
+                            </Border>
+
+                            <TextBlock x:Name="DescriptionCarTextBlock" HorizontalAlignment="Left"
+                                        TextWrapping="Wrap" Width="700" FontSize="14" Margin="10,10,10,0"/>
+                            <TextBlock Text="*Lưu ý: Mọi thông tin liên quan tới tin rao này là do người đăng tin đăng tải và chịu trách nhiệm hoàn toàn"
+                                        FontSize="14" Margin="10,10,10,10"/>
+
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="*"/>
+                                </Grid.ColumnDefinitions>
+
+                                <Button Grid.Column="0" x:Name="ClosePopup" Content="Quay lại" 
+                                        Foreground="Green" FontWeight="Bold" BorderBrush="Green"
+                                        FontSize="16" Margin="10,20,0,10" Padding="10" 
+                                        HorizontalAlignment="Center" Width="400" Click="ClosePopup_Click"/>
+
+                                <Button Grid.Column="1" x:Name="PostButton2" Content="Đăng tin" Click="PostButton_Click"
+                                        Foreground="White" FontWeight="Bold" Background="Green"
+                                        FontSize="16" Margin="0,20,10,10" Padding="10" 
+                                        HorizontalAlignment="Center" Width="400"/>
+                            </Grid>
                         </StackPanel>
-                        <TextBlock x:Name="CarNameTextBlock" HorizontalAlignment="Left" FontSize="20" FontWeight="Bold" Margin="10,5,0,0"/>
-                        <TextBlock x:Name="CarPriceTextBlock" HorizontalAlignment="Left" FontSize="20" FontWeight="Bold" Foreground="Red" Margin="10,5,0,0"/>
-
-                        <StackPanel Orientation="Horizontal" Margin="10,5,10,0">
-                            <Rectangle Width="400" Height="400" Fill="LightGray" />
-                            <Rectangle Width="400" Height="400" Fill="Red"  Margin="10,0,0,0"/>
-                        </StackPanel>
-
-                        <Grid BorderBrush="#E1E1E1" BorderThickness="1" CornerRadius="4" Margin="10,5,10,0">
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="*"/>
-                                <ColumnDefinition Width="*"/>
-                                <ColumnDefinition Width="*"/>
-                                <ColumnDefinition Width="*"/>
-                                <ColumnDefinition Width="*"/>
-                                <ColumnDefinition Width="*"/>
-                            </Grid.ColumnDefinitions>
-
-                            <Grid.RowDefinitions>
-                                <RowDefinition Height="*"/>
-                                <RowDefinition Height="*"/>
-                                <RowDefinition Height="*"/>
-                            </Grid.RowDefinitions>
-
-                            <StackPanel Grid.Column="0" Grid.Row="0" HorizontalAlignment="Left" Orientation="Horizontal" Padding="5" Margin="10,0,0,0">
-                                <FontIcon Glyph="&#xE787;" Foreground="Gray"/>
-                                <TextBlock Text="Năm SX" Margin="10,0,0,0" FontWeight="Bold"/>
-                            </StackPanel>
-                            <TextBlock Grid.Column="1" Grid.Row="0" x:Name="YearCarTextBlock" Padding="5"/>
-
-                            <StackPanel Grid.Column="2" Grid.Row="0" HorizontalAlignment="Left" Orientation="Horizontal" Padding="5">
-                                <FontIcon Glyph="&#xE804;" Foreground="Gray"/>
-                                <TextBlock Text="Kiểu dáng" Margin="10,0,0,0" FontWeight="Bold"/>
-                            </StackPanel>
-                            <TextBlock Grid.Column="3" Grid.Row="0" x:Name="StyleCarTextBlock" Padding="5"/>
-
-                            <StackPanel Grid.Column="4" Grid.Row="0" HorizontalAlignment="Left" Orientation="Horizontal" Padding="5">
-                                <FontIcon Glyph="&#xEA8B;" Foreground="Gray"/>
-                                <TextBlock Text="Tình trạng" Margin="10,0,0,0" FontWeight="Bold"/>
-                            </StackPanel>
-                            <TextBlock Grid.Column="5" Grid.Row="0" x:Name="ConditionCarTextBlock" Padding="5"/>
-
-                            <StackPanel Grid.Column="0" Grid.Row="1" HorizontalAlignment="Left" Orientation="Horizontal" Padding="5" Margin="10,0,0,0">
-                                <FontIcon Glyph="&#xE7C1;" Foreground="Gray"/>
-                                <TextBlock Text="Xuất xứ" Margin="10,0,0,0" FontWeight="Bold"/>
-                            </StackPanel>
-                            <TextBlock Grid.Column="1" Grid.Row="1" x:Name="OriginCarTextBlock" Padding="5"/>
-
-                            <StackPanel Grid.Column="2" Grid.Row="1" HorizontalAlignment="Left" Orientation="Horizontal" Padding="5">
-                                <FontIcon Glyph="&#xEC48;" Foreground="Gray"/>
-                                <TextBlock Text="Km đã đi" Margin="10,0,0,0" FontWeight="Bold"/>
-                            </StackPanel>
-                            <TextBlock Grid.Column="3" Grid.Row="1" x:Name="KmCarTextBlock" Padding="5"/>
-
-                            <StackPanel Grid.Column="4" Grid.Row="1" HorizontalAlignment="Left" Orientation="Horizontal" Padding="5">
-                                <FontIcon Glyph="&#xECAF;" Foreground="Gray"/>
-                                <TextBlock Text="Tỉnh thành" Margin="10,0,0,0" FontWeight="Bold"/>
-                            </StackPanel>
-                            <TextBlock Grid.Column="5" Grid.Row="1" x:Name="CityCarTextBlock" Padding="5"/>
-
-                            <StackPanel Grid.Column="0" Grid.Row="2" HorizontalAlignment="Left" Orientation="Horizontal" Padding="5" Margin="10,0,0,0">
-                                <FontIcon Glyph="&#xEC06;" Foreground="Gray"/>
-                                <TextBlock Text="Quận huyện" Margin="10,0,0,0" FontWeight="Bold"/>
-                            </StackPanel>
-                            <TextBlock Grid.Column="1" Grid.Row="2" x:Name="DistrictCarTextBlock" Padding="5"/>
-
-                            <StackPanel Grid.Column="2" Grid.Row="2" HorizontalAlignment="Left" Orientation="Horizontal" Padding="5">
-                                <FontIcon Glyph="&#xE707;" Foreground="Gray"/>
-                                <TextBlock Text="Hộp số" Margin="10,0,0,0" FontWeight="Bold"/>
-                            </StackPanel>
-                            <TextBlock Grid.Column="3" Grid.Row="2" x:Name="GearBoxCarTextBlock" Padding="5"/>
-
-                            <StackPanel Grid.Column="4" Grid.Row="2" HorizontalAlignment="Left" Orientation="Horizontal" Padding="5">
-                                <FontIcon Glyph="&#xF604;" Foreground="Gray"/>
-                                <TextBlock Text="Nhiên liệu" Margin="10,0,0,0" FontWeight="Bold"/>
-                            </StackPanel>
-                            <TextBlock Grid.Column="5" Grid.Row="2" x:Name="FuelCarTextBlock" Padding="5"/>
-
-                        </Grid>
-
-                        <Border BorderBrush="Blue" BorderThickness="0,0,0,2">
-                            <TextBlock Text="Mô tả" FontSize="15" FontWeight="Bold" HorizontalAlignment="Left" Margin="10,10,0,0"/>
-                        </Border>
-
-                        <TextBlock x:Name="DescriptionCarTextBlock" HorizontalAlignment="Left"
-                                   TextWrapping="Wrap" Width="700" FontSize="14" Margin="10,10,10,0"/>
-                        <TextBlock Text="*Lưu ý: Mọi thông tin liên quan tới tin rao này là do người đăng tin đăng tải và chịu trách nhiệm hoàn toàn"
-                                   FontSize="14" Margin="10,10,10,10"/>
-
-                        <Grid>
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="*"/>
-                                <ColumnDefinition Width="*"/>
-                            </Grid.ColumnDefinitions>
-
-                            <Button Grid.Column="0" x:Name="ClosePopup" Content="Quay lại" 
-                                    Foreground="Green" FontWeight="Bold" BorderBrush="Green"
-                                    FontSize="16" Margin="10,20,0,10" Padding="10" 
-                                    HorizontalAlignment="Center" Width="400" Click="ClosePopup_Click"/>
-
-                            <Button Grid.Column="1" x:Name="PostButton2" Content="Đăng tin" Click="PostButton_Click"
-                                    Foreground="White" FontWeight="Bold" Background="Green"
-                                    FontSize="16" Margin="0,20,10,10" Padding="10" 
-                                    HorizontalAlignment="Center" Width="400"/>
-                        </Grid>
-
-                    </StackPanel>
+                    </ScrollViewer>
+                    
                 </Popup>
 
                 <!--Cột đăng ảnh và video-->
@@ -741,6 +713,10 @@
                             <TextBlock Foreground="#135eac" FontFamily="Roboto" FontSize="15">Thêm ảnh</TextBlock>
                         </StackPanel>
                     </Button>
+                    <Image x:Name="UploadedImage" Width="200" Height="100" Stretch="Fill" Margin="0,10,0,0" Visibility="Collapsed"/>
+                    <!--Textblock đường dẫn ảnh đã được upload và lưu vào thư mục assets (luôn ẩn) dùng để lưu vào file json-->
+                    <TextBlock x:Name="PathText" Visibility="Collapsed"/>
+
 
                     <!--Nội dung-->
                     <TextBlock Foreground="#888888" FontSize="14" Margin="5,10,5,0"

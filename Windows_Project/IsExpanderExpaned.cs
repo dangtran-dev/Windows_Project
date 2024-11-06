@@ -29,7 +29,6 @@ namespace Windows_Project
                 _toggleText = value;
             }
         }
-
         public event PropertyChangedEventHandler PropertyChanged;
     }
 }

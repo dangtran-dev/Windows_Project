@@ -32,7 +32,10 @@ namespace Windows_Project
 
         private void Window_Activated(object sender, WindowActivatedEventArgs args)
         {
-            content.Navigate(typeof(MainPage));
+            if (content.Content == null)
+            {
+                content.Navigate(typeof(MainPage));
+            }
         }
     }
 }
