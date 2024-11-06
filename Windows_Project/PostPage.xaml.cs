@@ -35,6 +35,7 @@ namespace Windows_Project
     public sealed partial class PostPage : Page
     {
         public MainViewModel ViewModel { get; set; }
+        public bool warning = true;
 
         public PostPage()
         {
@@ -49,6 +50,7 @@ namespace Windows_Project
         //kiểm tra chọn xe mới
         private void newCar_Checked(object sender, RoutedEventArgs e)
         {
+            warning = false;
             oldCar.IsChecked = false;
             warningConditionCar.Visibility = Visibility.Collapsed;
             textBox_Km.IsEnabled = false;
@@ -58,6 +60,7 @@ namespace Windows_Project
         //kiểm tra chọn xe cũ
         private void oldCar_Checked(object sender, RoutedEventArgs e)
         {
+            warning = false;
             newCar.IsChecked = false;
             warningConditionCar.Visibility = Visibility.Collapsed;
             textBox_Km.IsEnabled = true;
@@ -67,12 +70,14 @@ namespace Windows_Project
         //kiểm tra chọn trong nước
         private void internalCar_Checked(object sender, RoutedEventArgs e)
         {
+            warning = false;
             externalCar.IsChecked = false;
             warningOriginCar.Visibility = Visibility.Collapsed;
         }
         //kiểm tra chọn nhập khẩu
         private void externalCar_Checked(object sender, RoutedEventArgs e)
         {
+            warning = false;
             internalCar.IsChecked = false;
             warningOriginCar.Visibility = Visibility.Collapsed;
         }
@@ -158,6 +163,7 @@ namespace Windows_Project
             else
             {
                 warningManufacturerCar.Visibility = Visibility.Collapsed;
+                warning = false;
             }
 
             var selectedManufacturer = comboboxManufacturer.SelectedItem as Manufacturers;
@@ -178,6 +184,7 @@ namespace Windows_Project
             else
             {
                 warningModelCar.Visibility = Visibility.Collapsed;
+                warning = false;
             }
         }
 
@@ -191,6 +198,7 @@ namespace Windows_Project
             else
             {
                 warningFuelCar.Visibility = Visibility.Collapsed;
+                warning = false;
             }
         }
 
@@ -204,6 +212,7 @@ namespace Windows_Project
             else
             {
                 warningGearBoxCar.Visibility = Visibility.Collapsed;
+                warning = false;
             }
         }
 
@@ -217,6 +226,7 @@ namespace Windows_Project
             else
             {
                 warningYearCar.Visibility = Visibility.Collapsed;
+                warning = false;
             }
         }
 
@@ -230,6 +240,7 @@ namespace Windows_Project
             else
             {
                 warningPriceCar.Visibility = Visibility.Collapsed;
+                warning = false;
             }
         }
 
@@ -243,6 +254,7 @@ namespace Windows_Project
             else
             {
                 warningTitleCar.Visibility = Visibility.Collapsed;
+                warning = false;
             }
         }
 
@@ -256,6 +268,7 @@ namespace Windows_Project
             else
             {
                 warningDescriptionCar.Visibility = Visibility.Collapsed;
+                warning = false;
             }
         }
 
@@ -269,6 +282,7 @@ namespace Windows_Project
             else
             {
                 warningNameSeller.Visibility = Visibility.Collapsed;
+                warning = false;
             }
         }
 
@@ -282,6 +296,7 @@ namespace Windows_Project
             else
             {
                 warningPhoneSeller.Visibility = Visibility.Collapsed;
+                warning = false;
             }
         }
 
@@ -295,6 +310,7 @@ namespace Windows_Project
             else
             {
                 warningAddressSeller.Visibility = Visibility.Collapsed;
+                warning = false;
             }
         }
 
@@ -308,6 +324,7 @@ namespace Windows_Project
             else
             {
                 warningCitySeller.Visibility = Visibility.Collapsed;
+                warning = false;
             }
 
             var selectedLocation = comboboxCitySeller.SelectedItem as Location;
@@ -327,6 +344,7 @@ namespace Windows_Project
             else
             {
                 warningDistrictSeller.Visibility = Visibility.Collapsed;
+                warning = false;
             }
         }
 
@@ -365,6 +383,20 @@ namespace Windows_Project
         // xử lý sự kiện đăng tin
         private async void PostButton_Click(object sender, RoutedEventArgs e)
         {
+            if (warning)
+            {
+                var dialog1 = new ContentDialog()
+                {
+                    XamlRoot = this.Content.XamlRoot,
+                    Content = "Vui lòng điền đầy đủ thông tin!",
+                    CloseButtonText = "Đóng",
+                };
+                var result1 = await dialog1.ShowAsync();
+                if (result1 == ContentDialogResult.None)
+                {
+                    return;
+                }
+            }
             string message = "Bạn có muốn đăng tin?";
             var dialog = new ContentDialog()
             {
