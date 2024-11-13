@@ -1,4 +1,5 @@
-﻿using Microsoft.UI.Xaml;
+﻿
+using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
 using Microsoft.UI.Xaml.Controls.Primitives;
 using Microsoft.UI.Xaml.Data;
@@ -31,7 +32,10 @@ namespace Windows_Project
 
         private void Window_Activated(object sender, WindowActivatedEventArgs args)
         {
-            content.Navigate(typeof(MainPage));
+            if (content.Content == null)
+            {
+                content.Navigate(typeof(MainPage));
+            }
         }
     }
 }

@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -29,14 +29,21 @@ namespace Windows_Project
         private bool isLoggedIn = false;
         private string loggedInUser = "";
 
+        public MainViewModel ViewModel { get; set; }
+
         private DispatcherTimer timer;
         public ObservableCollection<string> Pictures { get; set; }
         private bool isReversing = false;
         public MainPage()
         {
             this.InitializeComponent();
+            this.NavigationCacheMode = NavigationCacheMode.Enabled; // khong tai lai trang khi quay lai MainPage
+
+            ViewModel = new MainViewModel();
+
             UpdateLoginButtons();
 
+            // Danh sách hình ảnh
             Pictures = new ObservableCollection<string>
             {
                 "Assets/mazda_bg.jpg",
@@ -47,6 +54,7 @@ namespace Windows_Project
 
             Gallery.ItemsSource = Pictures;
 
+            // Khởi tạo timer với khoảng 1 giây
             timer = new DispatcherTimer();
             timer.Interval = TimeSpan.FromSeconds(2.5);
             timer.Tick += Timer_Tick;
@@ -78,26 +86,31 @@ namespace Windows_Project
 
         private void Timer_Tick(object sender, object e)
         {
+            // Nếu đang không chạy ngược
             if (!isReversing)
             {
+                // Tiến tới hình tiếp theo
                 if (Gallery.SelectedIndex < Pictures.Count - 1)
                 {
                     Gallery.SelectedIndex++;
                 }
                 else
                 {
+                    // Đến ảnh cuối cùng thì đổi chiều
                     isReversing = true;
                     Gallery.SelectedIndex--;
                 }
             }
             else
             {
+                // Đang chạy ngược
                 if (Gallery.SelectedIndex > 0)
                 {
                     Gallery.SelectedIndex--;
                 }
                 else
                 {
+                    // Đến ảnh đầu tiên thì đổi chiều
                     isReversing = false;
                     Gallery.SelectedIndex++;
                 }
@@ -121,7 +134,7 @@ namespace Windows_Project
 
         private void OnSellCarButtonClick(object sender, RoutedEventArgs e)
         {
-
+            Frame.Navigate(typeof(PostPage));
         }
 
         private async void onLoginButtonClick(object sender, RoutedEventArgs e)
@@ -134,22 +147,18 @@ namespace Windows_Project
                 // Kiểm tra kết quả khi người dùng nhấn nút
                 if (result == ContentDialogResult.Primary)
                 {
-
-                    // Xử lý đăng nhập ở đây
                     string username = UsernameLogin.Text;
                     string password = PasswordLogin.Password;
 
-                    // Kiểm tra thông tin đăng nhập
-                    if (username == "admin" && password == "123")
+                    // Kiểm tra thông tin đăng nhập trong danh sách người dùng
+                    var user = ViewModel.Users.FirstOrDefault(u => u.Username == username && u.Password == password);
+
+                    if (user != null)
                     {
                         isLoggedIn = true;
                         loggedInUser = username;
-
-                        // Đổi nội dung của các nút "Đăng nhập" và "Đăng ký"
                         UpdateLoginButtons();
-
-                        // Đóng Dialog đăng nhập
-                        break;
+                        break; // Đóng Dialog
                     }
                     else
                     {
@@ -225,6 +234,11 @@ namespace Windows_Project
 
                     if(password == repassword && password != "")
                     {
+                        ViewModel.Users.Add(new Users()
+                        {
+                            Username = username,
+                            Password = repassword
+                        });
                         break;
                     }
                     else
