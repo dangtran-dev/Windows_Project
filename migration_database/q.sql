@@ -15,4 +15,16 @@ DBCC CHECKIDENT ('CarImages', RESEED, 0);
 DBCC CHECKIDENT ('Favorites', RESEED, 0);
 
 
+SELECT * FROM Manufacturers;
+
+SELECT * FROM CarModels;
+
+SELECT * FROM Users;
+
 SELECT * FROM Cars;
+
+SELECT * FROM Listings;
+
+SELECT * FROM CarImages;
+
+SELECT * FROM Favorites;

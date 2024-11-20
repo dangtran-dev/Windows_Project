@@ -1,4 +1,4 @@
-﻿/**
+/**
  * @param { import("knex").Knex } knex
  * @returns { Promise<void> }
 */
@@ -34,6 +34,7 @@ exports.up = async function (knex) {
         CREATE TABLE Cars(
             CarID INT PRIMARY KEY IDENTITY(1,1),
             ModelID INT,
+            CarName NVARCHAR(255),
             Year INT,
             Style NVARCHAR(255),
             Condition NVARCHAR(255),
