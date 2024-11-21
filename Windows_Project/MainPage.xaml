@@ -67,7 +67,7 @@
                     <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
                         <FontIcon Glyph="&#xE804;" Foreground="White"/>
                         <TextBlock Margin="10, 0, 0, 0" Foreground="White">
-            <Bold>ĐĂNG TIN</Bold>
+                            <Bold>HỖ TRỢ</Bold>
                         </TextBlock>
                     </StackPanel>
                 </Button>

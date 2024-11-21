@@ -14,5 +14,7 @@ public class Cars : INotifyPropertyChanged
     public string Price { get; set; }
     public string Picture { get; set; }
 
+    public string Condition { get; set; }
+
     public event PropertyChangedEventHandler PropertyChanged;
 }

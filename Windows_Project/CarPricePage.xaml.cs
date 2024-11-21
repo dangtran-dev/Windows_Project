@@ -25,7 +25,7 @@ namespace Windows_Project
     {
         public List<Cars> Cars { get; set; }
         private int currentPage = 1;
-        private int itemsPerPage = 4;
+        private int itemsPerPage = 8;
         public CarPricePage()
         {
             this.InitializeComponent();

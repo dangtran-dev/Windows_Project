@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -43,6 +43,7 @@ namespace Windows_Project
 
             UpdateLoginButtons();
 
+            // Danh sách hình ảnh
             Pictures = new ObservableCollection<string>
             {
                 "Assets/mazda_bg.jpg",
@@ -53,6 +54,7 @@ namespace Windows_Project
 
             Gallery.ItemsSource = Pictures;
 
+            // Khởi tạo timer với khoảng 1 giây
             timer = new DispatcherTimer();
             timer.Interval = TimeSpan.FromSeconds(2.5);
             timer.Tick += Timer_Tick;
@@ -82,29 +84,33 @@ namespace Windows_Project
             }
         }
 
-        // Ph??ng th?c Timer_Tick s? ???c g?i m?i gi�y
         private void Timer_Tick(object sender, object e)
         {
+            // Nếu đang không chạy ngược
             if (!isReversing)
             {
+                // Tiến tới hình tiếp theo
                 if (Gallery.SelectedIndex < Pictures.Count - 1)
                 {
                     Gallery.SelectedIndex++;
                 }
                 else
                 {
+                    // Đến ảnh cuối cùng thì đổi chiều
                     isReversing = true;
                     Gallery.SelectedIndex--;
                 }
             }
             else
             {
+                // Đang chạy ngược
                 if (Gallery.SelectedIndex > 0)
                 {
                     Gallery.SelectedIndex--;
                 }
                 else
                 {
+                    // Đến ảnh đầu tiên thì đổi chiều
                     isReversing = false;
                     Gallery.SelectedIndex++;
                 }
@@ -113,12 +119,12 @@ namespace Windows_Project
 
         private void OnCarOldButtonClick(object sender, RoutedEventArgs e)
         {
-
+            Frame.Navigate(typeof(OldCar));
         }
 
         private void OnCarNewButtonClick(object sender, RoutedEventArgs e)
         {
-
+            Frame.Navigate(typeof(NewCar));
         }
 
         private void OnPriceButtonClick(object sender, RoutedEventArgs e)
@@ -128,7 +134,7 @@ namespace Windows_Project
 
         private void OnSellCarButtonClick(object sender, RoutedEventArgs e)
         {
-
+            Frame.Navigate(typeof(PostPage));
         }
 
         private async void onLoginButtonClick(object sender, RoutedEventArgs e)
