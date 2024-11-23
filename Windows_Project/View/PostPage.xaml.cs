@@ -331,7 +331,7 @@ namespace Windows_Project
             var selectedLocation = comboboxCitySeller.SelectedItem as Location;
             if (selectedLocation != null)
             {
-                 comboboxDistrictSeller.ItemsSource = selectedLocation.District.Select(district => district).ToList();
+                comboboxDistrictSeller.ItemsSource = selectedLocation.District.Select(district => district).ToList();
             }
         }
 

@@ -10,7 +10,7 @@ namespace Windows_Project
     public class Location : INotifyPropertyChanged
     {
         public string City { get; set; }
-        public List<string> District { get; set;}
+        public List<string> District { get; set; }
         public event PropertyChangedEventHandler PropertyChanged;
     }
 }
