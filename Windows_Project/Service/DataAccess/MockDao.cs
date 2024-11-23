@@ -20,7 +20,7 @@ public class MockDao : IDao
             new Manufacturers()
             {
                 ManufacturerName = "Toyota",
-                ManufacturerPicture = "Assets/toyota_logo.jpg",
+                ManufacturerPicture = "../../Assets/toyota_logo.jpg",
                 Cars = new List<Cars>()
                 {
                     new Cars()
@@ -28,112 +28,112 @@ public class MockDao : IDao
                         Model = "Toyota Vios",
                         Manufacturer = "Toyota",
                         Price = "458.000.000 VNĐ",
-                        Picture = "Assets/toyota_vios.png"
+                        Picture = "../../Assets/toyota_vios.png"
                     },
                     new Cars()
                     {
                         Model = "Toyota Raize",
                         Manufacturer = "Toyota",
                         Price = "498.000.000 VNĐ",
-                        Picture = "Assets/toyota_raize.png"
+                        Picture = "../../Assets/toyota_raize.png"
                     },
                     new Cars()
                     {
                         Model = "Toyota Yaris Cross",
                         Manufacturer = "Toyota",
                         Price = "650.000.000 VNĐ",
-                        Picture = "Assets/toyota_yaris_cross.png"
+                        Picture = "../../Assets/toyota_yaris_cross.png"
                     },
                     new Cars()
                     {
                         Model = "Toyota Innova Cross",
                         Manufacturer = "Toyota",
                         Price = "810.000.000 VNĐ",
-                        Picture = "Assets/toyota_innova_cross.png"
+                        Picture = "../../Assets/toyota_innova_cross.png"
                     },
                     new Cars()
                     {
                         Model = "Toyota Innova",
                         Manufacturer = "Toyota",
                         Price = "755.000.000 VNĐ",
-                        Picture = "Assets/toyota_innova.png"
+                        Picture = "../../Assets/toyota_innova.png"
                     },
                     new Cars()
                     {
                         Model = "Toyota Fortuner",
                         Manufacturer = "Toyota",
                         Price = "1.055.000.000 VNĐ",
-                        Picture = "Assets/toyota_fortuner.png"
+                        Picture = "../../Assets/toyota_fortuner.png"
                     },
                     new Cars()
                     {
                         Model = "Toyota Veloz Cross",
                         Manufacturer = "Toyota",
                         Price = "638.000.000 VNĐ",
-                        Picture = "Assets/toyota_veloz_cross.png"
+                        Picture = "../../Assets/toyota_veloz_cross.png"
                     },
                     new Cars()
                     {
                         Model = "Toyota Corolla Cross",
                         Manufacturer = "Toyota",
                         Price = "760.000.000 VNĐ",
-                        Picture = "Assets/toyota_corolla_cross.png"
+                        Picture = "../../Assets/toyota_corolla_cross.png"
                     },
                      new Cars()
                     {
                         Model = "Toyota Corolla Altis",
                         Manufacturer = "Toyota",
                         Price = "725.000.000 VNĐ",
-                        Picture = "Assets/toyota_corolla_altis.png"
+                        Picture = "../../Assets/toyota_corolla_altis.png"
                     },
                     new Cars()
                     {
                         Model = "Toyota Wigo",
                         Manufacturer = "Toyota",
                         Price = "360.000.000 VNĐ",
-                        Picture = "Assets/toyota_wigo.png"
+                        Picture = "../../Assets/toyota_wigo.png"
                     },
                     new Cars()
                     {
                         Model = "Toyota Avanza​ Premio",
                         Manufacturer = "Toyota",
                         Price = "558.000.000 VNĐ",
-                        Picture = "Assets/toyota_avanza_premio.png"
+                        Picture = "../../Assets/toyota_avanza_premio.png"
                     },
                     new Cars()
                     {
                         Model = "Toyota Camry",
                         Manufacturer = "Toyota",
                         Price = "1.105.000.000 VNĐ",
-                        Picture = "Assets/toyota_camry.png"
+                        Picture = "../../Assets/toyota_camry.png"
                     },
                     new Cars()
                     {
                         Model = "Toyota Hilux",
                         Manufacturer = "Toyota",
                         Price = "668.000.000 VNĐ",
-                        Picture = "Assets/toyota_hilux.png"
+                        Picture = "../../Assets/toyota_hilux.png"
                     },
                     new Cars()
                     {
                         Model = "Toyota Land Cruiser",
                         Manufacturer = "Toyota",
                         Price = "4.286.000.000 VNĐ",
-                        Picture = "Assets/toyota_land_cruiser.png"
+                        Picture = "../../Assets/toyota_land_cruiser.png"
                     },
                     new Cars()
                     {
                         Model = "Toyota Land Cruiser Prado",
                         Manufacturer = "Toyota",
                         Price = "3.460.000.000 VNĐ",
-                        Picture = "Assets/toyota_land_cruiser_prado.png"
+                        Picture = "../../Assets/toyota_land_cruiser_prado.png"
                     }
                 }
             },
             new Manufacturers()
             {
                 ManufacturerName = "Wolkswagen",
-                ManufacturerPicture = "Assets/wolkswagen_logo.jpg",
+                ManufacturerPicture = "../../Assets/wolkswagen_logo.jpg",
                 Cars = new List<Cars>()
                 {
                     new Cars()
@@ -141,35 +141,35 @@ public class MockDao : IDao
                         Model = "Volkswagen Teramont",
                         Manufacturer = "Wolkswagen",
                         Price = "2.399.000.000 VNĐ",
-                        Picture = "Assets/volkswagen_teramont.png"
+                        Picture = "../../Assets/volkswagen_teramont.png"
                     },
                     new Cars()
                     {
                         Model = "Volkswagen Tiguan",
                         Manufacturer = "Wolkswagen",
                         Price = "1.688.000.000 VNĐ",
-                        Picture = "Assets/volkswagen_tiguan.png"
+                        Picture = "../../Assets/volkswagen_tiguan.png"
                     },
                     new Cars()
                     {
                         Model = "Volkswagen Passat",
                         Manufacturer = "Wolkswagen",
                         Price = "1.399.000.000 VNĐ",
-                        Picture = "Assets/volkswagen_passat.png"
+                        Picture = "../../Assets/volkswagen_passat.png"
                     },
                     new Cars()
                     {
                         Model = "Volkswagen Polo",
                         Manufacturer = "Wolkswagen",
                         Price = "699.000.000 VNĐ",
-                        Picture = "Assets/volkswagen_polo.png"
+                        Picture = "../../Assets/volkswagen_polo.png"
                     },
                 }
             },
             new Manufacturers()
             {
                 ManufacturerName = "Ford",
-                ManufacturerPicture = "Assets/ford_logo.jpg",
+                ManufacturerPicture = "../../Assets/ford_logo.jpg",
                 Cars = new List<Cars>()
                 {
                     new Cars()
@@ -177,49 +177,49 @@ public class MockDao : IDao
                         Model = "Ford Ranger",
                         Manufacturer = "Ford",
                         Price = "699.000.000 VNĐ",
-                        Picture = "Assets/ford_ranger.png"
+                        Picture = "../../Assets/ford_ranger.png"
                     },
                     new Cars()
                     {
                         Model = "Ford Ranger Raptor",
                         Manufacturer = "Ford",
                         Price = "1.299.000.000 VNĐ",
-                        Picture = "Assets/ford_ranger_raptor.png"
+                        Picture = "../../Assets/ford_ranger_raptor.png"
                     },
                     new Cars()
                     {
                         Model = "Ford Everest",
                         Manufacturer = "Ford",
                         Price = "1.099.000.000 VNĐ",
-                        Picture = "Assets/ford_everest.png"
+                        Picture = "../../Assets/ford_everest.png"
                     },
                     new Cars()
                     {
                         Model = "Ford Territory",
                         Manufacturer = "Ford",
                         Price = "799.000.000 VNĐ",
-                        Picture = "Assets/ford_territory.png"
+                        Picture = "../../Assets/ford_territory.png"
                     },
                     new Cars()
                     {
                         Model = "Ford Explorer",
                         Manufacturer = "Ford",
                         Price = "2.099.000.000 VNĐ",
-                        Picture = "Assets/ford_explorer.png"
+                        Picture = "../../Assets/ford_explorer.png"
                     },
                     new Cars()
                     {
                         Model = "Ford Transit",
                         Manufacturer = "Ford",
                         Price = "905.000.000 VNĐ",
-                        Picture = "Assets/ford_transit.png"
+                        Picture = "../../Assets/ford_transit.png"
                     }
                 }
             },
             new Manufacturers()
             {
                 ManufacturerName = "Chevrolet",
-                ManufacturerPicture = "Assets/chevrolet_logo.jpg",
+                ManufacturerPicture = "../../Assets/chevrolet_logo.jpg",
                 Cars = new List<Cars>
                 {
                     new Cars()
@@ -231,7 +231,7 @@ public class MockDao : IDao
             new Manufacturers()
             {
                 ManufacturerName = "Nissan",
-                ManufacturerPicture = "Assets/nissan_logo.jpg",
+                ManufacturerPicture = "../../Assets/nissan_logo.jpg",
                 Cars = new List<Cars>
                 {
                     new Cars()
@@ -239,42 +239,42 @@ public class MockDao : IDao
                         Model = "Nissan Kicks e-power",
                         Manufacturer = "Nissan",
                         Price = "789.000.000 VNĐ",
-                        Picture = "Assets/nissan_kicks_e_power.png"
+                        Picture = "../../Assets/nissan_kicks_e_power.png"
                     },
                     new Cars()
                     {
                         Model = "Nissan Almera",
                         Manufacturer = "Nissan",
                         Price = "539.000.000 VNĐ",
-                        Picture = "Assets/nissan_almera.png"
+                        Picture = "../../Assets/nissan_almera.png"
                     },
                     new Cars()
                     {
                         Model = "Nissan Navara",
                         Manufacturer = "Nissan",
                         Price = "685.000.000 VNĐ",
-                        Picture = "Assets/nissan_navara.png"
+                        Picture = "../../Assets/nissan_navara.png"
                     },
                     new Cars()
                     {
                         Model = "Nissan Terra",
                         Manufacturer = "Nissan",
                         Price = "848.000.000 VNĐ",
-                        Picture = "Assets/nissan_terra.png"
+                        Picture = "../../Assets/nissan_terra.png"
                     },
                     new Cars()
                     {
                         Model = "Nissan X-Trail",
                         Manufacturer = "Nissan",
                         Price = "839.000.000 VNĐ",
-                        Picture = "Assets/nissan_x_trail.png"
+                        Picture = "../../Assets/nissan_x_trail.png"
                     }
                 }
             },
             new Manufacturers()
             {
                 ManufacturerName = "Hyundai",
-                ManufacturerPicture = "Assets/hyundai_logo.jpg",
+                ManufacturerPicture = "../../Assets/hyundai_logo.jpg",
                 Cars = new List<Cars>
                 {
                     new Cars()
@@ -282,98 +282,98 @@ public class MockDao : IDao
                         Model = "Hyundai Venue",
                         Manufacturer = "Hyundai",
                         Price = "499.000.000 VNĐ",
-                        Picture = "Assets/hyundai_venue.png"
+                        Picture = "../../Assets/hyundai_venue.png"
                     },
                     new Cars()
                     {
                         Model = "Hyundai Custin​​",
                         Manufacturer = "Hyundai",
                         Price = "820.000.000 VNĐ",
-                        Picture = "Assets/hyundai_custin.png"
+                        Picture = "../../Assets/hyundai_custin.png"
                     },
                     new Cars()
                     {
                         Model = "Hyundai Palisade",
                         Manufacturer = "Hyundai",
                         Price = "1.469.000.000 VNĐ",
-                        Picture = "Assets/hyundai_palisade.png"
+                        Picture = "../../Assets/hyundai_palisade.png"
                     },
                     new Cars()
                     {
                         Model = "Hyundai Accent",
                         Manufacturer = "Hyundai",
                         Price = "439.000.000 VNĐ",
-                        Picture = "Assets/hyundai_accent.png"
+                        Picture = "../../Assets/hyundai_accent.png"
                     },
                     new Cars()
                     {
                         Model = "Hyundai SantaFe",
                         Manufacturer = "Hyundai",
                         Price = "1.069.000.000 VNĐ",
-                        Picture = "Assets/hyundai_santafe.png"
+                        Picture = "../../Assets/hyundai_santafe.png"
                     },
                     new Cars()
                     {
                         Model = "Hyundai Creta",
                         Manufacturer = "Hyundai",
                         Price = "599.000.000 VNĐ",
-                        Picture = "Assets/hyundai_creta.png"
+                        Picture = "../../Assets/hyundai_creta.png"
                     },
                     new Cars()
                     {
                         Model = "Hyundai Stargazer",
                         Manufacturer = "Hyundai",
                         Price = "489.000.000 VNĐ",
-                        Picture = "Assets/hyundai_stargazer.png"
+                        Picture = "../../Assets/hyundai_stargazer.png"
                     },
                     new Cars()
                     {
                         Model = "Hyundai Kona",
                         Manufacturer = "Hyundai",
                         Price = "636.000.000 VNĐ",
-                        Picture = "Assets/hyundai_kona.png"
+                        Picture = "../../Assets/hyundai_kona.png"
                     },
                     new Cars()
                     {
                         Model = "Hyundai Grand i10",
                         Manufacturer = "Hyundai",
                         Price = "360.000.000 VNĐ",
-                        Picture = "Assets/hyundai_grand_i10.png"
+                        Picture = "../../Assets/hyundai_grand_i10.png"
                     },
                     new Cars()
                     {
                         Model = "Hyundai Elantra",
                         Manufacturer = "Hyundai",
                         Price = "579.000.000 VNĐ",
-                        Picture = "Assets/hyundai_elantra.png"
+                        Picture = "../../Assets/hyundai_elantra.png"
                     },
                     new Cars()
                     {
                         Model = "Hyundai Tucson",
                         Manufacturer = "Hyundai",
                         Price = "769.000.000 VNĐ",
-                        Picture = "Assets/hyundai_tucson.png"
+                        Picture = "../../Assets/hyundai_tucson.png"
                     },
                     new Cars()
                     {
                         Model = "Hyundai IONIQ 5",
                         Manufacturer = "Hyundai",
                         Price = "1.300.000.000 VNĐ",
-                        Picture = "Assets/hyundai_ioniq_5.png"
+                        Picture = "../../Assets/hyundai_ioniq_5.png"
                     },
                     new Cars()
                     {
                         Model = "Hyundai Solati",
                         Manufacturer = "Hyundai",
                         Price = "1.080.000.000 VNĐ",
-                        Picture = "Assets/hyundai_solati.png"
+                        Picture = "../../Assets/hyundai_solati.png"
                     }
                 }
             },
             new Manufacturers()
             {
                 ManufacturerName = "KIA",
-                ManufacturerPicture = "Assets/kia_logo.jpg",
+                ManufacturerPicture = "../../Assets/kia_logo.jpg",
                 Cars = new List<Cars>
                 {
                     new Cars()
@@ -381,77 +381,77 @@ public class MockDao : IDao
                         Model = "KIA Carens",
                         Manufacturer = "Kia",
                         Price = "589.000.000 VNĐ",
-                        Picture = "Assets/kia_carens.png"
+                        Picture = "../../Assets/kia_carens.png"
                     },
                     new Cars()
                     {
                         Model = "KIA Sportage",
                         Manufacturer = "Kia",
                         Price = "779.000.000 VNĐ",
-                        Picture = "Assets/kia_sportage.png"
+                        Picture = "../../Assets/kia_sportage.png"
                     },
                     new Cars()
                     {
                         Model = "KIA Carnival",
                         Manufacturer = "Kia",
                         Price = "1.299.000.000 VNĐ",
-                        Picture = "Assets/kia_carnival.png"
+                        Picture = "../../Assets/kia_carnival.png"
                     },
                     new Cars()
                     {
                         Model = "KIA Sonet",
                         Manufacturer = "Kia",
                         Price = "539.000.000 VNĐ",
-                        Picture = "Assets/kia_sonet.png"
+                        Picture = "../../Assets/kia_sonet.png"
                     },
                     new Cars()
                     {
                         Model = "KIA K5",
                         Manufacturer = "Kia",
                         Price = "859.000.000 VNĐ",
-                        Picture = "Assets/kia_k5.png"
+                        Picture = "../../Assets/kia_k5.png"
                     },
                     new Cars()
                     {
                         Model = "KIA Morning",
                         Manufacturer = "Kia",
                         Price = "349.000.000 VNĐ",
-                        Picture = "Assets/kia_morning.png"
+                        Picture = "../../Assets/kia_morning.png"
                     },
                     new Cars()
                     {
                         Model = "KIA Seltos",
                         Manufacturer = "Kia",
                         Price = "599.000.000 VNĐ",
-                        Picture = "Assets/kia_seltos.png"
+                        Picture = "../../Assets/kia_seltos.png"
                     },
                     new Cars()
                     {
                         Model = "KIA Soluto",
                         Manufacturer = "Kia",
                         Price = "386.000.000 VNĐ",
-                        Picture = "Assets/kia_soluto.png"
+                        Picture = "../../Assets/kia_soluto.png"
                     },
                     new Cars()
                     {
                         Model = "KIA K3",
                         Manufacturer = "Kia",
                         Price = "549.000.000 VNĐ",
-                        Picture = "Assets/kia_k3.png"
+                        Picture = "../../Assets/kia_k3.png"
                     },
                     new Cars()
                     {
                         Model = "KIA Sorento",
                         Manufacturer = "Kia",
                         Price = "964.000.000 VNĐ",
-                        Picture = "Assets/kia_sorento.png"
+                        Picture = "../../Assets/kia_sorento.png"
                     }
                 }
             },
             new Manufacturers()
             {
                 ManufacturerName = "Subaru",
-                ManufacturerPicture = "Assets/subaru_logo.jpg",
+                ManufacturerPicture = "../../Assets/subaru_logo.jpg",
                 Cars = new List<Cars>
                 {
                     new Cars()
@@ -459,56 +459,56 @@ public class MockDao : IDao
                         Model = "Forester 2.0i-L",
                         Manufacturer = "Subaru",
                         Price = "869.000.000 VNĐ",
-                        Picture = "Assets/subaru_forester_2.0i_l.png"
+                        Picture = "../../Assets/subaru_forester_2.0i_l.png"
                     },
                     new Cars()
                     {
                         Model = "Forester 2.0i-L EyeSight",
                         Manufacturer = "Subaru",
                         Price = "929.000.000 VNĐ",
-                        Picture = "Assets/subaru_forester_2.0i_l_eyesight.png"
+                        Picture = "../../Assets/subaru_forester_2.0i_l_eyesight.png"
                     },
                     new Cars()
                     {
                         Model = "Forester 2.0i-S EyeSight",
                         Manufacturer = "Subaru",
                         Price = "969.000.000 VNĐ",
-                        Picture = "Assets/subaru_forester_2.0i_s_eyesight.png"
+                        Picture = "../../Assets/subaru_forester_2.0i_s_eyesight.png"
                     },
                     new Cars()
                     {
                         Model = "Crosstrek 2.0i-S EyeSight",
                         Manufacturer = "Subaru",
                         Price = "999.000.000 VNĐ",
-                        Picture = "Assets/subaru_crosstrek_2.0i_s_eyesight.png"
+                        Picture = "../../Assets/subaru_crosstrek_2.0i_s_eyesight.png"
                     },
                     new Cars()
                     {
                         Model = "Outback 2.5i-T EyeSight",
                         Manufacturer = "Subaru",
                         Price = "1.696.000.000 VNĐ",
-                        Picture = "Assets/subaru_outback_2.5i_t_eyesight.png"
+                        Picture = "../../Assets/subaru_outback_2.5i_t_eyesight.png"
                     },
                     new Cars()
                     {
                         Model = "BRZ 6AT EyeSight",
                         Manufacturer = "Subaru",
                         Price = "1.535.000.000 VNĐ",
-                        Picture = "Assets/subaru_brz_6at_eyesight.png"
+                        Picture = "../../Assets/subaru_brz_6at_eyesight.png"
                     },
                     new Cars()
                     {
                         Model = "WRX 2.4 Sedan",
                         Manufacturer = "Subaru",
                         Price = "1.690.000.000 VNĐ",
-                        Picture = "Assets/subaru_wrx_2.4_sedan.png"
+                        Picture = "../../Assets/subaru_wrx_2.4_sedan.png"
                     }
                 }
             },
             new Manufacturers()
             {
                 ManufacturerName = "Mercedes Benz",
-                ManufacturerPicture = "Assets/mercedes_benz_logo.jpg",
+                ManufacturerPicture = "../../Assets/mercedes_benz_logo.jpg",
                 Cars = new List<Cars>
                 {
                     new Cars()
@@ -516,63 +516,63 @@ public class MockDao : IDao
                         Model = "Mercedes C-Class",
                         Manufacturer = "Mercedes Benz",
                         Price = "1.388.000.000 VNĐ",
-                        Picture = "Assets/mercedes_c_class.png"
+                        Picture = "../../Assets/mercedes_c_class.png"
                     },
                     new Cars()
                     {
                         Model = "Mercedes E-Class",
                         Manufacturer = "Mercedes Benz",
                         Price = "1.888.000.000 VNĐ",
-                        Picture = "Assets/mercedes_e_class.png"
+                        Picture = "../../Assets/mercedes_e_class.png"
                     },
                     new Cars()
                     {
                         Model = "Mercedes-Benz GLC-Class",
                         Manufacturer = "Mercedes Benz",
                         Price = "2.299.000.000 VNĐ",
-                        Picture = "Assets/mercedes_benz_glc_class.png"
+                        Picture = "../../Assets/mercedes_benz_glc_class.png"
                     },
                     new Cars()
                     {
                         Model = "EQS 500 4Matic",
                         Manufacturer = "Mercedes Benz",
                         Price = "4.999.000.000 VNĐ",
-                        Picture = "Assets/mercedes_benz_eqs_500_4matic.png"
+                        Picture = "../../Assets/mercedes_benz_eqs_500_4matic.png"
                     },
                     new Cars()
                     {
                         Model = "EQE 500 4Matic",
                         Manufacturer = "Mercedes Benz",
                         Price = "3.999.000.000 VNĐ",
-                        Picture = "Assets/mercedes_benz_eqe_500_4matic.png"
+                        Picture = "../../Assets/mercedes_benz_eqe_500_4matic.png"
                     },
                     new Cars()
                     {
                         Model = "Mercedes-Benz EQB 250",
                         Manufacturer = "Mercedes Benz",
                         Price = "2.289.000.000 VNĐ",
-                        Picture = "Assets/mercedes_benz_eqb_250.png"
+                        Picture = "../../Assets/mercedes_benz_eqb_250.png"
                     },
                     new Cars()
                     {
                         Model = "Mercedes-Benz EQS",
                         Manufacturer = "Mercedes Benz",
                         Price = "4.839.000.000 VNĐ",
-                        Picture = "Assets/mercedes_benz_eqs.png"
+                        Picture = "../../Assets/mercedes_benz_eqs.png"
                     },
                     new Cars()
                     {
                         Model = "Mercedes S450",
                         Manufacturer = "Mercedes Benz",
                         Price = "5.039.000.000 VNĐ",
-                        Picture = "Assets/mercedes_s450.png"
+                        Picture = "../../Assets/mercedes_s450.png"
                     },
                     new Cars()
                     {
                         Model = "Mercedes GLB",
                         Manufacturer = "Mercedes Benz",
                         Price = "1.658.000.000 VNĐ",
-                        Picture = "Assets/mercedes_glb.png"
+                        Picture = "../../Assets/mercedes_glb.png"
                     },
 
                 }
@@ -580,7 +580,7 @@ public class MockDao : IDao
             new Manufacturers()
             {
                 ManufacturerName = "BMW",
-                ManufacturerPicture = "Assets/bmw_logo.jpg",
+                ManufacturerPicture = "../../Assets/bmw_logo.jpg",
                 Cars = new List<Cars>
                 {
                     new Cars()
@@ -588,84 +588,84 @@ public class MockDao : IDao
                         Model = "BMW XM",
                         Manufacturer = "BMW",
                         Price = "10.099.000.000 VNĐ",
-                        Picture = "Assets/bmw_xm.png"
+                        Picture = "../../Assets/bmw_xm.png"
                     },
                     new Cars()
                     {
                         Model = "BMW iX3",
                         Manufacturer = "BMW",
                         Price = "3.479.000.000 VNĐ",
-                        Picture = "Assets/bmw_ix3.png"
+                        Picture = "../../Assets/bmw_ix3.png"
                     },
                     new Cars()
                     {
                         Model = "BMW i4",
                         Manufacturer = "BMW",
                         Price = "3.739.000.000 VNĐ",
-                        Picture = "Assets/bmw_i4.png"
+                        Picture = "../../Assets/bmw_i4.png"
                     },
                     new Cars()
                     {
                         Model = "BMW X7",
                         Manufacturer = "BMW",
                         Price = "5.149.000.000 VNĐ",
-                        Picture = "Assets/bmw_x7.png"
+                        Picture = "../../Assets/bmw_x7.png"
                     },
                     new Cars()
                     {
                         Model = "BMW 7-Series",
                         Manufacturer = "BMW",
                         Price = "4.499.000.000 VNĐ",
-                        Picture = "Assets/bmw_7_series.png"
+                        Picture = "../../Assets/bmw_7_series.png"
                     },
                     new Cars()
                     {
                         Model = "BMW 5-Series",
                         Manufacturer = "BMW",
                         Price = "1.829.000.000 VNĐ",
-                        Picture = "Assets/bmw_5_series.png"
+                        Picture = "../../Assets/bmw_5_series.png"
                     },
                     new Cars()
                     {
                         Model = "BMW X4",
                         Manufacturer = "BMW",
                         Price = "2.899.000.000 VNĐ",
-                        Picture = "Assets/bmw_x4.png"
+                        Picture = "../../Assets/bmw_x4.png"
                     },
                     new Cars()
                     {
                         Model = "BMW 3-Series",
                         Manufacturer = "BMW",
                         Price = "1.499.000.000 VNĐ",
-                        Picture = "Assets/bmw_3_series.png"
+                        Picture = "../../Assets/bmw_3_series.png"
                     },
                     new Cars()
                     {
                         Model = "BMW 4-Series",
                         Manufacturer = "BMW",
                         Price = "2.629.000.000 VNĐ",
-                        Picture = "Assets/bmw_4_series.png"
+                        Picture = "../../Assets/bmw_4_series.png"
                     },
                     new Cars()
                     {
                         Model = "BMW X3",
                         Manufacturer = "BMW",
                         Price = "1.855.000.000 VNĐ",
-                        Picture = "Assets/bmw_x3.png"
+                        Picture = "../../Assets/bmw_x3.png"
                     },
                     new Cars()
                     {
                         Model = "BMW X5",
                         Manufacturer = "BMW",
                         Price = "3.909.000.000 VNĐ",
-                        Picture = "Assets/bmw_x5.png"
+                        Picture = "../../Assets/bmw_x5.png"
                     },
                     new Cars()
                     {
                         Model = "BMW Z4 sDrive30i",
                         Manufacturer = "BMW",
                         Price = "3.139.000.000 VNĐ",
-                        Picture = "Assets/bmw_z4_sdrive30i.png"
+                        Picture = "../../Assets/bmw_z4_sdrive30i.png"
                     }
 
                 }
@@ -673,7 +673,7 @@ public class MockDao : IDao
             new Manufacturers()
             {
                 ManufacturerName = "Lexus",
-                ManufacturerPicture = "Assets/lexus_logo.jpg",
+                ManufacturerPicture = "../../Assets/lexus_logo.jpg",
                 Cars = new List<Cars>
                 {
                     new Cars()
@@ -681,70 +681,70 @@ public class MockDao : IDao
                         Model = "Lexus NX",
                         Manufacturer = "Lexus",
                         Price = "3.130.000.000 VNĐ",
-                        Picture = "Assets/lexus_nx.png"
+                        Picture = "../../Assets/lexus_nx.png"
                     },
                     new Cars()
                     {
                         Model = "Lexus LM 500h",
                         Manufacturer = "Lexus",
                         Price = "7.290.000.000 VNĐ",
-                        Picture = "Assets/lexus_lm_500h.png"
+                        Picture = "../../Assets/lexus_lm_500h.png"
                     },
                     new Cars()
                     {
                         Model = "Lexus IS",
                         Manufacturer = "Lexus",
                         Price = "2.130.000.000 VNĐ",
-                        Picture = "Assets/lexus_is.png"
+                        Picture = "../../Assets/lexus_is.png"
                     },
                     new Cars()
                     {
                         Model = "Lexus RX",
                         Manufacturer = "Lexus",
                         Price = "3.430.000.000 VNĐ",
-                        Picture = "Assets/lexus_rx.png"
+                        Picture = "../../Assets/lexus_rx.png"
                     },
                     new Cars()
                     {
                         Model = "Lexus LX",
                         Manufacturer = "Lexus",
                         Price = "8.500.000.000 VNĐ",
-                        Picture = "Assets/lexus_lx.png"
+                        Picture = "../../Assets/lexus_lx.png"
                     },
                     new Cars()
                     {
                         Model = "Lexus GX",
                         Manufacturer = "Lexus",
                         Price = "6.200.000.000 VNĐ",
-                        Picture = "Assets/lexus_gx.png"
+                        Picture = "../../Assets/lexus_gx.png"
                     },
                     new Cars()
                     {
                         Model = "Lexus LS",
                         Manufacturer = "Lexus",
                         Price = "7.650.000.000 VNĐ",
-                        Picture = "Assets/lexus_ls.png"
+                        Picture = "../../Assets/lexus_ls.png"
                     },
                     new Cars()
                     {
                         Model = "Lexus ES",
                         Manufacturer = "Lexus",
                         Price = "2.620.000.000 VNĐ",
-                        Picture = "Assets/lexus_es.png"
+                        Picture = "../../Assets/lexus_es.png"
                     },
                     new Cars()
                     {
                         Model = "Lexus RC",
                         Manufacturer = "Lexus",
                         Price = "3.290.000.000 VNĐ",
-                        Picture = "Assets/lexus_rc.png"
+                        Picture = "../../Assets/lexus_rc.png"
                     }
                 }
             },
             new Manufacturers()
             {
                 ManufacturerName = "Porsche",
-                ManufacturerPicture = "Assets/porsche_logo.jpg",
+                ManufacturerPicture = "../../Assets/porsche_logo.jpg",
                 Cars = new List<Cars>
                 {
                     new Cars()
@@ -752,49 +752,49 @@ public class MockDao : IDao
                         Model = "Porsche 718",
                         Manufacturer = "Porsche",
                         Price = "3.620.000.000 VNĐ",
-                        Picture = "Assets/porsche_718.png"
+                        Picture = "../../Assets/porsche_718.png"
                     },
                     new Cars()
                     {
                         Model = "Porsche 911",
                         Manufacturer = "Porsche",
                         Price = "7.130.000.000 VNĐ",
-                        Picture = "Assets/porsche_911.png"
+                        Picture = "../../Assets/porsche_911.png"
                     },
                     new Cars()
                     {
                         Model = "Porsche Taycan",
                         Manufacturer = "Porsche",
                         Price = "4.170.000.000 VNĐ",
-                        Picture = "Assets/porsche_taycan.png"
+                        Picture = "../../Assets/porsche_taycan.png"
                     },
                     new Cars()
                     {
                         Model = "Porsche Panamera",
                         Manufacturer = "Porsche",
                         Price = "6.420.000.000 VNĐ",
-                        Picture = "Assets/porsche_panamera.png"
+                        Picture = "../../Assets/porsche_panamera.png"
                     },
                     new Cars()
                     {
                         Model = "Porsche Macan",
                         Manufacturer = "Porsche",
                         Price = "3.150.000.000 VNĐ",
-                        Picture = "Assets/porsche_macan.png"
+                        Picture = "../../Assets/porsche_macan.png"
                     },
                     new Cars()
                     {
                         Model = "Porsche Cayenne",
                         Manufacturer = "Porsche",
                         Price = "5.560.000.000 VNĐ",
-                        Picture = "Assets/porsche_cayenne.png"
+                        Picture = "../../Assets/porsche_cayenne.png"
                     }
                 }
             },
             new Manufacturers()
             {
                 ManufacturerName = "VinFast",
-                ManufacturerPicture = "Assets/vinfast_logo.jpg",
+                ManufacturerPicture = "../../Assets/vinfast_logo.jpg",
                 Cars = new List<Cars>
                 {
                     new Cars()
@@ -802,56 +802,56 @@ public class MockDao : IDao
                         Model = "VinFast VF 5",
                         Manufacturer = "VinFast",
                         Price = "460.000.000 VNĐ",
-                        Picture = "Assets/vinfast_vf_5.png"
+                        Picture = "../../Assets/vinfast_vf_5.png"
                     },
                     new Cars()
                     {
                         Model = "VinFast VF 6",
                         Manufacturer = "VinFast",
                         Price = "675.000.000 VNĐ",
-                        Picture = "Assets/vinfast_vf_6.png"
+                        Picture = "../../Assets/vinfast_vf_6.png"
                     },
                     new Cars()
                     {
                         Model = "VinFast VF 7",
                         Manufacturer = "VinFast",
                         Price = "850.000.000 VNĐ",
-                        Picture = "Assets/vinfast_vf_7.png"
+                        Picture = "../../Assets/vinfast_vf_7.png"
                     },
                     new Cars()
                     {
                         Model = "VinFast VF 8",
                         Manufacturer = "VinFast",
                         Price = "1.079.000.000 VNĐ",
-                        Picture = "Assets/vinfast_vf_8.png"
+                        Picture = "../../Assets/vinfast_vf_8.png"
                     },
                     new Cars()
                     {
                         Model = "VinFast VF 9",
                         Manufacturer = "VinFast",
                         Price = "1.531.000.000 VNĐ",
-                        Picture = "Assets/vinfast_vf_9.png"
+                        Picture = "../../Assets/vinfast_vf_9.png"
                     },
                     new Cars()
                     {
                         Model = "VinFast VF e34",
                         Manufacturer = "VinFast",
                         Price = "710.000.000 VNĐ",
-                        Picture = "Assets/vinfast_vf_e34.png"
+                        Picture = "../../Assets/vinfast_vf_e34.png"
                     },
                     new Cars()
                     {
                         Model = "VinFast VF 3",
                         Manufacturer = "VinFast",
                         Price = "240.000.000 VNĐ",
-                        Picture = "Assets/vinfast_vf_3.png"
+                        Picture = "../../Assets/vinfast_vf_3.png"
                     }
                 }
             },
             new Manufacturers()
             {
                 ManufacturerName = "Mazda",
-                ManufacturerPicture = "Assets/mazda_logo.jpg",
+                ManufacturerPicture = "../../Assets/mazda_logo.jpg",
                 Cars = new List<Cars>
                 {
                     new Cars()
@@ -859,63 +859,63 @@ public class MockDao : IDao
                         Model = "Mazda CX-3",
                         Manufacturer = "Mazda",
                         Price = "512.000.000 VNĐ",
-                        Picture = "Assets/mazda_cx_3.png"
+                        Picture = "../../Assets/mazda_cx_3.png"
                     },
                     new Cars()
                     {
                         Model = "Mazda CX-30",
                         Manufacturer = "Mazda",
                         Price = "699.000.000 VNĐ",
-                        Picture = "Assets/mazda_cx_30.png"
+                        Picture = "../../Assets/mazda_cx_30.png"
                     },
                     new Cars()
                     {
                         Model = "Mazda 6",
                         Manufacturer = "Mazda",
                         Price = "769.000.000 VNĐ",
-                        Picture = "Assets/mazda_6.png"
+                        Picture = "../../Assets/mazda_6.png"
                     },
                     new Cars()
                     {
                         Model = "Mazda CX-5",
                         Manufacturer = "Mazda",
                         Price = "749.000.000 VNĐ",
-                        Picture = "Assets/mazda_cx_5.png"
+                        Picture = "../../Assets/mazda_cx_5.png"
                     },
                     new Cars()
                     {
                         Model = "Mazda CX-8",
                         Manufacturer = "Mazda",
                         Price = "949.000.000 VNĐ",
-                        Picture = "Assets/mazda_cx_8.png"
+                        Picture = "../../Assets/mazda_cx_8.png"
                     },
                     new Cars()
                     {
                         Model = "Mazda 2",
                         Manufacturer = "Mazda",
                         Price = "408.000.000 VNĐ",
-                        Picture = "Assets/mazda_2.png"
+                        Picture = "../../Assets/mazda_2.png"
                     },
                     new Cars()
                     {
                         Model = "Mazda 3",
                         Manufacturer = "Mazda",
                         Price = "579.000.000 VNĐ",
-                        Picture = "Assets/mazda_3.png"
+                        Picture = "../../Assets/mazda_3.png"
                     },
                     new Cars()
                     {
                         Model = "Mazda BT 50",
                         Manufacturer = "Mazda",
                         Price = "554.000.000 VNĐ",
-                        Picture = "Assets/mazda_bt_50.png"
+                        Picture = "../../Assets/mazda_bt_50.png"
                     }
                 }
             },
             new Manufacturers()
             {
                 ManufacturerName = "Honda",
-                ManufacturerPicture = "Assets/honda_logo.jpg",
+                ManufacturerPicture = "../../Assets/honda_logo.jpg",
                 Cars = new List<Cars>
                 {
                     new Cars()
@@ -923,70 +923,70 @@ public class MockDao : IDao
                         Model = "Honda City",
                         Manufacturer = "Honda",
                         Price = "499.000.000 VNĐ",
-                        Picture = "Assets/honda_city.png"
+                        Picture = "../../Assets/honda_city.png"
                     },
                     new Cars()
                     {
                         Model = "Honda BR-V",
                         Manufacturer = "Honda",
                         Price = "661.000.000 VNĐ",
-                        Picture = "Assets/honda_br_v.png"
+                        Picture = "../../Assets/honda_br_v.png"
                     },
                     new Cars()
                     {
                         Model = "Honda CR-V",
                         Manufacturer = "Honda",
                         Price = "1.029.000.000 VNĐ",
-                        Picture = "Assets/honda_cr_v.png"
+                        Picture = "../../Assets/honda_cr_v.png"
                     },
                     new Cars()
                     {
                         Model = "Honda Accord",
                         Manufacturer = "Honda",
                         Price = "1.319.000.000 VNĐ",
-                        Picture = "Assets/honda_accord.png"
+                        Picture = "../../Assets/honda_accord.png"
                     },
                     new Cars()
                     {
                         Model = "Honda Civic",
                         Manufacturer = "Honda",
                         Price = "730.000.000 VNĐ",
-                        Picture = "Assets/honda_civic.png"
+                        Picture = "../../Assets/honda_civic.png"
                     },
                     new Cars()
                     {
                         Model = "Honda Civic Type R",
                         Manufacturer = "Honda",
                         Price = "2.399.000.000 VNĐ",
-                        Picture = "Assets/honda_civic_type_r.png"
+                        Picture = "../../Assets/honda_civic_type_r.png"
                     },
                     new Cars()
                     {
                         Model = "Honda HR-V",
                         Manufacturer = "Honda",
                         Price = "699.000.000 VNĐ",
-                        Picture = "Assets/honda_hr_v.png"
+                        Picture = "../../Assets/honda_hr_v.png"
                     },
                     new Cars()
                     {
                         Model = "Honda Brio",
                         Manufacturer = "Honda",
                         Price = "418.000.000 VNĐ",
-                        Picture = "Assets/honda_brio.png"
+                        Picture = "../../Assets/honda_brio.png"
                     },
                     new Cars()
                     {
                         Model = "Honda Jazz",
                         Manufacturer = "Honda",
                         Price = "544.000.000 VNĐ",
-                        Picture = "Assets/honda_jazz.png"
+                        Picture = "../../Assets/honda_jazz.png"
                     }
                 }
             },
             new Manufacturers()
             {
                 ManufacturerName = "Audi",
-                ManufacturerPicture = "Assets/audi_logo.jpg",
+                ManufacturerPicture = "../../Assets/audi_logo.jpg",
                 Cars = new List<Cars>
                 {
                     new Cars()
@@ -994,49 +994,49 @@ public class MockDao : IDao
                         Model = "Audi Q8 e-tron",
                         Manufacturer = "Audi",
                         Price = "3.800.000.000 VNĐ",
-                        Picture = "Assets/audi_q8_e_tron.png"
+                        Picture = "../../Assets/audi_q8_e_tron.png"
                     },
                     new Cars()
                     {
                         Model = "Audi e-tron GT",
                         Manufacturer = "Audi",
                         Price = "5.200.000.000 VNĐ",
-                        Picture = "Assets/audi_e_tron_gt.png"
+                        Picture = "../../Assets/audi_e_tron_gt.png"
                     },
                     new Cars()
                     {
                         Model = "Audi Q3",
                         Manufacturer = "Audi",
                         Price = "1.890.000.000 VNĐ",
-                        Picture = "Assets/audi_q3.png"
+                        Picture = "../../Assets/audi_q3.png"
                     },
                     new Cars()
                     {
                         Model = "Audi Q5",
                         Manufacturer = "Audi",
                         Price = "2.390.000.000 VNĐ",
-                        Picture = "Assets/audi_q5.png"
+                        Picture = "../../Assets/audi_q5.png"
                     },
                     new Cars()
                     {
                         Model = "Audi Q7",
                         Manufacturer = "Audi",
                         Price = "3.590.000.000 VNĐ",
-                        Picture = "Assets/audi_q7.png"
+                        Picture = "../../Assets/audi_q7.png"
                     },
                     new Cars()
                     {
                         Model = "Audi A6",
                         Manufacturer = "Audi",
                         Price = "2.500.000.000 VNĐ",
-                        Picture = "Assets/audi_a6.png"
+                        Picture = "../../Assets/audi_a6.png"
                     },
                     new Cars()
                     {
                         Model = "Audi Q2",
                         Manufacturer = "Audi",
                         Price = "1.590.000.000 VNĐ",
-                        Picture = "Assets/audi_q2.png"
+                        Picture = "../../Assets/audi_q2.png"
                     }
                 }
             },
@@ -1146,11 +1146,11 @@ public class MockDao : IDao
                 City = "Đà Nẵng",
                 District = new List<string>()
                 {
-                     "Quận Hải Châu", 
-                    "Quận Thanh Khê", 
-                    "Quận Sơn Trà", 
-                    "Quận Ngũ Hành Sơn", 
-                    "Quận Liên Chiểu", 
+                     "Quận Hải Châu",
+                    "Quận Thanh Khê",
+                    "Quận Sơn Trà",
+                    "Quận Ngũ Hành Sơn",
+                    "Quận Liên Chiểu",
                     "Huyện Hoàng Sa"
                 }
             },

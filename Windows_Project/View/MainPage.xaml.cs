@@ -46,10 +46,10 @@ namespace Windows_Project
             // Danh sách hình ảnh
             Pictures = new ObservableCollection<string>
             {
-                "Assets/mazda_bg.jpg",
-                "Assets/mercedes_bg.jpg",
-                "Assets/honda_bg.jpg",
-                "Assets/audi_bg.jpg",
+                "../../Assets/mazda_bg.jpg",
+                "../../Assets/mercedes_bg.jpg",
+                "../../Assets/honda_bg.jpg",
+                "../../Assets/audi_bg.jpg",
             };
 
             Gallery.ItemsSource = Pictures;
@@ -61,7 +61,7 @@ namespace Windows_Project
             timer.Start();
         }
 
-        
+
         //mo lai khi tat ung dung
         private void Page_Loaded(object sender, RoutedEventArgs e)
         {
@@ -183,9 +183,9 @@ namespace Windows_Project
             {
                 // Lưu tên đăng nhập
                 localSettings.Values["Username"] = UsernameLogin.Text;
-   
+
                 localSettings.Values["Password"] = PasswordLogin.Password; // Lưu mật khẩu
-                                                                          
+
                 localSettings.Values["RememberMe"] = true;  // Lưu trạng thái checkbox
             }
             else
@@ -232,7 +232,7 @@ namespace Windows_Project
                     string password = PasswordRegister.Password;
                     string repassword = RepasswordRegister.Password;
 
-                    if(password == repassword && password != "")
+                    if (password == repassword && password != "")
                     {
                         ViewModel.Users.Add(new Users()
                         {

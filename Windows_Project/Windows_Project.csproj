@@ -50,11 +50,12 @@
     <None Remove="Assets\volkswagen_teramont.png" />
     <None Remove="Assets\volkswagen_tiguan.png" />
     <None Remove="Assets\wolkswagen_logo.jpg" />
-    <None Remove="CarPricePage.xaml" />
-    <None Remove="MainPage.xaml" />
-    <None Remove="NewCar.xaml" />
-    <None Remove="OldCar.xaml" />
-    <None Remove="PricePage.xaml" />
+    <None Remove="View\CarPricePage.xaml" />
+    <None Remove="View\MainPage.xaml" />
+    <None Remove="View\NewCar.xaml" />
+    <None Remove="View\OldCar.xaml" />
+    <None Remove="View\PostPage.xaml" />
+    <None Remove="View\PricePage.xaml" />
   </ItemGroup>
 
   <ItemGroup>
@@ -529,10 +530,22 @@
     <None Update="Assets\previous_icon.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <Page Update="OldCar.xaml">
+    <Page Update="View\PricePage.xaml">
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Update="NewCar.xaml">
+    <Page Update="View\OldCar.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Update="View\NewCar.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Update="View\PostPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Update="View\CarPricePage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Update="View\MainPage.xaml">
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Content Update="Assets\subaru_logo.jpg">
@@ -544,21 +557,6 @@
     <Content Update="Assets\wolkswagen_logo.jpg">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-  </ItemGroup>
-  <ItemGroup>
-    <Page Update="CarPricePage.xaml">
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-  </ItemGroup>
-  <ItemGroup>
-    <Page Update="PricePage.xaml">
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-  </ItemGroup>
-  <ItemGroup>
-    <Page Update="MainPage.xaml">
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
   </ItemGroup>
 
   <!--

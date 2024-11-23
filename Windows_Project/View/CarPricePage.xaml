@@ -45,7 +45,7 @@
                                             <TextBlock Text="{x:Bind Model}" FontSize="16" FontWeight="Bold" Foreground="#050B20"/>
                                             <TextBlock Text="{x:Bind Price}" Margin="0, 10 , 0, 0" FontSize="18" Foreground="#050B20"/>
                                         </StackPanel>
-                                        
+
                                     </Grid>
                                 </Grid>
                             </Border>
@@ -60,13 +60,13 @@
                 </GridView>
                 <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
                     <Button x:Name="PreviousPageButton" Click="PreviousPage_Click" HorizontalAlignment="Left" Margin="10">
-                        <Image Source="Assets/previous_icon.png" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        <Image Source="../Assets/previous_icon.png" HorizontalAlignment="Center" VerticalAlignment="Center"/>
                     </Button>
                     <TextBlock x:Name="PageNumberTextBlock" FontSize="16" FontWeight="Bold" 
                                HorizontalAlignment="Center" VerticalAlignment="Center" 
                                Margin="0, 10, 0, 10"/>
                     <Button x:Name="NextPageButton" Click="NextPage_Click" HorizontalAlignment="Right" Margin="10">
-                        <Image Source="Assets/next_icon.png" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        <Image Source="../Assets/next_icon.png" HorizontalAlignment="Center" VerticalAlignment="Center"/>
                     </Button>
                 </StackPanel>
             </StackPanel>
