@@ -60,7 +60,7 @@
                 </Grid.ColumnDefinitions>
 
                 <!-- Logo -->
-                <Image Grid.Column="0" Source="/Assets/car-logo.png" VerticalAlignment="Center"/>
+                <Image Grid.Column="0" Source="../Assets/car-logo.png" VerticalAlignment="Center"/>
 
                 <!-- Nút đăng tin -->
                 <Button Grid.Column="1" x:Name="Post_News" VerticalAlignment="Center" HorizontalAlignment="Right" Padding="10" Style="{StaticResource AccentButtonStyle}" Background="#4DB848">
@@ -103,7 +103,7 @@
                                 <MenuFlyoutItem Text="Đăng xuất" Click="onLogoutClick"></MenuFlyoutItem>
                             </MenuFlyout>
                         </Button.Flyout>
-                        
+
                     </Button>
                 </StackPanel>
 
@@ -205,7 +205,7 @@
 
                 <Button Grid.Column="0" Margin="10" Background="Transparent" Click="OnCarOldButtonClick" Padding="0">
                     <Grid>
-                        <Image Source="/Assets/menu-bg1.png" Stretch="UniformToFill"/>
+                        <Image Source="../Assets/menu-bg1.png" Stretch="UniformToFill"/>
                         <TextBlock Text="Ô tô cũ"
             HorizontalAlignment="Center"
             VerticalAlignment="Center"
@@ -219,7 +219,7 @@
 
                 <Button Grid.Column="1" Margin="10" Background="Transparent" Click="OnCarNewButtonClick" Padding="0">
                     <Grid>
-                        <Image Source="/Assets/menu-bg2.png" Stretch="UniformToFill"/>
+                        <Image Source="../Assets/menu-bg2.png" Stretch="UniformToFill"/>
                         <TextBlock Text="Ô tô mới"
             HorizontalAlignment="Center"
             VerticalAlignment="Center"
@@ -233,7 +233,7 @@
 
                 <Button Grid.Column="2" Margin="10" Background="Transparent" Click="OnPriceButtonClick" Padding="0">
                     <Grid>
-                        <Image Source="/Assets/menu-bg3.png" Stretch="UniformToFill"/>
+                        <Image Source="../Assets/menu-bg3.png" Stretch="UniformToFill"/>
                         <TextBlock Text="Giá xe"
             HorizontalAlignment="Center"
             VerticalAlignment="Center"
@@ -247,7 +247,7 @@
 
                 <Button Grid.Column="3" Margin="10" Background="Transparent" Click="OnSellCarButtonClick" Padding="0">
                     <Grid>
-                        <Image Source="/Assets/menu-bg4.png" Stretch="UniformToFill" />
+                        <Image Source="../Assets/menu-bg4.png" Stretch="UniformToFill" />
                         <TextBlock Text="Bán xe"
             HorizontalAlignment="Center"
             VerticalAlignment="Center"
@@ -270,7 +270,7 @@
                 </Grid.ColumnDefinitions>
 
                 <Grid Grid.Column="0" Margin="10">
-                    <Image Source="/Assets/menu-bg3.png" Stretch="UniformToFill"/>
+                    <Image Source="../Assets/menu-bg3.png" Stretch="UniformToFill"/>
                     <TextBlock Text="Đánh giá xe"
         HorizontalAlignment="Center"
         VerticalAlignment="Center"
@@ -282,7 +282,7 @@
                 </Grid>
 
                 <Grid Grid.Column="1" Margin="10">
-                    <Image Source="/Assets/menu-bg3.png" Stretch="UniformToFill"/>
+                    <Image Source="../Assets/menu-bg3.png" Stretch="UniformToFill"/>
                     <TextBlock Text="So sánh xe"
         HorizontalAlignment="Center"
         VerticalAlignment="Center"
@@ -294,7 +294,7 @@
                 </Grid>
 
                 <Grid Grid.Column="2" Margin="10">
-                    <Image Source="/Assets/menu-bg3.png" Stretch="UniformToFill"/>
+                    <Image Source="../Assets/menu-bg3.png" Stretch="UniformToFill"/>
                     <TextBlock Text="Tin tức"
         HorizontalAlignment="Center"
         VerticalAlignment="Center"

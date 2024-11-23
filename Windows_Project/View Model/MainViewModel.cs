@@ -20,7 +20,7 @@ public class MainViewModel
         IDao dao = new MockDao();
         Manufacturers = dao.GetManufacturers();
         Locations = dao.GetLocations();
-        IsExpanderExpaneds = dao.GetIsExpanderExpaned(); 
+        IsExpanderExpaneds = dao.GetIsExpanderExpaned();
         Users = dao.GetUsers();
 
         // Khởi tạo danh sách xe lọc
