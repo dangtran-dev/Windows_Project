@@ -14,6 +14,7 @@ using Microsoft.UI.Xaml.Media;
 using Microsoft.UI.Xaml.Navigation;
 using System.Collections.ObjectModel;
 using Windows.Storage;
+using Windows_Project.View;
 
 
 // To learn more about WinUI, the WinUI project structure,
@@ -136,6 +137,11 @@ namespace Windows_Project
         private void OnSellCarButtonClick(object sender, RoutedEventArgs e)
         {
             Frame.Navigate(typeof(PostPage));
+        }
+
+        private void OnComparisonButtonClick(object sender, RoutedEventArgs e)
+        {
+            Frame.Navigate(typeof(ComparisonPage));
         }
 
         private async void onLoginButtonClick(object sender, RoutedEventArgs e)

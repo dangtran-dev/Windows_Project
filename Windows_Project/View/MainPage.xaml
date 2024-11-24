@@ -281,17 +281,19 @@
         Padding="0"/>
                 </Grid>
 
-                <Grid Grid.Column="1" Margin="10">
-                    <Image Source="../Assets/menu-bg3.png" Stretch="UniformToFill"/>
-                    <TextBlock Text="So sánh xe"
-        HorizontalAlignment="Center"
-        VerticalAlignment="Center"
-        Foreground="DarkBlue"
-        FontSize="20"
-        FontWeight="Bold"
-        Opacity="0.5" 
-        Padding="0"/>
-                </Grid>
+                <Button Grid.Column="1" Margin="10" Background="Transparent" Click="OnComparisonButtonClick" Padding="0">
+                    <Grid>
+                        <Image Source="../Assets/menu-bg3.png" Stretch="UniformToFill"/>
+                        <TextBlock Text="So sánh xe"
+                            HorizontalAlignment="Center"
+                            VerticalAlignment="Center"
+                            Foreground="DarkBlue"
+                            FontSize="20"
+                            FontWeight="Bold"
+                            Opacity="0.5" 
+                            Padding="0"/>   
+                    </Grid>
+                </Button>
 
                 <Grid Grid.Column="2" Margin="10">
                     <Image Source="../Assets/menu-bg3.png" Stretch="UniformToFill"/>
