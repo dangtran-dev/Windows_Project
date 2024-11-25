@@ -23,9 +23,7 @@
                 </Grid>
 
                 <!-- Danh sách xe -->
-                <ListView ItemsSource="{x:Bind ViewModel.FilteredCars, Mode=OneWay}"
-                          IsItemClickEnabled="True" 
-                          ItemClick="OnCarItemClick">
+                <ListView x:Name="CarListView" IsItemClickEnabled="True" ItemClick="OnCarItemClick">
                     <ListView.ItemTemplate>
                         <DataTemplate x:DataType="local:Cars">
                             <StackPanel Orientation="Horizontal" BorderBrush="Gray" BorderThickness="0, 0, 0, 1">
@@ -38,7 +36,22 @@
                         </DataTemplate>
                     </ListView.ItemTemplate>
                 </ListView>
+
+
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                    <Button x:Name="PreviousPageButton" Click="PreviousPage_Click" HorizontalAlignment="Left" Margin="10">
+                        <Image Source="../Assets/previous_icon.png" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                    </Button>
+                    <TextBlock x:Name="PageNumberTextBlock" FontSize="16" FontWeight="Bold" 
+                               HorizontalAlignment="Center" VerticalAlignment="Center" 
+                               Margin="0, 10, 0, 10"/>
+                    <Button x:Name="NextPageButton" Click="NextPage_Click" HorizontalAlignment="Right" Margin="10">
+                        <Image Source="../Assets/next_icon.png" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                    </Button>
+                </StackPanel>
             </StackPanel>
+
+            
         </Grid>
     </ScrollViewer>
 </Page>
