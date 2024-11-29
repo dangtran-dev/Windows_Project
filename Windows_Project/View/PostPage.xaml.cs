@@ -22,6 +22,7 @@ using Windows.Storage.Pickers;
 using Windows.Storage;
 using Windows.Storage.AccessCache;
 using Windows.Storage.Provider;
+using Windows_Project.Model;
 
 
 // To learn more about WinUI, the WinUI project structure,
@@ -35,8 +36,44 @@ namespace Windows_Project
     public sealed partial class PostPage : Page
     {
         public MainViewModel ViewModel { get; set; }
+        public Users  user { get; set; }
         //tạo biến boolean để kiểm tra việc nhập thông tin đầy đủ
         bool warning;
+        // nhận dữ liệu người dùng đã đăng nhập từ trang chính
+        protected override void OnNavigatedTo(NavigationEventArgs e)
+        {
+            base.OnNavigatedTo(e);
+            // Lấy dữ liệu được truyền vào từ trang trước
+            user = e.Parameter as Users;
+            DataContext = user;
+            // Kiểm tra giá trị ban đầu của FullName
+            if (!string.IsNullOrEmpty(user.FullName))
+            {
+                warningNameSeller.Visibility = Visibility.Collapsed;
+            }
+            else
+            {
+                warningNameSeller.Visibility = Visibility.Visible;
+            }
+            // Kiểm tra giá trị ban đầu của Phone
+            if (!string.IsNullOrEmpty(user.Phone))
+            {
+                warningPhoneSeller.Visibility = Visibility.Collapsed;
+            }
+            else
+            {
+                warningPhoneSeller.Visibility = Visibility.Visible;
+            }
+            // Kiểm tra giá trị ban đầu của Address
+            if (!string.IsNullOrEmpty(user.Address))
+            {
+                warningAddressSeller.Visibility = Visibility.Collapsed;
+            }
+            else
+            {
+                warningAddressSeller.Visibility = Visibility.Visible;
+            }
+        }
         private void UpdateWarningState()
         {
             // Kiểm tra từng cảnh báo và cập nhật hasWarning
@@ -182,7 +219,8 @@ namespace Windows_Project
 
             if (selectedManufacturer != null)
             {
-                comboboxModelCar.ItemsSource = selectedManufacturer.Cars.Select(car => car.Model).ToList();
+                // nếu có nhiều model xuất hiện lại chỉ lấy 1 lần
+                comboboxModelCar.ItemsSource = selectedManufacturer.Cars.Select(car => car.Model).Distinct().ToList();
             }
         }
 
@@ -376,7 +414,38 @@ namespace Windows_Project
             }
             carList.Add(car);
 
-            string newJson = JsonSerializer.Serialize(carList, new JsonSerializerOptions { WriteIndented = true });
+            string newJson = JsonSerializer.Serialize(carList, new JsonSerializerOptions
+            {
+                WriteIndented = true,
+                Encoder = System.Text.Encodings.Web.JavaScriptEncoder.UnsafeRelaxedJsonEscaping // Hỗ trợ lưu tiếng Việt đúng
+            });
+
+            await File.WriteAllTextAsync(filePath, newJson);
+        }
+
+        // lưu thông tin bài đăng vào file json
+        private async Task SaveListing(Listings listing)
+        {
+            string assemblyLocation = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
+            string filePath = Path.Combine(assemblyLocation, "Listings.json");
+
+            List<Listings> listingList;
+            if (File.Exists(filePath))
+            {
+                string existingJson = await File.ReadAllTextAsync(filePath);
+                listingList = JsonSerializer.Deserialize<List<Listings>>(existingJson) ?? new List<Listings>();
+            }
+            else
+            {
+                listingList = new List<Listings>();
+            }
+            listingList.Add(listing);
+            string newJson = JsonSerializer.Serialize(listingList, new JsonSerializerOptions
+            {
+                WriteIndented = true,
+                Encoder = System.Text.Encodings.Web.JavaScriptEncoder.UnsafeRelaxedJsonEscaping // Hỗ trợ lưu tiếng Việt đúng
+            });
+
             await File.WriteAllTextAsync(filePath, newJson);
         }
 
@@ -412,14 +481,49 @@ namespace Windows_Project
                 var selectedManufacturer = comboboxManufacturer.SelectedItem as Manufacturers;
                 var car = new Cars()
                 {
-
+                    // vì lúc này xe chưa được lưu nên trong data chỉ có X xe, khi lưu thì sẽ có X+1 xe nên ID là X+2
+                    ID = ViewModel.Manufacturers.SelectMany(m => m.Cars).Count() + 2,
                     Year = int.Parse(YearCarTextBox.Text),
                     Manufacturer = selectedManufacturer?.ManufacturerName,
                     Model = comboboxModelCar.SelectedItem as string,
                     Price = texboxPrice.Text,
                     Picture = PathText.Text,
+                    Condition = newCar.IsChecked == true ? "Xe mới" : "Xe cũ",
+                    Style = (comboboxStyleCar.SelectedItem as ComboBoxItem)?.Content.ToString(),
+                    Origin = internalCar.IsChecked == true ? "Trong nước" : "Nhập khẩu",
+                    Mileage = newCar.IsChecked == true ? 0 : int.Parse(textBox_Km.Text),
+                    City = (comboboxCitySeller.SelectedItem as Location)?.City,
+                    District = comboboxDistrictSeller.SelectedItem as string,
+                    FuelType = (comboboxFuelCar.SelectedItem as ComboBoxItem)?.Content.ToString(),
+                    Gear = (comboboxGearBoxCar.SelectedItem as ComboBoxItem)?.Content.ToString(),
                 };
                 await SaveCar(car);
+                
+                // load lại mockdao để cập nhật danh sách xe
+                ViewModel.Manufacturers = new MockDao().GetManufacturers();
+                // lấy tổng số xe có trong mockdao (dù xe vừa thêm nằm ở đâu trong mockdao thì cũng lấy id ở vị trí cuối
+                // để khớp với carID trong bài đăng)
+                int carIndex = 0;
+                for (int i=0;i<ViewModel.Manufacturers.Count;i++)
+                {
+                    for (int j = 0; j < ViewModel.Manufacturers[i].Cars.Count;j++)
+                    {
+                        carIndex++;
+                    }
+                }
+                // lấy index của người bán trong mockdao
+                int userIndex = ViewModel.Users.FindIndex(u => u.Username == user.Username);
+                // lưu thông tin bài đăng
+                var listing = new Listings()
+                {
+                    CarID = carIndex + 1,
+                    UserID = userIndex + 1,
+                    Status = texBoxTitle.Text,
+                    Description = textDescription.Text,
+                    CreateAt = DateTime.Now.ToString("dd/MM/yyyy")
+                };
+                await SaveListing(listing);
+
                 var newdialog = new ContentDialog()
                 {
                     XamlRoot = this.Content.XamlRoot,
@@ -434,7 +538,7 @@ namespace Windows_Project
             }
         }
 
-        //lưu ảnh vừa upload vào thư mục Assets ở solution explorer của project
+        //lưu ảnh vừa upload vào thư mục Assets của project
         private async Task SaveImage(StorageFile file)
         {
             var folder = Windows.ApplicationModel.Package.Current.InstalledLocation;
@@ -468,7 +572,7 @@ namespace Windows_Project
                 var bitmapImage = new BitmapImage();
                 bitmapImage.SetSource(stream);
                 UploadedImage.Source = bitmapImage;
-                PathText.Text = $"Assets/{file.Name}";
+                PathText.Text = $"../../Assets/{file.Name}";
             }
             else
             {

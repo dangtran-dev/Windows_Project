@@ -23,7 +23,7 @@ namespace Windows_Project
     /// </summary>
     public sealed partial class CarDetailPage : Page
     {
-        public Cars ViewModel { get; set; }
+        public CarWithUserItem ViewModel { get; set; }
 
         public CarDetailPage()
         {
@@ -42,7 +42,7 @@ namespace Windows_Project
         {
             base.OnNavigatedTo(e);
             // Lấy dữ liệu được truyền vào từ trang trước
-            ViewModel = e.Parameter as Cars;
+            ViewModel = e.Parameter as CarWithUserItem;
             DataContext = ViewModel;
         }
     }

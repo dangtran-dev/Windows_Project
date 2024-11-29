@@ -133,9 +133,22 @@ namespace Windows_Project
             Frame.Navigate(typeof(PricePage), this.ViewModel);
         }
 
-        private void OnSellCarButtonClick(object sender, RoutedEventArgs e)
+        private async void OnSellCarButtonClick(object sender, RoutedEventArgs e)
         {
-            Frame.Navigate(typeof(PostPage));
+            // nếu chưa đăng nhập thì yêu cầu đăng nhập
+            if (!isLoggedIn)
+            {
+                failedDialog.Content = new TextBlock()
+                {
+                    Text = "Bạn cần đăng nhập/đăng kí để thực hiện chức năng này.",
+                    TextWrapping = TextWrapping.WrapWholeWords
+                };
+                await failedDialog.ShowAsync();
+                return;
+            }
+            // lấy thông tin người dùng đăng nhập
+            var user = ViewModel.Users.FirstOrDefault(u => u.Username == loggedInUser);
+            Frame.Navigate(typeof(PostPage), user);
         }
 
         private async void onLoginButtonClick(object sender, RoutedEventArgs e)

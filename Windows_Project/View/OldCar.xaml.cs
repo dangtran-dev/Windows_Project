@@ -41,12 +41,12 @@ namespace Windows_Project.View
                 if (carType == "old")
                 {
                     PageTitle.Text = "Ô TÔ CŨ";
-                    ViewModel.FilterCarsByCondition("Xe cũ");
+                    ViewModel.CreateCarWithUserList("Xe cũ");
                 }
                 else if (carType == "new")
                 {
                     PageTitle.Text = "Ô TÔ MỚI";
-                    ViewModel.FilterCarsByCondition("Xe mới");
+                    ViewModel.CreateCarWithUserList("Xe mới");
                 }
             }
         }
@@ -62,7 +62,7 @@ namespace Windows_Project.View
         private void OnCarItemClick(object sender, ItemClickEventArgs e)
         {
             // Lấy thông tin của ô tô được chọn
-            var selectedCar = e.ClickedItem as Cars;
+            var selectedCar = e.ClickedItem as CarWithUserItem;
             if (selectedCar != null)
             {
                 // Chuyển đến trang chi tiết và truyền dữ liệu

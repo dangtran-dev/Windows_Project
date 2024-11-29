@@ -458,8 +458,8 @@
                                 <StackPanel Orientation="Horizontal" Grid.Column="0" Grid.Row="0" HorizontalAlignment="Left" Margin="10,10,0,0">
                                     <TextBlock Text="Tên người bán" FontSize="16" FontWeight="Bold" FontFamily="Roboto" VerticalAlignment="Center" Width="80" TextWrapping="Wrap"/>
                                     <TextBlock Text="*" FontSize="16" Foreground="Red"/>
-                                    <TextBox x:Name="textboxNameSeller" TextChanged="textboxNameSeller_TextChanged" Margin="10,0,0,0" 
-                                             PlaceholderText="Nhập tên người bán" Width="200"/>
+                                    <TextBox x:Name="textboxNameSeller" TextChanged="textboxNameSeller_TextChanged" Text="{x:Bind user.FullName}"
+                                             Margin="10,0,0,0" PlaceholderText="Nhập tên người bán" Width="200"/>
                                 </StackPanel>
 
                                 <!--Cảnh báo nếu không nhập tên người bán-->
@@ -477,8 +477,8 @@
                                 <StackPanel Orientation="Horizontal" Grid.Column="1" Grid.Row="0" HorizontalAlignment="Left" Margin="10,10,0,0">
                                     <TextBlock Text="Số điện thoại" FontSize="16" FontWeight="Bold" FontFamily="Roboto" VerticalAlignment="Center" Width="60" TextWrapping="Wrap"/>
                                     <TextBlock Text="*" FontSize="16" Foreground="Red"/>
-                                    <TextBox x:Name="textboxPhoneSeller" TextChanged="textboxPhoneSeller_TextChanged" Margin="27,0,0,0" 
-                                             PlaceholderText="Nhập số điện thoại" Width="200"/>
+                                    <TextBox x:Name="textboxPhoneSeller" TextChanged="textboxPhoneSeller_TextChanged" Text="{x:Bind user.Phone}"
+                                             PlaceholderText="Nhập số điện thoại" Width="200" Margin="27,0,0,0"/>
                                 </StackPanel>
 
                                 <!--Cảnh báo nếu không nhập số điện thoại-->
@@ -496,8 +496,8 @@
                                 <StackPanel Orientation="Horizontal" Grid.Column="0" Grid.Row="2" Grid.ColumnSpan="2" HorizontalAlignment="Left" Margin="10,10,0,0">
                                     <TextBlock Text="Địa chỉ người bán" FontSize="16" FontWeight="Bold" FontFamily="Roboto" VerticalAlignment="Center" Width="80" TextWrapping="Wrap"/>
                                     <TextBlock Text="*" FontSize="16" Foreground="Red"/>
-                                    <TextBox x:Name="textboxAddressSeller" TextChanged="textboxAddressSeller_TextChanged" Margin="10,0,0,0" 
-                                             PlaceholderText="Nhập địa chỉ người bán" Width="537"/>
+                                    <TextBox x:Name="textboxAddressSeller" TextChanged="textboxAddressSeller_TextChanged" Text="{x:Bind user.Address}"
+                                             PlaceholderText="Nhập địa chỉ người bán" Width="537" Margin="10,0,0,0"/>
                                 </StackPanel>
 
                                 <!--Cảnh báo nếu không nhập địa chỉ người bán-->

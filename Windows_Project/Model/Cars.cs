@@ -8,6 +8,7 @@ using System.Threading.Tasks;
 namespace Windows_Project;
 public class Cars : INotifyPropertyChanged
 {
+    public int ID { get; set; }
     public string Model { get; set; }
     public string Manufacturer { get; set; }
     public int Year { get; set; }
