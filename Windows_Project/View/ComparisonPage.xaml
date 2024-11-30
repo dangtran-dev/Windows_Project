@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Page
+    x:Class="Windows_Project.View.ComparisonPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:Windows_Project"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
+
+    <ScrollViewer>
+        <StackPanel Padding="20">
+            <StackPanel>
+                <Grid VerticalAlignment="Top" Height="100" BorderBrush="Gray" BorderThickness="0, 0, 0, 1" Padding="50, 0, 50, 0">
+                    <Button Click="Back_Click">
+                        <FontIcon Glyph="&#xE830;" Foreground="Gray"
+                          HorizontalAlignment="Center" VerticalAlignment="Center" />
+                    </Button>
+
+                    <TextBlock Text="SO SÁNH XE" FontSize="26" FontWeight="Bold" 
+                       HorizontalAlignment="Center" VerticalAlignment="Center" />
+                </Grid>
+            </StackPanel>
+
+            <StackPanel Height="Auto"  Width="340" Margin="0, 12, 0, 0" BorderThickness="1" BorderBrush="#E1E1E1" CornerRadius="4, 4, 0, 0" HorizontalAlignment="Center">
+                <StackPanel Background="#135EAC">
+                    <TextBlock Padding="20, 10, 0, 10" Text="So sánh xe" FontSize="18" FontWeight="Bold" Foreground="#FFF" />
+                </StackPanel>
+
+                <TextBox x:Name="SearchBox" Width="300" Height="40" Padding="10" BorderThickness="1" BorderBrush="#E1E1E1" Margin="0, 10, 0, 10" CornerRadius="4" PlaceholderText="Tìm dòng xe" FontSize="14" Foreground="#222" TextChanged="SearchBox_TextChanged" />
+
+                <ListView x:Name="CarListView" ItemsSource="{x:Bind ViewModel.FilteredSearchCars, Mode=OneWay}" Width="300" Height="150" Margin="0, 0, 0, 10" SelectionChanged="CarListView_SelectionChanged">
+                    <ListView.ItemTemplate>
+                        <DataTemplate x:DataType="local:Cars">
+                            <TextBlock Text="{x:Bind Model}" FontSize="14" Foreground="#135eac" />
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+
+                <Border BorderBrush="#E1E1E1" BorderThickness="0, 0, 0, 1"/>
+
+                <Grid Width="300" Padding="0, 13, 0, 10">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="*" />
+                    </Grid.ColumnDefinitions>
+
+                    <TextBlock x:Name="SelectedVehicleNumber" Grid.Column="0" HorizontalAlignment="Left" FontSize="14" Foreground="#222" />
+
+                    <Button Click="Delete_All_Click" Grid.Column="1" HorizontalAlignment="Right" Padding="0" BorderThickness="0" BorderBrush="#FFF" Content="Xóa tất cả" FontSize="14" Foreground="#135EAC" />
+                </Grid>
+
+                <StackPanel Visibility="{x:Bind ViewModel.IsSelectedCarsVisible, Mode=OneWay}">
+                    <ListView x:Name="SelectedCarListView" ItemsSource="{x:Bind ViewModel.SelectedCars, Mode=OneWay}" Width="300" MaxHeight="300">
+                        <ListView.ItemTemplate>
+                            <DataTemplate x:DataType="local:Cars">
+                                <Grid Padding="0, 20, 0, 20" BorderThickness="0, 0, 0, 1" BorderBrush="#E1E1E1">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="*" />
+                                        <ColumnDefinition Width="*" />
+                                    </Grid.ColumnDefinitions>
+
+                                    <Grid Grid.Column="0" Margin="0, 0, 10, 0">
+                                        <Image Source="{x:Bind Picture}" Height="100" VerticalAlignment="Center" HorizontalAlignment="Center" Stretch="UniformToFill" />
+
+                                        <Button Click="Delete_Click" Width="30" Height="30" VerticalAlignment="Top" HorizontalAlignment="Right" Margin="5" CornerRadius="15">
+                                            <FontIcon Glyph="&#xEF2C;" FontSize="6" />
+                                        </Button>
+                                    </Grid>
+
+                                    <TextBlock Grid.Column="1" Text="{x:Bind Model}" FontSize="14" FontWeight="Bold" TextWrapping="Wrap" Foreground="#222" />
+                                </Grid>
+                            </DataTemplate>
+                        </ListView.ItemTemplate>
+                    </ListView>
+                </StackPanel>
+
+                <Button Click="Compare_Click" Width="300" HorizontalAlignment="Center" Padding="0, 10, 0, 10" Margin="0, 10, 0, 20" Content="So sánh xe" FontSize="16" FontWeight="Bold" Foreground="#FFF" Background="#4DB848" Style="{StaticResource AccentButtonStyle}"/>
+            </StackPanel>
+        </StackPanel>
+    </ScrollViewer>
+</Page>

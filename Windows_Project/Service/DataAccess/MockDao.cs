@@ -2091,6 +2091,22 @@ public class MockDao : IDao
         }
     }
 
+    public List<Cars> GetCars()
+    {
+        // Tạo danh sách chứa tất cả các xe
+        var allCars = new List<Cars>();
+
+        // Duyệt qua từng nhà sản xuất và lấy xe
+        foreach (var manufacturer in GetManufacturers())
+        {
+            allCars.AddRange(manufacturer.Cars);
+        }
+
+        // Trả về danh sách tất cả các xe
+        return allCars;
+    }
+
+
     public List<Users> GetUsers()
     {
         var users = new List<Users>()
