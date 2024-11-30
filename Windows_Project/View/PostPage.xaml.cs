@@ -413,7 +413,7 @@ namespace Windows_Project
                 var car = new Cars()
                 {
 
-                    Year = YearCarTextBox.Text,
+                    Year = int.Parse(YearCarTextBox.Text),
                     Manufacturer = selectedManufacturer?.ManufacturerName,
                     Model = comboboxModelCar.SelectedItem as string,
                     Price = texboxPrice.Text,

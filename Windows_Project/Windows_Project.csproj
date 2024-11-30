@@ -50,10 +50,10 @@
     <None Remove="Assets\volkswagen_teramont.png" />
     <None Remove="Assets\volkswagen_tiguan.png" />
     <None Remove="Assets\wolkswagen_logo.jpg" />
+    <None Remove="View\CarDetailPage.xaml" />
     <None Remove="View\CarPricePage.xaml" />
     <None Remove="View\ComparisonPage.xaml" />
     <None Remove="View\MainPage.xaml" />
-    <None Remove="View\NewCar.xaml" />
     <None Remove="View\OldCar.xaml" />
     <None Remove="View\PostPage.xaml" />
     <None Remove="View\PricePage.xaml" />
@@ -531,6 +531,9 @@
     <None Update="Assets\previous_icon.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
+    <Page Update="View\CarDetailPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Update="View\ComparisonPage.xaml">
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -538,9 +541,6 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Update="View\OldCar.xaml">
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Update="View\NewCar.xaml">
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Update="View\PostPage.xaml">

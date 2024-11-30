@@ -28,7 +28,14 @@ namespace Windows_Project
         public PricePage()
         {
             this.InitializeComponent();
-            ViewModel = new MainViewModel();
+            //ViewModel = new MainViewModel();
+        }
+
+        protected override void OnNavigatedTo(NavigationEventArgs e)
+        {
+            base.OnNavigatedTo(e);
+            // Lấy ViewModel được truyền từ MainPage
+            ViewModel = e.Parameter as MainViewModel;
         }
 
         private void Back_Click(object sender, RoutedEventArgs e)

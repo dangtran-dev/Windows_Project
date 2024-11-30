@@ -85,7 +85,6 @@ namespace Windows_Project
             }
         }
 
-        // Ph??ng th?c Timer_Tick s? ???c g?i m?i gi�y
         private void Timer_Tick(object sender, object e)
         {
             // Nếu đang không chạy ngược
@@ -121,17 +120,17 @@ namespace Windows_Project
 
         private void OnCarOldButtonClick(object sender, RoutedEventArgs e)
         {
-
+            Frame.Navigate(typeof(OldCar), "old");
         }
 
         private void OnCarNewButtonClick(object sender, RoutedEventArgs e)
         {
-
+            Frame.Navigate(typeof(OldCar), "new");
         }
 
         private void OnPriceButtonClick(object sender, RoutedEventArgs e)
         {
-            Frame.Navigate(typeof(PricePage));
+            Frame.Navigate(typeof(PricePage), this.ViewModel);
         }
 
         private void OnSellCarButtonClick(object sender, RoutedEventArgs e)

@@ -23,9 +23,51 @@ namespace Windows_Project.View
     /// </summary>
     public sealed partial class OldCar : Page
     {
+        public MainViewModel ViewModel { get; set; }
+
         public OldCar()
         {
             this.InitializeComponent();
+            ViewModel = new MainViewModel();
+        }
+
+        protected override void OnNavigatedTo(NavigationEventArgs e)
+        {
+            base.OnNavigatedTo(e);
+
+            if (e.Parameter is string carType)
+            {
+                // Cập nhật tiêu đề và lọc danh sách xe dựa trên tham số
+                if (carType == "old")
+                {
+                    PageTitle.Text = "Ô TÔ CŨ";
+                    ViewModel.FilterCarsByCondition("Xe cũ");
+                }
+                else if (carType == "new")
+                {
+                    PageTitle.Text = "Ô TÔ MỚI";
+                    ViewModel.FilterCarsByCondition("Xe mới");
+                }
+            }
+        }
+
+        private void Back_Click(object sender, RoutedEventArgs e)
+        {
+            if (Frame.CanGoBack)
+            {
+                Frame.GoBack();
+            }
+        }
+
+        private void OnCarItemClick(object sender, ItemClickEventArgs e)
+        {
+            // Lấy thông tin của ô tô được chọn
+            var selectedCar = e.ClickedItem as Cars;
+            if (selectedCar != null)
+            {
+                // Chuyển đến trang chi tiết và truyền dữ liệu
+                Frame.Navigate(typeof(CarDetailPage), selectedCar);
+            }
         }
     }
 }

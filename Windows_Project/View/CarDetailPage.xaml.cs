@@ -16,16 +16,35 @@ using Windows.Foundation.Collections;
 // To learn more about WinUI, the WinUI project structure,
 // and more about our project templates, see: http://aka.ms/winui-project-info.
 
-namespace Windows_Project.View
+namespace Windows_Project
 {
     /// <summary>
     /// An empty page that can be used on its own or navigated to within a Frame.
     /// </summary>
-    public sealed partial class NewCar : Page
+    public sealed partial class CarDetailPage : Page
     {
-        public NewCar()
+        public Cars ViewModel { get; set; }
+
+        public CarDetailPage()
         {
             this.InitializeComponent();
         }
+
+        private void Back_Click(object sender, RoutedEventArgs e)
+        {
+            if (Frame.CanGoBack)
+            {
+                Frame.GoBack();
+            }
+        }
+
+        protected override void OnNavigatedTo(NavigationEventArgs e)
+        {
+            base.OnNavigatedTo(e);
+            // Lấy dữ liệu được truyền vào từ trang trước
+            ViewModel = e.Parameter as Cars;
+            DataContext = ViewModel;
+        }
     }
+
 }
