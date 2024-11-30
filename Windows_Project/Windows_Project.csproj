@@ -53,6 +53,7 @@
     <None Remove="View\CarDetailPage.xaml" />
     <None Remove="View\CarPricePage.xaml" />
     <None Remove="View\ComparisonPage.xaml" />
+    <None Remove="View\ComparisonResultPage.xaml" />
     <None Remove="View\MainPage.xaml" />
     <None Remove="View\OldCar.xaml" />
     <None Remove="View\PostPage.xaml" />
@@ -531,6 +532,9 @@
     <None Update="Assets\previous_icon.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
+    <Page Update="View\ComparisonResultPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Update="View\CarDetailPage.xaml">
       <Generator>MSBuild:Compile</Generator>
     </Page>
