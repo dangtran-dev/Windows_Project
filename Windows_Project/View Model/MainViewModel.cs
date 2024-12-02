@@ -76,9 +76,8 @@ public class MainViewModel : INotifyPropertyChanged
     //phương thức tạo một list chứa thông tin xe và người bán thông qua bài đăng
     public void CreateCarWithUserList(string condition)
     {
-        // xóa danh sách hiện tại
-        CarWithUserList.Clear();
-        // lấy thông tin xe và người bán thông qua bài đăng
+        var newList = new ObservableCollection<CarWithUserItem>();
+
         foreach (var listing in Listings)
         {
             for (int i = 0; i < Users.Count; i++)
@@ -97,7 +96,7 @@ public class MainViewModel : INotifyPropertyChanged
                             }
                         }
                     }
-                    CarWithUserList.Add(new CarWithUserItem
+                    newList.Add(new CarWithUserItem
                     {
                         car = result,
                         user = Users[i]
@@ -106,18 +105,18 @@ public class MainViewModel : INotifyPropertyChanged
                 }
             }
         }
-        //lọc danh sách xe theo điều kiện
+        // Lọc danh sách xe theo điều kiện
         if (condition != null)
         {
-            var items = CarWithUserList
+            var filteredItems = newList
                 .Where(c => c.car.Condition == condition)
                 .ToList();
-            CarWithUserList.Clear();
-            foreach (var item in items)
-            {
-                CarWithUserList.Add(item);
-            }
+
+            newList = new ObservableCollection<CarWithUserItem>(filteredItems);
         }
+
+        CarWithUserList = newList; // Gán danh sách mới
+        OnPropertyChanged(nameof(CarWithUserList)); // Thông báo UI cập nhật
     }
 
     // Thêm phương thức để lọc xe dựa vào Condition

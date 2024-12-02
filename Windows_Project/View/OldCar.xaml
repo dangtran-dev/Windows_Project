@@ -6,8 +6,7 @@
     xmlns:local="using:Windows_Project"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
-    mc:Ignorable="d"
-    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+    mc:Ignorable="d">
 
     <ScrollViewer>
         <Grid Padding="20">
@@ -23,7 +22,7 @@
                 </Grid>
 
                 <!-- Danh sách xe -->
-                <ListView ItemsSource="{x:Bind ViewModel.CarWithUserList, Mode=OneWay}"
+                <ListView x:Name="CarListView"
                           IsItemClickEnabled="True" 
                           ItemClick="OnCarItemClick">
                     <ListView.ItemTemplate>
