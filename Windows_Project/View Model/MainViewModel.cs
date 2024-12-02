@@ -51,9 +51,6 @@ public class MainViewModel : INotifyPropertyChanged
         IsExpanderExpaneds = dao.GetIsExpanderExpaned();
         Users = dao.GetUsers();
         Listings = dao.GetListings();
-        // Khởi tạo danh sách xa và người bán theo điều kiện xe
-        CarWithUserList = new ObservableCollection<CarWithUserItem>();
-    }
 
         // Khởi tạo danh sách xe lọc
         FilteredCars = new ObservableCollection<Cars>();
@@ -71,24 +68,11 @@ public class MainViewModel : INotifyPropertyChanged
         {
             FilteredSearchCars.Add(car);
         }
+
+        // Khởi tạo danh sách xa và người bán theo điều kiện xe
+        CarWithUserList = new ObservableCollection<CarWithUserItem>();
     }
 
-    // Thêm phương thức để lọc xe dựa vào Condition
-    public void FilterCarsByCondition(string condition)
-    {
-        // Xóa danh sách hiện tại
-        FilteredCars.Clear();
-
-        // Lọc dữ liệu từ danh sách Manufacturers
-        var cars = Manufacturers
-            .SelectMany(m => m.Cars) // Lấy tất cả xe từ các hãng sản xuất
-            .Where(c => c.Condition == condition) // Lọc theo điều kiện
-            .ToList();
-
-        // Thêm xe đã lọc vào danh sách
-        foreach (var car in cars)
-        {
-            FilteredCars.Add(car);
     //phương thức tạo một list chứa thông tin xe và người bán thông qua bài đăng
     public void CreateCarWithUserList(string condition)
     {
@@ -133,6 +117,25 @@ public class MainViewModel : INotifyPropertyChanged
             {
                 CarWithUserList.Add(item);
             }
+        }
+    }
+
+    // Thêm phương thức để lọc xe dựa vào Condition
+    public void FilterCarsByCondition(string condition)
+    {
+        // Xóa danh sách hiện tại
+        FilteredCars.Clear();
+
+        // Lọc dữ liệu từ danh sách Manufacturers
+        var cars = Manufacturers
+            .SelectMany(m => m.Cars) // Lấy tất cả xe từ các hãng sản xuất
+            .Where(c => c.Condition == condition) // Lọc theo điều kiện
+            .ToList();
+
+        // Thêm xe đã lọc vào danh sách
+        foreach (var car in cars)
+        {
+            FilteredCars.Add(car);
         }
     }
 
