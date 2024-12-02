@@ -63,7 +63,22 @@
                         </DataTemplate>
                     </ListView.ItemTemplate>
                 </ListView>
+
+
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                    <Button x:Name="PreviousPageButton" Click="PreviousPage_Click" HorizontalAlignment="Left" Margin="10">
+                        <Image Source="../Assets/previous_icon.png" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                    </Button>
+                    <TextBlock x:Name="PageNumberTextBlock" FontSize="16" FontWeight="Bold" 
+                               HorizontalAlignment="Center" VerticalAlignment="Center" 
+                               Margin="0, 10, 0, 10"/>
+                    <Button x:Name="NextPageButton" Click="NextPage_Click" HorizontalAlignment="Right" Margin="10">
+                        <Image Source="../Assets/next_icon.png" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                    </Button>
+                </StackPanel>
             </StackPanel>
+
+            
         </Grid>
     </ScrollViewer>
 </Page>

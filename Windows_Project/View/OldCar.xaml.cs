@@ -23,6 +23,11 @@ namespace Windows_Project.View
     /// </summary>
     public sealed partial class OldCar : Page
     {
+        private int currentPage = 1;
+        private int itemsPerPage = 5;
+
+        public List<Cars> Cars { get; set; }
+
         public MainViewModel ViewModel { get; set; }
 
         public OldCar()
@@ -42,10 +47,14 @@ namespace Windows_Project.View
                 {
                     PageTitle.Text = "Ô TÔ CŨ";
                     ViewModel.CreateCarWithUserList("Xe cũ");
+                    ViewModel.FilterCarsByCondition("Xe cũ");
+                    LoadPage(currentPage);
                 }
                 else if (carType == "new")
                 {
                     PageTitle.Text = "Ô TÔ MỚI";
+                    ViewModel.FilterCarsByCondition("Xe mới");
+                    LoadPage(currentPage);
                     ViewModel.CreateCarWithUserList("Xe mới");
                 }
             }
@@ -68,6 +77,46 @@ namespace Windows_Project.View
                 // Chuyển đến trang chi tiết và truyền dữ liệu
                 Frame.Navigate(typeof(CarDetailPage), selectedCar);
             }
+        }
+
+
+        private void LoadPage(int page)
+        {
+            int startIndex = (page - 1) * itemsPerPage;
+            var carsToDisplay = ViewModel.FilteredCars.Skip(startIndex).Take(itemsPerPage).ToList();
+
+            PageNumberTextBlock.Text = $"Trang {page}";
+
+            CarListView.ItemsSource = carsToDisplay;
+
+
+            UpdateNavigationButtons();
+        }
+
+        private void PreviousPage_Click(object sender, RoutedEventArgs e)
+        {
+            if (currentPage > 1)
+            {
+                currentPage--;
+                LoadPage(currentPage);
+            }
+        }
+
+        private void NextPage_Click(object sender, RoutedEventArgs e)
+        {
+            int totalPages = (int)Math.Ceiling((double)ViewModel.FilteredCars.Count / itemsPerPage);
+            if (currentPage < totalPages)
+            {
+                currentPage++;
+                LoadPage(currentPage);
+            }
+        }
+
+        private void UpdateNavigationButtons()
+        {
+            int totalPages = (int)Math.Ceiling((double)ViewModel.FilteredCars.Count / itemsPerPage);
+            PreviousPageButton.IsEnabled = currentPage > 1;
+            NextPageButton.IsEnabled = currentPage < totalPages;
         }
     }
 }

@@ -11,7 +11,16 @@
                 <Button Click="Back_Click" VerticalAlignment="Center">
                     <FontIcon Glyph="&#xE830;" Foreground="Gray" HorizontalAlignment="Center" VerticalAlignment="Center" />
                 </Button>
+                
                 <TextBlock Text="Name's Car" FontSize="26" FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Center" />
+
+                <HyperlinkButton x:Name="Favourite" VerticalAlignment="Center" HorizontalAlignment="Right">
+                    <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
+                        <FontIcon Glyph="&#xEB51;" Foreground="Black"/>
+                        <TextBlock Text="Lưu tin" VerticalAlignment="Center" Margin="10, 0, 0, 0"/>
+                    </StackPanel>
+                </HyperlinkButton>
+                
             </Grid>
 
             <Grid HorizontalAlignment="Center">
