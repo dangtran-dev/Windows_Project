@@ -21,10 +21,6 @@ public class MainViewModel : INotifyPropertyChanged
     public List<Listings> Listings { get; set; }
     // Danh sách chứa thông tin xe và người bán đã lọc theo điều kiện
     public ObservableCollection<CarWithUserItem> CarWithUserList { get; set; }
-
-    // Thêm danh sách xe đã lọc
-    public ObservableCollection<Cars> FilteredCars { get; set; }
-
     // Thêm danh sách xe đã chọn để so sánh
     public ObservableCollection<Cars> SelectedCars { get; set; }
 
@@ -52,9 +48,6 @@ public class MainViewModel : INotifyPropertyChanged
         Users = dao.GetUsers();
         Listings = dao.GetListings();
 
-        // Khởi tạo danh sách xe lọc
-        FilteredCars = new ObservableCollection<Cars>();
-
         // Khởi tạo danh sách xe đã chọn
         SelectedCars = new ObservableCollection<Cars>();
         SelectedCars.CollectionChanged += SelectedCars_CollectionChanged;
@@ -74,7 +67,7 @@ public class MainViewModel : INotifyPropertyChanged
     }
 
     //phương thức tạo một list chứa thông tin xe và người bán thông qua bài đăng
-    public void CreateCarWithUserList(string condition)
+    public void CreateCarWithUserList(string condition, string manufacturer, string model)
     {
         var newList = new ObservableCollection<CarWithUserItem>();
 
@@ -89,7 +82,7 @@ public class MainViewModel : INotifyPropertyChanged
                     {
                         foreach (var c in m.Cars)
                         {
-                            if (c.ID == listing.CarID)
+                            if (c.CarID == listing.CarID)
                             {
                                 result = c;
                                 break;
@@ -108,34 +101,27 @@ public class MainViewModel : INotifyPropertyChanged
         // Lọc danh sách xe theo điều kiện
         if (condition != null)
         {
-            var filteredItems = newList
-                .Where(c => c.car.Condition == condition)
-                .ToList();
-
-            newList = new ObservableCollection<CarWithUserItem>(filteredItems);
+            newList = new ObservableCollection<CarWithUserItem>(
+                 newList.Where(c => c.car.Condition == condition)
+            );
+        }
+        // Nếu manufacturer không rỗng, lọc theo nhà sản xuất
+        if (!string.IsNullOrEmpty(manufacturer))
+        {
+            newList = new ObservableCollection<CarWithUserItem>(
+                newList.Where(c => c.car.Manufacturer == manufacturer)
+            );
+        }
+        // Nếu model không rỗng, lọc theo dòng xe
+        if (!string.IsNullOrEmpty(model))
+        {
+            newList = new ObservableCollection<CarWithUserItem>(
+                newList.Where(c => c.car.Model == model)
+            );
         }
 
         CarWithUserList = newList; // Gán danh sách mới
         OnPropertyChanged(nameof(CarWithUserList)); // Thông báo UI cập nhật
-    }
-
-    // Thêm phương thức để lọc xe dựa vào Condition
-    public void FilterCarsByCondition(string condition)
-    {
-        // Xóa danh sách hiện tại
-        FilteredCars.Clear();
-
-        // Lọc dữ liệu từ danh sách Manufacturers
-        var cars = Manufacturers
-            .SelectMany(m => m.Cars) // Lấy tất cả xe từ các hãng sản xuất
-            .Where(c => c.Condition == condition) // Lọc theo điều kiện
-            .ToList();
-
-        // Thêm xe đã lọc vào danh sách
-        foreach (var car in cars)
-        {
-            FilteredCars.Add(car);
-        }
     }
 
     private void SelectedCars_CollectionChanged(object sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e)

@@ -482,7 +482,7 @@ namespace Windows_Project
                 var car = new Cars()
                 {
                     // vì lúc này xe chưa được lưu nên trong data chỉ có X xe, khi lưu thì sẽ có X+1 xe nên ID là X+2
-                    ID = ViewModel.Manufacturers.SelectMany(m => m.Cars).Count() + 2,
+                    CarID = ViewModel.Manufacturers.SelectMany(m => m.Cars).Count() + 2,
                     Year = int.Parse(YearCarTextBox.Text),
                     Manufacturer = selectedManufacturer?.ManufacturerName,
                     Model = comboboxModelCar.SelectedItem as string,
@@ -520,7 +520,7 @@ namespace Windows_Project
                     UserID = userIndex + 1,
                     Status = texBoxTitle.Text,
                     Description = textDescription.Text,
-                    CreateAt = DateTime.Now.ToString("dd/MM/yyyy")
+                    DatePosted = DateTime.Now.ToString("dd/MM/yyyy")
                 };
                 await SaveListing(listing);
 

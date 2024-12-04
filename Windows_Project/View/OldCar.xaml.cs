@@ -34,26 +34,57 @@ namespace Windows_Project.View
         {
             this.InitializeComponent();
             ViewModel = new MainViewModel();
+            Select_Car_Company.ItemsSource = ViewModel.Manufacturers;
+            Select_Car_Company.DisplayMemberPath = "ManufacturerName";
+        }
+        private void Old_Car_Checked(object sender, RoutedEventArgs e)
+        {
+            New_Car.IsChecked = false;
+        }
+
+        private void New_Car_Checked(object sender, RoutedEventArgs e)
+        {
+            Old_Car.IsChecked = false;
+        }
+
+        private void Select_Car_Company_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            var selectedManufacturer = Select_Car_Company.SelectedItem as Manufacturers;
+            if (selectedManufacturer != null)
+            {
+                Select_Car_Model.ItemsSource = selectedManufacturer.Cars.Select(car => car.Model).Distinct().ToList();
+            }
         }
 
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
             base.OnNavigatedTo(e);
 
-            if (e.Parameter is string carType)
+            if (e.Parameter is string parameter)
             {
-                // Lọc danh sách dựa trên tham số
-                if (carType == "old")
+                var args = parameter.Split('|'); // Phân tách chuỗi truyền vào
+
+                string condition = args[0];
+                string manufacturer = args.Length > 1 ? args[1] : null;
+                string model = args.Length > 2 ? args[2] : null;
+
+                // Lọc danh sách dựa trên các tham số
+                if (condition == "Xe cũ")
                 {
                     PageTitle.Text = "Ô TÔ CŨ";
-                    ViewModel.CreateCarWithUserList("Xe cũ");
                 }
-                else if (carType == "new")
+                else if (condition == "Xe mới")
                 {
                     PageTitle.Text = "Ô TÔ MỚI";
-                    ViewModel.CreateCarWithUserList("Xe mới");
                 }
 
+                ViewModel.CreateCarWithUserList(condition, manufacturer, model);
+
+                // nếu không có kết quả nào phù hợp
+                if (ViewModel.CarWithUserList.Count == 0)
+                {
+                    noResultTextBlock.Visibility = Visibility.Visible;
+                }
                 // Bắt đầu phân trang từ trang đầu tiên
                 currentPage = 1;
                 LoadPage(currentPage);
@@ -118,6 +149,11 @@ namespace Windows_Project.View
             int totalPages = (int)Math.Ceiling((double)ViewModel.CarWithUserList.Count / itemsPerPage);
             PreviousPageButton.IsEnabled = currentPage > 1;
             NextPageButton.IsEnabled = currentPage < totalPages;
+        }
+
+        private void Search_Car_Click(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 }

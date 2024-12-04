@@ -30,7 +30,7 @@ public class MockDao : IDao
                 {
                     new Cars()
                     {
-                        ID = 1,
+                        CarID = 1,
                         Model = "Toyota Vios",
                         Manufacturer = "Toyota",
                         Price = "458.000.000 VNĐ",
@@ -38,6 +38,7 @@ public class MockDao : IDao
                         Condition = "Xe cũ",
                         Year = 2022,
                         City = "Hà Nội",
+                        District = "Ba Đình",
                         Style = "Sedan",
                         Origin = "Trong nước",
                         Mileage = 75000,
@@ -46,7 +47,7 @@ public class MockDao : IDao
                     },
                     new Cars()
                     {
-                        ID = 2,
+                        CarID = 2,
                         Model = "Toyota Raize",
                         Manufacturer = "Toyota",
                         Price = "498.000.000 VNĐ",
@@ -57,20 +58,24 @@ public class MockDao : IDao
                         Origin = "Trong nước",
                         Mileage = 75000,
                         Gear = "Số tự động",
-                        FuelType = "Máy xăng"
+                        FuelType = "Máy xăng",
+                        City = "Hà Nội",
+                        District = "Hoàn Kiếm"
                     },
                     new Cars()
                     {
-                        ID = 3,
+                        CarID = 3,
                         Model = "Toyota Yaris Cross",
                         Manufacturer = "Toyota",
                         Price = "650.000.000 VNĐ",
                         Picture = "../../Assets/toyota_yaris_cross.png",
-                        Condition = "Xe cũ"
+                        Condition = "Xe cũ",
+                        City = "Hồ Chí Minh",
+                        District = "Quận 1"
                     },
                     new Cars()
                     {
-                        ID = 4,
+                        CarID = 4,
                         Model = "Toyota Innova Cross",
                         Manufacturer = "Toyota",
                         Price = "810.000.000 VNĐ",
@@ -81,11 +86,13 @@ public class MockDao : IDao
                         Origin = "Trong nước",
                         Mileage = 75000,
                         Gear = "Số tự động",
-                        FuelType = "Máy xăng"
+                        FuelType = "Máy xăng",
+                        City = "Đà Nẵng",
+                        District = "Hải Châu"
                     },
                     new Cars()
                     {
-                        ID = 5,
+                        CarID = 5,
                         Model = "Toyota Innova",
                         Manufacturer = "Toyota",
                         Price = "755.000.000 VNĐ",
@@ -96,11 +103,13 @@ public class MockDao : IDao
                         Origin = "Trong nước",
                         Mileage = 75000,
                         Gear = "Số tự động",
-                        FuelType = "Máy xăng"
+                        FuelType = "Máy xăng",
+                        City = "Hà Nội",
+                        District = "Ba Đình"
                     },
                     new Cars()
                     {
-                        ID = 6,
+                        CarID = 6,
                         Model = "Toyota Fortuner",
                         Manufacturer = "Toyota",
                         Price = "1.055.000.000 VNĐ",
@@ -111,11 +120,13 @@ public class MockDao : IDao
                         Origin = "Trong nước",
                         Mileage = 75000,
                         Gear = "Số tự động",
-                        FuelType = "Máy xăng"
+                        FuelType = "Máy xăng",
+                        City = "Hồ Chí Minh",
+                        District = "Tân Bình"
                     },
                     new Cars()
                     {
-                        ID = 7,
+                        CarID = 7,
                         Model = "Toyota Veloz Cross",
                         Manufacturer = "Toyota",
                         Price = "638.000.000 VNĐ",
@@ -126,11 +137,13 @@ public class MockDao : IDao
                         Origin = "Trong nước",
                         Mileage = 75000,
                         Gear = "Số tự động",
-                        FuelType = "Máy xăng"
+                        FuelType = "Máy xăng",
+                        City = "Đà Nẵng",
+                        District = "Thanh Khê"
                     },
                     new Cars()
                     {
-                        ID = 8,
+                        CarID = 8,
                         Model = "Toyota Corolla Cross",
                         Manufacturer = "Toyota",
                         Price = "760.000.000 VNĐ",
@@ -141,11 +154,13 @@ public class MockDao : IDao
                         Origin = "Trong nước",
                         Mileage = 75000,
                         Gear = "Số tự động",
-                        FuelType = "Máy xăng"
+                        FuelType = "Máy xăng",
+                        City = "Hà Nội",
+                        District = "Cầu Giấy"
                     },
-                     new Cars()
+                    new Cars()
                     {
-                        ID = 9,
+                        CarID = 9,
                         Model = "Toyota Corolla Altis",
                         Manufacturer = "Toyota",
                         Price = "725.000.000 VNĐ",
@@ -156,11 +171,13 @@ public class MockDao : IDao
                         Origin = "Trong nước",
                         Mileage = 75000,
                         Gear = "Số tự động",
-                        FuelType = "Máy xăng"
+                        FuelType = "Máy xăng",
+                        City = "Hồ Chí Minh",
+                        District = "Phú Nhuận"
                     },
                     new Cars()
                     {
-                        ID = 10,
+                        CarID = 10,
                         Model = "Toyota Wigo",
                         Manufacturer = "Toyota",
                         Price = "360.000.000 VNĐ",
@@ -171,12 +188,14 @@ public class MockDao : IDao
                         Origin = "Trong nước",
                         Mileage = 75000,
                         Gear = "Số tự động",
-                        FuelType = "Máy xăng"
+                        FuelType = "Máy xăng",
+                        City = "Đà Nẵng",
+                        District = "Ngũ Hành Sơn"
                     },
                     new Cars()
                     {
-                        ID = 11,
-                        Model = "Toyota Avanza​ Premio",
+                        CarID = 11,
+                        Model = "Toyota Avanza Premio",
                         Manufacturer = "Toyota",
                         Price = "558.000.000 VNĐ",
                         Picture = "../../Assets/toyota_avanza_premio.png",
@@ -186,11 +205,13 @@ public class MockDao : IDao
                         Origin = "Trong nước",
                         Mileage = 75000,
                         Gear = "Số tự động",
-                        FuelType = "Máy xăng"
+                        FuelType = "Máy xăng",
+                        City = "Hà Nội",
+                        District = "Hai Bà Trưng"
                     },
                     new Cars()
                     {
-                        ID = 12,
+                        CarID = 12,
                         Model = "Toyota Camry",
                         Manufacturer = "Toyota",
                         Price = "1.105.000.000 VNĐ",
@@ -201,11 +222,13 @@ public class MockDao : IDao
                         Origin = "Trong nước",
                         Mileage = 75000,
                         Gear = "Số tự động",
-                        FuelType = "Máy xăng"
+                        FuelType = "Máy xăng",
+                        City = "Hồ Chí Minh",
+                        District = "Quận 7"
                     },
                     new Cars()
                     {
-                        ID = 13,
+                        CarID = 13,
                         Model = "Toyota Hilux",
                         Manufacturer = "Toyota",
                         Price = "668.000.000 VNĐ",
@@ -216,11 +239,13 @@ public class MockDao : IDao
                         Origin = "Trong nước",
                         Mileage = 75000,
                         Gear = "Số tự động",
-                        FuelType = "Máy xăng"
+                        FuelType = "Máy xăng",
+                        City = "Đà Nẵng",
+                        District = "Sơn Trà"
                     },
                     new Cars()
                     {
-                        ID = 14,
+                        CarID = 14,
                         Model = "Toyota Land Cruiser",
                         Manufacturer = "Toyota",
                         Price = "4.286.000.000 VNĐ",
@@ -231,11 +256,13 @@ public class MockDao : IDao
                         Origin = "Trong nước",
                         Mileage = 75000,
                         Gear = "Số tự động",
-                        FuelType = "Máy xăng"
+                        FuelType = "Máy xăng",
+                        City = "Hà Nội",
+                        District = "Đống Đa"
                     },
                     new Cars()
                     {
-                        ID = 15,
+                        CarID = 15,
                         Model = "Toyota Land Cruiser Prado",
                         Manufacturer = "Toyota",
                         Price = "3.460.000.000 VNĐ",
@@ -246,7 +273,9 @@ public class MockDao : IDao
                         Origin = "Trong nước",
                         Mileage = 75000,
                         Gear = "Số tự động",
-                        FuelType = "Máy xăng"
+                        FuelType = "Máy xăng",
+                        City = "Hồ Chí Minh",
+                        District = "Bình Thạnh"
                     }
                 }
             },
@@ -258,7 +287,7 @@ public class MockDao : IDao
                 {
                     new Cars()
                     {
-                        ID = 16,
+                        CarID = 16,
                         Model = "Volkswagen Teramont",
                         Manufacturer = "Wolkswagen",
                         Price = "2.399.000.000 VNĐ",
@@ -269,11 +298,13 @@ public class MockDao : IDao
                         Origin = "Trong nước",
                         Mileage = 75000,
                         Gear = "Số tự động",
-                        FuelType = "Máy xăng"
+                        FuelType = "Máy xăng",
+                        City = "Hồ Chí Minh",
+                        District = "Tân Phú"
                     },
                     new Cars()
                     {
-                        ID = 17,
+                        CarID = 17,
                         Model = "Volkswagen Tiguan",
                         Manufacturer = "Wolkswagen",
                         Price = "1.688.000.000 VNĐ",
@@ -284,11 +315,13 @@ public class MockDao : IDao
                         Origin = "Trong nước",
                         Mileage = 75000,
                         Gear = "Số tự động",
-                        FuelType = "Máy xăng"
+                        FuelType = "Máy xăng",
+                        City = "Hà Nội",
+                        District = "Cầu Giấy"
                     },
                     new Cars()
                     {
-                        ID = 18,
+                        CarID = 18,
                         Model = "Volkswagen Passat",
                         Manufacturer = "Wolkswagen",
                         Price = "1.399.000.000 VNĐ",
@@ -299,11 +332,14 @@ public class MockDao : IDao
                         Origin = "Nhập khẩu",
                         Mileage = 75000,
                         Gear = "Số tự động",
-                        FuelType = "Máy xăng"
+                        FuelType = "Máy xăng",
+                        City = "Đà Nẵng",
+                        District = "Hải Châu"
+
                     },
                     new Cars()
                     {
-                        ID = 19,
+                        CarID = 19,
                         Model = "Volkswagen Polo",
                         Manufacturer = "Wolkswagen",
                         Price = "699.000.000 VNĐ",
@@ -314,7 +350,9 @@ public class MockDao : IDao
                         Origin = "Nhập khẩu",
                         Mileage = 75000,
                         Gear = "Số tự động",
-                        FuelType = "Máy xăng"
+                        FuelType = "Máy xăng",
+                        City = "Hồ Chí Minh",
+                        District = "Quận 1"
                     },
                 }
             },
@@ -326,16 +364,24 @@ public class MockDao : IDao
                 {
                     new Cars()
                     {
-                        ID = 20,
+                        CarID = 20,
                         Model = "Ford Ranger",
                         Manufacturer = "Ford",
                         Price = "699.000.000 VNĐ",
                         Picture = "../../Assets/ford_ranger.png",
-                        Condition = "Xe cũ"
+                        Condition = "Xe cũ",
+                        Year = 2022,
+                        Style = "Sedan",
+                        Origin = "Nhập khẩu",
+                        Mileage = 75000,
+                        Gear = "Số tự động",
+                        FuelType = "Máy xăng",
+                        City = "Hà Nội",
+                        District = "Ba Đình"
                     },
                     new Cars()
                     {
-                        ID = 21,
+                        CarID = 21,
                         Model = "Ford Ranger Raptor",
                         Manufacturer = "Ford",
                         Price = "1.299.000.000 VNĐ",
@@ -346,11 +392,13 @@ public class MockDao : IDao
                         Origin = "Nhập khẩu",
                         Mileage = 75000,
                         Gear = "Số tự động",
-                        FuelType = "Máy xăng"
+                        FuelType = "Máy xăng",
+                        City = "Hồ Chí Minh",
+                        District = "Tân Bình"
                     },
                     new Cars()
                     {
-                        ID = 22,
+                        CarID = 22,
                         Model = "Ford Everest",
                         Manufacturer = "Ford",
                         Price = "1.099.000.000 VNĐ",
@@ -361,11 +409,13 @@ public class MockDao : IDao
                         Origin = "Nhập khẩu",
                         Mileage = 75000,
                         Gear = "Số tự động",
-                        FuelType = "Máy xăng"
+                        FuelType = "Máy xăng",
+                        City = "Đà Nẵng",
+                        District = "Hải Châu"
                     },
                     new Cars()
                     {
-                        ID = 23,
+                        CarID = 23,
                         Model = "Ford Territory",
                         Manufacturer = "Ford",
                         Price = "799.000.000 VNĐ",
@@ -376,11 +426,13 @@ public class MockDao : IDao
                         Origin = "Nhập khẩu",
                         Mileage = 75000,
                         Gear = "Số tự động",
-                        FuelType = "Máy xăng"
+                        FuelType = "Máy xăng",
+                        City = "Hồ Chí Minh",
+                        District = "Quận 7"
                     },
                     new Cars()
                     {
-                        ID = 24,
+                        CarID = 24,
                         Model = "Ford Explorer",
                         Manufacturer = "Ford",
                         Price = "2.099.000.000 VNĐ",
@@ -391,11 +443,13 @@ public class MockDao : IDao
                         Origin = "Nhập khẩu",
                         Mileage = 75000,
                         Gear = "Số tự động",
-                        FuelType = "Máy xăng"
+                        FuelType = "Máy xăng",
+                        City = "Hà Nội",
+                        District = "Cầu Giấy"
                     },
                     new Cars()
                     {
-                        ID = 25,
+                        CarID = 25,
                         Model = "Ford Transit",
                         Manufacturer = "Ford",
                         Price = "905.000.000 VNĐ",
@@ -406,7 +460,9 @@ public class MockDao : IDao
                         Origin = "Nhập khẩu",
                         Mileage = 75000,
                         Gear = "Số tự động",
-                        FuelType = "Máy xăng"
+                        FuelType = "Máy xăng",
+                        City = "Đà Nẵng",
+                        District = "Sơn Trà"
                     }
                 }
             },
@@ -418,7 +474,7 @@ public class MockDao : IDao
                 {
                     new Cars()
                     {
-                        ID = 26,
+                        CarID = 26,
                         Model = "Chevrolet Spark",
                         Manufacturer = "Chevrolet",
                         Price = "369.000.000 VNĐ",
@@ -429,7 +485,9 @@ public class MockDao : IDao
                         Origin = "Nhập khẩu",
                         Mileage = 75000,
                         Gear = "Số tự động",
-                        FuelType = "Máy xăng"
+                        FuelType = "Máy xăng",
+                        City = "Hà Nội",
+                        District = "Ba Đình"
                     }
                 }
             },
@@ -441,7 +499,7 @@ public class MockDao : IDao
                 {
                     new Cars()
                     {
-                        ID = 27,
+                        CarID = 27,
                         Model = "Nissan Kicks e-power",
                         Manufacturer = "Nissan",
                         Price = "789.000.000 VNĐ",
@@ -452,11 +510,13 @@ public class MockDao : IDao
                         Origin = "Nhập khẩu",
                         Mileage = 75000,
                         Gear = "Số tự động",
-                        FuelType = "Máy xăng"
+                        FuelType = "Máy xăng",
+                        City = "Hồ Chí Minh",
+                        District = "Tân Bình"
                     },
                     new Cars()
                     {
-                        ID = 28,
+                        CarID = 28,
                         Model = "Nissan Almera",
                         Manufacturer = "Nissan",
                         Price = "539.000.000 VNĐ",
@@ -467,11 +527,13 @@ public class MockDao : IDao
                         Origin = "Nhập khẩu",
                         Mileage = 75000,
                         Gear = "Số tự động",
-                        FuelType = "Máy xăng"
+                        FuelType = "Máy xăng",
+                        City = "Đà Nẵng",
+                        District = "Hải Châu"
                     },
                     new Cars()
                     {
-                        ID = 29,
+                        CarID = 29,
                         Model = "Nissan Navara",
                         Manufacturer = "Nissan",
                         Price = "685.000.000 VNĐ",
@@ -482,11 +544,13 @@ public class MockDao : IDao
                         Origin = "Nhập khẩu",
                         Mileage = 75000,
                         Gear = "Số tự động",
-                        FuelType = "Máy xăng"
+                        FuelType = "Máy xăng",
+                        City = "Hồ Chí Minh",
+                        District = "Quận 7"
                     },
                     new Cars()
                     {
-                        ID = 30,
+                        CarID = 30,
                         Model = "Nissan Terra",
                         Manufacturer = "Nissan",
                         Price = "848.000.000 VNĐ",
@@ -497,11 +561,13 @@ public class MockDao : IDao
                         Origin = "Nhập khẩu",
                         Mileage = 75000,
                         Gear = "Số tự động",
-                        FuelType = "Máy xăng"
+                        FuelType = "Máy xăng",
+                        City = "Hà Nội",
+                        District = "Cầu Giấy"
                     },
                     new Cars()
                     {
-                        ID = 31,
+                        CarID = 31,
                         Model = "Nissan X-Trail",
                         Manufacturer = "Nissan",
                         Price = "839.000.000 VNĐ",
@@ -512,7 +578,9 @@ public class MockDao : IDao
                         Origin = "Nhập khẩu",
                         Mileage = 75000,
                         Gear = "Số tự động",
-                        FuelType = "Máy xăng"
+                        FuelType = "Máy xăng",
+                        City = "Đà Nẵng",
+                        District = "Sơn Trà"
                     }
                 }
             },
@@ -524,7 +592,7 @@ public class MockDao : IDao
                 {
                     new Cars()
                     {
-                        ID = 32,
+                        CarID = 32,
                         Model = "Hyundai Venue",
                         Manufacturer = "Hyundai",
                         Price = "499.000.000 VNĐ",
@@ -535,11 +603,13 @@ public class MockDao : IDao
                         Origin = "Nhập khẩu",
                         Mileage = 75000,
                         Gear = "Số tự động",
-                        FuelType = "Máy xăng"
+                        FuelType = "Máy xăng",
+                        City = "Hà Nội",
+                        District = "Ba Đình"
                     },
                     new Cars()
                     {
-                        ID = 33,
+                        CarID = 33,
                         Model = "Hyundai Custin​​",
                         Manufacturer = "Hyundai",
                         Price = "820.000.000 VNĐ",
@@ -550,11 +620,13 @@ public class MockDao : IDao
                         Origin = "Nhập khẩu",
                         Mileage = 75000,
                         Gear = "Số tự động",
-                        FuelType = "Máy xăng"
+                        FuelType = "Máy xăng",
+                        City = "Hồ Chí Minh",
+                        District = "Tân Bình"
                     },
                     new Cars()
                     {
-                        ID = 34,
+                        CarID = 34,
                         Model = "Hyundai Palisade",
                         Manufacturer = "Hyundai",
                         Price = "1.469.000.000 VNĐ",
@@ -565,11 +637,13 @@ public class MockDao : IDao
                         Origin = "Nhập khẩu",
                         Mileage = 75000,
                         Gear = "Số tự động",
-                        FuelType = "Máy xăng"
+                        FuelType = "Máy xăng",
+                        City = "Đà Nẵng",
+                        District = "Hải Châu"
                     },
                     new Cars()
                     {
-                        ID = 35,
+                        CarID = 35,
                         Model = "Hyundai Accent",
                         Manufacturer = "Hyundai",
                         Price = "439.000.000 VNĐ",
@@ -580,11 +654,13 @@ public class MockDao : IDao
                         Origin = "Nhập khẩu",
                         Mileage = 75000,
                         Gear = "Số tự động",
-                        FuelType = "Máy xăng"
+                        FuelType = "Máy xăng",
+                        City = "Hồ Chí Minh",
+                        District = "Thủ Đức"
                     },
                     new Cars()
                     {
-                        ID = 36,
+                        CarID = 36,
                         Model = "Hyundai SantaFe",
                         Manufacturer = "Hyundai",
                         Price = "1.069.000.000 VNĐ",
@@ -595,11 +671,13 @@ public class MockDao : IDao
                         Origin = "Nhập khẩu",
                         Mileage = 75000,
                         Gear = "Số tự động",
-                        FuelType = "Máy xăng"
+                        FuelType = "Máy xăng",
+                        City = "Đà Nẵng",
+                        District = "Sơn Trà"
                     },
                     new Cars()
                     {
-                        ID = 37,
+                        CarID = 37,
                         Model = "Hyundai Creta",
                         Manufacturer = "Hyundai",
                         Price = "599.000.000 VNĐ",
@@ -610,11 +688,13 @@ public class MockDao : IDao
                         Origin = "Nhập khẩu",
                         Mileage = 75000,
                         Gear = "Số tự động",
-                        FuelType = "Máy xăng"
+                        FuelType = "Máy xăng",
+                        City = "Hà Nội",
+                        District = "Cầu Giấy"
                     },
                     new Cars()
                     {
-                        ID = 38,
+                        CarID = 38,
                         Model = "Hyundai Stargazer",
                         Manufacturer = "Hyundai",
                         Price = "489.000.000 VNĐ",
@@ -625,11 +705,13 @@ public class MockDao : IDao
                         Origin = "Nhập khẩu",
                         Mileage = 75000,
                         Gear = "Số tự động",
-                        FuelType = "Máy xăng"
+                        FuelType = "Máy xăng",
+                        City = "Hồ Chí Minh",
+                        District = "Gò Vấp"
                     },
                     new Cars()
                     {
-                        ID = 39,
+                        CarID = 39,
                         Model = "Hyundai Kona",
                         Manufacturer = "Hyundai",
                         Price = "636.000.000 VNĐ",
@@ -640,11 +722,13 @@ public class MockDao : IDao
                         Origin = "Nhập khẩu",
                         Mileage = 75000,
                         Gear = "Số tự động",
-                        FuelType = "Máy xăng"
+                        FuelType = "Máy xăng",
+                        City = "Đà Nẵng",
+                        District = "Hải Châu"
                     },
                     new Cars()
                     {
-                        ID = 40,
+                        CarID = 40,
                         Model = "Hyundai Grand i10",
                         Manufacturer = "Hyundai",
                         Price = "360.000.000 VNĐ",
@@ -655,11 +739,13 @@ public class MockDao : IDao
                         Origin = "Nhập khẩu",
                         Mileage = 75000,
                         Gear = "Số tự động",
-                        FuelType = "Máy xăng"
+                        FuelType = "Máy xăng",
+                        City = "Hà Nội",
+                        District = "Ba Đình"
                     },
                     new Cars()
                     {
-                        ID = 41,
+                        CarID = 41,
                         Model = "Hyundai Elantra",
                         Manufacturer = "Hyundai",
                         Price = "579.000.000 VNĐ",
@@ -670,11 +756,13 @@ public class MockDao : IDao
                         Origin = "Nhập khẩu",
                         Mileage = 75000,
                         Gear = "Số tự động",
-                        FuelType = "Máy xăng"
+                        FuelType = "Máy xăng",
+                        City = "Hồ Chí Minh",
+                        District = "Tân Bình"
                     },
                     new Cars()
                     {
-                        ID = 42,
+                        CarID = 42,
                         Model = "Hyundai Tucson",
                         Manufacturer = "Hyundai",
                         Price = "769.000.000 VNĐ",
@@ -685,11 +773,13 @@ public class MockDao : IDao
                         Origin = "Nhập khẩu",
                         Mileage = 75000,
                         Gear = "Số tự động",
-                        FuelType = "Máy xăng"
+                        FuelType = "Máy xăng",
+                        City = "Đà Nẵng",
+                        District = "Hải Châu"
                     },
                     new Cars()
                     {
-                        ID = 43,
+                        CarID = 43,
                         Model = "Hyundai IONIQ 5",
                         Manufacturer = "Hyundai",
                         Price = "1.300.000.000 VNĐ",
@@ -700,11 +790,13 @@ public class MockDao : IDao
                         Origin = "Nhập khẩu",
                         Mileage = 75000,
                         Gear = "Số tự động",
-                        FuelType = "Máy xăng"
+                        FuelType = "Máy xăng",
+                        City = "Hồ Chí Minh",
+                        District = "Bình Thạnh"
                     },
                     new Cars()
                     {
-                        ID = 44,
+                        CarID = 44,
                         Model = "Hyundai Solati",
                         Manufacturer = "Hyundai",
                         Price = "1.080.000.000 VNĐ",
@@ -715,7 +807,9 @@ public class MockDao : IDao
                         Origin = "Nhập khẩu",
                         Mileage = 75000,
                         Gear = "Số tự động",
-                        FuelType = "Máy xăng"
+                        FuelType = "Máy xăng",
+                        City = "Đà Nẵng",
+                        District = "Sơn Trà"
                     }
                 }
             },
@@ -727,7 +821,7 @@ public class MockDao : IDao
                 {
                     new Cars()
                     {
-                        ID = 45,
+                        CarID = 45,
                         Model = "KIA Carens",
                         Manufacturer = "Kia",
                         Price = "589.000.000 VNĐ",
@@ -738,11 +832,13 @@ public class MockDao : IDao
                         Origin = "Trong nước",
                         Mileage = 75000,
                         Gear = "Số tự động",
-                        FuelType = "Máy xăng"
+                        FuelType = "Máy xăng",
+                        City = "Hà Nội",
+                        District = "Ba Đình"
                     },
                     new Cars()
                     {
-                        ID = 46,
+                        CarID = 46,
                         Model = "KIA Sportage",
                         Manufacturer = "Kia",
                         Price = "779.000.000 VNĐ",
@@ -753,11 +849,13 @@ public class MockDao : IDao
                         Origin = "Trong nước",
                         Mileage = 75000,
                         Gear = "Số tự động",
-                        FuelType = "Máy xăng"
+                        FuelType = "Máy xăng",
+                        City = "Hồ Chí Minh",
+                        District = "Tân Bình"
                     },
                     new Cars()
                     {
-                        ID = 47,
+                        CarID = 47,
                         Model = "KIA Carnival",
                         Manufacturer = "Kia",
                         Price = "1.299.000.000 VNĐ",
@@ -768,11 +866,13 @@ public class MockDao : IDao
                         Origin = "Trong nước",
                         Mileage = 75000,
                         Gear = "Số tự động",
-                        FuelType = "Máy xăng"
+                        FuelType = "Máy xăng",
+                        City = "Đà Nẵng",
+                        District = "Hải Châu"
                     },
                     new Cars()
                     {
-                        ID = 48,
+                        CarID = 48,
                         Model = "KIA Sonet",
                         Manufacturer = "Kia",
                         Price = "539.000.000 VNĐ",
@@ -783,11 +883,13 @@ public class MockDao : IDao
                         Origin = "Trong nước",
                         Mileage = 75000,
                         Gear = "Số tự động",
-                        FuelType = "Máy xăng"
+                        FuelType = "Máy xăng",
+                        City = "Hồ Chí Minh",
+                        District = "Quận 7"
                     },
                     new Cars()
                     {
-                        ID = 49,
+                        CarID = 49,
                         Model = "KIA K5",
                         Manufacturer = "Kia",
                         Price = "859.000.000 VNĐ",
@@ -798,11 +900,13 @@ public class MockDao : IDao
                         Origin = "Trong nước",
                         Mileage = 75000,
                         Gear = "Số tự động",
-                        FuelType = "Máy xăng"
+                        FuelType = "Máy xăng",
+                        City = "Hà Nội",
+                        District = "Cầu Giấy"
                     },
                     new Cars()
                     {
-                        ID = 50,
+                        CarID = 50,
                         Model = "KIA Morning",
                         Manufacturer = "Kia",
                         Price = "349.000.000 VNĐ",
@@ -813,11 +917,13 @@ public class MockDao : IDao
                         Origin = "Trong nước",
                         Mileage = 75000,
                         Gear = "Số tự động",
-                        FuelType = "Máy xăng"
+                        FuelType = "Máy xăng",
+                        City = "Đà Nẵng",
+                        District = "Sơn Trà"
                     },
                     new Cars()
                     {
-                        ID = 51,
+                        CarID = 51,
                         Model = "KIA Seltos",
                         Manufacturer = "Kia",
                         Price = "599.000.000 VNĐ",
@@ -828,11 +934,13 @@ public class MockDao : IDao
                         Origin = "Trong nước",
                         Mileage = 75000,
                         Gear = "Số tự động",
-                        FuelType = "Máy xăng"
+                        FuelType = "Máy xăng",
+                        City = "Hồ Chí Minh",
+                        District = "Tân Bình"
                     },
                     new Cars()
                     {
-                        ID = 52,
+                        CarID = 52,
                         Model = "KIA Soluto",
                         Manufacturer = "Kia",
                         Price = "386.000.000 VNĐ",
@@ -843,11 +951,13 @@ public class MockDao : IDao
                         Origin = "Trong nước",
                         Mileage = 75000,
                         Gear = "Số tự động",
-                        FuelType = "Máy xăng"
+                        FuelType = "Máy xăng",
+                        City = "Đà Nẵng",
+                        District = "Hải Châu"
                     },
                     new Cars()
                     {
-                        ID = 53,
+                        CarID = 53,
                         Model = "KIA K3",
                         Manufacturer = "Kia",
                         Price = "549.000.000 VNĐ",
@@ -858,11 +968,13 @@ public class MockDao : IDao
                         Origin = "Trong nước",
                         Mileage = 75000,
                         Gear = "Số tự động",
-                        FuelType = "Máy xăng"
+                        FuelType = "Máy xăng",
+                        City = "Hồ Chí Minh",
+                        District = "Quận 7"
                     },
                     new Cars()
                     {
-                        ID = 54,
+                        CarID = 54,
                         Model = "KIA Sorento",
                         Manufacturer = "Kia",
                         Price = "964.000.000 VNĐ",
@@ -873,7 +985,9 @@ public class MockDao : IDao
                         Origin = "Trong nước",
                         Mileage = 75000,
                         Gear = "Số tự động",
-                        FuelType = "Máy xăng"
+                        FuelType = "Máy xăng",
+                        City = "Hà Nội",
+                        District = "Cầu Giấy"
                     }
                 }
             },
@@ -885,7 +999,7 @@ public class MockDao : IDao
                 {
                     new Cars()
                     {
-                        ID = 55,
+                        CarID = 55,
                         Model = "Forester 2.0i-L",
                         Manufacturer = "Subaru",
                         Price = "869.000.000 VNĐ",
@@ -896,11 +1010,13 @@ public class MockDao : IDao
                         Origin = "Trong nước",
                         Mileage = 75000,
                         Gear = "Số tự động",
-                        FuelType = "Máy xăng"
+                        FuelType = "Máy xăng",
+                        City = "Hà Nội",
+                        District = "Ba Đình"
                     },
                     new Cars()
                     {
-                        ID = 56,
+                        CarID = 56,
                         Model = "Forester 2.0i-L EyeSight",
                         Manufacturer = "Subaru",
                         Price = "929.000.000 VNĐ",
@@ -911,11 +1027,13 @@ public class MockDao : IDao
                         Origin = "Nhập khẩu",
                         Mileage = 75000,
                         Gear = "Số tự động",
-                        FuelType = "Máy xăng"
+                        FuelType = "Máy xăng",
+                        City = "Hồ Chí Minh",
+                        District = "Tân Bình"
                     },
                     new Cars()
                     {
-                        ID = 57,
+                        CarID = 57,
                         Model = "Forester 2.0i-S EyeSight",
                         Manufacturer = "Subaru",
                         Price = "969.000.000 VNĐ",
@@ -926,11 +1044,13 @@ public class MockDao : IDao
                         Origin = "Nhập khẩu",
                         Mileage = 75000,
                         Gear = "Số tự động",
-                        FuelType = "Máy xăng"
+                        FuelType = "Máy xăng",
+                        City = "Đà Nẵng",
+                        District = "Hải Châu"
                     },
                     new Cars()
                     {
-                        ID = 58,
+                        CarID = 58,
                         Model = "Crosstrek 2.0i-S EyeSight",
                         Manufacturer = "Subaru",
                         Price = "999.000.000 VNĐ",
@@ -941,11 +1061,13 @@ public class MockDao : IDao
                         Origin = "Nhập khẩu",
                         Mileage = 75000,
                         Gear = "Số tự động",
-                        FuelType = "Máy xăng"
+                        FuelType = "Máy xăng",
+                        City = "Hồ Chí Minh",
+                        District = "Quận 7"
                     },
                     new Cars()
                     {
-                        ID = 59,
+                        CarID = 59,
                         Model = "Outback 2.5i-T EyeSight",
                         Manufacturer = "Subaru",
                         Price = "1.696.000.000 VNĐ",
@@ -956,11 +1078,13 @@ public class MockDao : IDao
                         Origin = "Nhập khẩu",
                         Mileage = 75000,
                         Gear = "Số tự động",
-                        FuelType = "Máy xăng"
+                        FuelType = "Máy xăng",
+                        City = "Đà Nẵng",
+                        District = "Sơn Trà"
                     },
                     new Cars()
                     {
-                        ID = 60,
+                        CarID = 60,
                         Model = "BRZ 6AT EyeSight",
                         Manufacturer = "Subaru",
                         Price = "1.535.000.000 VNĐ",
@@ -971,11 +1095,13 @@ public class MockDao : IDao
                         Origin = "Nhập khẩu",
                         Mileage = 75000,
                         Gear = "Số tự động",
-                        FuelType = "Máy xăng"
+                        FuelType = "Máy xăng",
+                        City = "Hà Nội",
+                        District = "Cầu Giấy"
                     },
                     new Cars()
                     {
-                        ID = 61,
+                        CarID = 61,
                         Model = "WRX 2.4 Sedan",
                         Manufacturer = "Subaru",
                         Price = "1.690.000.000 VNĐ",
@@ -986,7 +1112,9 @@ public class MockDao : IDao
                         Origin = "Nhập khẩu",
                         Mileage = 75000,
                         Gear = "Số tự động",
-                        FuelType = "Máy xăng"
+                        FuelType = "Máy xăng",
+                        City = "Hà Nội",
+                        District = "Cầu Giấy"
                     }
                 }
             },
@@ -998,7 +1126,7 @@ public class MockDao : IDao
                 {
                     new Cars()
                     {
-                        ID = 62,
+                        CarID = 62,
                         Model = "Mercedes C-Class",
                         Manufacturer = "Mercedes Benz",
                         Price = "1.388.000.000 VNĐ",
@@ -1009,11 +1137,13 @@ public class MockDao : IDao
                         Origin = "Nhập khẩu",
                         Mileage = 75000,
                         Gear = "Số tự động",
-                        FuelType = "Máy xăng"
+                        FuelType = "Máy xăng",
+                        City = "Hà Nội",
+                        District = "Cầu Giấy"
                     },
                     new Cars()
                     {
-                        ID = 63,
+                        CarID = 63,
                         Model = "Mercedes E-Class",
                         Manufacturer = "Mercedes Benz",
                         Price = "1.888.000.000 VNĐ",
@@ -1024,11 +1154,13 @@ public class MockDao : IDao
                         Origin = "Nhập khẩu",
                         Mileage = 75000,
                         Gear = "Số tự động",
-                        FuelType = "Máy xăng"
+                        FuelType = "Máy xăng",
+                        City = "Hà Nội",
+                        District = "Cầu Giấy"
                     },
                     new Cars()
                     {
-                        ID = 64,
+                        CarID = 64,
                         Model = "Mercedes-Benz GLC-Class",
                         Manufacturer = "Mercedes Benz",
                         Price = "2.299.000.000 VNĐ",
@@ -1039,11 +1171,13 @@ public class MockDao : IDao
                         Origin = "Nhập khẩu",
                         Mileage = 75000,
                         Gear = "Số tự động",
-                        FuelType = "Máy xăng"
+                        FuelType = "Máy xăng",
+                        City = "Hà Nội",
+                        District = "Cầu Giấy"
                     },
                     new Cars()
                     {
-                        ID = 65,
+                        CarID = 65,
                         Model = "EQS 500 4Matic",
                         Manufacturer = "Mercedes Benz",
                         Price = "4.999.000.000 VNĐ",
@@ -1054,11 +1188,13 @@ public class MockDao : IDao
                         Origin = "Nhập khẩu",
                         Mileage = 75000,
                         Gear = "Số tự động",
-                        FuelType = "Máy xăng"
+                        FuelType = "Máy xăng",
+                        City = "Hồ Chí Minh",
+                        District = "Tân Bình"
                     },
                     new Cars()
                     {
-                        ID = 66,
+                        CarID = 66,
                         Model = "EQE 500 4Matic",
                         Manufacturer = "Mercedes Benz",
                         Price = "3.999.000.000 VNĐ",
@@ -1069,11 +1205,13 @@ public class MockDao : IDao
                         Origin = "Nhập khẩu",
                         Mileage = 75000,
                         Gear = "Số tự động",
-                        FuelType = "Máy xăng"
+                        FuelType = "Máy xăng",
+                        City = "Hồ Chí Minh",
+                        District = "Tân Bình"
                     },
                     new Cars()
                     {
-                        ID = 67,
+                        CarID = 67,
                         Model = "Mercedes-Benz EQB 250",
                         Manufacturer = "Mercedes Benz",
                         Price = "2.289.000.000 VNĐ",
@@ -1084,11 +1222,13 @@ public class MockDao : IDao
                         Origin = "Nhập khẩu",
                         Mileage = 75000,
                         Gear = "Số tự động",
-                        FuelType = "Máy xăng"
+                        FuelType = "Máy xăng",
+                        City = "Hồ Chí Minh",
+                        District = "Tân Bình"
                     },
                     new Cars()
                     {
-                        ID = 68,
+                        CarID = 68,
                         Model = "Mercedes-Benz EQS",
                         Manufacturer = "Mercedes Benz",
                         Price = "4.839.000.000 VNĐ",
@@ -1099,11 +1239,13 @@ public class MockDao : IDao
                         Origin = "Nhập khẩu",
                         Mileage = 75000,
                         Gear = "Số tự động",
-                        FuelType = "Máy xăng"
+                        FuelType = "Máy xăng",
+                        City = "Hồ Chí Minh",
+                        District = "Tân Bình"
                     },
                     new Cars()
                     {
-                        ID = 69,
+                        CarID = 69,
                         Model = "Mercedes S450",
                         Manufacturer = "Mercedes Benz",
                         Price = "5.039.000.000 VNĐ",
@@ -1114,11 +1256,13 @@ public class MockDao : IDao
                         Origin = "Nhập khẩu",
                         Mileage = 75000,
                         Gear = "Số tự động",
-                        FuelType = "Máy xăng"
+                        FuelType = "Máy xăng",
+                        City = "Hồ Chí Minh",
+                        District = "Thủ Đức"
                     },
                     new Cars()
                     {
-                        ID = 70,
+                        CarID = 70,
                         Model = "Mercedes GLB",
                         Manufacturer = "Mercedes Benz",
                         Price = "1.658.000.000 VNĐ",
@@ -1129,7 +1273,9 @@ public class MockDao : IDao
                         Origin = "Nhập khẩu",
                         Mileage = 75000,
                         Gear = "Số tự động",
-                        FuelType = "Máy xăng"
+                        FuelType = "Máy xăng",
+                        City = "Hồ Chí Minh",
+                        District = "Thủ Đức"
                     },
 
                 }
@@ -1142,7 +1288,7 @@ public class MockDao : IDao
                 {
                     new Cars()
                     {
-                        ID = 71,
+                        CarID = 71,
                         Model = "BMW XM",
                         Manufacturer = "BMW",
                         Price = "10.099.000.000 VNĐ",
@@ -1153,11 +1299,13 @@ public class MockDao : IDao
                         Origin = "Nhập khẩu",
                         Mileage = 75000,
                         Gear = "Số tự động",
-                        FuelType = "Máy xăng"
+                        FuelType = "Máy xăng",
+                        City = "Hồ Chí Minh",
+                        District = "Thủ Đức"
                     },
                     new Cars()
                     {
-                        ID = 72,
+                        CarID = 72,
                         Model = "BMW iX3",
                         Manufacturer = "BMW",
                         Price = "3.479.000.000 VNĐ",
@@ -1168,11 +1316,13 @@ public class MockDao : IDao
                         Origin = "Nhập khẩu",
                         Mileage = 75000,
                         Gear = "Số tự động",
-                        FuelType = "Máy xăng"
+                        FuelType = "Máy xăng",
+                        City = "Hồ Chí Minh",
+                        District = "Thủ Đức"
                     },
                     new Cars()
                     {
-                        ID = 73,
+                        CarID = 73,
                         Model = "BMW i4",
                         Manufacturer = "BMW",
                         Price = "3.739.000.000 VNĐ",
@@ -1183,11 +1333,13 @@ public class MockDao : IDao
                         Origin = "Nhập khẩu",
                         Mileage = 75000,
                         Gear = "Số tự động",
-                        FuelType = "Máy xăng"
+                        FuelType = "Máy xăng",
+                        City = "Hồ Chí Minh",
+                        District = "Thủ Đức"
                     },
                     new Cars()
                     {
-                        ID = 74,
+                        CarID = 74,
                         Model = "BMW X7",
                         Manufacturer = "BMW",
                         Price = "5.149.000.000 VNĐ",
@@ -1198,11 +1350,13 @@ public class MockDao : IDao
                         Origin = "Nhập khẩu",
                         Mileage = 75000,
                         Gear = "Số tự động",
-                        FuelType = "Máy xăng"
+                        FuelType = "Máy xăng",
+                        City = "Hồ Chí Minh",
+                        District = "Thủ Đức"
                     },
                     new Cars()
                     {
-                        ID = 75,
+                        CarID = 75,
                         Model = "BMW 7-Series",
                         Manufacturer = "BMW",
                         Price = "4.499.000.000 VNĐ",
@@ -1213,11 +1367,13 @@ public class MockDao : IDao
                         Origin = "Nhập khẩu",
                         Mileage = 75000,
                         Gear = "Số tự động",
-                        FuelType = "Máy xăng"
+                        FuelType = "Máy xăng",
+                        City = "Hồ Chí Minh",
+                        District = "Thủ Đức"
                     },
                     new Cars()
                     {
-                        ID = 76,
+                        CarID = 76,
                         Model = "BMW 5-Series",
                         Manufacturer = "BMW",
                         Price = "1.829.000.000 VNĐ",
@@ -1228,11 +1384,13 @@ public class MockDao : IDao
                         Origin = "Nhập khẩu",
                         Mileage = 75000,
                         Gear = "Số tự động",
-                        FuelType = "Máy xăng"
+                        FuelType = "Máy xăng",
+                        City = "Hồ Chí Minh",
+                        District = "Thủ Đức"
                     },
                     new Cars()
                     {
-                        ID = 77,
+                        CarID = 77,
                         Model = "BMW X4",
                         Manufacturer = "BMW",
                         Price = "2.899.000.000 VNĐ",
@@ -1243,11 +1401,13 @@ public class MockDao : IDao
                         Origin = "Nhập khẩu",
                         Mileage = 75000,
                         Gear = "Số tự động",
-                        FuelType = "Máy xăng"
+                        FuelType = "Máy xăng",
+                        City = "Hồ Chí Minh",
+                        District = "Thủ Đức"
                     },
                     new Cars()
                     {
-                        ID = 78,
+                        CarID = 78,
                         Model = "BMW 3-Series",
                         Manufacturer = "BMW",
                         Price = "1.499.000.000 VNĐ",
@@ -1258,11 +1418,13 @@ public class MockDao : IDao
                         Origin = "Nhập khẩu",
                         Mileage = 75000,
                         Gear = "Số tự động",
-                        FuelType = "Máy xăng"
+                        FuelType = "Máy xăng",
+                        City = "Hồ Chí Minh",
+                        District = "Thủ Đức"
                     },
                     new Cars()
                     {
-                        ID = 79,
+                        CarID = 79,
                         Model = "BMW 4-Series",
                         Manufacturer = "BMW",
                         Price = "2.629.000.000 VNĐ",
@@ -1273,11 +1435,13 @@ public class MockDao : IDao
                         Origin = "Nhập khẩu",
                         Mileage = 75000,
                         Gear = "Số tự động",
-                        FuelType = "Máy xăng"
+                        FuelType = "Máy xăng",
+                        City = "Hồ Chí Minh",
+                        District = "Thủ Đức"
                     },
                     new Cars()
                     {
-                        ID = 80,
+                        CarID = 80,
                         Model = "BMW X3",
                         Manufacturer = "BMW",
                         Price = "1.855.000.000 VNĐ",
@@ -1288,11 +1452,13 @@ public class MockDao : IDao
                         Origin = "Nhập khẩu",
                         Mileage = 75000,
                         Gear = "Số tự động",
-                        FuelType = "Máy xăng"
+                        FuelType = "Máy xăng",
+                        City = "Hồ Chí Minh",
+                        District = "Thủ Đức"
                     },
                     new Cars()
                     {
-                        ID = 81,
+                        CarID = 81,
                         Model = "BMW X5",
                         Manufacturer = "BMW",
                         Price = "3.909.000.000 VNĐ",
@@ -1303,11 +1469,13 @@ public class MockDao : IDao
                         Origin = "Nhập khẩu",
                         Mileage = 75000,
                         Gear = "Số tự động",
-                        FuelType = "Máy xăng"
+                        FuelType = "Máy xăng",
+                        City = "Hồ Chí Minh",
+                        District = "Thủ Đức"
                     },
                     new Cars()
                     {
-                        ID = 82,
+                        CarID = 82,
                         Model = "BMW Z4 sDrive30i",
                         Manufacturer = "BMW",
                         Price = "3.139.000.000 VNĐ",
@@ -1318,7 +1486,9 @@ public class MockDao : IDao
                         Origin = "Nhập khẩu",
                         Mileage = 75000,
                         Gear = "Số tự động",
-                        FuelType = "Máy xăng"
+                        FuelType = "Máy xăng",
+                        City = "Hồ Chí Minh",
+                        District = "Thủ Đức"
                     }
 
                 }
@@ -1331,7 +1501,7 @@ public class MockDao : IDao
                 {
                     new Cars()
                     {
-                        ID = 83,
+                        CarID = 83,
                         Model = "Lexus NX",
                         Manufacturer = "Lexus",
                         Price = "3.130.000.000 VNĐ",
@@ -1342,11 +1512,13 @@ public class MockDao : IDao
                         Origin = "Trong nước",
                         Mileage = 75000,
                         Gear = "Số tự động",
-                        FuelType = "Máy xăng"
+                        FuelType = "Máy xăng",
+                        City = "Hồ Chí Minh",
+                        District = "Thủ Đức"
                     },
                     new Cars()
                     {
-                        ID = 84,
+                        CarID = 84,
                         Model = "Lexus LM 500h",
                         Manufacturer = "Lexus",
                         Price = "7.290.000.000 VNĐ",
@@ -1357,11 +1529,13 @@ public class MockDao : IDao
                         Origin = "Trong nước",
                         Mileage = 75000,
                         Gear = "Số tự động",
-                        FuelType = "Máy xăng"
+                        FuelType = "Máy xăng",
+                        City = "Hồ Chí Minh",
+                        District = "Thủ Đức"
                     },
                     new Cars()
                     {
-                        ID = 85,
+                        CarID = 85,
                         Model = "Lexus IS",
                         Manufacturer = "Lexus",
                         Price = "2.130.000.000 VNĐ",
@@ -1372,11 +1546,13 @@ public class MockDao : IDao
                         Origin = "Trong nước",
                         Mileage = 75000,
                         Gear = "Số tự động",
-                        FuelType = "Máy xăng"
+                        FuelType = "Máy xăng",
+                        City = "Hồ Chí Minh",
+                        District = "Thủ Đức"
                     },
                     new Cars()
                     {
-                        ID = 86,
+                        CarID = 86,
                         Model = "Lexus RX",
                         Manufacturer = "Lexus",
                         Price = "3.430.000.000 VNĐ",
@@ -1387,11 +1563,13 @@ public class MockDao : IDao
                         Origin = "Trong nước",
                         Mileage = 75000,
                         Gear = "Số tự động",
-                        FuelType = "Máy xăng"
+                        FuelType = "Máy xăng",
+                        City = "Hồ Chí Minh",
+                        District = "Thủ Đức"
                     },
                     new Cars()
                     {
-                        ID = 87,
+                        CarID = 87,
                         Model = "Lexus LX",
                         Manufacturer = "Lexus",
                         Price = "8.500.000.000 VNĐ",
@@ -1402,11 +1580,13 @@ public class MockDao : IDao
                         Origin = "Trong nước",
                         Mileage = 75000,
                         Gear = "Số tự động",
-                        FuelType = "Máy xăng"
+                        FuelType = "Máy xăng",
+                        City = "Hồ Chí Minh",
+                        District = "Thủ Đức"
                     },
                     new Cars()
                     {
-                        ID = 88,
+                        CarID = 88,
                         Model = "Lexus GX",
                         Manufacturer = "Lexus",
                         Price = "6.200.000.000 VNĐ",
@@ -1417,11 +1597,13 @@ public class MockDao : IDao
                         Origin = "Trong nước",
                         Mileage = 75000,
                         Gear = "Số tự động",
-                        FuelType = "Máy xăng"
+                        FuelType = "Máy xăng",
+                        City = "Hồ Chí Minh",
+                        District = "Thủ Đức"
                     },
                     new Cars()
                     {
-                        ID = 89,
+                        CarID = 89,
                         Model = "Lexus LS",
                         Manufacturer = "Lexus",
                         Price = "7.650.000.000 VNĐ",
@@ -1432,11 +1614,13 @@ public class MockDao : IDao
                         Origin = "Trong nước",
                         Mileage = 75000,
                         Gear = "Số tự động",
-                        FuelType = "Máy xăng"
+                        FuelType = "Máy xăng",
+                        City = "Hồ Chí Minh",
+                        District = "Thủ Đức"
                     },
                     new Cars()
                     {
-                        ID = 90,
+                        CarID = 90,
                         Model = "Lexus ES",
                         Manufacturer = "Lexus",
                         Price = "2.620.000.000 VNĐ",
@@ -1447,11 +1631,13 @@ public class MockDao : IDao
                         Origin = "Trong nước",
                         Mileage = 75000,
                         Gear = "Số tự động",
-                        FuelType = "Máy xăng"
+                        FuelType = "Máy xăng",
+                        City = "Hồ Chí Minh",
+                        District = "Thủ Đức"
                     },
                     new Cars()
                     {
-                        ID = 91,
+                        CarID = 91,
                         Model = "Lexus RC",
                         Manufacturer = "Lexus",
                         Price = "3.290.000.000 VNĐ",
@@ -1462,7 +1648,9 @@ public class MockDao : IDao
                         Origin = "Trong nước",
                         Mileage = 75000,
                         Gear = "Số tự động",
-                        FuelType = "Máy xăng"
+                        FuelType = "Máy xăng",
+                        City = "Hồ Chí Minh",
+                        District = "Thủ Đức"
                     }
                 }
             },
@@ -1474,7 +1662,7 @@ public class MockDao : IDao
                 {
                     new Cars()
                     {
-                        ID = 92,
+                        CarID = 92,
                         Model = "Porsche 718",
                         Manufacturer = "Porsche",
                         Price = "3.620.000.000 VNĐ",
@@ -1485,11 +1673,13 @@ public class MockDao : IDao
                         Origin = "Trong nước",
                         Mileage = 75000,
                         Gear = "Số tự động",
-                        FuelType = "Máy xăng"
+                        FuelType = "Máy xăng",
+                        City = "Hồ Chí Minh",
+                        District = "Thủ Đức"
                     },
                     new Cars()
                     {
-                        ID = 93,
+                        CarID = 93,
                         Model = "Porsche 911",
                         Manufacturer = "Porsche",
                         Price = "7.130.000.000 VNĐ",
@@ -1500,11 +1690,13 @@ public class MockDao : IDao
                         Origin = "Trong nước",
                         Mileage = 75000,
                         Gear = "Số tự động",
-                        FuelType = "Máy xăng"
+                        FuelType = "Máy xăng",
+                        City = "Hồ Chí Minh",
+                        District = "Thủ Đức"
                     },
                     new Cars()
                     {
-                        ID = 94,
+                        CarID = 94,
                         Model = "Porsche Taycan",
                         Manufacturer = "Porsche",
                         Price = "4.170.000.000 VNĐ",
@@ -1515,11 +1707,13 @@ public class MockDao : IDao
                         Origin = "Trong nước",
                         Mileage = 75000,
                         Gear = "Số tự động",
-                        FuelType = "Máy xăng"
+                        FuelType = "Máy xăng",
+                        City = "Đà Nẵng",
+                        District = "Hải Châu"
                     },
                     new Cars()
                     {
-                        ID = 95,
+                        CarID = 95,
                         Model = "Porsche Panamera",
                         Manufacturer = "Porsche",
                         Price = "6.420.000.000 VNĐ",
@@ -1530,11 +1724,13 @@ public class MockDao : IDao
                         Origin = "Trong nước",
                         Mileage = 75000,
                         Gear = "Số tự động",
-                        FuelType = "Máy xăng"
+                        FuelType = "Máy xăng",
+                        City = "Đà Nẵng",
+                        District = "Hải Châu"
                     },
                     new Cars()
                     {
-                        ID = 96,
+                        CarID = 96,
                         Model = "Porsche Macan",
                         Manufacturer = "Porsche",
                         Price = "3.150.000.000 VNĐ",
@@ -1545,11 +1741,13 @@ public class MockDao : IDao
                         Origin = "Trong nước",
                         Mileage = 75000,
                         Gear = "Số tự động",
-                        FuelType = "Máy xăng"
+                        FuelType = "Máy xăng",
+                        City = "Đà Nẵng",
+                        District = "Hải Châu"
                     },
                     new Cars()
                     {
-                        ID = 97,
+                        CarID = 97,
                         Model = "Porsche Cayenne",
                         Manufacturer = "Porsche",
                         Price = "5.560.000.000 VNĐ",
@@ -1560,7 +1758,9 @@ public class MockDao : IDao
                         Origin = "Trong nước",
                         Mileage = 75000,
                         Gear = "Số tự động",
-                        FuelType = "Máy xăng"
+                        FuelType = "Máy xăng",
+                        City = "Đà Nẵng",
+                        District = "Hải Châu"
                     }
                 }
             },
@@ -1572,7 +1772,7 @@ public class MockDao : IDao
                 {
                     new Cars()
                     {
-                        ID = 98,
+                        CarID = 98,
                         Model = "VinFast VF 5",
                         Manufacturer = "VinFast",
                         Price = "460.000.000 VNĐ",
@@ -1583,11 +1783,13 @@ public class MockDao : IDao
                         Origin = "Trong nước",
                         Mileage = 75000,
                         Gear = "Số tự động",
-                        FuelType = "Máy xăng"
+                        FuelType = "Máy xăng",
+                        City = "Đà Nẵng",
+                        District = "Hải Châu"
                     },
                     new Cars()
                     {
-                        ID = 99,
+                        CarID = 99,
                         Model = "VinFast VF 6",
                         Manufacturer = "VinFast",
                         Price = "675.000.000 VNĐ",
@@ -1598,11 +1800,13 @@ public class MockDao : IDao
                         Origin = "Trong nước",
                         Mileage = 75000,
                         Gear = "Số tự động",
-                        FuelType = "Máy xăng"
+                        FuelType = "Máy xăng",
+                        City = "Đà Nẵng",
+                        District = "Hải Châu"
                     },
                     new Cars()
                     {
-                        ID = 100,
+                        CarID = 100,
                         Model = "VinFast VF 7",
                         Manufacturer = "VinFast",
                         Price = "850.000.000 VNĐ",
@@ -1613,11 +1817,13 @@ public class MockDao : IDao
                         Origin = "Trong nước",
                         Mileage = 75000,
                         Gear = "Số tự động",
-                        FuelType = "Máy xăng"
+                        FuelType = "Máy xăng",
+                        City = "Đà Nẵng",
+                        District = "Hải Châu"
                     },
                     new Cars()
                     {
-                        ID = 101,
+                        CarID = 101,
                         Model = "VinFast VF 8",
                         Manufacturer = "VinFast",
                         Price = "1.079.000.000 VNĐ",
@@ -1628,11 +1834,13 @@ public class MockDao : IDao
                         Origin = "Trong nước",
                         Mileage = 75000,
                         Gear = "Số tự động",
-                        FuelType = "Máy xăng"
+                        FuelType = "Máy xăng",
+                        City = "Đà Nẵng",
+                        District = "Hải Châu"
                     },
                     new Cars()
                     {
-                        ID = 102,
+                        CarID = 102,
                         Model = "VinFast VF 9",
                         Manufacturer = "VinFast",
                         Price = "1.531.000.000 VNĐ",
@@ -1643,11 +1851,13 @@ public class MockDao : IDao
                         Origin = "Trong nước",
                         Mileage = 75000,
                         Gear = "Số tự động",
-                        FuelType = "Máy xăng"
+                        FuelType = "Máy xăng",
+                        City = "Đà Nẵng",
+                        District = "Hải Châu"
                     },
                     new Cars()
                     {
-                        ID = 103,
+                        CarID = 103,
                         Model = "VinFast VF e34",
                         Manufacturer = "VinFast",
                         Price = "710.000.000 VNĐ",
@@ -1658,11 +1868,13 @@ public class MockDao : IDao
                         Origin = "Trong nước",
                         Mileage = 75000,
                         Gear = "Số tự động",
-                        FuelType = "Máy xăng"
+                        FuelType = "Máy xăng",
+                        City = "Đà Nẵng",
+                        District = "Hải Châu"
                     },
                     new Cars()
                     {
-                        ID = 104,
+                        CarID = 104,
                         Model = "VinFast VF 3",
                         Manufacturer = "VinFast",
                         Price = "240.000.000 VNĐ",
@@ -1673,7 +1885,9 @@ public class MockDao : IDao
                         Origin = "Trong nước",
                         Mileage = 75000,
                         Gear = "Số tự động",
-                        FuelType = "Máy xăng"
+                        FuelType = "Máy xăng",
+                        City = "Đà Nẵng",
+                        District = "Hải Châu"
                     }
                 }
             },
@@ -1685,7 +1899,7 @@ public class MockDao : IDao
                 {
                     new Cars()
                     {
-                        ID = 105,
+                        CarID = 105,
                         Model = "Mazda CX-3",
                         Manufacturer = "Mazda",
                         Price = "512.000.000 VNĐ",
@@ -1696,11 +1910,13 @@ public class MockDao : IDao
                         Origin = "Trong nước",
                         Mileage = 75000,
                         Gear = "Số tự động",
-                        FuelType = "Máy xăng"
+                        FuelType = "Máy xăng",
+                        City = "Đà Nẵng",
+                        District = "Hải Châu"
                     },
                     new Cars()
                     {
-                        ID = 106,
+                        CarID = 106,
                         Model = "Mazda CX-30",
                         Manufacturer = "Mazda",
                         Price = "699.000.000 VNĐ",
@@ -1711,11 +1927,13 @@ public class MockDao : IDao
                         Origin = "Trong nước",
                         Mileage = 75000,
                         Gear = "Số tự động",
-                        FuelType = "Máy xăng"
+                        FuelType = "Máy xăng",
+                        City = "Đà Nẵng",
+                        District = "Hải Châu"
                     },
                     new Cars()
                     {
-                        ID = 107,
+                        CarID = 107,
                         Model = "Mazda 6",
                         Manufacturer = "Mazda",
                         Price = "769.000.000 VNĐ",
@@ -1726,11 +1944,13 @@ public class MockDao : IDao
                         Origin = "Trong nước",
                         Mileage = 75000,
                         Gear = "Số tự động",
-                        FuelType = "Máy xăng"
+                        FuelType = "Máy xăng",
+                        City = "Đà Nẵng",
+                        District = "Hải Châu"
                     },
                     new Cars()
                     {
-                        ID = 108,
+                        CarID = 108,
                         Model = "Mazda CX-5",
                         Manufacturer = "Mazda",
                         Price = "749.000.000 VNĐ",
@@ -1741,11 +1961,13 @@ public class MockDao : IDao
                         Origin = "Trong nước",
                         Mileage = 75000,
                         Gear = "Số tự động",
-                        FuelType = "Máy xăng"
+                        FuelType = "Máy xăng",
+                        City = "Đà Nẵng",
+                        District = "Hải Châu"
                     },
                     new Cars()
                     {
-                        ID = 109,
+                        CarID = 109,
                         Model = "Mazda CX-8",
                         Manufacturer = "Mazda",
                         Price = "949.000.000 VNĐ",
@@ -1756,11 +1978,13 @@ public class MockDao : IDao
                         Origin = "Trong nước",
                         Mileage = 75000,
                         Gear = "Số tự động",
-                        FuelType = "Máy xăng"
+                        FuelType = "Máy xăng",
+                        City = "Đà Nẵng",
+                        District = "Hải Châu"
                     },
                     new Cars()
                     {
-                        ID = 110,
+                        CarID = 110,
                         Model = "Mazda 2",
                         Manufacturer = "Mazda",
                         Price = "408.000.000 VNĐ",
@@ -1771,11 +1995,13 @@ public class MockDao : IDao
                         Origin = "Trong nước",
                         Mileage = 75000,
                         Gear = "Số tự động",
-                        FuelType = "Máy xăng"
+                        FuelType = "Máy xăng",
+                        City = "Đà Nẵng",
+                        District = "Hải Châu"
                     },
                     new Cars()
                     {
-                        ID = 111,
+                        CarID = 111,
                         Model = "Mazda 3",
                         Manufacturer = "Mazda",
                         Price = "579.000.000 VNĐ",
@@ -1786,11 +2012,13 @@ public class MockDao : IDao
                         Origin = "Trong nước",
                         Mileage = 75000,
                         Gear = "Số tự động",
-                        FuelType = "Máy xăng"
+                        FuelType = "Máy xăng",
+                        City = "Đà Nẵng",
+                        District = "Hải Châu"
                     },
                     new Cars()
                     {
-                        ID = 112,
+                        CarID = 112,
                         Model = "Mazda BT 50",
                         Manufacturer = "Mazda",
                         Price = "554.000.000 VNĐ",
@@ -1801,7 +2029,9 @@ public class MockDao : IDao
                         Origin = "Trong nước",
                         Mileage = 75000,
                         Gear = "Số tự động",
-                        FuelType = "Máy xăng"
+                        FuelType = "Máy xăng",
+                        City = "Đà Nẵng",
+                        District = "Hải Châu"
                     }
                 }
             },
@@ -1813,7 +2043,7 @@ public class MockDao : IDao
                 {
                     new Cars()
                     {
-                        ID = 113,
+                        CarID = 113,
                         Model = "Honda City",
                         Manufacturer = "Honda",
                         Price = "499.000.000 VNĐ",
@@ -1824,11 +2054,13 @@ public class MockDao : IDao
                         Origin = "Trong nước",
                         Mileage = 75000,
                         Gear = "Số tự động",
-                        FuelType = "Máy xăng"
+                        FuelType = "Máy xăng",
+                        City = "Đà Nẵng",
+                        District = "Hải Châu"
                     },
                     new Cars()
                     {
-                        ID = 114,
+                        CarID = 114,
                         Model = "Honda BR-V",
                         Manufacturer = "Honda",
                         Price = "661.000.000 VNĐ",
@@ -1839,11 +2071,13 @@ public class MockDao : IDao
                         Origin = "Trong nước",
                         Mileage = 75000,
                         Gear = "Số tự động",
-                        FuelType = "Máy xăng"
+                        FuelType = "Máy xăng",
+                        City = "Đà Nẵng",
+                        District = "Hải Châu"
                     },
                     new Cars()
                     {
-                        ID = 115,
+                        CarID = 115,
                         Model = "Honda CR-V",
                         Manufacturer = "Honda",
                         Price = "1.029.000.000 VNĐ",
@@ -1854,11 +2088,13 @@ public class MockDao : IDao
                         Origin = "Trong nước",
                         Mileage = 75000,
                         Gear = "Số tự động",
-                        FuelType = "Máy xăng"
+                        FuelType = "Máy xăng",
+                        City = "Đà Nẵng",
+                        District = "Hải Châu"
                     },
                     new Cars()
                     {
-                        ID = 116,
+                        CarID = 116,
                         Model = "Honda Accord",
                         Manufacturer = "Honda",
                         Price = "1.319.000.000 VNĐ",
@@ -1869,11 +2105,13 @@ public class MockDao : IDao
                         Origin = "Trong nước",
                         Mileage = 75000,
                         Gear = "Số tự động",
-                        FuelType = "Máy xăng"
+                        FuelType = "Máy xăng",
+                        City = "Hồ Chí Minh",
+                        District = "Bình Thạnh"
                     },
                     new Cars()
                     {
-                        ID = 117,
+                        CarID = 117,
                         Model = "Honda Civic",
                         Manufacturer = "Honda",
                         Price = "730.000.000 VNĐ",
@@ -1884,11 +2122,13 @@ public class MockDao : IDao
                         Origin = "Trong nước",
                         Mileage = 75000,
                         Gear = "Số tự động",
-                        FuelType = "Máy xăng"
+                        FuelType = "Máy xăng",
+                        City = "Hồ Chí Minh",
+                        District = "Bình Thạnh"
                     },
                     new Cars()
                     {
-                        ID = 118,
+                        CarID = 118,
                         Model = "Honda Civic Type R",
                         Manufacturer = "Honda",
                         Price = "2.399.000.000 VNĐ",
@@ -1899,11 +2139,13 @@ public class MockDao : IDao
                         Origin = "Trong nước",
                         Mileage = 75000,
                         Gear = "Số tự động",
-                        FuelType = "Máy xăng"
+                        FuelType = "Máy xăng",
+                        City = "Hồ Chí Minh",
+                        District = "Bình Thạnh"
                     },
                     new Cars()
                     {
-                        ID = 119,
+                        CarID = 119,
                         Model = "Honda HR-V",
                         Manufacturer = "Honda",
                         Price = "699.000.000 VNĐ",
@@ -1914,11 +2156,13 @@ public class MockDao : IDao
                         Origin = "Trong nước",
                         Mileage = 75000,
                         Gear = "Số tự động",
-                        FuelType = "Máy xăng"
+                        FuelType = "Máy xăng",
+                        City = "Hồ Chí Minh",
+                        District = "Bình Thạnh"
                     },
                     new Cars()
                     {
-                        ID = 120,
+                        CarID = 120,
                         Model = "Honda Brio",
                         Manufacturer = "Honda",
                         Price = "418.000.000 VNĐ",
@@ -1929,11 +2173,13 @@ public class MockDao : IDao
                         Origin = "Trong nước",
                         Mileage = 75000,
                         Gear = "Số tự động",
-                        FuelType = "Máy xăng"
+                        FuelType = "Máy xăng",
+                        City = "Hồ Chí Minh",
+                        District = "Bình Thạnh"
                     },
                     new Cars()
                     {
-                        ID = 121,
+                        CarID = 121,
                         Model = "Honda Jazz",
                         Manufacturer = "Honda",
                         Price = "544.000.000 VNĐ",
@@ -1944,7 +2190,9 @@ public class MockDao : IDao
                         Origin = "Trong nước",
                         Mileage = 75000,
                         Gear = "Số tự động",
-                        FuelType = "Máy xăng"
+                        FuelType = "Máy xăng",
+                        City = "Hồ Chí Minh",
+                        District = "Bình Thạnh"
                     }
                 }
             },
@@ -1956,7 +2204,7 @@ public class MockDao : IDao
                 {
                     new Cars()
                     {
-                        ID = 122,
+                        CarID = 122,
                         Model = "Audi Q8 e-tron",
                         Manufacturer = "Audi",
                         Price = "3.800.000.000 VNĐ",
@@ -1967,11 +2215,13 @@ public class MockDao : IDao
                         Origin = "Nhập khẩu",
                         Mileage = 75000,
                         Gear = "Số tự động",
-                        FuelType = "Máy xăng"
+                        FuelType = "Máy xăng",
+                        City = "Hồ Chí Minh",
+                        District = "Bình Thạnh"
                     },
                     new Cars()
                     {
-                        ID = 123,
+                        CarID = 123,
                         Model = "Audi e-tron GT",
                         Manufacturer = "Audi",
                         Price = "5.200.000.000 VNĐ",
@@ -1982,11 +2232,13 @@ public class MockDao : IDao
                         Origin = "Nhập khẩu",
                         Mileage = 75000,
                         Gear = "Số tự động",
-                        FuelType = "Máy xăng"
+                        FuelType = "Máy xăng",
+                        City = "Hồ Chí Minh",
+                        District = "Bình Thạnh"
                     },
                     new Cars()
                     {
-                        ID = 124,
+                        CarID = 124,
                         Model = "Audi Q3",
                         Manufacturer = "Audi",
                         Price = "1.890.000.000 VNĐ",
@@ -1997,11 +2249,13 @@ public class MockDao : IDao
                         Origin = "Nhập khẩu",
                         Mileage = 75000,
                         Gear = "Số tự động",
-                        FuelType = "Máy xăng"
+                        FuelType = "Máy xăng",
+                        City = "Hồ Chí Minh",
+                        District = "Bình Thạnh"
                     },
                     new Cars()
                     {
-                        ID = 125,
+                        CarID = 125,
                         Model = "Audi Q5",
                         Manufacturer = "Audi",
                         Price = "2.390.000.000 VNĐ",
@@ -2012,11 +2266,13 @@ public class MockDao : IDao
                         Origin = "Nhập khẩu",
                         Mileage = 75000,
                         Gear = "Số tự động",
-                        FuelType = "Máy xăng"
+                        FuelType = "Máy xăng",
+                        City = "Hồ Chí Minh",
+                        District = "Bình Thạnh"
                     },
                     new Cars()
                     {
-                        ID = 126,
+                        CarID = 126,
                         Model = "Audi Q7",
                         Manufacturer = "Audi",
                         Price = "3.590.000.000 VNĐ",
@@ -2027,11 +2283,13 @@ public class MockDao : IDao
                         Origin = "Nhập khẩu",
                         Mileage = 75000,
                         Gear = "Số tự động",
-                        FuelType = "Máy xăng"
+                        FuelType = "Máy xăng",
+                        City = "Hồ Chí Minh",
+                        District = "Bình Thạnh"
                     },
                     new Cars()
                     {
-                        ID = 127,
+                        CarID = 127,
                         Model = "Audi A6",
                         Manufacturer = "Audi",
                         Price = "2.500.000.000 VNĐ",
@@ -2042,11 +2300,13 @@ public class MockDao : IDao
                         Origin = "Nhập khẩu",
                         Mileage = 75000,
                         Gear = "Số tự động",
-                        FuelType = "Máy xăng"
+                        FuelType = "Máy xăng",
+                        City = "Hồ Chí Minh",
+                        District = "Bình Thạnh"
                     },
                     new Cars()
                     {
-                        ID = 128,
+                        CarID = 128,
                         Model = "Audi Q2",
                         Manufacturer = "Audi",
                         Price = "1.590.000.000 VNĐ",
@@ -2057,7 +2317,9 @@ public class MockDao : IDao
                         Origin = "Nhập khẩu",
                         Mileage = 75000,
                         Gear = "Số tự động",
-                        FuelType = "Máy xăng"
+                        FuelType = "Máy xăng",
+                        City = "Hồ Chí Minh",
+                        District = "Bình Thạnh"
                     }
                 }
             },
@@ -2121,134 +2383,134 @@ public class MockDao : IDao
     {
         var result = new List<Listings>()
         {
-            new Listings() { CarID = 1, UserID = 1, Status = "Bài Đăng 1", Description = "Bán xe", CreateAt = "" },
-            new Listings() { CarID = 2, UserID = 2, Status = "Bài Đăng 2", Description = "Bán xe", CreateAt = "" },
-            new Listings() { CarID = 3, UserID = 1, Status = "Bài Đăng 3", Description = "Bán xe", CreateAt = "" },
-            new Listings() { CarID = 4, UserID = 2, Status = "Bài Đăng 4", Description = "Bán xe", CreateAt = "" },
-            new Listings() { CarID = 5, UserID = 1, Status = "Bài Đăng 5", Description = "Bán xe", CreateAt = "" },
-            new Listings() { CarID = 6, UserID = 2, Status = "Bài Đăng 6", Description = "Bán xe", CreateAt = "" },
-            new Listings() { CarID = 7, UserID = 1, Status = "Bài Đăng 7", Description = "Bán xe", CreateAt = "" },
-            new Listings() { CarID = 8, UserID = 2, Status = "Bài Đăng 8", Description = "Bán xe", CreateAt = "" },
-            new Listings() { CarID = 9, UserID = 1, Status = "Bài Đăng 9", Description = "Bán xe", CreateAt = "" },
-            new Listings() { CarID = 10, UserID = 2, Status = "Bài Đăng 10", Description = "Bán xe", CreateAt = "" },
-            new Listings() { CarID = 11, UserID = 1, Status = "Bài Đăng 11", Description = "Bán xe", CreateAt = "" },
-            new Listings() { CarID = 12, UserID = 2, Status = "Bài Đăng 12", Description = "Bán xe", CreateAt = "" },
-            new Listings() { CarID = 13, UserID = 1, Status = "Bài Đăng 13", Description = "Bán xe", CreateAt = "" },
-            new Listings() { CarID = 14, UserID = 2, Status = "Bài Đăng 14", Description = "Bán xe", CreateAt = "" },
-            new Listings() { CarID = 15, UserID = 1, Status = "Bài Đăng 15", Description = "Bán xe", CreateAt = "" },
-            new Listings() { CarID = 16, UserID = 2, Status = "Bài Đăng 16", Description = "Bán xe", CreateAt = "" },
-            new Listings() { CarID = 17, UserID = 1, Status = "Bài Đăng 17", Description = "Bán xe", CreateAt = "" },
-            new Listings() { CarID = 18, UserID = 2, Status = "Bài Đăng 18", Description = "Bán xe", CreateAt = "" },
-            new Listings() { CarID = 19, UserID = 1, Status = "Bài Đăng 19", Description = "Bán xe", CreateAt = "" },
-            new Listings() { CarID = 20, UserID = 2, Status = "Bài Đăng 20", Description = "Bán xe", CreateAt = "" },
-            new Listings() { CarID = 21, UserID = 1, Status = "Bài Đăng 21", Description = "Bán xe", CreateAt = "" },
-            new Listings() { CarID = 22, UserID = 2, Status = "Bài Đăng 22", Description = "Bán xe", CreateAt = "" },
-            new Listings() { CarID = 23, UserID = 1, Status = "Bài Đăng 23", Description = "Bán xe", CreateAt = "" },
-            new Listings() { CarID = 24, UserID = 2, Status = "Bài Đăng 24", Description = "Bán xe", CreateAt = "" },
-            new Listings() { CarID = 25, UserID = 1, Status = "Bài Đăng 25", Description = "Bán xe", CreateAt = "" },
-            new Listings() { CarID = 26, UserID = 2, Status = "Bài Đăng 26", Description = "Bán xe", CreateAt = "" },
-            new Listings() { CarID = 27, UserID = 1, Status = "Bài Đăng 27", Description = "Bán xe", CreateAt = "" },
-            new Listings() { CarID = 28, UserID = 2, Status = "Bài Đăng 28", Description = "Bán xe", CreateAt = "" },
-            new Listings() { CarID = 29, UserID = 1, Status = "Bài Đăng 29", Description = "Bán xe", CreateAt = "" },
-            new Listings() { CarID = 30, UserID = 2, Status = "Bài Đăng 30", Description = "Bán xe", CreateAt = "" },
-            new Listings() { CarID = 31, UserID = 1, Status = "Bài Đăng 31", Description = "Bán xe", CreateAt = "" },
-            new Listings() { CarID = 32, UserID = 2, Status = "Bài Đăng 32", Description = "Bán xe", CreateAt = "" },
-            new Listings() { CarID = 33, UserID = 1, Status = "Bài Đăng 33", Description = "Bán xe", CreateAt = "" },
-            new Listings() { CarID = 34, UserID = 2, Status = "Bài Đăng 34", Description = "Bán xe", CreateAt = "" },
-            new Listings() { CarID = 35, UserID = 1, Status = "Bài Đăng 35", Description = "Bán xe", CreateAt = "" },
-            new Listings() { CarID = 36, UserID = 2, Status = "Bài Đăng 36", Description = "Bán xe", CreateAt = "" },
-            new Listings() { CarID = 37, UserID = 1, Status = "Bài Đăng 37", Description = "Bán xe", CreateAt = "" },
-            new Listings() { CarID = 38, UserID = 2, Status = "Bài Đăng 38", Description = "Bán xe", CreateAt = "" },
-            new Listings() { CarID = 39, UserID = 1, Status = "Bài Đăng 39", Description = "Bán xe", CreateAt = "" },
-            new Listings() { CarID = 40, UserID = 2, Status = "Bài Đăng 40", Description = "Bán xe", CreateAt = "" },
-            new Listings() { CarID = 41, UserID = 1, Status = "Bài Đăng 41", Description = "Bán xe", CreateAt = "" },
-            new Listings() { CarID = 42, UserID = 2, Status = "Bài Đăng 42", Description = "Bán xe", CreateAt = "" },
-            new Listings() { CarID = 43, UserID = 1, Status = "Bài Đăng 43", Description = "Bán xe", CreateAt = "" },
-            new Listings() { CarID = 44, UserID = 2, Status = "Bài Đăng 44", Description = "Bán xe", CreateAt = "" },
-            new Listings() { CarID = 45, UserID = 1, Status = "Bài Đăng 45", Description = "Bán xe", CreateAt = "" },
-            new Listings() { CarID = 46, UserID = 2, Status = "Bài Đăng 46", Description = "Bán xe", CreateAt = "" },
-            new Listings() { CarID = 47, UserID = 1, Status = "Bài Đăng 47", Description = "Bán xe", CreateAt = "" },
-            new Listings() { CarID = 48, UserID = 2, Status = "Bài Đăng 48", Description = "Bán xe", CreateAt = "" },
-            new Listings() { CarID = 49, UserID = 1, Status = "Bài Đăng 49", Description = "Bán xe", CreateAt = "" },
-            new Listings() { CarID = 50, UserID = 2, Status = "Bài Đăng 50", Description = "Bán xe", CreateAt = "" },
-            new Listings() { CarID = 51, UserID = 1, Status = "Bài Đăng 51", Description = "Bán xe", CreateAt = "" },
-            new Listings() { CarID = 52, UserID = 2, Status = "Bài Đăng 52", Description = "Bán xe", CreateAt = "" },
-            new Listings() { CarID = 53, UserID = 1, Status = "Bài Đăng 53", Description = "Bán xe", CreateAt = "" },
-            new Listings() { CarID = 54, UserID = 2, Status = "Bài Đăng 54", Description = "Bán xe", CreateAt = "" },
-            new Listings() { CarID = 55, UserID = 1, Status = "Bài Đăng 55", Description = "Bán xe", CreateAt = "" },
-            new Listings() { CarID = 56, UserID = 2, Status = "Bài Đăng 56", Description = "Bán xe", CreateAt = "" },
-            new Listings() { CarID = 57, UserID = 1, Status = "Bài Đăng 57", Description = "Bán xe", CreateAt = "" },
-            new Listings() { CarID = 58, UserID = 2, Status = "Bài Đăng 58", Description = "Bán xe", CreateAt = "" },
-            new Listings() { CarID = 59, UserID = 1, Status = "Bài Đăng 59", Description = "Bán xe", CreateAt = "" },
-            new Listings() { CarID = 60, UserID = 2, Status = "Bài Đăng 60", Description = "Bán xe", CreateAt = "" },
-            new Listings() { CarID = 61, UserID = 1, Status = "Bài Đăng 61", Description = "Bán xe", CreateAt = "" },
-            new Listings() { CarID = 62, UserID = 2, Status = "Bài Đăng 62", Description = "Bán xe", CreateAt = "" },
-            new Listings() { CarID = 63, UserID = 1, Status = "Bài Đăng 63", Description = "Bán xe", CreateAt = "" },
-            new Listings() { CarID = 64, UserID = 2, Status = "Bài Đăng 64", Description = "Bán xe", CreateAt = "" },
-            new Listings() { CarID = 65, UserID = 1, Status = "Bài Đăng 65", Description = "Bán xe", CreateAt = "" },
-            new Listings() { CarID = 66, UserID = 2, Status = "Bài Đăng 66", Description = "Bán xe", CreateAt = "" },
-            new Listings() { CarID = 67, UserID = 1, Status = "Bài Đăng 67", Description = "Bán xe", CreateAt = "" },
-            new Listings() { CarID = 68, UserID = 2, Status = "Bài Đăng 68", Description = "Bán xe", CreateAt = "" },
-            new Listings() { CarID = 69, UserID = 1, Status = "Bài Đăng 69", Description = "Bán xe", CreateAt = "" },
-            new Listings() { CarID = 70, UserID = 2, Status = "Bài Đăng 70", Description = "Bán xe", CreateAt = "" },
-            new Listings() { CarID = 71, UserID = 1, Status = "Bài Đăng 71", Description = "Bán xe", CreateAt = "" },
-            new Listings() { CarID = 72, UserID = 2, Status = "Bài Đăng 72", Description = "Bán xe", CreateAt = "" },
-            new Listings() { CarID = 73, UserID = 1, Status = "Bài Đăng 73", Description = "Bán xe", CreateAt = "" },
-            new Listings() { CarID = 74, UserID = 2, Status = "Bài Đăng 74", Description = "Bán xe", CreateAt = "" },
-            new Listings() { CarID = 75, UserID = 1, Status = "Bài Đăng 75", Description = "Bán xe", CreateAt = "" },
-            new Listings() { CarID = 76, UserID = 2, Status = "Bài Đăng 76", Description = "Bán xe", CreateAt = "" },
-            new Listings() { CarID = 77, UserID = 1, Status = "Bài Đăng 77", Description = "Bán xe", CreateAt = "" },
-            new Listings() { CarID = 78, UserID = 2, Status = "Bài Đăng 78", Description = "Bán xe", CreateAt = "" },
-            new Listings() { CarID = 79, UserID = 1, Status = "Bài Đăng 79", Description = "Bán xe", CreateAt = "" },
-            new Listings() { CarID = 80, UserID = 2, Status = "Bài Đăng 80", Description = "Bán xe", CreateAt = "" },
-            new Listings() { CarID = 81, UserID = 1, Status = "Bài Đăng 81", Description = "Bán xe", CreateAt = "" },
-            new Listings() { CarID = 82, UserID = 2, Status = "Bài Đăng 82", Description = "Bán xe", CreateAt = "" },
-            new Listings() { CarID = 83, UserID = 1, Status = "Bài Đăng 83", Description = "Bán xe", CreateAt = "" },
-            new Listings() { CarID = 84, UserID = 2, Status = "Bài Đăng 84", Description = "Bán xe", CreateAt = "" },
-            new Listings() { CarID = 85, UserID = 1, Status = "Bài Đăng 85", Description = "Bán xe", CreateAt = "" },
-            new Listings() { CarID = 86, UserID = 2, Status = "Bài Đăng 86", Description = "Bán xe", CreateAt = "" },
-            new Listings() { CarID = 87, UserID = 1, Status = "Bài Đăng 87", Description = "Bán xe", CreateAt = "" },
-            new Listings() { CarID = 88, UserID = 2, Status = "Bài Đăng 88", Description = "Bán xe", CreateAt = "" },
-            new Listings() { CarID = 89, UserID = 1, Status = "Bài Đăng 89", Description = "Bán xe", CreateAt = "" },
-            new Listings() { CarID = 90, UserID = 2, Status = "Bài Đăng 90", Description = "Bán xe", CreateAt = "" },
-            new Listings() { CarID = 91, UserID = 1, Status = "Bài Đăng 91", Description = "Bán xe", CreateAt = "" },
-            new Listings() { CarID = 92, UserID = 2, Status = "Bài Đăng 92", Description = "Bán xe", CreateAt = "" },
-            new Listings() { CarID = 93, UserID = 1, Status = "Bài Đăng 93", Description = "Bán xe", CreateAt = "" },
-            new Listings() { CarID = 94, UserID = 2, Status = "Bài Đăng 94", Description = "Bán xe", CreateAt = "" },
-            new Listings() { CarID = 95, UserID = 1, Status = "Bài Đăng 95", Description = "Bán xe", CreateAt = "" },
-            new Listings() { CarID = 96, UserID = 2, Status = "Bài Đăng 96", Description = "Bán xe", CreateAt = "" },
-            new Listings() { CarID = 97, UserID = 1, Status = "Bài Đăng 97", Description = "Bán xe", CreateAt = "" },
-            new Listings() { CarID = 98, UserID = 2, Status = "Bài Đăng 98", Description = "Bán xe", CreateAt = "" },
-            new Listings() { CarID = 99, UserID = 1, Status = "Bài Đăng 99", Description = "Bán xe", CreateAt = "" },
-            new Listings() { CarID = 100, UserID = 2, Status = "Bài Đăng 100", Description = "Bán xe", CreateAt = "" },
-            new Listings() { CarID = 101, UserID = 1, Status = "Bài Đăng 101", Description = "Bán xe", CreateAt = "" },
-            new Listings() { CarID = 102, UserID = 2, Status = "Bài Đăng 102", Description = "Bán xe", CreateAt = "" },
-            new Listings() { CarID = 103, UserID = 1, Status = "Bài Đăng 103", Description = "Bán xe", CreateAt = "" },
-            new Listings() { CarID = 104, UserID = 2, Status = "Bài Đăng 104", Description = "Bán xe", CreateAt = "" },
-            new Listings() { CarID = 105, UserID = 1, Status = "Bài Đăng 105", Description = "Bán xe", CreateAt = "" },
-            new Listings() { CarID = 106, UserID = 2, Status = "Bài Đăng 106", Description = "Bán xe", CreateAt = "" },
-            new Listings() { CarID = 107, UserID = 1, Status = "Bài Đăng 107", Description = "Bán xe", CreateAt = "" },
-            new Listings() { CarID = 108, UserID = 2, Status = "Bài Đăng 108", Description = "Bán xe", CreateAt = "" },
-            new Listings() { CarID = 109, UserID = 1, Status = "Bài Đăng 109", Description = "Bán xe", CreateAt = "" },
-            new Listings() { CarID = 110, UserID = 2, Status = "Bài Đăng 110", Description = "Bán xe", CreateAt = "" },
-            new Listings() { CarID = 111, UserID = 1, Status = "Bài Đăng 111", Description = "Bán xe", CreateAt = "" },
-            new Listings() { CarID = 112, UserID = 2, Status = "Bài Đăng 112", Description = "Bán xe", CreateAt = "" },
-            new Listings() { CarID = 113, UserID = 1, Status = "Bài Đăng 113", Description = "Bán xe", CreateAt = "" },
-            new Listings() { CarID = 114, UserID = 2, Status = "Bài Đăng 114", Description = "Bán xe", CreateAt = "" },
-            new Listings() { CarID = 115, UserID = 1, Status = "Bài Đăng 115", Description = "Bán xe", CreateAt = "" },
-            new Listings() { CarID = 116, UserID = 2, Status = "Bài Đăng 116", Description = "Bán xe", CreateAt = "" },
-            new Listings() { CarID = 117, UserID = 1, Status = "Bài Đăng 117", Description = "Bán xe", CreateAt = "" },
-            new Listings() { CarID = 118, UserID = 2, Status = "Bài Đăng 118", Description = "Bán xe", CreateAt = "" },
-            new Listings() { CarID = 119, UserID = 1, Status = "Bài Đăng 119", Description = "Bán xe", CreateAt = "" },
-            new Listings() { CarID = 120, UserID = 2, Status = "Bài Đăng 120", Description = "Bán xe", CreateAt = "" },
-            new Listings() { CarID = 121, UserID = 1, Status = "Bài Đăng 121", Description = "Bán xe", CreateAt = "" },
-            new Listings() { CarID = 122, UserID = 2, Status = "Bài Đăng 122", Description = "Bán xe", CreateAt = "" },
-            new Listings() { CarID = 123, UserID = 1, Status = "Bài Đăng 123", Description = "Bán xe", CreateAt = "" },
-            new Listings() { CarID = 124, UserID = 2, Status = "Bài Đăng 124", Description = "Bán xe", CreateAt = "" },
-            new Listings() { CarID = 125, UserID = 1, Status = "Bài Đăng 125", Description = "Bán xe", CreateAt = "" },
-            new Listings() { CarID = 126, UserID = 2, Status = "Bài Đăng 126", Description = "Bán xe", CreateAt = "" },
-            new Listings() { CarID = 127, UserID = 1, Status = "Bài Đăng 127", Description = "Bán xe", CreateAt = "" },
-            new Listings() { CarID = 128, UserID = 2, Status = "Bài Đăng 128", Description = "Bán xe", CreateAt = "" }
+            new Listings() { CarID = 1, UserID = 1, Status = "Bài Đăng 1", Description = "Bán xe", DatePosted = "" },
+            new Listings() { CarID = 2, UserID = 2, Status = "Bài Đăng 2", Description = "Bán xe", DatePosted = "" },
+            new Listings() { CarID = 3, UserID = 1, Status = "Bài Đăng 3", Description = "Bán xe", DatePosted = "" },
+            new Listings() { CarID = 4, UserID = 2, Status = "Bài Đăng 4", Description = "Bán xe", DatePosted = "" },
+            new Listings() { CarID = 5, UserID = 1, Status = "Bài Đăng 5", Description = "Bán xe", DatePosted = "" },
+            new Listings() { CarID = 6, UserID = 2, Status = "Bài Đăng 6", Description = "Bán xe", DatePosted = "" },
+            new Listings() { CarID = 7, UserID = 1, Status = "Bài Đăng 7", Description = "Bán xe", DatePosted = "" },
+            new Listings() { CarID = 8, UserID = 2, Status = "Bài Đăng 8", Description = "Bán xe", DatePosted = "" },
+            new Listings() { CarID = 9, UserID = 1, Status = "Bài Đăng 9", Description = "Bán xe", DatePosted = "" },
+            new Listings() { CarID = 10, UserID = 2, Status = "Bài Đăng 10", Description = "Bán xe", DatePosted = "" },
+            new Listings() { CarID = 11, UserID = 1, Status = "Bài Đăng 11", Description = "Bán xe", DatePosted = "" },
+            new Listings() { CarID = 12, UserID = 2, Status = "Bài Đăng 12", Description = "Bán xe", DatePosted = "" },
+            new Listings() { CarID = 13, UserID = 1, Status = "Bài Đăng 13", Description = "Bán xe", DatePosted = "" },
+            new Listings() { CarID = 14, UserID = 2, Status = "Bài Đăng 14", Description = "Bán xe", DatePosted = "" },
+            new Listings() { CarID = 15, UserID = 1, Status = "Bài Đăng 15", Description = "Bán xe", DatePosted = "" },
+            new Listings() { CarID = 16, UserID = 2, Status = "Bài Đăng 16", Description = "Bán xe", DatePosted = "" },
+            new Listings() { CarID = 17, UserID = 1, Status = "Bài Đăng 17", Description = "Bán xe", DatePosted = "" },
+            new Listings() { CarID = 18, UserID = 2, Status = "Bài Đăng 18", Description = "Bán xe", DatePosted = "" },
+            new Listings() { CarID = 19, UserID = 1, Status = "Bài Đăng 19", Description = "Bán xe", DatePosted = "" },
+            new Listings() { CarID = 20, UserID = 2, Status = "Bài Đăng 20", Description = "Bán xe", DatePosted = "" },
+            new Listings() { CarID = 21, UserID = 1, Status = "Bài Đăng 21", Description = "Bán xe", DatePosted = "" },
+            new Listings() { CarID = 22, UserID = 2, Status = "Bài Đăng 22", Description = "Bán xe", DatePosted = "" },
+            new Listings() { CarID = 23, UserID = 1, Status = "Bài Đăng 23", Description = "Bán xe", DatePosted = "" },
+            new Listings() { CarID = 24, UserID = 2, Status = "Bài Đăng 24", Description = "Bán xe", DatePosted = "" },
+            new Listings() { CarID = 25, UserID = 1, Status = "Bài Đăng 25", Description = "Bán xe", DatePosted = "" },
+            new Listings() { CarID = 26, UserID = 2, Status = "Bài Đăng 26", Description = "Bán xe", DatePosted = "" },
+            new Listings() { CarID = 27, UserID = 1, Status = "Bài Đăng 27", Description = "Bán xe", DatePosted = "" },
+            new Listings() { CarID = 28, UserID = 2, Status = "Bài Đăng 28", Description = "Bán xe", DatePosted = "" },
+            new Listings() { CarID = 29, UserID = 1, Status = "Bài Đăng 29", Description = "Bán xe", DatePosted = "" },
+            new Listings() { CarID = 30, UserID = 2, Status = "Bài Đăng 30", Description = "Bán xe", DatePosted = "" },
+            new Listings() { CarID = 31, UserID = 1, Status = "Bài Đăng 31", Description = "Bán xe", DatePosted = "" },
+            new Listings() { CarID = 32, UserID = 2, Status = "Bài Đăng 32", Description = "Bán xe", DatePosted = "" },
+            new Listings() { CarID = 33, UserID = 1, Status = "Bài Đăng 33", Description = "Bán xe", DatePosted = "" },
+            new Listings() { CarID = 34, UserID = 2, Status = "Bài Đăng 34", Description = "Bán xe", DatePosted = "" },
+            new Listings() { CarID = 35, UserID = 1, Status = "Bài Đăng 35", Description = "Bán xe", DatePosted = "" },
+            new Listings() { CarID = 36, UserID = 2, Status = "Bài Đăng 36", Description = "Bán xe", DatePosted = "" },
+            new Listings() { CarID = 37, UserID = 1, Status = "Bài Đăng 37", Description = "Bán xe", DatePosted = "" },
+            new Listings() { CarID = 38, UserID = 2, Status = "Bài Đăng 38", Description = "Bán xe", DatePosted = "" },
+            new Listings() { CarID = 39, UserID = 1, Status = "Bài Đăng 39", Description = "Bán xe", DatePosted = "" },
+            new Listings() { CarID = 40, UserID = 2, Status = "Bài Đăng 40", Description = "Bán xe", DatePosted = "" },
+            new Listings() { CarID = 41, UserID = 1, Status = "Bài Đăng 41", Description = "Bán xe", DatePosted = "" },
+            new Listings() { CarID = 42, UserID = 2, Status = "Bài Đăng 42", Description = "Bán xe", DatePosted = "" },
+            new Listings() { CarID = 43, UserID = 1, Status = "Bài Đăng 43", Description = "Bán xe", DatePosted = "" },
+            new Listings() { CarID = 44, UserID = 2, Status = "Bài Đăng 44", Description = "Bán xe", DatePosted = "" },
+            new Listings() { CarID = 45, UserID = 1, Status = "Bài Đăng 45", Description = "Bán xe", DatePosted = "" },
+            new Listings() { CarID = 46, UserID = 2, Status = "Bài Đăng 46", Description = "Bán xe", DatePosted = "" },
+            new Listings() { CarID = 47, UserID = 1, Status = "Bài Đăng 47", Description = "Bán xe", DatePosted = "" },
+            new Listings() { CarID = 48, UserID = 2, Status = "Bài Đăng 48", Description = "Bán xe", DatePosted = "" },
+            new Listings() { CarID = 49, UserID = 1, Status = "Bài Đăng 49", Description = "Bán xe", DatePosted = "" },
+            new Listings() { CarID = 50, UserID = 2, Status = "Bài Đăng 50", Description = "Bán xe", DatePosted = "" },
+            new Listings() { CarID = 51, UserID = 1, Status = "Bài Đăng 51", Description = "Bán xe", DatePosted = "" },
+            new Listings() { CarID = 52, UserID = 2, Status = "Bài Đăng 52", Description = "Bán xe", DatePosted = "" },
+            new Listings() { CarID = 53, UserID = 1, Status = "Bài Đăng 53", Description = "Bán xe", DatePosted = "" },
+            new Listings() { CarID = 54, UserID = 2, Status = "Bài Đăng 54", Description = "Bán xe", DatePosted = "" },
+            new Listings() { CarID = 55, UserID = 1, Status = "Bài Đăng 55", Description = "Bán xe", DatePosted = "" },
+            new Listings() { CarID = 56, UserID = 2, Status = "Bài Đăng 56", Description = "Bán xe", DatePosted = "" },
+            new Listings() { CarID = 57, UserID = 1, Status = "Bài Đăng 57", Description = "Bán xe", DatePosted = "" },
+            new Listings() { CarID = 58, UserID = 2, Status = "Bài Đăng 58", Description = "Bán xe", DatePosted = "" },
+            new Listings() { CarID = 59, UserID = 1, Status = "Bài Đăng 59", Description = "Bán xe", DatePosted = "" },
+            new Listings() { CarID = 60, UserID = 2, Status = "Bài Đăng 60", Description = "Bán xe", DatePosted = "" },
+            new Listings() { CarID = 61, UserID = 1, Status = "Bài Đăng 61", Description = "Bán xe", DatePosted = "" },
+            new Listings() { CarID = 62, UserID = 2, Status = "Bài Đăng 62", Description = "Bán xe", DatePosted = "" },
+            new Listings() { CarID = 63, UserID = 1, Status = "Bài Đăng 63", Description = "Bán xe", DatePosted = "" },
+            new Listings() { CarID = 64, UserID = 2, Status = "Bài Đăng 64", Description = "Bán xe", DatePosted = "" },
+            new Listings() { CarID = 65, UserID = 1, Status = "Bài Đăng 65", Description = "Bán xe", DatePosted = "" },
+            new Listings() { CarID = 66, UserID = 2, Status = "Bài Đăng 66", Description = "Bán xe", DatePosted = "" },
+            new Listings() { CarID = 67, UserID = 1, Status = "Bài Đăng 67", Description = "Bán xe", DatePosted = "" },
+            new Listings() { CarID = 68, UserID = 2, Status = "Bài Đăng 68", Description = "Bán xe", DatePosted = "" },
+            new Listings() { CarID = 69, UserID = 1, Status = "Bài Đăng 69", Description = "Bán xe", DatePosted = "" },
+            new Listings() { CarID = 70, UserID = 2, Status = "Bài Đăng 70", Description = "Bán xe", DatePosted = "" },
+            new Listings() { CarID = 71, UserID = 1, Status = "Bài Đăng 71", Description = "Bán xe", DatePosted = "" },
+            new Listings() { CarID = 72, UserID = 2, Status = "Bài Đăng 72", Description = "Bán xe", DatePosted = "" },
+            new Listings() { CarID = 73, UserID = 1, Status = "Bài Đăng 73", Description = "Bán xe", DatePosted = "" },
+            new Listings() { CarID = 74, UserID = 2, Status = "Bài Đăng 74", Description = "Bán xe", DatePosted = "" },
+            new Listings() { CarID = 75, UserID = 1, Status = "Bài Đăng 75", Description = "Bán xe", DatePosted = "" },
+            new Listings() { CarID = 76, UserID = 2, Status = "Bài Đăng 76", Description = "Bán xe", DatePosted = "" },
+            new Listings() { CarID = 77, UserID = 1, Status = "Bài Đăng 77", Description = "Bán xe", DatePosted = "" },
+            new Listings() { CarID = 78, UserID = 2, Status = "Bài Đăng 78", Description = "Bán xe", DatePosted = "" },
+            new Listings() { CarID = 79, UserID = 1, Status = "Bài Đăng 79", Description = "Bán xe", DatePosted = "" },
+            new Listings() { CarID = 80, UserID = 2, Status = "Bài Đăng 80", Description = "Bán xe", DatePosted = "" },
+            new Listings() { CarID = 81, UserID = 1, Status = "Bài Đăng 81", Description = "Bán xe", DatePosted = "" },
+            new Listings() { CarID = 82, UserID = 2, Status = "Bài Đăng 82", Description = "Bán xe", DatePosted = "" },
+            new Listings() { CarID = 83, UserID = 1, Status = "Bài Đăng 83", Description = "Bán xe", DatePosted = "" },
+            new Listings() { CarID = 84, UserID = 2, Status = "Bài Đăng 84", Description = "Bán xe", DatePosted = "" },
+            new Listings() { CarID = 85, UserID = 1, Status = "Bài Đăng 85", Description = "Bán xe", DatePosted = "" },
+            new Listings() { CarID = 86, UserID = 2, Status = "Bài Đăng 86", Description = "Bán xe", DatePosted = "" },
+            new Listings() { CarID = 87, UserID = 1, Status = "Bài Đăng 87", Description = "Bán xe", DatePosted = "" },
+            new Listings() { CarID = 88, UserID = 2, Status = "Bài Đăng 88", Description = "Bán xe", DatePosted = "" },
+            new Listings() { CarID = 89, UserID = 1, Status = "Bài Đăng 89", Description = "Bán xe", DatePosted = "" },
+            new Listings() { CarID = 90, UserID = 2, Status = "Bài Đăng 90", Description = "Bán xe", DatePosted = "" },
+            new Listings() { CarID = 91, UserID = 1, Status = "Bài Đăng 91", Description = "Bán xe", DatePosted = "" },
+            new Listings() { CarID = 92, UserID = 2, Status = "Bài Đăng 92", Description = "Bán xe", DatePosted = "" },
+            new Listings() { CarID = 93, UserID = 1, Status = "Bài Đăng 93", Description = "Bán xe", DatePosted = "" },
+            new Listings() { CarID = 94, UserID = 2, Status = "Bài Đăng 94", Description = "Bán xe", DatePosted = "" },
+            new Listings() { CarID = 95, UserID = 1, Status = "Bài Đăng 95", Description = "Bán xe", DatePosted = "" },
+            new Listings() { CarID = 96, UserID = 2, Status = "Bài Đăng 96", Description = "Bán xe", DatePosted = "" },
+            new Listings() { CarID = 97, UserID = 1, Status = "Bài Đăng 97", Description = "Bán xe", DatePosted = "" },
+            new Listings() { CarID = 98, UserID = 2, Status = "Bài Đăng 98", Description = "Bán xe", DatePosted = "" },
+            new Listings() { CarID = 99, UserID = 1, Status = "Bài Đăng 99", Description = "Bán xe", DatePosted = "" },
+            new Listings() { CarID = 100, UserID = 2, Status = "Bài Đăng 100", Description = "Bán xe", DatePosted = "" },
+            new Listings() { CarID = 101, UserID = 1, Status = "Bài Đăng 101", Description = "Bán xe", DatePosted = "" },
+            new Listings() { CarID = 102, UserID = 2, Status = "Bài Đăng 102", Description = "Bán xe", DatePosted = "" },
+            new Listings() { CarID = 103, UserID = 1, Status = "Bài Đăng 103", Description = "Bán xe", DatePosted = "" },
+            new Listings() { CarID = 104, UserID = 2, Status = "Bài Đăng 104", Description = "Bán xe", DatePosted = "" },
+            new Listings() { CarID = 105, UserID = 1, Status = "Bài Đăng 105", Description = "Bán xe", DatePosted = "" },
+            new Listings() { CarID = 106, UserID = 2, Status = "Bài Đăng 106", Description = "Bán xe", DatePosted = "" },
+            new Listings() { CarID = 107, UserID = 1, Status = "Bài Đăng 107", Description = "Bán xe", DatePosted = "" },
+            new Listings() { CarID = 108, UserID = 2, Status = "Bài Đăng 108", Description = "Bán xe", DatePosted = "" },
+            new Listings() { CarID = 109, UserID = 1, Status = "Bài Đăng 109", Description = "Bán xe", DatePosted = "" },
+            new Listings() { CarID = 110, UserID = 2, Status = "Bài Đăng 110", Description = "Bán xe", DatePosted = "" },
+            new Listings() { CarID = 111, UserID = 1, Status = "Bài Đăng 111", Description = "Bán xe", DatePosted = "" },
+            new Listings() { CarID = 112, UserID = 2, Status = "Bài Đăng 112", Description = "Bán xe", DatePosted = "" },
+            new Listings() { CarID = 113, UserID = 1, Status = "Bài Đăng 113", Description = "Bán xe", DatePosted = "" },
+            new Listings() { CarID = 114, UserID = 2, Status = "Bài Đăng 114", Description = "Bán xe", DatePosted = "" },
+            new Listings() { CarID = 115, UserID = 1, Status = "Bài Đăng 115", Description = "Bán xe", DatePosted = "" },
+            new Listings() { CarID = 116, UserID = 2, Status = "Bài Đăng 116", Description = "Bán xe", DatePosted = "" },
+            new Listings() { CarID = 117, UserID = 1, Status = "Bài Đăng 117", Description = "Bán xe", DatePosted = "" },
+            new Listings() { CarID = 118, UserID = 2, Status = "Bài Đăng 118", Description = "Bán xe", DatePosted = "" },
+            new Listings() { CarID = 119, UserID = 1, Status = "Bài Đăng 119", Description = "Bán xe", DatePosted = "" },
+            new Listings() { CarID = 120, UserID = 2, Status = "Bài Đăng 120", Description = "Bán xe", DatePosted = "" },
+            new Listings() { CarID = 121, UserID = 1, Status = "Bài Đăng 121", Description = "Bán xe", DatePosted = "" },
+            new Listings() { CarID = 122, UserID = 2, Status = "Bài Đăng 122", Description = "Bán xe", DatePosted = "" },
+            new Listings() { CarID = 123, UserID = 1, Status = "Bài Đăng 123", Description = "Bán xe", DatePosted = "" },
+            new Listings() { CarID = 124, UserID = 2, Status = "Bài Đăng 124", Description = "Bán xe", DatePosted = "" },
+            new Listings() { CarID = 125, UserID = 1, Status = "Bài Đăng 125", Description = "Bán xe", DatePosted = "" },
+            new Listings() { CarID = 126, UserID = 2, Status = "Bài Đăng 126", Description = "Bán xe", DatePosted = "" },
+            new Listings() { CarID = 127, UserID = 1, Status = "Bài Đăng 127", Description = "Bán xe", DatePosted = "" },
+            new Listings() { CarID = 128, UserID = 2, Status = "Bài Đăng 128", Description = "Bán xe", DatePosted = "" }
         };
         LoadDataListingFromJson(result);
         return result;
