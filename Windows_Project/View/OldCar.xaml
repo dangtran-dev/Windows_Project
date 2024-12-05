@@ -5,8 +5,7 @@
     xmlns:local="using:Windows_Project"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
-    mc:Ignorable="d"
-    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+    mc:Ignorable="d">
 
     <ScrollViewer>
         <Grid Padding="20">
@@ -30,7 +29,7 @@
                         <DataTemplate x:DataType="local:Cars">
                             <StackPanel Orientation="Horizontal" BorderBrush="Gray" BorderThickness="0, 0, 0, 1">
                                 <!-- Hình ảnh -->
-                                <Image Height="100" Width="100" Margin="10"/>
+                                <Image Source="{Binding CarImages[0].ImageURL}" Height="100" Width="100" Margin="10"/>
                                 <!-- Thông tin xe -->
                                 <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center" Margin="10">
                                     <TextBlock Text="{x:Bind CarName}" FontSize="20" FontWeight="Bold"/>

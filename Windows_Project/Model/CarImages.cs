@@ -1,0 +1,17 @@
+﻿using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace Windows_Project;
+
+public class CarImages : INotifyPropertyChanged
+{
+    public int ImageID { get; set; }
+    public int CarID { get; set; }
+    public string ImageURL { get; set; }
+
+    public event PropertyChangedEventHandler PropertyChanged;
+}

@@ -47,22 +47,22 @@ exports.seed = async function (knex) {
 
   // Thêm dữ liệu vào bảng Manufacturers
   await knex("Manufacturers").insert([
-    { ManufacturerName: "Toyota" },
-    { ManufacturerName: "Volkswagen" },
-    { ManufacturerName: "Ford" },
-    { ManufacturerName: "Chevrolet" },
-    { ManufacturerName: "Nissan" },
-    { ManufacturerName: "Hyundai" },
-    { ManufacturerName: "KIA" },
-    { ManufacturerName: "Subaru" },
-    { ManufacturerName: "Mercedes" },
-    { ManufacturerName: "BMW" },
-    { ManufacturerName: "Lexus" },
-    { ManufacturerName: "Porsche" },
-    { ManufacturerName: "VinFast" },
-    { ManufacturerName: "Mazda" },
-    { ManufacturerName: "Honda" },
-    { ManufacturerName: "Audi" },
+      { ManufacturerName: "Toyota", ManufacturerPicture: "https://latarfaitdjumzdjmqxd.supabase.co/storage/v1/object/public/windows_project/toyota_logo.jpg" },
+      { ManufacturerName: "Volkswagen", ManufacturerPicture: "https://latarfaitdjumzdjmqxd.supabase.co/storage/v1/object/public/windows_project/wolkswagen_logo.jpg" },
+      { ManufacturerName: "Ford", ManufacturerPicture: "https://latarfaitdjumzdjmqxd.supabase.co/storage/v1/object/public/windows_project/ford_logo.jpg" },
+      { ManufacturerName: "Chevrolet", ManufacturerPicture: "https://latarfaitdjumzdjmqxd.supabase.co/storage/v1/object/public/windows_project/chevrolet_logo.jpg" },
+      { ManufacturerName: "Nissan", ManufacturerPicture: "https://latarfaitdjumzdjmqxd.supabase.co/storage/v1/object/public/windows_project/nissan_logo.jpg" },
+      { ManufacturerName: "Hyundai", ManufacturerPicture: "https://latarfaitdjumzdjmqxd.supabase.co/storage/v1/object/public/windows_project/hyundai_logo.jpg" },
+      { ManufacturerName: "KIA", ManufacturerPicture: "https://latarfaitdjumzdjmqxd.supabase.co/storage/v1/object/public/windows_project/kia_logo.jpg" },
+      { ManufacturerName: "Subaru", ManufacturerPicture: "https://latarfaitdjumzdjmqxd.supabase.co/storage/v1/object/public/windows_project/subaru_logo.jpg" },
+      { ManufacturerName: "Mercedes", ManufacturerPicture: "https://latarfaitdjumzdjmqxd.supabase.co/storage/v1/object/public/windows_project/mercedes_benz_logo.jpg" },
+      { ManufacturerName: "BMW", ManufacturerPicture: "https://latarfaitdjumzdjmqxd.supabase.co/storage/v1/object/public/windows_project/bmw_logo.jpg" },
+      { ManufacturerName: "Lexus", ManufacturerPicture: "https://latarfaitdjumzdjmqxd.supabase.co/storage/v1/object/public/windows_project/lexus_logo.jpg" },
+      { ManufacturerName: "Porsche", ManufacturerPicture: "https://latarfaitdjumzdjmqxd.supabase.co/storage/v1/object/public/windows_project/porsche_logo.jpg" },
+      { ManufacturerName: "VinFast", ManufacturerPicture: "https://latarfaitdjumzdjmqxd.supabase.co/storage/v1/object/public/windows_project/vinfast_logo.jpg" },
+      { ManufacturerName: "Mazda", ManufacturerPicture: "https://latarfaitdjumzdjmqxd.supabase.co/storage/v1/object/public/windows_project/mazda_logo.jpg" },
+      { ManufacturerName: "Honda", ManufacturerPicture: "https://latarfaitdjumzdjmqxd.supabase.co/storage/v1/object/public/windows_project/honda_logo.jpg" },
+      { ManufacturerName: "Audi", ManufacturerPicture: "https://latarfaitdjumzdjmqxd.supabase.co/storage/v1/object/public/windows_project/audi_logo.jpg" },
   ]);
 
   // Thêm dữ liệu vào bảng CarModels

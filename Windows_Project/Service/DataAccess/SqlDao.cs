@@ -30,7 +30,7 @@ namespace Windows_Project.Service.DataAccess
             using (SqlConnection connection = new SqlConnection(_connectionString))
             {
                 connection.Open();
-                string query = "SELECT ManufacturerID, ManufacturerName FROM Manufacturers";
+                string query = "SELECT ManufacturerID, ManufacturerName, ManufacturerPicture FROM Manufacturers";
 
                 using (SqlCommand command = new SqlCommand(query, connection))
                 using (SqlDataReader reader = command.ExecuteReader())
@@ -39,6 +39,7 @@ namespace Windows_Project.Service.DataAccess
                     {
                         int manufacturerId = reader.GetInt32(0);  // ManufacturerID
                         string manufacturerName = reader.GetString(1);  // ManufacturerName
+                        string manufacturerPicture = reader.GetString(2);  // ManufacturerPicture
 
                         // Tạo một kết nối mới cho mỗi truy vấn Cars
                         List<Cars> cars = GetCarsByManufacturer(manufacturerId);
@@ -48,7 +49,7 @@ namespace Windows_Project.Service.DataAccess
                         {
                             ManufacturerId = manufacturerId,
                             ManufacturerName = manufacturerName,
-                            ManufacturerPicture = "../../Assets/toyota_logo.jpg", // hoặc lấy từ cơ sở dữ liệu nếu cần
+                            ManufacturerPicture = manufacturerPicture, // hoặc lấy từ cơ sở dữ liệu nếu cần
                             Cars = cars // Gán danh sách Cars
                         });
                     }
@@ -114,6 +115,7 @@ namespace Windows_Project.Service.DataAccess
                                 Price = reader.GetDecimal(10).ToString(), // Chuyển đổi Decimal thành String
                                 City = reader.GetString(11).ToString(),
                                 District = reader.GetString(12).ToString(),
+                                CarImages = GetCarImages(reader.GetInt32(0))
                             });
                         }
                     }
@@ -121,6 +123,8 @@ namespace Windows_Project.Service.DataAccess
             }
             return cars;
         }
+
+
 
         public List<Cars> GetCars()
         {
@@ -135,7 +139,7 @@ namespace Windows_Project.Service.DataAccess
                 using (SqlDataReader reader = command.ExecuteReader())
                 {
                     while (reader.Read())
-                    {
+                    {  
                         cars.Add(new Cars
                         {
                             ID = reader.GetInt32(0),
@@ -151,12 +155,45 @@ namespace Windows_Project.Service.DataAccess
                             Price = reader.GetDecimal(10).ToString(),
                             City = reader.GetString(11).ToString(),
                             District = reader.GetString(12).ToString(),
+                            CarImages = GetCarImages(reader.GetInt32(0))
                         });
                     }
                 }
             }
 
             return cars;
+        }
+
+        // Phương thức lấy danh sách hình ảnh cho mỗi xe
+        public List<CarImages> GetCarImages(int carId)
+        {
+            var carImages = new List<CarImages>();
+
+            using (SqlConnection connection = new SqlConnection(_connectionString))
+            {
+                connection.Open();
+                string query = "SELECT ImageID, CarID, ImageURL FROM CarImages WHERE CarID = @CarId";
+
+                using (SqlCommand command = new SqlCommand(query, connection))
+                {
+                    command.Parameters.AddWithValue("@CarId", carId);
+
+                    using (SqlDataReader reader = command.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            carImages.Add(new CarImages
+                            {
+                                ImageID = reader.GetInt32(0),
+                                CarID = reader.GetInt32(1),
+                                ImageURL = reader.GetString(2),
+                            });
+                        }
+                    }
+                }
+            }
+
+            return carImages;
         }
 
         public List<Users> GetUsers()
