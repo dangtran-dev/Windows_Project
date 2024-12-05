@@ -210,6 +210,8 @@ exports.seed = async function (knex) {
       Gear: "Số tự động",
       FuelType: "Máy xăng",
       Price: 450000000,
+      City: "Hà Nội",
+      District: "Ba Đình",
     },
     {
       ModelID: 2,
@@ -222,6 +224,8 @@ exports.seed = async function (knex) {
       Gear: "Số tự động",
       FuelType: "Máy xăng",
       Price: 699000000,
+      City: "Hà Nội",
+      District: "Ba Đình",
     },
     {
       ModelID: 3,
@@ -234,6 +238,8 @@ exports.seed = async function (knex) {
       Gear: "Số tự động",
       FuelType: "Máy xăng",
       Price: 488000000,
+      City: "Hà Nội",
+      District: "Ba Đình",
     },
     {
       ModelID: 4,
@@ -246,6 +252,8 @@ exports.seed = async function (knex) {
       Gear: "Số tự động",
       FuelType: "Máy xăng",
       Price: 695000000,
+      City: "Hà Nội",
+      District: "Ba Đình",
     },
     {
       ModelID: 5,
@@ -258,6 +266,8 @@ exports.seed = async function (knex) {
       Gear: "Số tự động",
       FuelType: "Máy xăng",
       Price: 335000000,
+      City: "Hà Nội",
+      District: "Ba Đình",
     },
     {
       ModelID: 6,
@@ -270,6 +280,8 @@ exports.seed = async function (knex) {
       Gear: "Số tự động",
       FuelType: "Máy xăng",
       Price: 695000000,
+      City: "Hà Nội",
+      District: "Ba Đình",
     },
     {
       ModelID: 7,
@@ -282,6 +294,8 @@ exports.seed = async function (knex) {
       Gear: "Số tự động",
       FuelType: "Máy xăng",
       Price: 414000000,
+      City: "Hà Nội",
+      District: "Ba Đình",
     },
     {
       ModelID: 8,
@@ -294,6 +308,8 @@ exports.seed = async function (knex) {
       Gear: "Số sàn",
       FuelType: "Máy xăng",
       Price: 235000000,
+      City: "Hà Nội",
+      District: "Ba Đình",
     },
     {
       ModelID: 9,
@@ -306,6 +322,8 @@ exports.seed = async function (knex) {
       Gear: "Số tự động",
       FuelType: "Máy xăng",
       Price: 475000000,
+      City: "Hà Nội",
+      District: "Ba Đình",
     },
     {
       ModelID: 10,
@@ -318,6 +336,8 @@ exports.seed = async function (knex) {
       Gear: "Số tự động",
       FuelType: "Máy xăng",
       Price: 539000000,
+      City: "Hà Nội",
+      District: "Ba Đình",
     },
     {
       ModelID: 11,
@@ -330,6 +350,8 @@ exports.seed = async function (knex) {
       Gear: "Số tự động",
       FuelType: "Máy xăng",
       Price: 1750000000,
+      City: "Hồ Chí Minh",
+      District: "Quận 1",
     },
     {
       ModelID: 12,
@@ -342,6 +364,8 @@ exports.seed = async function (knex) {
       Gear: "Số tự động",
       FuelType: "Máy dầu",
       Price: 388000000,
+      City: "Hồ Chí Minh",
+      District: "Quận 1",
     },
     {
       ModelID: 13,
@@ -354,6 +378,8 @@ exports.seed = async function (knex) {
       Gear: "Số tự động",
       FuelType: "Máy xăng",
       Price: 879000000,
+      City: "Hồ Chí Minh",
+      District: "Quận 1",
     },
     {
       ModelID: 14,
@@ -366,6 +392,8 @@ exports.seed = async function (knex) {
       Gear: "Số tự động",
       FuelType: "Máy xăng",
       Price: 1100000000,
+      City: "Hồ Chí Minh",
+      District: "Quận 1",
     },
     {
       ModelID: 17,
@@ -378,6 +406,8 @@ exports.seed = async function (knex) {
       Gear: "Số tự động",
       FuelType: "Máy dầu",
       Price: 870000000,
+      City: "Hồ Chí Minh",
+      District: "Quận 1",
     },
     {
       ModelID: 18,
@@ -390,6 +420,8 @@ exports.seed = async function (knex) {
       Gear: "Số tự động",
       FuelType: "Máy dầu",
       Price: 870000000,
+      City: "Hồ Chí Minh",
+      District: "Quận 1",
     },
     {
       ModelID: 19,
@@ -402,6 +434,8 @@ exports.seed = async function (knex) {
       Gear: "Số tự động",
       FuelType: "Máy xăng",
       Price: 398000000,
+      City: "Hồ Chí Minh",
+      District: "Quận 1",
     },
     {
       ModelID: 20,
@@ -414,6 +448,8 @@ exports.seed = async function (knex) {
       Gear: "Số tự động",
       FuelType: "Máy xăng",
       Price: 840000000,
+      City: "Hồ Chí Minh",
+      District: "Quận 1",
     },
     {
       ModelID: 21,
@@ -426,6 +462,8 @@ exports.seed = async function (knex) {
       Gear: "Số tự động",
       FuelType: "Máy xăng",
       Price: 1730000000,
+      City: "Đà Nẵng",
+      District: "Hải Châu",
     },
     {
       ModelID: 22,
@@ -438,6 +476,8 @@ exports.seed = async function (knex) {
       Gear: "Số tự động",
       FuelType: "Máy dầu",
       Price: 466000000,
+      City: "Đà Nẵng",
+      District: "Hải Châu",
     },
     {
       ModelID: 23,
@@ -450,6 +490,8 @@ exports.seed = async function (knex) {
       Gear: "Số sàn",
       FuelType: "Máy dầu",
       Price: 300000000,
+      City: "Đà Nẵng",
+      District: "Hải Châu",
     },
     {
       ModelID: 24,
@@ -462,6 +504,8 @@ exports.seed = async function (knex) {
       Gear: "Số tự động",
       FuelType: "Máy xăng",
       Price: 295000000,
+      City: "Đà Nẵng",
+      District: "Hải Châu",
     },
     {
       ModelID: 28,
@@ -474,6 +518,8 @@ exports.seed = async function (knex) {
       Gear: "Số tự động",
       FuelType: "Máy xăng",
       Price: 249000000,
+      City: "Đà Nẵng",
+      District: "Hải Châu",
     },
     {
       ModelID: 32,
@@ -486,6 +532,8 @@ exports.seed = async function (knex) {
       Gear: "Số tự động",
       FuelType: "Máy xăng",
       Price: 980000000,
+      City: "Đà Nẵng",
+      District: "Hải Châu",
     },
     {
       ModelID: 33,
@@ -498,6 +546,8 @@ exports.seed = async function (knex) {
       Gear: "Số tự động",
       FuelType: "Máy dầu",
       Price: 825000000,
+      City: "Đà Nẵng",
+      District: "Hải Châu",
     },
     {
       ModelID: 34,
@@ -510,6 +560,8 @@ exports.seed = async function (knex) {
       Gear: "Số tự động",
       FuelType: "Máy xăng",
       Price: 365000000,
+      City: "Đà Nẵng",
+      District: "Hải Châu",
     },
     {
       ModelID: 35,
@@ -522,6 +574,8 @@ exports.seed = async function (knex) {
       Gear: "Số tự động",
       FuelType: "Máy xăng",
       Price: 435000000,
+      City: "Đà Nẵng",
+      District: "Hải Châu",
     },
     {
       ModelID: 36,
@@ -534,6 +588,8 @@ exports.seed = async function (knex) {
       Gear: "Số tự động",
       FuelType: "Máy xăng",
       Price: 715000000,
+      City: "Đà Nẵng",
+      District: "Hải Châu",
     },
     {
       ModelID: 37,
@@ -546,6 +602,8 @@ exports.seed = async function (knex) {
       Gear: "Số sàn",
       FuelType: "Máy dầu",
       Price: 599000000,
+      City: "Đà Nẵng",
+      District: "Hải Châu",
     },
     {
       ModelID: 38,
@@ -558,6 +616,8 @@ exports.seed = async function (knex) {
       Gear: "Số tự động",
       FuelType: "Máy xăng",
       Price: 390000000,
+      City: "Hồ Chí Minh",
+      District: "Thủ Đức",
     },
     {
       ModelID: 41,
@@ -570,6 +630,8 @@ exports.seed = async function (knex) {
       Gear: "Số tự động",
       FuelType: "Máy xăng",
       Price: 440000000,
+      City: "Hồ Chí Minh",
+      District: "Thủ Đức",
     },
     {
       ModelID: 42,
@@ -582,6 +644,8 @@ exports.seed = async function (knex) {
       Gear: "Số sàn",
       FuelType: "Máy xăng",
       Price: 209000000,
+      City: "Hồ Chí Minh",
+      District: "Thủ Đức",
     },
     {
       ModelID: 43,
@@ -594,6 +658,8 @@ exports.seed = async function (knex) {
       Gear: "Số tự động",
       FuelType: "Máy xăng",
       Price: 565000000,
+      City: "Hồ Chí Minh",
+      District: "Thủ Đức",
     },
     {
       ModelID: 44,
@@ -606,6 +672,8 @@ exports.seed = async function (knex) {
       Gear: "Số tự động",
       FuelType: "Máy xăng",
       Price: 415000000,
+      City: "Hồ Chí Minh",
+      District: "Thủ Đức",
     },
     {
       ModelID: 45,
@@ -618,6 +686,8 @@ exports.seed = async function (knex) {
       Gear: "Số sàn",
       FuelType: "Máy xăng",
       Price: 139000000,
+      City: "Hồ Chí Minh",
+      District: "Thủ Đức",
     },
     {
       ModelID: 46,
@@ -630,6 +700,8 @@ exports.seed = async function (knex) {
       Gear: "Số sàn",
       FuelType: "Máy xăng",
       Price: 245000000,
+      City: "Hồ Chí Minh",
+      District: "Thủ Đức",
     },
     {
       ModelID: 47,
@@ -642,6 +714,8 @@ exports.seed = async function (knex) {
       Gear: "Số tự động",
       FuelType: "Máy xăng",
       Price: 345000000,
+      City: "Hồ Chí Minh",
+      District: "Thủ Đức",
     },
     {
       ModelID: 48,
@@ -654,6 +728,8 @@ exports.seed = async function (knex) {
       Gear: "Số tự động",
       FuelType: "Máy xăng",
       Price: 540000000,
+      City: "Hồ Chí Minh",
+      District: "Thủ Đức",
     },
     {
       ModelID: 49,
@@ -666,6 +742,8 @@ exports.seed = async function (knex) {
       Gear: "Số tự động",
       FuelType: "Máy xăng",
       Price: 265000000,
+      City: "Hồ Chí Minh",
+      District: "Thủ Đức",
     },
     {
       ModelID: 50,
@@ -678,6 +756,8 @@ exports.seed = async function (knex) {
       Gear: "Số tự động",
       FuelType: "Máy xăng",
       Price: 750000000,
+      City: "Hồ Chí Minh",
+      District: "Thủ Đức",
     },
     {
       ModelID: 51,
@@ -690,6 +770,8 @@ exports.seed = async function (knex) {
       Gear: "Số tự động",
       FuelType: "Máy xăng",
       Price: 509000000,
+      City: "Hồ Chí Minh",
+      District: "Gò Vấp",
     },
     {
       ModelID: 52,
@@ -702,6 +784,8 @@ exports.seed = async function (knex) {
       Gear: "Số tự động",
       FuelType: "Máy xăng",
       Price: 566000000,
+      City: "Hồ Chí Minh",
+      District: "Gò Vấp",
     },
     {
       ModelID: 53,
@@ -714,6 +798,8 @@ exports.seed = async function (knex) {
       Gear: "Số tự động",
       FuelType: "Máy dầu",
       Price: 775000000,
+      City: "Hồ Chí Minh",
+      District: "Gò Vấp",
     },
     {
       ModelID: 54,
@@ -726,6 +812,8 @@ exports.seed = async function (knex) {
       Gear: "Số tự động",
       FuelType: "Máy xăng",
       Price: 655000000,
+      City: "Hồ Chí Minh",
+      District: "Gò Vấp",
     },
     {
       ModelID: 55,
@@ -738,6 +826,8 @@ exports.seed = async function (knex) {
       Gear: "Số tự động",
       FuelType: "Máy xăng",
       Price: 1399000000,
+      City: "Hồ Chí Minh",
+      District: "Gò Vấp",
     },
     {
       ModelID: 56,
@@ -750,6 +840,8 @@ exports.seed = async function (knex) {
       Gear: "Số tự động",
       FuelType: "Máy xăng",
       Price: 400000000,
+      City: "Hồ Chí Minh",
+      District: "Gò Vấp",
     },
     {
       ModelID: 58,
@@ -762,6 +854,8 @@ exports.seed = async function (knex) {
       Gear: "Số tự động",
       FuelType: "Máy xăng",
       Price: 1390000000,
+      City: "Hồ Chí Minh",
+      District: "Gò Vấp",
     },
     {
       ModelID: 60,
@@ -774,6 +868,8 @@ exports.seed = async function (knex) {
       Gear: "Số tự động",
       FuelType: "Máy xăng",
       Price: 820000000,
+      City: "Hồ Chí Minh",
+      District: "Gò Vấp",
     },
     {
       ModelID: 64,
@@ -786,6 +882,8 @@ exports.seed = async function (knex) {
       Gear: "Số tự động",
       FuelType: "Máy xăng",
       Price: 650000000,
+      City: "Hồ Chí Minh",
+      District: "Gò Vấp",
     },
     {
       ModelID: 65,
@@ -798,6 +896,8 @@ exports.seed = async function (knex) {
       Gear: "Số tự động",
       FuelType: "Hybrid",
       Price: 1659000000,
+      City: "Hồ Chí Minh",
+      District: "Gò Vấp",
     },
     {
       ModelID: 66,
@@ -810,6 +910,8 @@ exports.seed = async function (knex) {
       Gear: "Số tự động",
       FuelType: "Máy xăng",
       Price: 1130000000,
+      City: "Hồ Chí Minh",
+      District: "Gò Vấp",
     },
     {
       ModelID: 67,
@@ -822,6 +924,8 @@ exports.seed = async function (knex) {
       Gear: "Số tự động",
       FuelType: "Máy xăng",
       Price: 2699000000,
+      City: "Hồ Chí Minh",
+      District: "Gò Vấp",
     },
     {
       ModelID: 68,
@@ -834,6 +938,8 @@ exports.seed = async function (knex) {
       Gear: "Số tự động",
       FuelType: "Máy xăng",
       Price: 1380000000,
+      City: "Hồ Chí Minh",
+      District: "Gò Vấp",
     },
     {
       ModelID: 69,
@@ -846,6 +952,8 @@ exports.seed = async function (knex) {
       Gear: "Số tự động",
       FuelType: "Máy xăng",
       Price: 759000000,
+      City: "Hồ Chí Minh",
+      District: "Gò Vấp",
     },
     {
       ModelID: 70,
@@ -858,6 +966,8 @@ exports.seed = async function (knex) {
       Gear: "Số tự động",
       FuelType: "Máy xăng",
       Price: 1990000000,
+      City: "Hồ Chí Minh",
+      District: "Gò Vấp",
     },
     {
       ModelID: 71,
@@ -870,6 +980,8 @@ exports.seed = async function (knex) {
       Gear: "Số tự động",
       FuelType: "Máy xăng",
       Price: 1179000000,
+      City: "Hà Nội",
+      District: "Ba Đình",
     },
     {
       ModelID: 72,
@@ -882,6 +994,8 @@ exports.seed = async function (knex) {
       Gear: "Số tự động",
       FuelType: "Máy xăng",
       Price: 3199000000,
+      City: "Hà Nội",
+      District: "Ba Đình",
     },
     {
       ModelID: 73,
@@ -894,6 +1008,8 @@ exports.seed = async function (knex) {
       Gear: "Số tự động",
       FuelType: "Máy xăng",
       Price: 569000000,
+      City: "Hà Nội",
+      District: "Ba Đình",
     },
     {
       ModelID: 74,
@@ -906,6 +1022,8 @@ exports.seed = async function (knex) {
       Gear: "Số tự động",
       FuelType: "Máy xăng",
       Price: 1150000000,
+      City: "Hà Nội",
+      District: "Ba Đình",
     },
     {
       ModelID: 75,
@@ -918,6 +1036,8 @@ exports.seed = async function (knex) {
       Gear: "Số tự động",
       FuelType: "Máy xăng",
       Price: 1599000000,
+      City: "Hà Nội",
+      District: "Ba Đình",
     },
     {
       ModelID: 76,
@@ -930,6 +1050,8 @@ exports.seed = async function (knex) {
       Gear: "Số tự động",
       FuelType: "Máy xăng",
       Price: 2280000000,
+      City: "Hà Nội",
+      District: "Ba Đình",
     },
     {
       ModelID: 77,
@@ -942,6 +1064,8 @@ exports.seed = async function (knex) {
       Gear: "Số tự động",
       FuelType: "Máy xăng",
       Price: 1460000000,
+      City: "Hà Nội",
+      District: "Ba Đình",
     },
     {
       ModelID: 78,
@@ -954,6 +1078,8 @@ exports.seed = async function (knex) {
       Gear: "Số tự động",
       FuelType: "Máy xăng",
       Price: 3099000000,
+      City: "Hà Nội",
+      District: "Ba Đình",
     },
     {
       ModelID: 79,
@@ -966,6 +1092,8 @@ exports.seed = async function (knex) {
       Gear: "Số tự động",
       FuelType: "Máy xăng",
       Price: 4099000000,
+      City: "Hà Nội",
+      District: "Ba Đình",
     },
     {
       ModelID: 80,
@@ -978,6 +1106,8 @@ exports.seed = async function (knex) {
       Gear: "Số tự động",
       FuelType: "Máy xăng",
       Price: 3799000000,
+      City: "Hà Nội",
+      District: "Ba Đình",
     },
     {
       ModelID: 81,
@@ -990,6 +1120,8 @@ exports.seed = async function (knex) {
       Gear: "Số tự động",
       FuelType: "Máy xăng",
       Price: 2999000000,
+      City: "Hà Nội",
+      District: "Ba Đình",
     },
     {
       ModelID: 82,
@@ -1002,6 +1134,8 @@ exports.seed = async function (knex) {
       Gear: "Số tự động",
       FuelType: "Máy xăng",
       Price: 4699000000,
+      City: "Hà Nội",
+      District: "Ba Đình",
     },
     {
       ModelID: 83,
@@ -1014,6 +1148,8 @@ exports.seed = async function (knex) {
       Gear: "Số tự động",
       FuelType: "Máy xăng",
       Price: 770000000,
+      City: "Hà Nội",
+      District: "Ba Đình",
     },
     {
       ModelID: 85,
@@ -1026,6 +1162,8 @@ exports.seed = async function (knex) {
       Gear: "Số tự động",
       FuelType: "Máy xăng",
       Price: 1719000000,
+      City: "Hà Nội",
+      District: "Ba Đình",
     },
     {
       ModelID: 86,
@@ -1038,6 +1176,8 @@ exports.seed = async function (knex) {
       Gear: "Số tự động",
       FuelType: "Máy xăng",
       Price: 2230000000,
+      City: "Hà Nội",
+      District: "Ba Đình",
     },
     {
       ModelID: 87,
@@ -1050,6 +1190,8 @@ exports.seed = async function (knex) {
       Gear: "Số tự động",
       FuelType: "Máy xăng",
       Price: 2630000000,
+      City: "Hà Nội",
+      District: "Ba Đình",
     },
     {
       ModelID: 88,
@@ -1062,6 +1204,8 @@ exports.seed = async function (knex) {
       Gear: "Số sàn",
       FuelType: "Máy xăng",
       Price: 1150000000,
+      City: "Hà Nội",
+      District: "Ba Đình",
     },
     {
       ModelID: 89,
@@ -1074,6 +1218,8 @@ exports.seed = async function (knex) {
       Gear: "Số tự động",
       FuelType: "Máy xăng",
       Price: 4479000000,
+      City: "Hà Nội",
+      District: "Ba Đình",
     },
     {
       ModelID: 90,
@@ -1086,6 +1232,8 @@ exports.seed = async function (knex) {
       Gear: "Số tự động",
       FuelType: "Máy xăng",
       Price: 1720000000,
+      City: "Hà Nội",
+      District: "Ba Đình",
     },
     {
       ModelID: 91,
@@ -1098,6 +1246,8 @@ exports.seed = async function (knex) {
       Gear: "Số hỗn hợp",
       FuelType: "Máy xăng",
       Price: 3599000000,
+      City: "Hà Nội",
+      District: "Ba Đình",
     },
     {
       ModelID: 92,
@@ -1110,6 +1260,8 @@ exports.seed = async function (knex) {
       Gear: "Số tự động",
       FuelType: "Máy xăng",
       Price: 9499000000,
+      City: "Hà Nội",
+      District: "Ba Đình",
     },
     {
       ModelID: 93,
@@ -1122,6 +1274,8 @@ exports.seed = async function (knex) {
       Gear: "Số tự động",
       FuelType: "Máy xăng",
       Price: 3699000000,
+      City: "Hà Nội",
+      District: "Ba Đình",
     },
     {
       ModelID: 94,
@@ -1134,6 +1288,8 @@ exports.seed = async function (knex) {
       Gear: "Số tự động",
       FuelType: "Điện",
       Price: 5000000000,
+      City: "Hà Nội",
+      District: "Ba Đình",
     },
     {
       ModelID: 96,
@@ -1146,6 +1302,8 @@ exports.seed = async function (knex) {
       Gear: "Số tự động",
       FuelType: "Máy xăng",
       Price: 1200000000,
+      City: "Hà Nội",
+      District: "Ba Đình",
     },
     {
       ModelID: 97,
@@ -1158,6 +1316,8 @@ exports.seed = async function (knex) {
       Gear: "Số tự động",
       FuelType: "Máy xăng",
       Price: 560000000,
+      City: "Đà Nẵng",
+      District: "Hải Châu",
     },
     {
       ModelID: 98,
@@ -1170,6 +1330,8 @@ exports.seed = async function (knex) {
       Gear: "Số tự động",
       FuelType: "Máy xăng",
       Price: 718000000,
+      City: "Đà Nẵng",
+      District: "Hải Châu",
     },
     {
       ModelID: 99,
@@ -1182,6 +1344,8 @@ exports.seed = async function (knex) {
       Gear: "Số tự động",
       FuelType: "Máy xăng",
       Price: 319000000,
+      City: "Đà Nẵng",
+      District: "Hải Châu",
     },
     {
       ModelID: 100,
@@ -1194,6 +1358,8 @@ exports.seed = async function (knex) {
       Gear: "Số tự động",
       FuelType: "Điện",
       Price: 480000000,
+      City: "Đà Nẵng",
+      District: "Hải Châu",
     },
     {
       ModelID: 101,
@@ -1206,6 +1372,8 @@ exports.seed = async function (knex) {
       Gear: "Số tự động",
       FuelType: "Điện",
       Price: 850000000,
+      City: "Đà Nẵng",
+      District: "Hải Châu",
     },
     {
       ModelID: 102,
@@ -1218,6 +1386,8 @@ exports.seed = async function (knex) {
       Gear: "Số tự động",
       FuelType: "Điện",
       Price: 1140000000,
+      City: "Đà Nẵng",
+      District: "Hải Châu",
     },
     {
       ModelID: 104,
@@ -1230,6 +1400,8 @@ exports.seed = async function (knex) {
       Gear: "Số tự động",
       FuelType: "Điện",
       Price: 255000000,
+      City: "Đà Nẵng",
+      District: "Hải Châu",
     },
     {
       ModelID: 105,
@@ -1242,6 +1414,8 @@ exports.seed = async function (knex) {
       Gear: "Số tự động",
       FuelType: "Máy xăng",
       Price: 475000000,
+      City: "Đà Nẵng",
+      District: "Hải Châu",
     },
     {
       ModelID: 106,
@@ -1254,6 +1428,8 @@ exports.seed = async function (knex) {
       Gear: "Số tự động",
       FuelType: "Máy xăng",
       Price: 625000000,
+      City: "Đà Nẵng",
+      District: "Hải Châu",
     },
     {
       ModelID: 107,
@@ -1266,6 +1442,8 @@ exports.seed = async function (knex) {
       Gear: "Số tự động",
       FuelType: "Máy xăng",
       Price: 760000000,
+      City: "Đà Nẵng",
+      District: "Hải Châu",
     },
     {
       ModelID: 108,
@@ -1278,6 +1456,8 @@ exports.seed = async function (knex) {
       Gear: "Số tự động",
       FuelType: "Máy xăng",
       Price: 328000000,
+      City: "Đà Nẵng",
+      District: "Hải Châu",
     },
     {
       ModelID: 109,
@@ -1290,6 +1470,8 @@ exports.seed = async function (knex) {
       Gear: "Số tự động",
       FuelType: "Máy dầu",
       Price: 345000000,
+      City: "Đà Nẵng",
+      District: "Hải Châu",
     },
     {
       ModelID: 110,
@@ -1302,6 +1484,8 @@ exports.seed = async function (knex) {
       Gear: "Số tự động",
       FuelType: "Máy xăng",
       Price: 1075000000,
+      City: "Đà Nẵng",
+      District: "Hải Châu",
     },
     {
       ModelID: 111,
@@ -1314,6 +1498,8 @@ exports.seed = async function (knex) {
       Gear: "Số tự động",
       FuelType: "Máy xăng",
       Price: 525000000,
+      City: "Đà Nẵng",
+      District: "Hải Châu",
     },
     {
       ModelID: 112,
@@ -1326,6 +1512,8 @@ exports.seed = async function (knex) {
       Gear: "Số tự động",
       FuelType: "Máy xăng",
       Price: 690000000,
+      City: "Đà Nẵng",
+      District: "Hải Châu",
     },
     {
       ModelID: 113,
@@ -1338,6 +1526,8 @@ exports.seed = async function (knex) {
       Gear: "Số tự động",
       FuelType: "Máy xăng",
       Price: 470000000,
+      City: "Đà Nẵng",
+      District: "Hải Châu",
     },
     {
       ModelID: 114,
@@ -1350,6 +1540,8 @@ exports.seed = async function (knex) {
       Gear: "Số tự động",
       FuelType: "Máy xăng",
       Price: 655000000,
+      City: "Đà Nẵng",
+      District: "Hải Châu",
     },
     {
       ModelID: 115,
@@ -1362,6 +1554,8 @@ exports.seed = async function (knex) {
       Gear: "Số tự động",
       FuelType: "Máy xăng",
       Price: 470000000,
+      City: "Đà Nẵng",
+      District: "Hải Châu",
     },
     {
       ModelID: 116,
@@ -1374,6 +1568,8 @@ exports.seed = async function (knex) {
       Gear: "Số tự động",
       FuelType: "Máy xăng",
       Price: 375000000,
+      City: "Đà Nẵng",
+      District: "Hải Châu",
     },
     {
       ModelID: 117,
@@ -1386,6 +1582,8 @@ exports.seed = async function (knex) {
       Gear: "Số tự động",
       FuelType: "Máy xăng",
       Price: 345000000,
+      City: "Đà Nẵng",
+      District: "Hải Châu",
     },
     {
       ModelID: 118,
@@ -1398,6 +1596,8 @@ exports.seed = async function (knex) {
       Gear: "Số tự động",
       FuelType: "Máy xăng",
       Price: 675000000,
+      City: "Đà Nẵng",
+      District: "Hải Châu",
     },
     {
       ModelID: 119,
@@ -1410,6 +1610,8 @@ exports.seed = async function (knex) {
       Gear: "Số tự động",
       FuelType: "Máy xăng",
       Price: 380000000,
+      City: "Đà Nẵng",
+      District: "Hải Châu",
     },
     {
       ModelID: 120,
@@ -1422,6 +1624,8 @@ exports.seed = async function (knex) {
       Gear: "Số tự động",
       FuelType: "Máy xăng",
       Price: 790000000,
+      City: "Hồ Chí Minh",
+      District: "Gò Vấp",
     },
     {
       ModelID: 121,
@@ -1434,6 +1638,8 @@ exports.seed = async function (knex) {
       Gear: "Số tự động",
       FuelType: "Máy xăng",
       Price: 450000000,
+      City: "Hồ Chí Minh",
+      District: "Gò Vấp",
     },
     {
       ModelID: 122,
@@ -1446,6 +1652,8 @@ exports.seed = async function (knex) {
       Gear: "Số tự động",
       FuelType: "Máy xăng",
       Price: 550000000,
+      City: "Hồ Chí Minh",
+      District: "Gò Vấp",
     },
     {
       ModelID: 123,
@@ -1458,6 +1666,8 @@ exports.seed = async function (knex) {
       Gear: "Số tự động",
       FuelType: "Máy xăng",
       Price: 1179000000,
+      City: "Hồ Chí Minh",
+      District: "Gò Vấp",
     },
     {
       ModelID: 124,
@@ -1470,6 +1680,8 @@ exports.seed = async function (knex) {
       Gear: "Số tự động",
       FuelType: "Máy xăng",
       Price: 1699000000,
+      City: "Hồ Chí Minh",
+      District: "Gò Vấp",
     },
     {
       ModelID: 125,
@@ -1482,6 +1694,8 @@ exports.seed = async function (knex) {
       Gear: "Số tự động",
       FuelType: "Máy xăng",
       Price: 999000000,
+      City: "Hồ Chí Minh",
+      District: "Gò Vấp",
     },
     {
       ModelID: 126,
@@ -1494,6 +1708,8 @@ exports.seed = async function (knex) {
       Gear: "Số tự động",
       FuelType: "Máy xăng",
       Price: 748000000,
+      City: "Hồ Chí Minh",
+      District: "Gò Vấp",
     },
   ]);
 

@@ -42,24 +42,21 @@ namespace Windows_Project.View
 
             if (e.Parameter is string carType)
             {
-                // Lọc danh sách dựa trên tham số
+                // Cập nhật tiêu đề và lọc danh sách xe dựa trên tham số
                 if (carType == "old")
                 {
                     PageTitle.Text = "Ô TÔ CŨ";
-                    ViewModel.CreateCarWithUserList("Xe cũ");
+                    ViewModel.FilterCarsByCondition("Xe cũ");
+                    LoadPage(currentPage);
                 }
                 else if (carType == "new")
                 {
                     PageTitle.Text = "Ô TÔ MỚI";
-                    ViewModel.CreateCarWithUserList("Xe mới");
+                    ViewModel.FilterCarsByCondition("Xe mới");
+                    LoadPage(currentPage);
                 }
-
-                // Bắt đầu phân trang từ trang đầu tiên
-                currentPage = 1;
-                LoadPage(currentPage);
             }
         }
-
 
         private void Back_Click(object sender, RoutedEventArgs e)
         {
@@ -72,7 +69,7 @@ namespace Windows_Project.View
         private void OnCarItemClick(object sender, ItemClickEventArgs e)
         {
             // Lấy thông tin của ô tô được chọn
-            var selectedCar = e.ClickedItem as CarWithUserItem;
+            var selectedCar = e.ClickedItem as Cars;
             if (selectedCar != null)
             {
                 // Chuyển đến trang chi tiết và truyền dữ liệu
@@ -84,7 +81,7 @@ namespace Windows_Project.View
         private void LoadPage(int page)
         {
             int startIndex = (page - 1) * itemsPerPage;
-            var carsToDisplay = ViewModel.CarWithUserList.Skip(startIndex).Take(itemsPerPage).ToList();
+            var carsToDisplay = ViewModel.FilteredCars.Skip(startIndex).Take(itemsPerPage).ToList();
 
             PageNumberTextBlock.Text = $"Trang {page}";
 
@@ -105,7 +102,7 @@ namespace Windows_Project.View
 
         private void NextPage_Click(object sender, RoutedEventArgs e)
         {
-            int totalPages = (int)Math.Ceiling((double)ViewModel.CarWithUserList.Count / itemsPerPage);
+            int totalPages = (int)Math.Ceiling((double)ViewModel.FilteredCars.Count / itemsPerPage);
             if (currentPage < totalPages)
             {
                 currentPage++;
@@ -115,7 +112,7 @@ namespace Windows_Project.View
 
         private void UpdateNavigationButtons()
         {
-            int totalPages = (int)Math.Ceiling((double)ViewModel.CarWithUserList.Count / itemsPerPage);
+            int totalPages = (int)Math.Ceiling((double)ViewModel.FilteredCars.Count / itemsPerPage);
             PreviousPageButton.IsEnabled = currentPage > 1;
             NextPageButton.IsEnabled = currentPage < totalPages;
         }

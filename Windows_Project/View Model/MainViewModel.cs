@@ -8,6 +8,7 @@ using System.Runtime.ConstrainedExecution;
 using System.Text;
 using System.Threading.Tasks;
 using Windows_Project.Model;
+using Windows_Project.Service.DataAccess;
 
 namespace Windows_Project;
 
@@ -44,7 +45,8 @@ public class MainViewModel : INotifyPropertyChanged
     public ObservableCollection<Cars> FilteredSearchCars { get; set; }
     public MainViewModel()
     {
-        IDao dao = new MockDao();
+        string connectionString = "Server=localhost,1433;Database=demoshop;User Id=sa;Password=SqlServer@123;TrustServerCertificate=True;";
+        IDao dao = new SqlDao(connectionString);
         Manufacturers = dao.GetManufacturers();
         Cars = dao.GetCars();
         Locations = dao.GetLocations();
@@ -71,52 +73,6 @@ public class MainViewModel : INotifyPropertyChanged
 
         // Khởi tạo danh sách xa và người bán theo điều kiện xe
         CarWithUserList = new ObservableCollection<CarWithUserItem>();
-    }
-
-    //phương thức tạo một list chứa thông tin xe và người bán thông qua bài đăng
-    public void CreateCarWithUserList(string condition)
-    {
-        var newList = new ObservableCollection<CarWithUserItem>();
-
-        foreach (var listing in Listings)
-        {
-            for (int i = 0; i < Users.Count; i++)
-            {
-                if (listing.UserID == (i + 1))
-                {
-                    Cars result = new Cars();
-                    foreach (var m in Manufacturers)
-                    {
-                        foreach (var c in m.Cars)
-                        {
-                            if (c.ID == listing.CarID)
-                            {
-                                result = c;
-                                break;
-                            }
-                        }
-                    }
-                    newList.Add(new CarWithUserItem
-                    {
-                        car = result,
-                        user = Users[i]
-                    });
-                    break;
-                }
-            }
-        }
-        // Lọc danh sách xe theo điều kiện
-        if (condition != null)
-        {
-            var filteredItems = newList
-                .Where(c => c.car.Condition == condition)
-                .ToList();
-
-            newList = new ObservableCollection<CarWithUserItem>(filteredItems);
-        }
-
-        CarWithUserList = newList; // Gán danh sách mới
-        OnPropertyChanged(nameof(CarWithUserList)); // Thông báo UI cập nhật
     }
 
     // Thêm phương thức để lọc xe dựa vào Condition
@@ -151,17 +107,17 @@ public class MainViewModel : INotifyPropertyChanged
         PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
     }
 
-    public void FilterSearchCars(string search)
-    {
-        var filteredCars = Cars
-            .Where(c => c.Model != null && c.Model.ToLower().Contains(search.ToLower())) // Loại bỏ các xe có Model là null
-            .ToList();
+    //public void FilterSearchCars(string search)
+    //{
+    //    var filteredCars = Cars
+    //        .Where(c => c.Model != null && c.Model.ToLower().Contains(search.ToLower())) // Loại bỏ các xe có Model là null
+    //        .ToList();
 
-        FilteredSearchCars.Clear();
-        foreach (var car in filteredCars)
-        {
-            FilteredSearchCars.Add(car);
-        }
-    }
+    //    FilteredSearchCars.Clear();
+    //    foreach (var car in filteredCars)
+    //    {
+    //        FilteredSearchCars.Add(car);
+    //    }
+    //}
 
 }

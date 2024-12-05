@@ -15,6 +15,8 @@ using Microsoft.UI.Xaml.Navigation;
 using System.Collections.ObjectModel;
 using Windows.Storage;
 using Windows_Project.View;
+using Windows_Project.Service.DataAccess;
+using System.Threading.Tasks;
 
 
 // To learn more about WinUI, the WinUI project structure,
@@ -35,6 +37,9 @@ namespace Windows_Project
         private DispatcherTimer timer;
         public ObservableCollection<string> Pictures { get; set; }
         private bool isReversing = false;
+
+        // Tạo đối tượng SqlDao
+        private readonly SqlDao _sqlDao = new SqlDao("Server=localhost,1433;Database=demoshop;User Id=sa;Password=SqlServer@123;TrustServerCertificate=True;");
         public MainPage()
         {
             this.InitializeComponent();
@@ -133,28 +138,28 @@ namespace Windows_Project
             Frame.Navigate(typeof(PricePage), this.ViewModel);
         }
 
-        private async void OnSellCarButtonClick(object sender, RoutedEventArgs e)
-        {
-            // nếu chưa đăng nhập thì yêu cầu đăng nhập
-            if (!isLoggedIn)
-            {
-                failedDialog.Content = new TextBlock()
-                {
-                    Text = "Bạn cần đăng nhập/đăng kí để thực hiện chức năng này.",
-                    TextWrapping = TextWrapping.WrapWholeWords
-                };
-                await failedDialog.ShowAsync();
-                return;
-            }
-            // lấy thông tin người dùng đăng nhập
-            var user = ViewModel.Users.FirstOrDefault(u => u.Username == loggedInUser);
-            Frame.Navigate(typeof(PostPage), user);
-        }
+        //private async void OnSellCarButtonClick(object sender, RoutedEventArgs e)
+        //{
+        //    // nếu chưa đăng nhập thì yêu cầu đăng nhập
+        //    if (!isLoggedIn)
+        //    {
+        //        failedDialog.Content = new TextBlock()
+        //        {
+        //            Text = "Bạn cần đăng nhập/đăng kí để thực hiện chức năng này.",
+        //            TextWrapping = TextWrapping.WrapWholeWords
+        //        };
+        //        await failedDialog.ShowAsync();
+        //        return;
+        //    }
+        //    // lấy thông tin người dùng đăng nhập
+        //    var user = ViewModel.Users.FirstOrDefault(u => u.Username == loggedInUser);
+        //    Frame.Navigate(typeof(PostPage), user);
+        //}
 
-        private void OnComparisonButtonClick(object sender, RoutedEventArgs e)
-        {
-            Frame.Navigate(typeof(ComparisonPage));
-        }
+        //private void OnComparisonButtonClick(object sender, RoutedEventArgs e)
+        //{
+        //    Frame.Navigate(typeof(ComparisonPage));
+        //}
 
         private async void onLoginButtonClick(object sender, RoutedEventArgs e)
         {
@@ -169,18 +174,24 @@ namespace Windows_Project
                     string username = UsernameLogin.Text;
                     string password = PasswordLogin.Password;
 
+                    // Lấy danh sách người dùng từ cơ sở dữ liệu
+                    var users = await Task.Run(() => _sqlDao.GetUsers());
+
                     // Kiểm tra thông tin đăng nhập trong danh sách người dùng
-                    var user = ViewModel.Users.FirstOrDefault(u => u.Username == username && u.Password == password);
+                    var user = users.FirstOrDefault(u => u.Username == username && u.Password == password);
 
                     if (user != null)
                     {
+                        // Nếu đăng nhập thành công
                         isLoggedIn = true;
                         loggedInUser = username;
                         UpdateLoginButtons();
+                        Noti.Text = "Đăng nhập thành công!";
                         break; // Đóng Dialog
                     }
                     else
                     {
+                        // Nếu đăng nhập thất bại
                         Noti.Text = "Đăng nhập thất bại, xin thử lại.";
                         await failedDialog.ShowAsync();
                     }
@@ -241,36 +252,38 @@ namespace Windows_Project
         {
             while (true)
             {
-                // Hiển thị hộp thoại đăng nhập
                 var result = await RegisterDialog.ShowAsync();
 
-                // Kiểm tra kết quả khi người dùng nhấn nút
                 if (result == ContentDialogResult.Primary)
                 {
                     string username = UsernameRegister.Text;
                     string password = PasswordRegister.Password;
                     string repassword = RepasswordRegister.Password;
 
-                    if (password == repassword && password != "")
+                    if (password == repassword && !string.IsNullOrEmpty(password))
                     {
-                        ViewModel.Users.Add(new Users()
+                        // Gọi phương thức SaveUserAsync từ Dao
+                        bool isSaved = await _sqlDao.SaveUserAsync(username, password);
+                        if (isSaved)
                         {
-                            Username = username,
-                            Password = repassword
-                        });
-                        break;
+                            Noti.Text = "Đăng ký thành công";
+                            break;
+                        }
+                        else
+                        {
+                            Noti.Text = "Lỗi khi lưu vào cơ sở dữ liệu";
+                            await failedDialog.ShowAsync();
+                        }
                     }
                     else
                     {
-                        Noti.Text = "Đăng ký thất bại";
+                        Noti.Text = "Đăng ký thất bại. Mật khẩu không khớp.";
                         await failedDialog.ShowAsync();
                     }
-
                 }
                 else
                 {
-                    // Người dùng nhấn nút "Hủy"
-                    break;
+                    break; // Người dùng nhấn nút "Hủy"
                 }
             }
         }
