@@ -98,8 +98,8 @@
 
                         <Button.Flyout>
                             <MenuFlyout>
-                                <MenuFlyoutItem Text="Thông tin cá nhân"></MenuFlyoutItem>
-                                <MenuFlyoutItem Text="Option 2"></MenuFlyoutItem>
+                                <MenuFlyoutItem Text="Thông tin cá nhân" Click="onInfoButtonClick"></MenuFlyoutItem>
+                                <MenuFlyoutItem Text="Đổi mật khẩu"></MenuFlyoutItem>
                                 <MenuFlyoutItem Text="Đăng xuất" Click="onLogoutClick"></MenuFlyoutItem>
                             </MenuFlyout>
                         </Button.Flyout>

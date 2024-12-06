@@ -13,6 +13,7 @@ namespace Windows_Project;
 
 public class MainViewModel : INotifyPropertyChanged
 {
+    public Users LoggedInUser { get; set; }
     public List<Manufacturers> Manufacturers { get; set; }
     public List<Cars> Cars { get; set; }
     public List<Location> Locations { get; set; }
@@ -138,6 +139,34 @@ public class MainViewModel : INotifyPropertyChanged
         }
     }
 
+    public void CreateListingsByUserID(int userID)
+    {
+        // Xóa danh sách hiện tại
+        FilteredCars.Clear();
+
+        // Lọc danh sách Listings theo UserID
+        var filteredListings = Listings
+            .Where(listing => listing.UserID == userID)
+            .ToList();
+
+        // Tạo một danh sách Cars từ filteredListings
+        var filteredCars = new ObservableCollection<Cars>();
+
+        foreach (var listing in filteredListings)
+        {
+            // Tìm kiếm xe trong danh sách Cars tương ứng với CarID từ Listings
+            var car = Cars.FirstOrDefault(c => c.ID == listing.CarID);
+            if (car != null)
+            {
+                filteredCars.Add(car); // Thêm xe vào danh sách kết quả
+            }
+        }
+
+        // Cập nhật FilteredCars với danh sách xe đã lọc
+        FilteredCars = filteredCars;
+        OnPropertyChanged(nameof(FilteredCars)); // Cập nhật UI
+    }
+
     private void SelectedCars_CollectionChanged(object sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e)
     {
         // Hiển thị hoặc ẩn SelectedCarListView dựa trên số lượng xe trong SelectedCars
@@ -163,5 +192,8 @@ public class MainViewModel : INotifyPropertyChanged
             FilteredSearchCars.Add(car);
         }
     }
+
+
+
 
 }

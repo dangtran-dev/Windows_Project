@@ -2111,8 +2111,8 @@ public class MockDao : IDao
     {
         var users = new List<Users>()
         {
-            new Users() { Username = "admin", Password = "123", FullName="Tuấn Khanh", Address="75A Linh Xuân", Phone="232237", Email="tk@exam.com" },
-            new Users() { Username = "lebao", Password = "hihi", FullName="Lê Bảo", Address="561B Linh Xuân", Phone="1234567", Email="lb@exam.com" }
+            new Users() {ID = 1, Username = "admin", Password = "123", FullName="Tuấn Khanh", Address="75A Linh Xuân", Phone="232237", Email="tk@exam.com" },
+            new Users() {ID = 2, Username = "lebao", Password = "hihi", FullName="Lê Bảo", Address="561B Linh Xuân", Phone="1234567", Email="lb@exam.com" }
         };
         return users;
     }

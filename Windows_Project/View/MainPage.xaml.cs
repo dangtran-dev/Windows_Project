@@ -255,6 +255,7 @@ namespace Windows_Project
                     {
                         ViewModel.Users.Add(new Users()
                         {
+                            ID = 3,
                             Username = username,
                             Password = repassword
                         });
@@ -294,6 +295,29 @@ namespace Windows_Project
         {
             isLoggedIn = false;
             UpdateLoginButtons();
+        }
+
+        private void onInfoButtonClick(object sender, RoutedEventArgs e)
+        {
+            // Lấy thông tin người dùng đã đăng nhập
+            var user = ViewModel.Users.FirstOrDefault(u => u.Username == loggedInUser);
+
+            if (user != null)
+            {
+                // Điều hướng đến InformationPage và truyền thông tin người dùng
+                Frame.Navigate(typeof(InformationPage), user);
+            }
+            else
+            {
+                // Nếu không tìm thấy người dùng, hiển thị thông báo
+                ContentDialog dialog = new ContentDialog
+                {
+                    Title = "Lỗi",
+                    Content = "Không tìm thấy thông tin người dùng.",
+                    CloseButtonText = "OK"
+                };
+                _ = dialog.ShowAsync();
+            }
         }
 
         //User click vao ca nhan de chon
