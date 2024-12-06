@@ -241,7 +241,7 @@
                                     <ComboBox x:Name="comboboxFuelCar" SelectionChanged="comboboxFuelCar_SelectionChanged"
                                                Margin="11,0,0,0" Width="200" 
                                                PlaceholderText="Chọn loại nhiên liệu">
-                                        <ComboBoxItem Content="Xăng"/>
+                                        <ComboBoxItem Content="Máy xăng"/>
                                         <ComboBoxItem Content="Diesel"/>
                                         <ComboBoxItem Content="Điện"/>
                                         <ComboBoxItem Content="Hybrid"/>
@@ -273,6 +273,7 @@
                                         <ComboBoxItem Content="Van/Minivan"/>
                                         <ComboBoxItem Content="Truck"/>
                                         <ComboBoxItem Content="Wagon"/>
+                                        <ComboBoxItem Content="Sport Car"/>
                                     </ComboBox>
                                 </StackPanel>
 

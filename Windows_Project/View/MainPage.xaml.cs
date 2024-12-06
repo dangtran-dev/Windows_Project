@@ -41,6 +41,8 @@ namespace Windows_Project
             this.NavigationCacheMode = NavigationCacheMode.Enabled; // khong tai lai trang khi quay lai MainPage
 
             ViewModel = new MainViewModel();
+            Select_Car_Company.ItemsSource = ViewModel.Manufacturers;
+            Select_Car_Company.DisplayMemberPath = "ManufacturerName";
 
             UpdateLoginButtons();
 
@@ -120,12 +122,12 @@ namespace Windows_Project
 
         private void OnCarOldButtonClick(object sender, RoutedEventArgs e)
         {
-            Frame.Navigate(typeof(OldCar), "old");
+            Frame.Navigate(typeof(OldCar), "Xe cũ");
         }
 
         private void OnCarNewButtonClick(object sender, RoutedEventArgs e)
         {
-            Frame.Navigate(typeof(OldCar), "new");
+            Frame.Navigate(typeof(OldCar), "Xe mới");
         }
 
         private void OnPriceButtonClick(object sender, RoutedEventArgs e)
@@ -295,6 +297,46 @@ namespace Windows_Project
         {
             isLoggedIn = false;
             UpdateLoginButtons();
+        }
+
+        private void Old_Car_Checked(object sender, RoutedEventArgs e)
+        {
+            New_Car.IsChecked = false;
+        }
+
+        private void New_Car_Checked(object sender, RoutedEventArgs e)
+        {
+            Old_Car.IsChecked = false;
+        }
+
+        private void Select_Car_Company_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            var selectedManufacturer = Select_Car_Company.SelectedItem as Manufacturers;
+            if (selectedManufacturer != null)
+            {
+                Select_Car_Model.ItemsSource = selectedManufacturer.Cars.Select(car => car.Model).Distinct().ToList();
+            }
+        }
+
+        private async void Search_Car_Click(object sender, RoutedEventArgs e)
+        {
+            if (Old_Car.IsChecked == false && New_Car.IsChecked == false)
+            {
+                failedDialog.Content = new TextBlock()
+                {
+                    Text = "Vui lòng chọn đầy đủ điều kiện",
+                    TextWrapping = TextWrapping.WrapWholeWords
+                };
+                await failedDialog.ShowAsync();
+                return;
+            }
+            string carCondition = Old_Car.IsChecked == true ? "Xe cũ" : "Xe mới"; ;
+            string selectedManufacturer = Select_Car_Company.SelectedItem != null ? ((Manufacturers)Select_Car_Company.SelectedItem).ManufacturerName : null;
+            string selectedModel = Select_Car_Model.SelectedItem != null ? Select_Car_Model.SelectedItem.ToString() : null;
+
+            string data = $"{carCondition}|{selectedManufacturer}|{selectedModel}";
+
+            Frame.Navigate(typeof(OldCar), data);
         }
 
         private void onInfoButtonClick(object sender, RoutedEventArgs e)

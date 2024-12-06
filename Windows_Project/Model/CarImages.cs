@@ -6,10 +6,10 @@ using System.Threading.Tasks;
 
 namespace Windows_Project
 {
-    public class CarWithUserItem
+    public class CarImages
     {
-        public Cars car { get; set; }
-        public Users user { get; set; }
-        public Listings listing { get; set; }
+        public int ImageID { get; set; }
+        public int CarID { get; set; }
+        public string ImageURL { get; set; }
     }
 }
