@@ -11,8 +11,11 @@
                 <Button Click="Back_Click" VerticalAlignment="Center">
                     <FontIcon Glyph="&#xE830;" Foreground="Gray" HorizontalAlignment="Center" VerticalAlignment="Center" />
                 </Button>
-                
-                <TextBlock Text="Name's Car" FontSize="26" FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Center" />
+
+                <TextBlock FontSize="26" FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Center">
+                    <Run Text="{x:Bind ViewModel.car.Model}" />
+                    <Run Text="{x:Bind ViewModel.car.Year}" />
+                </TextBlock>
 
                 <HyperlinkButton x:Name="Favourite" VerticalAlignment="Center" HorizontalAlignment="Right">
                     <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
@@ -120,33 +123,43 @@
                     </Grid>
                 </StackPanel>
 
-                <StackPanel Grid.Column="1" BorderBrush="Gray" BorderThickness="0.4" Padding="10" Margin="30,0,0,0"
-                            Orientation="Vertical" Height="auto" VerticalAlignment="Top">
-                    <StackPanel Orientation="Horizontal">
-                        <Image Source="../../Assets/avt.png" Width="40" Height="40" VerticalAlignment="Top"/>
-                        <StackPanel Orientation="Vertical" Margin="10,0,0,0">
-                            <TextBlock Text="{x:Bind ViewModel.user.FullName}" FontSize="15" FontWeight="Bold"/>
-                            <TextBlock FontSize="13" Foreground="Gray" TextWrapping="Wrap" Width="180">
-                                <Run Text="{x:Bind ViewModel.user.Address}"/>
-                                <Run>, </Run>
-                                <Run Text="{x:Bind ViewModel.car.District}"/>
-                                <Run>, </Run>
-                                <Run Text="{x:Bind ViewModel.car.City}"/>
-                            </TextBlock>
+                <StackPanel Grid.Column="1" Orientation="Vertical"> 
+                    <StackPanel  BorderBrush="Gray" BorderThickness="0.4" Padding="10" Margin="30,0,0,0"
+                                Orientation="Vertical" Height="auto" VerticalAlignment="Top">
+                        <StackPanel Orientation="Horizontal">
+                            <Image Source="../../Assets/avt.png" Width="40" Height="40" VerticalAlignment="Top"/>
+                            <StackPanel Orientation="Vertical" Margin="10,0,0,0">
+                                <TextBlock Text="{x:Bind ViewModel.user.FullName}" FontSize="15" FontWeight="Bold"/>
+                                <TextBlock FontSize="13" Foreground="Gray" TextWrapping="Wrap" Width="180">
+                                    <Run Text="{x:Bind ViewModel.user.Address}"/>
+                                    <Run>, </Run>
+                                    <Run Text="{x:Bind ViewModel.car.District}"/>
+                                    <Run>, </Run>
+                                    <Run Text="{x:Bind ViewModel.car.City}"/>
+                                </TextBlock>
+                            </StackPanel>
                         </StackPanel>
-                    </StackPanel>
-                    <StackPanel Orientation="Horizontal">
-                        <StackPanel Orientation="Horizontal" Background="Green" Width="120" 
+                        <StackPanel Orientation="Horizontal">
+                            <StackPanel Orientation="Horizontal" Background="Green" Width="120" 
                                     CornerRadius="10" Padding="5" Margin="5,10,0,0">
-                            <FontIcon Glyph="&#xE717;" Foreground="White" FontWeight="Bold"/>
-                            <TextBlock Text="{x:Bind ViewModel.user.Phone}" Foreground="White" FontWeight="Bold" Margin="5,0,0,0"/>
-                        </StackPanel>
-                        <StackPanel Orientation="Horizontal" Background="Blue" Width="80" 
+                                <FontIcon Glyph="&#xE717;" Foreground="White" FontWeight="Bold"/>
+                                <TextBlock Text="{x:Bind ViewModel.user.Phone}" Foreground="White" FontWeight="Bold" Margin="5,0,0,0"/>
+                            </StackPanel>
+                            <StackPanel Orientation="Horizontal" Background="Blue" Width="80" 
                                     CornerRadius="10" Padding="5" Margin="20,10,0,0">
-                            <Image Source="../../Assets/zalo-icon.png" Width="20" Height="20"/>
-                            <TextBlock Text="Zalo" Foreground="White" FontWeight="Bold" Margin="5,0,0,0"/>
+                                <Image Source="../../Assets/zalo-icon.png" Width="20" Height="20"/>
+                                <TextBlock Text="Zalo" Foreground="White" FontWeight="Bold" Margin="5,0,0,0"/>
+                            </StackPanel>
                         </StackPanel>
                     </StackPanel>
+                    <TextBlock Margin="30,0,0,0">
+                        <Run Text="Tiêu đề: " FontSize="20" FontWeight="Bold"/>
+                        <Run Text="{x:Bind ViewModel.listing.Status}" FontSize="20"/>
+                    </TextBlock>
+                    <TextBlock Margin="30,0,0,0">
+                        <Run Text="Mô tả: " FontSize="20" FontWeight="Bold"/>
+                        <Run Text="{x:Bind ViewModel.listing.Description}" FontSize="20"/>
+                    </TextBlock>
                 </StackPanel>
             </Grid>
         </StackPanel>

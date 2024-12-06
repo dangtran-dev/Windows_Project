@@ -23,6 +23,5 @@ public class Cars : INotifyPropertyChanged
     public string FuelType { get; set; }
     public string Gear { get; set; }
 
-
     public event PropertyChangedEventHandler PropertyChanged;
 }

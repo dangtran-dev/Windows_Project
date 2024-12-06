@@ -30,81 +30,155 @@
                     </Grid.ColumnDefinitions>
 
                     <!--phần lọc xe-->
-                    <Grid Grid.Column="0" HorizontalAlignment="Left" MaxWidth="300" Padding="10" Margin="10, 0, 0, 0" BorderBrush="Gray" BorderThickness="2">
+                    <Grid Grid.Column="0" HorizontalAlignment="Left" MaxWidth="300" VerticalAlignment="Top"
+                          Padding="10" Margin="10, 5, 0, 0" BorderBrush="Gray" BorderThickness="2">
                         <Grid.RowDefinitions>
                             <RowDefinition/>
                             <RowDefinition/>
                             <RowDefinition/>
                             <RowDefinition/>
                             <RowDefinition/>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                            <RowDefinition/>
                         </Grid.RowDefinitions>
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition/>
-                            <ColumnDefinition/>
-                        </Grid.ColumnDefinitions>
 
-                        <TextBlock Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="18" Foreground="Black">
+                        <TextBlock Grid.Row="0" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="18" Foreground="Black">
                         <Bold>Tìm chiếc xe dành cho bạn</Bold>
                         </TextBlock>
 
-                        <ToggleButton x:Name="Old_Car" Grid.Row="1" Grid.Column="0" Checked="Old_Car_Checked"
-                            Width="110" Margin="10" Content="Xe cũ" FontWeight="Bold" Foreground="White" Background="#135EAC"/>
-                        <ToggleButton x:Name="New_Car" Grid.Row="1" Grid.Column="1" Checked="New_Car_Checked"
-                            Width="110" Margin="10" Content="Xe mới" FontWeight="Bold" Foreground="White" Background="#135EAC"/>
-
-                        <ComboBox x:Name="Select_Car_Company" Grid.Row="2" Grid.Column="0" Width="250" SelectionChanged="Select_Car_Company_SelectionChanged"
-                            Grid.ColumnSpan="2" Margin="10" PlaceholderText="Chọn hãng xe" PlaceholderForeground="Gray">
+                        <ComboBox x:Name="Select_Car_Company" Grid.Row="1" Width="240" SelectionChanged="Select_Car_Company_SelectionChanged"
+                             Margin="10" PlaceholderText="Chọn hãng xe" PlaceholderForeground="Gray">
                         </ComboBox>
 
-                        <ComboBox x:Name="Select_Car_Model" Grid.Row="3" Grid.Column="0" Width="250" 
-                            Grid.ColumnSpan="2" Margin="10" PlaceholderText="Chọn dòng xe" PlaceholderForeground="Gray">
+                        <ComboBox x:Name="Select_Car_Model" Grid.Row="2" Width="240" Margin="10"
+                            PlaceholderText="Chọn dòng xe" PlaceholderForeground="Gray">
                         </ComboBox>
 
-                        <Button x:Name="Search_Car" Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="2" Click="Search_Car_Click"
-                            Width="250" Margin="10" Style="{StaticResource AccentButtonStyle}" Content="Tìm kiếm" FontWeight="Bold" Foreground="White" Background="#4DB848"/>
+                        <TextBox x:Name="Search_Year" Grid.Row="3" Width="240" Margin="10"
+                                 PlaceholderText="Nhập năm sản xuất" PlaceholderForeground="Gray"/>
+
+                        <ComboBox x:Name="comboboxStyleCar" Grid.Row="4"
+                                  Margin="10" Width="240" PlaceholderText="Chọn kiểu dáng xe">
+                            <ComboBoxItem Content="Sedan"/>
+                            <ComboBoxItem Content="SUV"/>
+                            <ComboBoxItem Content="Crossover"/>
+                            <ComboBoxItem Content="Coupe"/>
+                            <ComboBoxItem Content="Convertible"/>
+                            <ComboBoxItem Content="Hatchback"/>
+                            <ComboBoxItem Content="Van/Minivan"/>
+                            <ComboBoxItem Content="Truck"/>
+                            <ComboBoxItem Content="Wagon"/>
+                            <ComboBoxItem Content="Sport Car"/>
+                        </ComboBox>
+
+                        <Grid Grid.Row="5">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+
+                            <TextBox x:Name="MinPrice" Grid.Column="0" Margin="10" Width="110" PlaceholderText="Giá tt (triệu)"/>
+                            <TextBox x:Name="MaxPrice" Grid.Column="1" Margin="10" Width="110" PlaceholderText="Giá tđ (triệu)"/>
+                        </Grid>
+
+                        <Grid Grid.Row="6">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+
+                            <ToggleButton Grid.Column="0" x:Name="internalCar" Checked="internalCar_Checked"
+                              Width="110" Margin="10" Content="Trong nước" FontWeight="Bold" Foreground="White" Background="#135EAC"/>
+
+                            <ToggleButton Grid.Column="1" x:Name="externalCar" Checked="externalCar_Checked"
+                              Width="110" Margin="10" Content="Nhập khẩu" FontWeight="Bold" Foreground="White" Background="#135EAC"/>
+                        </Grid>
+
+                        <ComboBox x:Name="comboboxFuelCar" Grid.Row="7"
+                               Margin="10" Width="240" PlaceholderText="Chọn loại nhiên liệu">
+                            <ComboBoxItem Content="Máy xăng"/>
+                            <ComboBoxItem Content="Diesel"/>
+                            <ComboBoxItem Content="Điện"/>
+                            <ComboBoxItem Content="Hybrid"/>
+                            <ComboBoxItem Content="Khác"/>
+                        </ComboBox>
+
+                        <ComboBox x:Name="comboboxGearBoxCar" Grid.Row="8"
+                              Margin="10" Width="240" PlaceholderText="Chọn loại hộp số">
+                            <ComboBoxItem Content="Số tự động"/>
+                            <ComboBoxItem Content="Số sàn"/>
+                            <ComboBoxItem Content="Số hỗn hợp"/>
+                        </ComboBox>
+
+                        <ComboBox x:Name="comboboxCitySeller" Grid.Row="9"
+                              SelectionChanged="comboboxCitySeller_SelectionChanged" 
+                                  Margin="10" Width="240"  PlaceholderText="Chọn Tỉnh/Thành">
+                        </ComboBox>
+
+                        <ComboBox x:Name="comboboxDistrictSeller" Grid.Row="10"
+                              Margin="10" Width="240" PlaceholderText="Chọn Quận/Huyện">
+                        </ComboBox>
+                        <Grid Grid.Row="11">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+
+                            <Button x:Name="Search_Car" Grid.Column="0" Click="Search_Car_Click"
+                                    Width="110" Margin="10" Style="{StaticResource AccentButtonStyle}" Content="Tìm kiếm" 
+                                    FontWeight="Bold" Foreground="White" Background="#4DB848"/>
+                            <Button x:Name="Reset" Grid.Column="1" Click="Reset_Click"
+                                    Width="110" Margin="10" Style="{StaticResource AccentButtonStyle}" Content="Làm mới" 
+                                    FontWeight="Bold" Foreground="White" Background="Blue"/>
+                        </Grid>
                     </Grid>
 
-                    <!-- Danh sách xe -->
-                    <ListView x:Name="CarListView" Grid.Column="1"
-                                IsItemClickEnabled="True" 
-                                ItemClick="OnCarItemClick">
-                        <ListView.ItemTemplate>
-                            <DataTemplate x:DataType="local:CarWithUserItem">
-                                <Grid BorderBrush="Gray" BorderThickness="0, 0, 0, 1">
-                                    <Grid.ColumnDefinitions>
-                                        <ColumnDefinition Width="*"/>
-                                        <ColumnDefinition Width="auto"/>
-                                    </Grid.ColumnDefinitions>
+                        <!-- Danh sách xe -->
+                        <ListView x:Name="CarListView" Grid.Column="1"
+                                    IsItemClickEnabled="True" 
+                                    ItemClick="OnCarItemClick">
+                            <ListView.ItemTemplate>
+                                <DataTemplate x:DataType="local:CarWithUserItem">
+                                    <Grid BorderBrush="Gray" BorderThickness="0, 0, 0, 1">
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="*"/>
+                                            <ColumnDefinition Width="auto"/>
+                                        </Grid.ColumnDefinitions>
 
-                                    <StackPanel Grid.Column="0" Orientation="Horizontal">
-                                        <Image Source="{x:Bind car.Picture}" Height="100" Width="100" Margin="10"/>
-                                        <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center">
-                                            <TextBlock Text="{x:Bind car.Model}" FontSize="20" FontWeight="Bold"/>
-                                            <TextBlock Text="{x:Bind car.Price}" FontSize="16" Foreground="Gray"/>
+                                        <StackPanel Grid.Column="0" Orientation="Horizontal">
+                                            <Image Source="{x:Bind car.Picture}" Height="100" Width="100" Margin="10"/>
+                                            <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center">
+                                                <TextBlock Text="{x:Bind car.Model}" FontSize="20" FontWeight="Bold"/>
+                                                <TextBlock Text="{x:Bind car.Price}" FontSize="16" Foreground="Gray"/>
+                                            </StackPanel>
                                         </StackPanel>
-                                    </StackPanel>
 
-                                    <StackPanel Grid.Column="1" Orientation="Vertical" Margin="0,20,10,0">
-                                        <StackPanel  Orientation="Horizontal">
-                                            <FontIcon Glyph="&#xE748;"/>
-                                            <TextBlock Text="{x:Bind user.FullName}" FontSize="16" Margin="5,0,0,0"/>
-                                            <FontIcon Glyph="&#xE930;" Margin="5,0,0,0"/>
+                                        <StackPanel Grid.Column="1" Orientation="Vertical" Margin="0,20,10,0">
+                                            <StackPanel  Orientation="Horizontal">
+                                                <FontIcon Glyph="&#xE748;"/>
+                                                <TextBlock Text="{x:Bind user.FullName}" FontSize="16" Margin="5,0,0,0"/>
+                                                <FontIcon Glyph="&#xE930;" Margin="5,0,0,0"/>
+                                            </StackPanel>
+                                            <StackPanel  Orientation="Horizontal" Margin="0,5,0,0">
+                                                <FontIcon Glyph="&#xE707;" />
+                                                <TextBlock Text="{x:Bind car.City}" FontSize="16" Margin="5,0,0,0"/>
+                                            </StackPanel>
+                                            <StackPanel  Orientation="Horizontal" Margin="0,5,0,0">
+                                                <FontIcon Glyph="&#xE717;" />
+                                                <TextBlock Text="{x:Bind user.Phone}" FontSize="16" Margin="5,0,0,0"/>
+                                                <Button Content="Gọi ngay" Foreground="White" Background="Blue" FontSize="10" Margin="5,0,0,0"/>
+                                            </StackPanel>
                                         </StackPanel>
-                                        <StackPanel  Orientation="Horizontal" Margin="0,5,0,0">
-                                            <FontIcon Glyph="&#xE707;" />
-                                            <TextBlock Text="{x:Bind car.City}" FontSize="16" Margin="5,0,0,0"/>
-                                        </StackPanel>
-                                        <StackPanel  Orientation="Horizontal" Margin="0,5,0,0">
-                                            <FontIcon Glyph="&#xE717;" />
-                                            <TextBlock Text="{x:Bind user.Phone}" FontSize="16" Margin="5,0,0,0"/>
-                                            <Button Content="Gọi ngay" Foreground="White" Background="Blue" FontSize="10" Margin="5,0,0,0"/>
-                                        </StackPanel>
-                                    </StackPanel>
 
-                                </Grid>
-                            </DataTemplate>
-                        </ListView.ItemTemplate>
-                    </ListView>
+                                    </Grid>
+                                </DataTemplate>
+                            </ListView.ItemTemplate>
+                        </ListView>
 
                 </Grid>
 

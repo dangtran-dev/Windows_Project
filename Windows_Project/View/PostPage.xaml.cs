@@ -178,7 +178,7 @@ namespace Windows_Project
             //gán giá trị cho các textblock trong popup
             YearCarTextBlock.Text = $"{textYear}";
             CarNameTextBlock.Text = $"{textModel} {textYear}";
-            CarPriceTextBlock.Text = $"{textPrice} triệu";
+            CarPriceTextBlock.Text = $"{textPrice} triệu VNĐ";
             StyleCarTextBlock.Text = $"{textStyle}";
             ConditionCarTextBlock.Text = $"{textCondition}";
             OriginCarTextBlock.Text = $"{textOrigin}";
@@ -486,7 +486,7 @@ namespace Windows_Project
                     Year = int.Parse(YearCarTextBox.Text),
                     Manufacturer = selectedManufacturer?.ManufacturerName,
                     Model = comboboxModelCar.SelectedItem as string,
-                    Price = texboxPrice.Text,
+                    Price = $"{ texboxPrice.Text}.000.000 VNĐ",
                     Picture = PathText.Text,
                     Condition = newCar.IsChecked == true ? "Xe mới" : "Xe cũ",
                     Style = (comboboxStyleCar.SelectedItem as ComboBoxItem)?.Content.ToString(),
@@ -501,23 +501,13 @@ namespace Windows_Project
                 
                 // load lại mockdao để cập nhật danh sách xe
                 ViewModel.Manufacturers = new MockDao().GetManufacturers();
-                // lấy tổng số xe có trong mockdao (dù xe vừa thêm nằm ở đâu trong mockdao thì cũng lấy id ở vị trí cuối
-                // để khớp với carID trong bài đăng)
-                int carIndex = 0;
-                for (int i=0;i<ViewModel.Manufacturers.Count;i++)
-                {
-                    for (int j = 0; j < ViewModel.Manufacturers[i].Cars.Count;j++)
-                    {
-                        carIndex++;
-                    }
-                }
-                // lấy index của người bán trong mockdao
-                int userIndex = ViewModel.Users.FindIndex(u => u.Username == user.Username);
+                // lấy userID của người bán trong mockdao dựa vào username
+                Users u1 = ViewModel.Users.FirstOrDefault(u => u.Username == user.Username);
                 // lưu thông tin bài đăng
                 var listing = new Listings()
                 {
-                    CarID = carIndex + 1,
-                    UserID = userIndex + 1,
+                    CarID = ViewModel.Manufacturers.SelectMany(m => m.Cars).Count() + 1,
+                    UserID = u1.UserID,
                     Status = texBoxTitle.Text,
                     Description = textDescription.Text,
                     DatePosted = DateTime.Now.ToString("dd/MM/yyyy")

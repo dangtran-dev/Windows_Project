@@ -330,8 +330,8 @@ namespace Windows_Project
                 return;
             }
             string carCondition = Old_Car.IsChecked == true ? "Xe cũ" : "Xe mới"; ;
-            string selectedManufacturer = Select_Car_Company.SelectedItem as string;
-            string selectedModel = Select_Car_Model.SelectedItem as string;
+            string selectedManufacturer = Select_Car_Company.SelectedItem != null ? ((Manufacturers)Select_Car_Company.SelectedItem).ManufacturerName : null;
+            string selectedModel = Select_Car_Model.SelectedItem != null ? Select_Car_Model.SelectedItem.ToString() : null;
 
             string data = $"{carCondition}|{selectedManufacturer}|{selectedModel}";
 

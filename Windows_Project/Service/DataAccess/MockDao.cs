@@ -55,10 +55,10 @@ public class MockDao : IDao
                         Condition = "Xe cũ",
                         Year = 2022,
                         Style = "Sedan",
-                        Origin = "Trong nước",
+                        Origin = "Nhập khẩu",
                         Mileage = 75000,
-                        Gear = "Số tự động",
-                        FuelType = "Máy xăng",
+                        Gear = "Số sàn",
+                        FuelType = "Điện",
                         City = "Hà Nội",
                         District = "Hoàn Kiếm"
                     },
@@ -70,6 +70,12 @@ public class MockDao : IDao
                         Price = "650.000.000 VNĐ",
                         Picture = "../../Assets/toyota_yaris_cross.png",
                         Condition = "Xe cũ",
+                        Year = 2023,
+                        Style = "SUV",
+                        Origin = "Trong nước",
+                        Mileage = 75000,
+                        Gear = "Số tự động",
+                        FuelType = "Máy xăng",
                         City = "Hồ Chí Minh",
                         District = "Quận 1"
                     },
@@ -85,7 +91,7 @@ public class MockDao : IDao
                         Style = "Sedan",
                         Origin = "Trong nước",
                         Mileage = 75000,
-                        Gear = "Số tự động",
+                        Gear = "Số sàn",
                         FuelType = "Máy xăng",
                         City = "Đà Nẵng",
                         District = "Hải Châu"
@@ -102,7 +108,7 @@ public class MockDao : IDao
                         Style = "Sedan",
                         Origin = "Trong nước",
                         Mileage = 75000,
-                        Gear = "Số tự động",
+                        Gear = "Số sàn",
                         FuelType = "Máy xăng",
                         City = "Hà Nội",
                         District = "Ba Đình"
@@ -882,7 +888,7 @@ public class MockDao : IDao
                         Style = "Sedan",
                         Origin = "Trong nước",
                         Mileage = 75000,
-                        Gear = "Số tự động",
+                        Gear = "Số hỗn hợp",
                         FuelType = "Máy xăng",
                         City = "Hồ Chí Minh",
                         District = "Quận 7"
@@ -899,7 +905,7 @@ public class MockDao : IDao
                         Style = "Sedan",
                         Origin = "Trong nước",
                         Mileage = 75000,
-                        Gear = "Số tự động",
+                        Gear = "Số hỗn hợp",
                         FuelType = "Máy xăng",
                         City = "Hà Nội",
                         District = "Cầu Giấy"
@@ -2373,8 +2379,8 @@ public class MockDao : IDao
     {
         var users = new List<Users>()
         {
-            new Users() { Username = "admin", Password = "123", FullName="Tuấn Khanh", Address="75A Linh Xuân", Phone="232237", Email="tk@exam.com" },
-            new Users() { Username = "lebao", Password = "hihi", FullName="Lê Bảo", Address="561B Linh Xuân", Phone="1234567", Email="lb@exam.com" }
+            new Users() { UserID = 1, Username = "admin", Password = "123", FullName="Tuấn Khanh", Address="75A Linh Xuân", Phone="232237", Email="tk@exam.com" },
+            new Users() { UserID = 2, Username = "lebao", Password = "hihi", FullName="Lê Bảo", Address="561B Linh Xuân", Phone="1234567", Email="lb@exam.com" }
         };
         return users;
     }
@@ -2613,18 +2619,18 @@ public class MockDao : IDao
                     "Quận 10",
                     "Quận 11",
                     "Quận 12",
-                    "Quận Bình Tân",
-                    "Quận Bình Thạnh",
-                    "Quận Gò Vấp",
-                    "Quận Phú Nhuận",
-                    "Quận Tân Bình",
-                    "Quận Tân Phú",
-                    "Quận Thủ Đức",
-                    "Huyện Bình Chánh",
-                    "Huyện Cần Giờ",
-                    "Huyện Củ Chi",
-                    "Huyện Hóc Môn",
-                    "Huyện Nhà Bè"
+                    "Bình Tân",
+                    "Bình Thạnh",
+                    "Gò Vấp",
+                    "Phú Nhuận",
+                    "Tân Bình",
+                    "Tân Phú",
+                    "Thủ Đức",
+                    "Bình Chánh",
+                    "Cần Giờ",
+                    "Củ Chi",
+                    "Hóc Môn",
+                    "Nhà Bè"
                 }
             },
             new Location()
@@ -2632,12 +2638,12 @@ public class MockDao : IDao
                 City = "Đà Nẵng",
                 District = new List<string>()
                 {
-                     "Quận Hải Châu",
-                    "Quận Thanh Khê",
-                    "Quận Sơn Trà",
-                    "Quận Ngũ Hành Sơn",
-                    "Quận Liên Chiểu",
-                    "Huyện Hoàng Sa"
+                     "Hải Châu",
+                    "QThanh Khê",
+                    "Sơn Trà",
+                    "Ngũ Hành Sơn",
+                    "Liên Chiểu",
+                    "Hoàng Sa"
                 }
             },
         };

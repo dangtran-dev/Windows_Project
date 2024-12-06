@@ -10,5 +10,6 @@ namespace Windows_Project
     {
         public Cars car { get; set; }
         public Users user { get; set; }
+        public Listings listing { get; set; }
     }
 }

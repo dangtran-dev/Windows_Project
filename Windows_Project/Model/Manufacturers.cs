@@ -15,4 +15,8 @@ public class Manufacturers : INotifyPropertyChanged
     public List<Cars> Cars { get; set; }
 
     public event PropertyChangedEventHandler PropertyChanged;
+    public override string ToString()
+    {
+        return ManufacturerName;
+    }
 }
