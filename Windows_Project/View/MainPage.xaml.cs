@@ -156,10 +156,10 @@ namespace Windows_Project
         //    Frame.Navigate(typeof(PostPage), user);
         //}
 
-        //private void OnComparisonButtonClick(object sender, RoutedEventArgs e)
-        //{
-        //    Frame.Navigate(typeof(ComparisonPage));
-        //}
+        private void OnComparisonButtonClick(object sender, RoutedEventArgs e)
+        {
+            Frame.Navigate(typeof(ComparisonPage));
+        }
 
         private async void onLoginButtonClick(object sender, RoutedEventArgs e)
         {
