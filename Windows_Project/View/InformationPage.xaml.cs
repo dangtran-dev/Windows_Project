@@ -50,7 +50,7 @@ namespace Windows_Project
                 DisplayPersonalInfo();
 
                 // Lọc xe dựa trên UserID và truyền vào ViewModel
-                ViewModel.CreateListingsByUserID(user.ID);
+                ViewModel.CreateListingsByUserID(user.UserID);
 
             }
         }

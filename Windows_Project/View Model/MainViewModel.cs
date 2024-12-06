@@ -25,6 +25,9 @@ public class MainViewModel : INotifyPropertyChanged
     public ObservableCollection<CarWithUserItem> CarWithUserList { get; set; }
     // Danh sách chứa thông tin xe và người bán ban đầu
     public ObservableCollection<CarWithUserItem> CarWithUserListOriginal { get; set; }
+    // Thêm danh sách xe đã lọc
+    public ObservableCollection<Cars> FilteredCars { get; set; }
+
     // Thêm danh sách xe đã chọn để so sánh
     public ObservableCollection<Cars> SelectedCars { get; set; }
     // Thêm thuộc tính để kiểm tra danh sách SelectedCars có hiển thị hay không
@@ -50,6 +53,9 @@ public class MainViewModel : INotifyPropertyChanged
         IsExpanderExpaneds = dao.GetIsExpanderExpaned();
         Users = dao.GetUsers();
         Listings = dao.GetListings();
+
+        // Khởi tạo danh sách xe lọc
+        FilteredCars = new ObservableCollection<Cars>();
 
         // Khởi tạo danh sách xe đã chọn
         SelectedCars = new ObservableCollection<Cars>();
@@ -190,7 +196,7 @@ public class MainViewModel : INotifyPropertyChanged
         foreach (var listing in filteredListings)
         {
             // Tìm kiếm xe trong danh sách Cars tương ứng với CarID từ Listings
-            var car = Cars.FirstOrDefault(c => c.ID == listing.CarID);
+            var car = Cars.FirstOrDefault(c => c.CarID == listing.CarID);
             if (car != null)
             {
                 filteredCars.Add(car); // Thêm xe vào danh sách kết quả

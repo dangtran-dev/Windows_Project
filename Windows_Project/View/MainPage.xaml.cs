@@ -257,7 +257,7 @@ namespace Windows_Project
                     {
                         ViewModel.Users.Add(new Users()
                         {
-                            ID = 3,
+                            UserID = 3,
                             Username = username,
                             Password = repassword
                         });
