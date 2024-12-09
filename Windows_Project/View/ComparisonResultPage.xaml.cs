@@ -25,10 +25,19 @@ namespace Windows_Project.View
     public sealed partial class ComparisonResultPage : Page
     {
         public MainViewModel ViewModel { get; set; }
+        public ObservableCollection<String> TitleList { get; set; } = new ObservableCollection<String>();
         public ComparisonResultPage()
         {
             this.InitializeComponent();
             ViewModel = new MainViewModel();
+
+            TitleList.Add("Giá xe");
+            TitleList.Add("Đời xe");
+            TitleList.Add("Xuất xứ");
+            TitleList.Add("Dáng xe");
+            TitleList.Add("Hộp số");
+
+            this.DataContext = this;
         }
 
         protected override async void OnNavigatedTo(NavigationEventArgs e)
