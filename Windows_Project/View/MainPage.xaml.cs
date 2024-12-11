@@ -309,7 +309,29 @@ namespace Windows_Project
             UpdateLoginButtons();
         }
 
-        //User click vao ca nhan de chon
+        private void onInfoButtonClick(object sender, RoutedEventArgs e)
+        {
+            // Lấy thông tin người dùng đã đăng nhập
+            var user = ViewModel.Users.FirstOrDefault(u => u.Username == loggedInUser);
 
+            if (user != null)
+            {
+                // Điều hướng đến InformationPage và truyền thông tin người dùng
+                Frame.Navigate(typeof(InfomationPage), user);
+            }
+            else
+            {
+                // Nếu không tìm thấy người dùng, hiển thị thông báo
+                ContentDialog dialog = new ContentDialog
+                {
+                    Title = "Lỗi",
+                    Content = "Không tìm thấy thông tin người dùng.",
+                    CloseButtonText = "OK"
+                };
+                _ = dialog.ShowAsync();
+            }
+        }
     }
+
+        //User click vao ca nhan de chon
 }

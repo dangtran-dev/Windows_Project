@@ -120,4 +120,32 @@ public class MainViewModel : INotifyPropertyChanged
     //    }
     //}
 
+    public void CreateListingsByUserID(int userID)
+    {
+        // Xóa danh sách hiện tại
+        FilteredCars.Clear();
+
+        // Lọc danh sách Listings theo UserID
+        var filteredListings = Listings
+            .Where(listing => listing.UserID == userID)
+            .ToList();
+
+        // Tạo một danh sách Cars từ filteredListings
+        var filteredCars = new ObservableCollection<Cars>();
+
+        foreach (var listing in filteredListings)
+        {
+            // Tìm kiếm xe trong danh sách Cars tương ứng với CarID từ Listings
+            var car = Cars.FirstOrDefault(c => c.ID == listing.CarID);
+            if (car != null)
+            {
+                filteredCars.Add(car); // Thêm xe vào danh sách kết quả
+            }
+        }
+
+        // Cập nhật FilteredCars với danh sách xe đã lọc
+        FilteredCars = filteredCars;
+        OnPropertyChanged(nameof(FilteredCars)); // Cập nhật UI
+    }
+
 }
