@@ -123,7 +123,7 @@
                     </Grid>
                 </StackPanel>
 
-                <StackPanel Grid.Column="1" Orientation="Vertical"> 
+                <StackPanel Grid.Column="1" Orientation="Vertical" Width="350"> 
                     <StackPanel  BorderBrush="Gray" BorderThickness="0.4" Padding="10" Margin="30,0,0,0"
                                 Orientation="Vertical" Height="auto" VerticalAlignment="Top">
                         <StackPanel Orientation="Horizontal">
@@ -152,11 +152,11 @@
                             </StackPanel>
                         </StackPanel>
                     </StackPanel>
-                    <TextBlock Margin="30,0,0,0">
+                    <TextBlock Margin="30,0,0,0" TextWrapping="Wrap">
                         <Run Text="Tiêu đề: " FontSize="20" FontWeight="Bold"/>
                         <Run Text="{x:Bind ViewModel.listing.Status}" FontSize="20"/>
                     </TextBlock>
-                    <TextBlock Margin="30,0,0,0">
+                    <TextBlock Margin="30,0,0,0" TextWrapping="Wrap">
                         <Run Text="Mô tả: " FontSize="20" FontWeight="Bold"/>
                         <Run Text="{x:Bind ViewModel.listing.Description}" FontSize="20"/>
                     </TextBlock>
