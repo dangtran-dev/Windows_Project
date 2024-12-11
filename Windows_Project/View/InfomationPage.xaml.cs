@@ -69,6 +69,18 @@ namespace Windows_Project.View
             // Xóa nội dung cũ
             ContentGrid.Children.Clear();
 
+            // Tạo Button và đăng ký sự kiện Click
+            Button saveButton = new Button
+            {
+                Margin = new Thickness(10),
+                HorizontalAlignment = HorizontalAlignment.Right,
+                Content = "Lưu",
+                Foreground = new SolidColorBrush(Microsoft.UI.Colors.White),
+                Background = new SolidColorBrush(Microsoft.UI.Colors.Green),
+            };
+            saveButton.Click += OnSaveButtonClick; // Gắn sự kiện Click
+
+
             // Thêm StackPanel làm khung chính
             ContentGrid.Children.Add(new Border
             {
@@ -107,29 +119,56 @@ namespace Windows_Project.View
                             Margin = new Thickness(10),
                             Children =
                             {
-                                CreateInfoRow("Tên đăng nhập:", CurrentUser.Username),
-                                CreateInfoRow("Họ tên:", CurrentUser.FullName),
-                                CreateInfoRow("Địa chỉ:", CurrentUser.Address),
-                                CreateInfoRow("Số điện thoại:", CurrentUser.Phone),
-                                CreateInfoRow("Email:", CurrentUser.Email)
+                                CreateInfoRow("Tên đăng nhập:", CurrentUser.Username, "UsernameTextBox"),
+                                CreateInfoRow("Họ tên:", CurrentUser.FullName, "FullNameTextBox"),
+                                CreateInfoRow("Địa chỉ:", CurrentUser.Address, "AddressTextBox"),
+                                CreateInfoRow("Số điện thoại:", CurrentUser.Phone, "PhoneTextBox"),
+                                CreateInfoRow("Email:", CurrentUser.Email, "EmailTextBox")
                             }
                         },
 
-                        new Button
-                        {
-                            Margin = new Thickness(10),
-                            HorizontalAlignment = HorizontalAlignment.Right,
-                            Content = "Lưu",
-                            Foreground = new SolidColorBrush(Microsoft.UI.Colors.White),
-                            Background = new SolidColorBrush(Microsoft.UI.Colors.Green),
-                        }
+                        saveButton // Thêm nút Lưu
+
+                        //new Button
+                        //{
+                        //    Margin = new Thickness(10),
+                        //    HorizontalAlignment = HorizontalAlignment.Right,
+                        //    Content = "Lưu",
+                        //    Foreground = new SolidColorBrush(Microsoft.UI.Colors.White),
+                        //    Background = new SolidColorBrush(Microsoft.UI.Colors.Green),
+                        //}
+
                     }
                 }
             });
         }
 
+        // Hàm xử lý sự kiện Click của nút "Lưu"
+        private void OnSaveButtonClick(object sender, RoutedEventArgs e)
+        {
+            // Cập nhật thông tin từ giao diện vào CurrentUser
+            CurrentUser.Username = (ContentGrid.FindName("UsernameTextBox") as TextBox)?.Text ?? CurrentUser.Username;
+            CurrentUser.FullName = (ContentGrid.FindName("FullNameTextBox") as TextBox)?.Text ?? CurrentUser.FullName;
+            CurrentUser.Address = (ContentGrid.FindName("AddressTextBox") as TextBox)?.Text ?? CurrentUser.Address;
+            CurrentUser.Phone = (ContentGrid.FindName("PhoneTextBox") as TextBox)?.Text ?? CurrentUser.Phone;
+            CurrentUser.Email = (ContentGrid.FindName("EmailTextBox") as TextBox)?.Text ?? CurrentUser.Email;
+            // Thực hiện logic lưu thông tin
+            ViewModel.SaveUserInfo(CurrentUser);
+
+            // Hiển thị thông báo thành công
+            var dialog = new ContentDialog
+            {
+                Title = "Thông báo",
+                Content = "Thông tin người dùng đã được lưu thành công!",
+                CloseButtonText = "Đóng",
+                XamlRoot = this.Content.XamlRoot
+            };
+
+            _ = dialog.ShowAsync();
+        }
+
         // Hàm tạo một hàng thông tin với nhãn và giá trị
-        private StackPanel CreateInfoRow(string label, string value)
+        private StackPanel CreateInfoRow(string label, string value, string textBoxName = null)
         {
             return new StackPanel
             {
@@ -150,6 +189,7 @@ namespace Windows_Project.View
                         Width = 300,
                         Foreground = new SolidColorBrush(Microsoft.UI.Colors.Black),
                         TextWrapping = TextWrapping.Wrap,
+                        Name = textBoxName
                     }
                 }
             };

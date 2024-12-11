@@ -13,9 +13,9 @@
     <Page.Resources>
         <DataTemplate x:Key="ListingsTemplate" x:DataType="local:Cars">
             <StackPanel Grid.Column="0" Orientation="Horizontal">
-                <Image Source="{Binding Picture}" Height="100" Width="100" Margin="10"/>
+                <Image Source="{Binding CarImages[0].ImageURL}" Height="100" Width="100" Margin="10"/>
                 <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center">
-                    <TextBlock Text="{Binding ModelID}" FontSize="20" FontWeight="Bold"/>
+                    <TextBlock Text="{Binding CarName}" FontSize="20" FontWeight="Bold"/>
                     <TextBlock Text="{Binding Price}" FontSize="16" Foreground="Gray"/>
                 </StackPanel>
             </StackPanel>

@@ -1,4 +1,5 @@
-﻿using Microsoft.UI.Xaml.Controls;
+﻿using Microsoft.Data.SqlClient;
+using Microsoft.UI.Xaml.Controls;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -20,8 +21,10 @@ public class MainViewModel : INotifyPropertyChanged
     public List<IsExpanderExpaned> IsExpanderExpaneds { get; set; }
     public List<Users> Users { get; set; }
     public List<Listings> Listings { get; set; }
+    public List<CarModels> CarModels { get; set; }
     // Danh sách chứa thông tin xe và người bán đã lọc theo điều kiện
     public ObservableCollection<CarWithUserItem> CarWithUserList { get; set; }
+
 
     // Thêm danh sách xe đã lọc
     public ObservableCollection<Cars> FilteredCars { get; set; }
@@ -53,6 +56,7 @@ public class MainViewModel : INotifyPropertyChanged
         IsExpanderExpaneds = dao.GetIsExpanderExpaned();
         Users = dao.GetUsers();
         Listings = dao.GetListings();
+        CarModels = dao.GetCarModels();
 
         // Khởi tạo danh sách xe lọc
         FilteredCars = new ObservableCollection<Cars>();
@@ -73,6 +77,38 @@ public class MainViewModel : INotifyPropertyChanged
 
         // Khởi tạo danh sách xa và người bán theo điều kiện xe
         CarWithUserList = new ObservableCollection<CarWithUserItem>();
+    }
+
+    public void SaveUserInfo(Users currentUser)
+    {
+        // Giả sử CurrentUser là người dùng hiện tại đang chỉnh sửa
+        var user = Users.FirstOrDefault(u => u.UserID == currentUser.UserID);
+        if (user != null)
+        {
+            user.FullName = currentUser.FullName;
+            user.Address = currentUser.Address;
+            user.Phone = currentUser.Phone;
+            user.Email = currentUser.Email;
+
+            // Cập nhật vào cơ sở dữ liệu
+            using (var connection = new SqlConnection("Server=localhost,1433;Database=demoshop;User Id=sa;Password=SqlServer@123;TrustServerCertificate=True;"))
+            {
+                connection.Open();
+                var query = "UPDATE Users SET FullName = @FullName, Address = @Address, Phone = @Phone, Email = @Email WHERE UserID = @UserID";
+                using (var command = new SqlCommand(query, connection))
+                {
+                    command.Parameters.AddWithValue("@FullName", currentUser.FullName);
+                    command.Parameters.AddWithValue("@Address", currentUser.Address);
+                    command.Parameters.AddWithValue("@Phone", currentUser.Phone);
+                    command.Parameters.AddWithValue("@Email", currentUser.Email);
+                    command.Parameters.AddWithValue("@UserID", currentUser.UserID);
+                    command.ExecuteNonQuery();
+                }
+            }
+
+            // Thông báo cho UI biết dữ liệu đã thay đổi
+            OnPropertyChanged(nameof(Users));
+        }
     }
 
     // Thêm phương thức để lọc xe dựa vào Condition
@@ -139,6 +175,12 @@ public class MainViewModel : INotifyPropertyChanged
             var car = Cars.FirstOrDefault(c => c.ID == listing.CarID);
             if (car != null)
             {
+                // Lấy ModelName từ CarModels dựa trên ModelID
+                var carModel = CarModels.FirstOrDefault(cm => cm.ModelID == car.ModelID);
+                if (carModel != null)
+                {
+                    car.ModelName = carModel.ModelName; // Gán ModelName vào đối tượng Car
+                }
                 filteredCars.Add(car); // Thêm xe vào danh sách kết quả
             }
         }

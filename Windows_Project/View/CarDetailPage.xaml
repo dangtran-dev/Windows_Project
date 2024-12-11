@@ -22,7 +22,7 @@
                 </HyperlinkButton>
 
             </Grid>
-            <Image Source="{Binding ViewModel.Picture}" 
+            <Image Source="{Binding CarImages[0].ImageURL}" 
                    Height="400" Width="800" 
                    HorizontalAlignment="Center"
                    Stretch="UniformToFill"/>

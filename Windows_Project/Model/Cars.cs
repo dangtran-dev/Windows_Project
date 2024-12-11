@@ -23,6 +23,7 @@ public class Cars : INotifyPropertyChanged
     public string City { get; set; }
     public string District { get; set; }
     public List<CarImages> CarImages { get; set; }
+    public string ModelName { get; set; } // Gán thông tin từ CarModels
 
     public event PropertyChangedEventHandler PropertyChanged;
 }
