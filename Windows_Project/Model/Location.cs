@@ -7,6 +7,9 @@ using System.Threading.Tasks;
 
 namespace Windows_Project
 {
+    /// <summary>
+    /// This class is used to store the location details
+    /// </summary>
     public class Location : INotifyPropertyChanged
     {
         public string City { get; set; }

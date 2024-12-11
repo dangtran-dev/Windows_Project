@@ -1,0 +1,292 @@
+\doxysection{Windows\+\_\+\+Project\+::Information\+Page Class Reference}
+\hypertarget{class_windows___project_1_1_information_page}{}\label{class_windows___project_1_1_information_page}\index{Windows\_Project::InformationPage@{Windows\_Project::InformationPage}}
+
+
+This class is used to display the information page.  
+
+
+Inheritance diagram for Windows\+\_\+\+Project\+::Information\+Page\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_windows___project_1_1_information_page}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{class_windows___project_1_1_information_page_af4af66dc38829e4cc9ff0d870b2c1b59}{Initialize\+Component}} ()
+\begin{DoxyCompactList}\small\item\em \doxylink{class_windows___project_1_1_information_page_af4af66dc38829e4cc9ff0d870b2c1b59}{Initialize\+Component()} \end{DoxyCompactList}\item 
+partial void \mbox{\hyperlink{class_windows___project_1_1_information_page_a9bb2b00da4b6dd1c35171c847ef4404e}{Unload\+Object}} (global\+::\+Microsoft.\+UI.\+Xaml.\+Dependency\+Object unloadable\+Object)
+\item 
+\mbox{\hyperlink{class_windows___project_1_1_information_page_a17d5994e745a5e13852df7729c86ffda}{Information\+Page}} ()
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+List$<$ \mbox{\hyperlink{class_cars}{Cars}} $>$ \mbox{\hyperlink{class_windows___project_1_1_information_page_a35a7c288321b0d7802cf29654d066829}{Cars}} \{ get
+\item 
+\mbox{\hyperlink{class_windows___project_1_1_information_page_a7b96b335f7b00748485dca79df2c6216}{set}}
+\item 
+\mbox{\hyperlink{class_main_view_model}{Main\+View\+Model}} \mbox{\hyperlink{class_windows___project_1_1_information_page_a75adb77903a2f65515a718ff83d9f117}{View\+Model}} \{ get
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Protected Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+override void \mbox{\hyperlink{class_windows___project_1_1_information_page_a8e6e34268b5ade97521068643eeba2f9}{On\+Navigated\+To}} (Navigation\+Event\+Args e)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Private Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{class_windows___project_1_1_information_page_a7d9e26d3e2590ffd25e6fb5ef380ce94}{Update}} ()
+\item 
+void \mbox{\hyperlink{class_windows___project_1_1_information_page_a4c1810fe0846abfa2db99b5742d3f0e8}{Stop\+Tracking}} ()
+\item 
+void \mbox{\hyperlink{class_windows___project_1_1_information_page_a9fd824699b0c787afd40320f8f610a70}{Disconnect\+Unloaded\+Object}} (int connection\+Id)
+\item 
+void \mbox{\hyperlink{class_windows___project_1_1_information_page_a3d720d25dafff250b05d85c65d68db2c}{Register\+For\+Element\+Connection}} (int connection\+Id, global\+::\+Microsoft.\+UI.\+Xaml.\+Markup.\+IComponent\+Connector connector)
+\item 
+void \mbox{\hyperlink{class_windows___project_1_1_information_page_abee69901d4c7859a9f6c16a376dc5014}{On\+Personal\+Info\+Click}} (object sender, Routed\+Event\+Args e)
+\item 
+void \mbox{\hyperlink{class_windows___project_1_1_information_page_ab3a97c0ffb412fb09c7b60a80be5f995}{On\+Listings\+Click}} (object sender, Routed\+Event\+Args e)
+\item 
+void \mbox{\hyperlink{class_windows___project_1_1_information_page_a416bb476bc91f75d22c0cc4ca03dc6b0}{Display\+Personal\+Info}} ()
+\item 
+Stack\+Panel \mbox{\hyperlink{class_windows___project_1_1_information_page_affa110d6100102067973c74999c9957b}{Create\+Info\+Row}} (string label, string value)
+\begin{DoxyCompactList}\small\item\em The function creates a row of information with labels and values. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_windows___project_1_1_information_page_aeec6b08cb50fb31182d01cb2756e60a0}{Display\+Listings}} ()
+\item 
+void \mbox{\hyperlink{class_windows___project_1_1_information_page_aff1b3740563a668641e6e0bf4f0d5ecb}{Previous\+Page\+\_\+\+Click}} (object sender, Routed\+Event\+Args e)
+\item 
+void \mbox{\hyperlink{class_windows___project_1_1_information_page_a569c91743619ea56daae98a4a6e0a73f}{Next\+Page\+\_\+\+Click}} (object sender, Routed\+Event\+Args e)
+\item 
+void \mbox{\hyperlink{class_windows___project_1_1_information_page_aaee2d6a9d64e5416a7b3a7637844092a}{Back\+\_\+\+Click}} (object sender, Routed\+Event\+Args e)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+global\+::\+Microsoft UI Xaml Controls Button \mbox{\hyperlink{class_windows___project_1_1_information_page_a863159352c1b77b50f7dae07d3098ed6}{Personal\+Info\+Button}}
+\item 
+global\+::\+Microsoft UI Xaml Controls Button \mbox{\hyperlink{class_windows___project_1_1_information_page_a5040543f04f9b037f57bffa9f79584f3}{Listings\+Button}}
+\item 
+global\+::\+Microsoft UI Xaml Controls Grid \mbox{\hyperlink{class_windows___project_1_1_information_page_a95f50ca275f724126a2ba6e5757d263f}{Content\+Grid}}
+\item 
+bool \mbox{\hyperlink{class_windows___project_1_1_information_page_ac4ddf8e61159b789f8603a1371f8a390}{\+\_\+content\+Loaded}}
+\item 
+IInformation\+Page\+\_\+\+Bindings \mbox{\hyperlink{class_windows___project_1_1_information_page_af87ab83e65e38c4960691ecae61fb635}{Bindings}}
+\item 
+int \mbox{\hyperlink{class_windows___project_1_1_information_page_abc31012e1ae3040db0ef7abacb61847c}{current\+Page}} = 1
+\item 
+int \mbox{\hyperlink{class_windows___project_1_1_information_page_a6c449685fdecb1191eace82aae3c13fe}{items\+Per\+Page}} = 6
+\item 
+\mbox{\hyperlink{class_windows___project_1_1_users}{Users}} \mbox{\hyperlink{class_windows___project_1_1_information_page_a3aef1563a4542acd16f02d3e093f865f}{Current\+User}}
+\item 
+List$<$ \mbox{\hyperlink{class_windows___project_1_1_model_1_1_listings}{Model.\+Listings}} $>$ \mbox{\hyperlink{class_windows___project_1_1_information_page_ab9323b038cf57b48a82f294d28096558}{User\+Listings}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+This class is used to display the information page. 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{class_windows___project_1_1_information_page_a17d5994e745a5e13852df7729c86ffda}\index{Windows\_Project::InformationPage@{Windows\_Project::InformationPage}!InformationPage@{InformationPage}}
+\index{InformationPage@{InformationPage}!Windows\_Project::InformationPage@{Windows\_Project::InformationPage}}
+\doxysubsubsection{\texorpdfstring{InformationPage()}{InformationPage()}}
+{\footnotesize\ttfamily \label{class_windows___project_1_1_information_page_a17d5994e745a5e13852df7729c86ffda} 
+Windows\+\_\+\+Project\+::\+Information\+Page\+::\+Information\+Page (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_windows___project_1_1_information_page_aaee2d6a9d64e5416a7b3a7637844092a}\index{Windows\_Project::InformationPage@{Windows\_Project::InformationPage}!Back\_Click@{Back\_Click}}
+\index{Back\_Click@{Back\_Click}!Windows\_Project::InformationPage@{Windows\_Project::InformationPage}}
+\doxysubsubsection{\texorpdfstring{Back\_Click()}{Back\_Click()}}
+{\footnotesize\ttfamily \label{class_windows___project_1_1_information_page_aaee2d6a9d64e5416a7b3a7637844092a} 
+void Windows\+\_\+\+Project\+::\+Information\+Page\+::\+Back\+\_\+\+Click (\begin{DoxyParamCaption}\item[{object}]{sender}{, }\item[{Routed\+Event\+Args}]{e}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+\Hypertarget{class_windows___project_1_1_information_page_affa110d6100102067973c74999c9957b}\index{Windows\_Project::InformationPage@{Windows\_Project::InformationPage}!CreateInfoRow@{CreateInfoRow}}
+\index{CreateInfoRow@{CreateInfoRow}!Windows\_Project::InformationPage@{Windows\_Project::InformationPage}}
+\doxysubsubsection{\texorpdfstring{CreateInfoRow()}{CreateInfoRow()}}
+{\footnotesize\ttfamily \label{class_windows___project_1_1_information_page_affa110d6100102067973c74999c9957b} 
+Stack\+Panel Windows\+\_\+\+Project\+::\+Information\+Page\+::\+Create\+Info\+Row (\begin{DoxyParamCaption}\item[{string}]{label}{, }\item[{string}]{value}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+
+
+The function creates a row of information with labels and values. 
+
+\Hypertarget{class_windows___project_1_1_information_page_a9fd824699b0c787afd40320f8f610a70}\index{Windows\_Project::InformationPage@{Windows\_Project::InformationPage}!DisconnectUnloadedObject@{DisconnectUnloadedObject}}
+\index{DisconnectUnloadedObject@{DisconnectUnloadedObject}!Windows\_Project::InformationPage@{Windows\_Project::InformationPage}}
+\doxysubsubsection{\texorpdfstring{DisconnectUnloadedObject()}{DisconnectUnloadedObject()}}
+{\footnotesize\ttfamily \label{class_windows___project_1_1_information_page_a9fd824699b0c787afd40320f8f610a70} 
+void Windows\+\_\+\+Project\+::\+Information\+Page\+::\+Disconnect\+Unloaded\+Object (\begin{DoxyParamCaption}\item[{int}]{connection\+Id}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+\Hypertarget{class_windows___project_1_1_information_page_aeec6b08cb50fb31182d01cb2756e60a0}\index{Windows\_Project::InformationPage@{Windows\_Project::InformationPage}!DisplayListings@{DisplayListings}}
+\index{DisplayListings@{DisplayListings}!Windows\_Project::InformationPage@{Windows\_Project::InformationPage}}
+\doxysubsubsection{\texorpdfstring{DisplayListings()}{DisplayListings()}}
+{\footnotesize\ttfamily \label{class_windows___project_1_1_information_page_aeec6b08cb50fb31182d01cb2756e60a0} 
+void Windows\+\_\+\+Project\+::\+Information\+Page\+::\+Display\+Listings (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+Delete old content
+
+Calculate the start and end index of the current page
+
+Create a List\+View and display a list of vehicles
+
+Add pagination buttons (Previous, Next)
+
+Previous button
+
+Number of pages/\+Total
+
+Next button\Hypertarget{class_windows___project_1_1_information_page_a416bb476bc91f75d22c0cc4ca03dc6b0}\index{Windows\_Project::InformationPage@{Windows\_Project::InformationPage}!DisplayPersonalInfo@{DisplayPersonalInfo}}
+\index{DisplayPersonalInfo@{DisplayPersonalInfo}!Windows\_Project::InformationPage@{Windows\_Project::InformationPage}}
+\doxysubsubsection{\texorpdfstring{DisplayPersonalInfo()}{DisplayPersonalInfo()}}
+{\footnotesize\ttfamily \label{class_windows___project_1_1_information_page_a416bb476bc91f75d22c0cc4ca03dc6b0} 
+void Windows\+\_\+\+Project\+::\+Information\+Page\+::\+Display\+Personal\+Info (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+Delete old content
+
+Add Stack\+Panel as main frame\Hypertarget{class_windows___project_1_1_information_page_af4af66dc38829e4cc9ff0d870b2c1b59}\index{Windows\_Project::InformationPage@{Windows\_Project::InformationPage}!InitializeComponent@{InitializeComponent}}
+\index{InitializeComponent@{InitializeComponent}!Windows\_Project::InformationPage@{Windows\_Project::InformationPage}}
+\doxysubsubsection{\texorpdfstring{InitializeComponent()}{InitializeComponent()}}
+{\footnotesize\ttfamily \label{class_windows___project_1_1_information_page_af4af66dc38829e4cc9ff0d870b2c1b59} 
+void Windows\+\_\+\+Project\+::\+Information\+Page\+::\+Initialize\+Component (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+\doxylink{class_windows___project_1_1_information_page_af4af66dc38829e4cc9ff0d870b2c1b59}{Initialize\+Component()} 
+
+\Hypertarget{class_windows___project_1_1_information_page_a569c91743619ea56daae98a4a6e0a73f}\index{Windows\_Project::InformationPage@{Windows\_Project::InformationPage}!NextPage\_Click@{NextPage\_Click}}
+\index{NextPage\_Click@{NextPage\_Click}!Windows\_Project::InformationPage@{Windows\_Project::InformationPage}}
+\doxysubsubsection{\texorpdfstring{NextPage\_Click()}{NextPage\_Click()}}
+{\footnotesize\ttfamily \label{class_windows___project_1_1_information_page_a569c91743619ea56daae98a4a6e0a73f} 
+void Windows\+\_\+\+Project\+::\+Information\+Page\+::\+Next\+Page\+\_\+\+Click (\begin{DoxyParamCaption}\item[{object}]{sender}{, }\item[{Routed\+Event\+Args}]{e}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+Redisplay the list on the new page\Hypertarget{class_windows___project_1_1_information_page_ab3a97c0ffb412fb09c7b60a80be5f995}\index{Windows\_Project::InformationPage@{Windows\_Project::InformationPage}!OnListingsClick@{OnListingsClick}}
+\index{OnListingsClick@{OnListingsClick}!Windows\_Project::InformationPage@{Windows\_Project::InformationPage}}
+\doxysubsubsection{\texorpdfstring{OnListingsClick()}{OnListingsClick()}}
+{\footnotesize\ttfamily \label{class_windows___project_1_1_information_page_ab3a97c0ffb412fb09c7b60a80be5f995} 
+void Windows\+\_\+\+Project\+::\+Information\+Page\+::\+On\+Listings\+Click (\begin{DoxyParamCaption}\item[{object}]{sender}{, }\item[{Routed\+Event\+Args}]{e}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+\Hypertarget{class_windows___project_1_1_information_page_a8e6e34268b5ade97521068643eeba2f9}\index{Windows\_Project::InformationPage@{Windows\_Project::InformationPage}!OnNavigatedTo@{OnNavigatedTo}}
+\index{OnNavigatedTo@{OnNavigatedTo}!Windows\_Project::InformationPage@{Windows\_Project::InformationPage}}
+\doxysubsubsection{\texorpdfstring{OnNavigatedTo()}{OnNavigatedTo()}}
+{\footnotesize\ttfamily \label{class_windows___project_1_1_information_page_a8e6e34268b5ade97521068643eeba2f9} 
+override void Windows\+\_\+\+Project\+::\+Information\+Page\+::\+On\+Navigated\+To (\begin{DoxyParamCaption}\item[{Navigation\+Event\+Args}]{e}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [protected]}}
+
+Filter vehicles based on User\+ID and pass to View\+Model\Hypertarget{class_windows___project_1_1_information_page_abee69901d4c7859a9f6c16a376dc5014}\index{Windows\_Project::InformationPage@{Windows\_Project::InformationPage}!OnPersonalInfoClick@{OnPersonalInfoClick}}
+\index{OnPersonalInfoClick@{OnPersonalInfoClick}!Windows\_Project::InformationPage@{Windows\_Project::InformationPage}}
+\doxysubsubsection{\texorpdfstring{OnPersonalInfoClick()}{OnPersonalInfoClick()}}
+{\footnotesize\ttfamily \label{class_windows___project_1_1_information_page_abee69901d4c7859a9f6c16a376dc5014} 
+void Windows\+\_\+\+Project\+::\+Information\+Page\+::\+On\+Personal\+Info\+Click (\begin{DoxyParamCaption}\item[{object}]{sender}{, }\item[{Routed\+Event\+Args}]{e}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+\Hypertarget{class_windows___project_1_1_information_page_aff1b3740563a668641e6e0bf4f0d5ecb}\index{Windows\_Project::InformationPage@{Windows\_Project::InformationPage}!PreviousPage\_Click@{PreviousPage\_Click}}
+\index{PreviousPage\_Click@{PreviousPage\_Click}!Windows\_Project::InformationPage@{Windows\_Project::InformationPage}}
+\doxysubsubsection{\texorpdfstring{PreviousPage\_Click()}{PreviousPage\_Click()}}
+{\footnotesize\ttfamily \label{class_windows___project_1_1_information_page_aff1b3740563a668641e6e0bf4f0d5ecb} 
+void Windows\+\_\+\+Project\+::\+Information\+Page\+::\+Previous\+Page\+\_\+\+Click (\begin{DoxyParamCaption}\item[{object}]{sender}{, }\item[{Routed\+Event\+Args}]{e}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+Redisplay the list on the new page\Hypertarget{class_windows___project_1_1_information_page_a3d720d25dafff250b05d85c65d68db2c}\index{Windows\_Project::InformationPage@{Windows\_Project::InformationPage}!RegisterForElementConnection@{RegisterForElementConnection}}
+\index{RegisterForElementConnection@{RegisterForElementConnection}!Windows\_Project::InformationPage@{Windows\_Project::InformationPage}}
+\doxysubsubsection{\texorpdfstring{RegisterForElementConnection()}{RegisterForElementConnection()}}
+{\footnotesize\ttfamily \label{class_windows___project_1_1_information_page_a3d720d25dafff250b05d85c65d68db2c} 
+void Windows\+\_\+\+Project\+::\+Information\+Page\+::\+Register\+For\+Element\+Connection (\begin{DoxyParamCaption}\item[{int}]{connection\+Id}{, }\item[{global\+::\+Microsoft.\+UI.\+Xaml.\+Markup.\+IComponent\+Connector}]{connector}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+\Hypertarget{class_windows___project_1_1_information_page_a4c1810fe0846abfa2db99b5742d3f0e8}\index{Windows\_Project::InformationPage@{Windows\_Project::InformationPage}!StopTracking@{StopTracking}}
+\index{StopTracking@{StopTracking}!Windows\_Project::InformationPage@{Windows\_Project::InformationPage}}
+\doxysubsubsection{\texorpdfstring{StopTracking()}{StopTracking()}}
+{\footnotesize\ttfamily \label{class_windows___project_1_1_information_page_a4c1810fe0846abfa2db99b5742d3f0e8} 
+void Windows\+\_\+\+Project\+::\+Information\+Page\+::\+Stop\+Tracking (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+\Hypertarget{class_windows___project_1_1_information_page_a9bb2b00da4b6dd1c35171c847ef4404e}\index{Windows\_Project::InformationPage@{Windows\_Project::InformationPage}!UnloadObject@{UnloadObject}}
+\index{UnloadObject@{UnloadObject}!Windows\_Project::InformationPage@{Windows\_Project::InformationPage}}
+\doxysubsubsection{\texorpdfstring{UnloadObject()}{UnloadObject()}}
+{\footnotesize\ttfamily \label{class_windows___project_1_1_information_page_a9bb2b00da4b6dd1c35171c847ef4404e} 
+partial void Windows\+\_\+\+Project\+::\+Information\+Page\+::\+Unload\+Object (\begin{DoxyParamCaption}\item[{global\+::\+Microsoft.\+UI.\+Xaml.\+Dependency\+Object}]{unloadable\+Object}{}\end{DoxyParamCaption})}
+
+\Hypertarget{class_windows___project_1_1_information_page_a7d9e26d3e2590ffd25e6fb5ef380ce94}\index{Windows\_Project::InformationPage@{Windows\_Project::InformationPage}!Update@{Update}}
+\index{Update@{Update}!Windows\_Project::InformationPage@{Windows\_Project::InformationPage}}
+\doxysubsubsection{\texorpdfstring{Update()}{Update()}}
+{\footnotesize\ttfamily \label{class_windows___project_1_1_information_page_a7d9e26d3e2590ffd25e6fb5ef380ce94} 
+void Windows\+\_\+\+Project\+::\+Information\+Page\+::\+Update (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+\doxysubsection{Member Data Documentation}
+\Hypertarget{class_windows___project_1_1_information_page_ac4ddf8e61159b789f8603a1371f8a390}\index{Windows\_Project::InformationPage@{Windows\_Project::InformationPage}!\_contentLoaded@{\_contentLoaded}}
+\index{\_contentLoaded@{\_contentLoaded}!Windows\_Project::InformationPage@{Windows\_Project::InformationPage}}
+\doxysubsubsection{\texorpdfstring{\_contentLoaded}{\_contentLoaded}}
+{\footnotesize\ttfamily \label{class_windows___project_1_1_information_page_ac4ddf8e61159b789f8603a1371f8a390} 
+bool Windows\+\_\+\+Project\+::\+Information\+Page\+::\+\_\+content\+Loaded\hspace{0.3cm}{\ttfamily [private]}}
+
+\Hypertarget{class_windows___project_1_1_information_page_af87ab83e65e38c4960691ecae61fb635}\index{Windows\_Project::InformationPage@{Windows\_Project::InformationPage}!Bindings@{Bindings}}
+\index{Bindings@{Bindings}!Windows\_Project::InformationPage@{Windows\_Project::InformationPage}}
+\doxysubsubsection{\texorpdfstring{Bindings}{Bindings}}
+{\footnotesize\ttfamily \label{class_windows___project_1_1_information_page_af87ab83e65e38c4960691ecae61fb635} 
+IInformation\+Page\+\_\+\+Bindings Windows\+\_\+\+Project\+::\+Information\+Page\+::\+Bindings\hspace{0.3cm}{\ttfamily [private]}}
+
+\Hypertarget{class_windows___project_1_1_information_page_a35a7c288321b0d7802cf29654d066829}\index{Windows\_Project::InformationPage@{Windows\_Project::InformationPage}!Cars@{Cars}}
+\index{Cars@{Cars}!Windows\_Project::InformationPage@{Windows\_Project::InformationPage}}
+\doxysubsubsection{\texorpdfstring{Cars}{Cars}}
+{\footnotesize\ttfamily \label{class_windows___project_1_1_information_page_a35a7c288321b0d7802cf29654d066829} 
+List$<$\mbox{\hyperlink{class_cars}{Cars}}$>$ Windows\+\_\+\+Project\+::\+Information\+Page\+::\+Cars \{ get}
+
+\Hypertarget{class_windows___project_1_1_information_page_a95f50ca275f724126a2ba6e5757d263f}\index{Windows\_Project::InformationPage@{Windows\_Project::InformationPage}!ContentGrid@{ContentGrid}}
+\index{ContentGrid@{ContentGrid}!Windows\_Project::InformationPage@{Windows\_Project::InformationPage}}
+\doxysubsubsection{\texorpdfstring{ContentGrid}{ContentGrid}}
+{\footnotesize\ttfamily \label{class_windows___project_1_1_information_page_a95f50ca275f724126a2ba6e5757d263f} 
+global\+::\+Microsoft UI Xaml Controls Grid Windows\+\_\+\+Project\+::\+Information\+Page\+::\+Content\+Grid\hspace{0.3cm}{\ttfamily [private]}}
+
+\Hypertarget{class_windows___project_1_1_information_page_abc31012e1ae3040db0ef7abacb61847c}\index{Windows\_Project::InformationPage@{Windows\_Project::InformationPage}!currentPage@{currentPage}}
+\index{currentPage@{currentPage}!Windows\_Project::InformationPage@{Windows\_Project::InformationPage}}
+\doxysubsubsection{\texorpdfstring{currentPage}{currentPage}}
+{\footnotesize\ttfamily \label{class_windows___project_1_1_information_page_abc31012e1ae3040db0ef7abacb61847c} 
+int Windows\+\_\+\+Project\+::\+Information\+Page\+::current\+Page = 1\hspace{0.3cm}{\ttfamily [private]}}
+
+\Hypertarget{class_windows___project_1_1_information_page_a3aef1563a4542acd16f02d3e093f865f}\index{Windows\_Project::InformationPage@{Windows\_Project::InformationPage}!CurrentUser@{CurrentUser}}
+\index{CurrentUser@{CurrentUser}!Windows\_Project::InformationPage@{Windows\_Project::InformationPage}}
+\doxysubsubsection{\texorpdfstring{CurrentUser}{CurrentUser}}
+{\footnotesize\ttfamily \label{class_windows___project_1_1_information_page_a3aef1563a4542acd16f02d3e093f865f} 
+\mbox{\hyperlink{class_windows___project_1_1_users}{Users}} Windows\+\_\+\+Project\+::\+Information\+Page\+::\+Current\+User\hspace{0.3cm}{\ttfamily [private]}}
+
+\Hypertarget{class_windows___project_1_1_information_page_a6c449685fdecb1191eace82aae3c13fe}\index{Windows\_Project::InformationPage@{Windows\_Project::InformationPage}!itemsPerPage@{itemsPerPage}}
+\index{itemsPerPage@{itemsPerPage}!Windows\_Project::InformationPage@{Windows\_Project::InformationPage}}
+\doxysubsubsection{\texorpdfstring{itemsPerPage}{itemsPerPage}}
+{\footnotesize\ttfamily \label{class_windows___project_1_1_information_page_a6c449685fdecb1191eace82aae3c13fe} 
+int Windows\+\_\+\+Project\+::\+Information\+Page\+::items\+Per\+Page = 6\hspace{0.3cm}{\ttfamily [private]}}
+
+\Hypertarget{class_windows___project_1_1_information_page_a5040543f04f9b037f57bffa9f79584f3}\index{Windows\_Project::InformationPage@{Windows\_Project::InformationPage}!ListingsButton@{ListingsButton}}
+\index{ListingsButton@{ListingsButton}!Windows\_Project::InformationPage@{Windows\_Project::InformationPage}}
+\doxysubsubsection{\texorpdfstring{ListingsButton}{ListingsButton}}
+{\footnotesize\ttfamily \label{class_windows___project_1_1_information_page_a5040543f04f9b037f57bffa9f79584f3} 
+global\+::\+Microsoft UI Xaml Controls Button Windows\+\_\+\+Project\+::\+Information\+Page\+::\+Listings\+Button\hspace{0.3cm}{\ttfamily [private]}}
+
+\Hypertarget{class_windows___project_1_1_information_page_a863159352c1b77b50f7dae07d3098ed6}\index{Windows\_Project::InformationPage@{Windows\_Project::InformationPage}!PersonalInfoButton@{PersonalInfoButton}}
+\index{PersonalInfoButton@{PersonalInfoButton}!Windows\_Project::InformationPage@{Windows\_Project::InformationPage}}
+\doxysubsubsection{\texorpdfstring{PersonalInfoButton}{PersonalInfoButton}}
+{\footnotesize\ttfamily \label{class_windows___project_1_1_information_page_a863159352c1b77b50f7dae07d3098ed6} 
+global\+::\+Microsoft UI Xaml Controls Button Windows\+\_\+\+Project\+::\+Information\+Page\+::\+Personal\+Info\+Button\hspace{0.3cm}{\ttfamily [private]}}
+
+\Hypertarget{class_windows___project_1_1_information_page_a7b96b335f7b00748485dca79df2c6216}\index{Windows\_Project::InformationPage@{Windows\_Project::InformationPage}!set@{set}}
+\index{set@{set}!Windows\_Project::InformationPage@{Windows\_Project::InformationPage}}
+\doxysubsubsection{\texorpdfstring{set}{set}}
+{\footnotesize\ttfamily \label{class_windows___project_1_1_information_page_a7b96b335f7b00748485dca79df2c6216} 
+Windows\+\_\+\+Project\+::\+Information\+Page\+::set}
+
+\Hypertarget{class_windows___project_1_1_information_page_ab9323b038cf57b48a82f294d28096558}\index{Windows\_Project::InformationPage@{Windows\_Project::InformationPage}!UserListings@{UserListings}}
+\index{UserListings@{UserListings}!Windows\_Project::InformationPage@{Windows\_Project::InformationPage}}
+\doxysubsubsection{\texorpdfstring{UserListings}{UserListings}}
+{\footnotesize\ttfamily \label{class_windows___project_1_1_information_page_ab9323b038cf57b48a82f294d28096558} 
+List$<$\mbox{\hyperlink{class_windows___project_1_1_model_1_1_listings}{Model.\+Listings}}$>$ Windows\+\_\+\+Project\+::\+Information\+Page\+::\+User\+Listings\hspace{0.3cm}{\ttfamily [private]}}
+
+\Hypertarget{class_windows___project_1_1_information_page_a75adb77903a2f65515a718ff83d9f117}\index{Windows\_Project::InformationPage@{Windows\_Project::InformationPage}!ViewModel@{ViewModel}}
+\index{ViewModel@{ViewModel}!Windows\_Project::InformationPage@{Windows\_Project::InformationPage}}
+\doxysubsubsection{\texorpdfstring{ViewModel}{ViewModel}}
+{\footnotesize\ttfamily \label{class_windows___project_1_1_information_page_a75adb77903a2f65515a718ff83d9f117} 
+\mbox{\hyperlink{class_main_view_model}{Main\+View\+Model}} Windows\+\_\+\+Project\+::\+Information\+Page\+::\+View\+Model \{ get}
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+Windows\+\_\+\+Project/obj/x64/\+Debug/net8.\+0-\/windows10.\+0.\+19041.\+0/\+View/\mbox{\hyperlink{_information_page_8g_8i_8cs}{Information\+Page.\+g.\+i.\+cs}}\item 
+Windows\+\_\+\+Project/\+View/\mbox{\hyperlink{_information_page_8xaml_8cs}{Information\+Page.\+xaml.\+cs}}\end{DoxyCompactItemize}

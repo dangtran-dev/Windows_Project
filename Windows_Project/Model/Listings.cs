@@ -5,7 +5,10 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace Windows_Project.Model
-{
+{ 
+    /// <summary>
+    /// This class is used to store the listings
+    /// </summary>
     public class Listings
     {
         public int ListingID { get; set; }

@@ -1,0 +1,265 @@
+\doxysection{Main\+View\+Model Class Reference}
+\hypertarget{class_main_view_model}{}\label{class_main_view_model}\index{MainViewModel@{MainViewModel}}
+
+
+This class is used to store the main view model.  
+
+
+Inheritance diagram for Main\+View\+Model\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_main_view_model}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_main_view_model_a04315e3ea5b4de8a4ada06472fc5f909}{On\+Property\+Changed}} (nameof(\mbox{\hyperlink{class_main_view_model_a1e058091e96162d9d67a73f55bd26c11}{Is\+Selected\+Cars\+Visible}}))
+\item 
+\mbox{\hyperlink{class_main_view_model_aaf6cf34eabe5268fe3b8cb6ad5246a8f}{Main\+View\+Model}} ()
+\item 
+void \mbox{\hyperlink{class_main_view_model_a5e178613062a4295ba89fb489378814f}{Create\+Car\+With\+User\+List\+Original}} (string condition)
+\item 
+void \mbox{\hyperlink{class_main_view_model_a220acd0a6f26dcc392a4048189af7496}{Create\+Car\+With\+User\+List}} (string condition, string manufacturer, string model)
+\item 
+void \mbox{\hyperlink{class_main_view_model_aa65eda223d262b63a7936b2f3d1a7c90}{Create\+Listings\+By\+User\+ID}} (int user\+ID)
+\item 
+void \mbox{\hyperlink{class_main_view_model_a84e6e923988144fda8508952a5de34a0}{Filter\+Search\+Cars}} (string search)
+\item 
+void \mbox{\hyperlink{class_main_view_model_a51d384779a288a8209995fafdaded37f}{Search\+\_\+\+Car\+\_\+\+By\+\_\+\+Filter}} (string manufacturer, string model, string year, string style, string min\+Price, string max\+Price, string origin, string fuel, string gear, string city, string district)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_main_view_model_a868139f292dd6f4aefc9e3e89255876a}{Users}} \mbox{\hyperlink{class_main_view_model_ae717188d9de177aac7dc0cac786950d9}{Logged\+In\+User}} \{ get
+\item 
+\mbox{\hyperlink{class_main_view_model_acc726a343bc7bd07d0851003564e81a4}{set}}
+\item 
+List$<$ \mbox{\hyperlink{class_manufacturers}{Manufacturers}} $>$ \mbox{\hyperlink{class_main_view_model_a34e337962bf30d539bc82c4ae610c013}{Manufacturers}} \{ get
+\item 
+List$<$ \mbox{\hyperlink{class_cars}{Cars}} $>$ \mbox{\hyperlink{class_main_view_model_a0042ff9eea8beca7b3997a32bbc10179}{Cars}} \{ get
+\item 
+List$<$ Location $>$ \mbox{\hyperlink{class_main_view_model_ad05167b634a77833892ca14522ff5fcc}{Locations}} \{ get
+\item 
+List$<$ Is\+Expander\+Expaned $>$ \mbox{\hyperlink{class_main_view_model_a6da24d2fc2a50c165d5bf4686fb6ce71}{Is\+Expander\+Expaneds}} \{ get
+\item 
+List$<$ Users $>$ \mbox{\hyperlink{class_main_view_model_a868139f292dd6f4aefc9e3e89255876a}{Users}} \{ get
+\item 
+List$<$ Listings $>$ \mbox{\hyperlink{class_main_view_model_a78f592d19b5430cd1ba6c685b8d09d27}{Listings}} \{ get
+\item 
+Observable\+Collection$<$ Car\+With\+User\+Item $>$ \mbox{\hyperlink{class_main_view_model_a94f3c316c154320926d81b9d071bc08f}{Car\+With\+User\+List}} \{ get
+\item 
+Observable\+Collection$<$ Car\+With\+User\+Item $>$ \mbox{\hyperlink{class_main_view_model_ae129e14eab8216c432c1e8fabe4ebd06}{Car\+With\+User\+List\+Original}} \{ get
+\item 
+Observable\+Collection$<$ \mbox{\hyperlink{class_cars}{Cars}} $>$ \mbox{\hyperlink{class_main_view_model_a28e5c0086eaae6219638c1914f7db417}{Filtered\+Cars}} \{ get
+\item 
+Observable\+Collection$<$ \mbox{\hyperlink{class_cars}{Cars}} $>$ \mbox{\hyperlink{class_main_view_model_aee23e50cde0ad2430f122ae76c7c10ab}{Selected\+Cars}} \{ get
+\item 
+bool \mbox{\hyperlink{class_main_view_model_a1e058091e96162d9d67a73f55bd26c11}{Is\+Selected\+Cars\+Visible}}
+\item 
+Observable\+Collection$<$ \mbox{\hyperlink{class_cars}{Cars}} $>$ \mbox{\hyperlink{class_main_view_model_adabfdb48c881a4c7a30ed693f6f1a471}{Filtered\+Search\+Cars}} \{ get
+\item 
+event Property\+Changed\+Event\+Handler \mbox{\hyperlink{class_main_view_model_a1d2bec953c589376c35ea098037ec9df}{Property\+Changed}}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Protected Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{class_main_view_model_af431a48405083d90193f2f6be25e4edb}{On\+Property\+Changed}} (string property\+Name)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Private Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{class_main_view_model_a0a3822c108533d81d1fa2ee440150522}{Selected\+Cars\+\_\+\+Collection\+Changed}} (object sender, System.\+Collections.\+Specialized.\+Notify\+Collection\+Changed\+Event\+Args e)
+\item 
+long \mbox{\hyperlink{class_main_view_model_a0588c6c879d8af156c4eaf6c31a1d3b7}{Parse\+Price}} (string price)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+bool \mbox{\hyperlink{class_main_view_model_a46cd5a72903a653795a72b038a8d3d3e}{\+\_\+is\+Selected\+Cars\+Visible}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+This class is used to store the main view model. 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{class_main_view_model_aaf6cf34eabe5268fe3b8cb6ad5246a8f}\index{MainViewModel@{MainViewModel}!MainViewModel@{MainViewModel}}
+\index{MainViewModel@{MainViewModel}!MainViewModel@{MainViewModel}}
+\doxysubsubsection{\texorpdfstring{MainViewModel()}{MainViewModel()}}
+{\footnotesize\ttfamily \label{class_main_view_model_aaf6cf34eabe5268fe3b8cb6ad5246a8f} 
+Main\+View\+Model\+::\+Main\+View\+Model (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_main_view_model_a220acd0a6f26dcc392a4048189af7496}\index{MainViewModel@{MainViewModel}!CreateCarWithUserList@{CreateCarWithUserList}}
+\index{CreateCarWithUserList@{CreateCarWithUserList}!MainViewModel@{MainViewModel}}
+\doxysubsubsection{\texorpdfstring{CreateCarWithUserList()}{CreateCarWithUserList()}}
+{\footnotesize\ttfamily \label{class_main_view_model_a220acd0a6f26dcc392a4048189af7496} 
+void Main\+View\+Model\+::\+Create\+Car\+With\+User\+List (\begin{DoxyParamCaption}\item[{string}]{condition}{, }\item[{string}]{manufacturer}{, }\item[{string}]{model}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+\Hypertarget{class_main_view_model_a5e178613062a4295ba89fb489378814f}\index{MainViewModel@{MainViewModel}!CreateCarWithUserListOriginal@{CreateCarWithUserListOriginal}}
+\index{CreateCarWithUserListOriginal@{CreateCarWithUserListOriginal}!MainViewModel@{MainViewModel}}
+\doxysubsubsection{\texorpdfstring{CreateCarWithUserListOriginal()}{CreateCarWithUserListOriginal()}}
+{\footnotesize\ttfamily \label{class_main_view_model_a5e178613062a4295ba89fb489378814f} 
+void Main\+View\+Model\+::\+Create\+Car\+With\+User\+List\+Original (\begin{DoxyParamCaption}\item[{string}]{condition}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+\Hypertarget{class_main_view_model_aa65eda223d262b63a7936b2f3d1a7c90}\index{MainViewModel@{MainViewModel}!CreateListingsByUserID@{CreateListingsByUserID}}
+\index{CreateListingsByUserID@{CreateListingsByUserID}!MainViewModel@{MainViewModel}}
+\doxysubsubsection{\texorpdfstring{CreateListingsByUserID()}{CreateListingsByUserID()}}
+{\footnotesize\ttfamily \label{class_main_view_model_aa65eda223d262b63a7936b2f3d1a7c90} 
+void Main\+View\+Model\+::\+Create\+Listings\+By\+User\+ID (\begin{DoxyParamCaption}\item[{int}]{user\+ID}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+\Hypertarget{class_main_view_model_a84e6e923988144fda8508952a5de34a0}\index{MainViewModel@{MainViewModel}!FilterSearchCars@{FilterSearchCars}}
+\index{FilterSearchCars@{FilterSearchCars}!MainViewModel@{MainViewModel}}
+\doxysubsubsection{\texorpdfstring{FilterSearchCars()}{FilterSearchCars()}}
+{\footnotesize\ttfamily \label{class_main_view_model_a84e6e923988144fda8508952a5de34a0} 
+void Main\+View\+Model\+::\+Filter\+Search\+Cars (\begin{DoxyParamCaption}\item[{string}]{search}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+\Hypertarget{class_main_view_model_a04315e3ea5b4de8a4ada06472fc5f909}\index{MainViewModel@{MainViewModel}!OnPropertyChanged@{OnPropertyChanged}}
+\index{OnPropertyChanged@{OnPropertyChanged}!MainViewModel@{MainViewModel}}
+\doxysubsubsection{\texorpdfstring{OnPropertyChanged()}{OnPropertyChanged()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily \label{class_main_view_model_a04315e3ea5b4de8a4ada06472fc5f909} 
+Main\+View\+Model\+::\+On\+Property\+Changed (\begin{DoxyParamCaption}\item[{nameof(\mbox{\hyperlink{class_main_view_model_a1e058091e96162d9d67a73f55bd26c11}{Is\+Selected\+Cars\+Visible}})}]{}{}\end{DoxyParamCaption})}
+
+\Hypertarget{class_main_view_model_af431a48405083d90193f2f6be25e4edb}\index{MainViewModel@{MainViewModel}!OnPropertyChanged@{OnPropertyChanged}}
+\index{OnPropertyChanged@{OnPropertyChanged}!MainViewModel@{MainViewModel}}
+\doxysubsubsection{\texorpdfstring{OnPropertyChanged()}{OnPropertyChanged()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily \label{class_main_view_model_af431a48405083d90193f2f6be25e4edb} 
+void Main\+View\+Model\+::\+On\+Property\+Changed (\begin{DoxyParamCaption}\item[{string}]{property\+Name}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [protected]}}
+
+\Hypertarget{class_main_view_model_a0588c6c879d8af156c4eaf6c31a1d3b7}\index{MainViewModel@{MainViewModel}!ParsePrice@{ParsePrice}}
+\index{ParsePrice@{ParsePrice}!MainViewModel@{MainViewModel}}
+\doxysubsubsection{\texorpdfstring{ParsePrice()}{ParsePrice()}}
+{\footnotesize\ttfamily \label{class_main_view_model_a0588c6c879d8af156c4eaf6c31a1d3b7} 
+long Main\+View\+Model\+::\+Parse\+Price (\begin{DoxyParamCaption}\item[{string}]{price}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+\Hypertarget{class_main_view_model_a51d384779a288a8209995fafdaded37f}\index{MainViewModel@{MainViewModel}!Search\_Car\_By\_Filter@{Search\_Car\_By\_Filter}}
+\index{Search\_Car\_By\_Filter@{Search\_Car\_By\_Filter}!MainViewModel@{MainViewModel}}
+\doxysubsubsection{\texorpdfstring{Search\_Car\_By\_Filter()}{Search\_Car\_By\_Filter()}}
+{\footnotesize\ttfamily \label{class_main_view_model_a51d384779a288a8209995fafdaded37f} 
+void Main\+View\+Model\+::\+Search\+\_\+\+Car\+\_\+\+By\+\_\+\+Filter (\begin{DoxyParamCaption}\item[{string}]{manufacturer}{, }\item[{string}]{model}{, }\item[{string}]{year}{, }\item[{string}]{style}{, }\item[{string}]{min\+Price}{, }\item[{string}]{max\+Price}{, }\item[{string}]{origin}{, }\item[{string}]{fuel}{, }\item[{string}]{gear}{, }\item[{string}]{city}{, }\item[{string}]{district}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+\Hypertarget{class_main_view_model_a0a3822c108533d81d1fa2ee440150522}\index{MainViewModel@{MainViewModel}!SelectedCars\_CollectionChanged@{SelectedCars\_CollectionChanged}}
+\index{SelectedCars\_CollectionChanged@{SelectedCars\_CollectionChanged}!MainViewModel@{MainViewModel}}
+\doxysubsubsection{\texorpdfstring{SelectedCars\_CollectionChanged()}{SelectedCars\_CollectionChanged()}}
+{\footnotesize\ttfamily \label{class_main_view_model_a0a3822c108533d81d1fa2ee440150522} 
+void Main\+View\+Model\+::\+Selected\+Cars\+\_\+\+Collection\+Changed (\begin{DoxyParamCaption}\item[{object}]{sender}{, }\item[{System.\+Collections.\+Specialized.\+Notify\+Collection\+Changed\+Event\+Args}]{e}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+
+
+\doxysubsection{Member Data Documentation}
+\Hypertarget{class_main_view_model_a46cd5a72903a653795a72b038a8d3d3e}\index{MainViewModel@{MainViewModel}!\_isSelectedCarsVisible@{\_isSelectedCarsVisible}}
+\index{\_isSelectedCarsVisible@{\_isSelectedCarsVisible}!MainViewModel@{MainViewModel}}
+\doxysubsubsection{\texorpdfstring{\_isSelectedCarsVisible}{\_isSelectedCarsVisible}}
+{\footnotesize\ttfamily \label{class_main_view_model_a46cd5a72903a653795a72b038a8d3d3e} 
+bool Main\+View\+Model\+::\+\_\+is\+Selected\+Cars\+Visible\hspace{0.3cm}{\ttfamily [private]}}
+
+\Hypertarget{class_main_view_model_a0042ff9eea8beca7b3997a32bbc10179}\index{MainViewModel@{MainViewModel}!Cars@{Cars}}
+\index{Cars@{Cars}!MainViewModel@{MainViewModel}}
+\doxysubsubsection{\texorpdfstring{Cars}{Cars}}
+{\footnotesize\ttfamily \label{class_main_view_model_a0042ff9eea8beca7b3997a32bbc10179} 
+List$<$\mbox{\hyperlink{class_cars}{Cars}}$>$ Main\+View\+Model\+::\+Cars \{ get}
+
+\Hypertarget{class_main_view_model_a94f3c316c154320926d81b9d071bc08f}\index{MainViewModel@{MainViewModel}!CarWithUserList@{CarWithUserList}}
+\index{CarWithUserList@{CarWithUserList}!MainViewModel@{MainViewModel}}
+\doxysubsubsection{\texorpdfstring{CarWithUserList}{CarWithUserList}}
+{\footnotesize\ttfamily \label{class_main_view_model_a94f3c316c154320926d81b9d071bc08f} 
+Observable\+Collection$<$Car\+With\+User\+Item$>$ Main\+View\+Model\+::\+Car\+With\+User\+List \{ get}
+
+\Hypertarget{class_main_view_model_ae129e14eab8216c432c1e8fabe4ebd06}\index{MainViewModel@{MainViewModel}!CarWithUserListOriginal@{CarWithUserListOriginal}}
+\index{CarWithUserListOriginal@{CarWithUserListOriginal}!MainViewModel@{MainViewModel}}
+\doxysubsubsection{\texorpdfstring{CarWithUserListOriginal}{CarWithUserListOriginal}}
+{\footnotesize\ttfamily \label{class_main_view_model_ae129e14eab8216c432c1e8fabe4ebd06} 
+Observable\+Collection$<$Car\+With\+User\+Item$>$ Main\+View\+Model\+::\+Car\+With\+User\+List\+Original \{ get}
+
+\Hypertarget{class_main_view_model_a28e5c0086eaae6219638c1914f7db417}\index{MainViewModel@{MainViewModel}!FilteredCars@{FilteredCars}}
+\index{FilteredCars@{FilteredCars}!MainViewModel@{MainViewModel}}
+\doxysubsubsection{\texorpdfstring{FilteredCars}{FilteredCars}}
+{\footnotesize\ttfamily \label{class_main_view_model_a28e5c0086eaae6219638c1914f7db417} 
+Observable\+Collection$<$\mbox{\hyperlink{class_cars}{Cars}}$>$ Main\+View\+Model\+::\+Filtered\+Cars \{ get}
+
+\Hypertarget{class_main_view_model_adabfdb48c881a4c7a30ed693f6f1a471}\index{MainViewModel@{MainViewModel}!FilteredSearchCars@{FilteredSearchCars}}
+\index{FilteredSearchCars@{FilteredSearchCars}!MainViewModel@{MainViewModel}}
+\doxysubsubsection{\texorpdfstring{FilteredSearchCars}{FilteredSearchCars}}
+{\footnotesize\ttfamily \label{class_main_view_model_adabfdb48c881a4c7a30ed693f6f1a471} 
+Observable\+Collection$<$\mbox{\hyperlink{class_cars}{Cars}}$>$ Main\+View\+Model\+::\+Filtered\+Search\+Cars \{ get}
+
+\Hypertarget{class_main_view_model_a6da24d2fc2a50c165d5bf4686fb6ce71}\index{MainViewModel@{MainViewModel}!IsExpanderExpaneds@{IsExpanderExpaneds}}
+\index{IsExpanderExpaneds@{IsExpanderExpaneds}!MainViewModel@{MainViewModel}}
+\doxysubsubsection{\texorpdfstring{IsExpanderExpaneds}{IsExpanderExpaneds}}
+{\footnotesize\ttfamily \label{class_main_view_model_a6da24d2fc2a50c165d5bf4686fb6ce71} 
+List$<$Is\+Expander\+Expaned$>$ Main\+View\+Model\+::\+Is\+Expander\+Expaneds \{ get}
+
+\Hypertarget{class_main_view_model_a1e058091e96162d9d67a73f55bd26c11}\index{MainViewModel@{MainViewModel}!IsSelectedCarsVisible@{IsSelectedCarsVisible}}
+\index{IsSelectedCarsVisible@{IsSelectedCarsVisible}!MainViewModel@{MainViewModel}}
+\doxysubsubsection{\texorpdfstring{IsSelectedCarsVisible}{IsSelectedCarsVisible}}
+{\footnotesize\ttfamily \label{class_main_view_model_a1e058091e96162d9d67a73f55bd26c11} 
+bool Main\+View\+Model\+::\+Is\+Selected\+Cars\+Visible}
+
+{\bfseries Initial value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ get\ =>\ \mbox{\hyperlink{class_main_view_model_a46cd5a72903a653795a72b038a8d3d3e}{\_isSelectedCarsVisible}}}
+
+\end{DoxyCode}
+\Hypertarget{class_main_view_model_a78f592d19b5430cd1ba6c685b8d09d27}\index{MainViewModel@{MainViewModel}!Listings@{Listings}}
+\index{Listings@{Listings}!MainViewModel@{MainViewModel}}
+\doxysubsubsection{\texorpdfstring{Listings}{Listings}}
+{\footnotesize\ttfamily \label{class_main_view_model_a78f592d19b5430cd1ba6c685b8d09d27} 
+List$<$Listings$>$ Main\+View\+Model\+::\+Listings \{ get}
+
+\Hypertarget{class_main_view_model_ad05167b634a77833892ca14522ff5fcc}\index{MainViewModel@{MainViewModel}!Locations@{Locations}}
+\index{Locations@{Locations}!MainViewModel@{MainViewModel}}
+\doxysubsubsection{\texorpdfstring{Locations}{Locations}}
+{\footnotesize\ttfamily \label{class_main_view_model_ad05167b634a77833892ca14522ff5fcc} 
+List$<$Location$>$ Main\+View\+Model\+::\+Locations \{ get}
+
+\Hypertarget{class_main_view_model_ae717188d9de177aac7dc0cac786950d9}\index{MainViewModel@{MainViewModel}!LoggedInUser@{LoggedInUser}}
+\index{LoggedInUser@{LoggedInUser}!MainViewModel@{MainViewModel}}
+\doxysubsubsection{\texorpdfstring{LoggedInUser}{LoggedInUser}}
+{\footnotesize\ttfamily \label{class_main_view_model_ae717188d9de177aac7dc0cac786950d9} 
+\mbox{\hyperlink{class_main_view_model_a868139f292dd6f4aefc9e3e89255876a}{Users}} Main\+View\+Model\+::\+Logged\+In\+User \{ get}
+
+\Hypertarget{class_main_view_model_a34e337962bf30d539bc82c4ae610c013}\index{MainViewModel@{MainViewModel}!Manufacturers@{Manufacturers}}
+\index{Manufacturers@{Manufacturers}!MainViewModel@{MainViewModel}}
+\doxysubsubsection{\texorpdfstring{Manufacturers}{Manufacturers}}
+{\footnotesize\ttfamily \label{class_main_view_model_a34e337962bf30d539bc82c4ae610c013} 
+List$<$\mbox{\hyperlink{class_manufacturers}{Manufacturers}}$>$ Main\+View\+Model\+::\+Manufacturers \{ get}
+
+\Hypertarget{class_main_view_model_a1d2bec953c589376c35ea098037ec9df}\index{MainViewModel@{MainViewModel}!PropertyChanged@{PropertyChanged}}
+\index{PropertyChanged@{PropertyChanged}!MainViewModel@{MainViewModel}}
+\doxysubsubsection{\texorpdfstring{PropertyChanged}{PropertyChanged}}
+{\footnotesize\ttfamily \label{class_main_view_model_a1d2bec953c589376c35ea098037ec9df} 
+event Property\+Changed\+Event\+Handler Main\+View\+Model\+::\+Property\+Changed}
+
+\Hypertarget{class_main_view_model_aee23e50cde0ad2430f122ae76c7c10ab}\index{MainViewModel@{MainViewModel}!SelectedCars@{SelectedCars}}
+\index{SelectedCars@{SelectedCars}!MainViewModel@{MainViewModel}}
+\doxysubsubsection{\texorpdfstring{SelectedCars}{SelectedCars}}
+{\footnotesize\ttfamily \label{class_main_view_model_aee23e50cde0ad2430f122ae76c7c10ab} 
+Observable\+Collection$<$\mbox{\hyperlink{class_cars}{Cars}}$>$ Main\+View\+Model\+::\+Selected\+Cars \{ get}
+
+\Hypertarget{class_main_view_model_acc726a343bc7bd07d0851003564e81a4}\index{MainViewModel@{MainViewModel}!set@{set}}
+\index{set@{set}!MainViewModel@{MainViewModel}}
+\doxysubsubsection{\texorpdfstring{set}{set}}
+{\footnotesize\ttfamily \label{class_main_view_model_acc726a343bc7bd07d0851003564e81a4} 
+Main\+View\+Model\+::set}
+
+{\bfseries Initial value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_main_view_model_a46cd5a72903a653795a72b038a8d3d3e}{\_isSelectedCarsVisible}}\ =\ value}
+
+\end{DoxyCode}
+\Hypertarget{class_main_view_model_a868139f292dd6f4aefc9e3e89255876a}\index{MainViewModel@{MainViewModel}!Users@{Users}}
+\index{Users@{Users}!MainViewModel@{MainViewModel}}
+\doxysubsubsection{\texorpdfstring{Users}{Users}}
+{\footnotesize\ttfamily \label{class_main_view_model_a868139f292dd6f4aefc9e3e89255876a} 
+List$<$Users$>$ Main\+View\+Model\+::\+Users \{ get}
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+Windows\+\_\+\+Project/\+View Model/\mbox{\hyperlink{_main_view_model_8cs}{Main\+View\+Model.\+cs}}\end{DoxyCompactItemize}

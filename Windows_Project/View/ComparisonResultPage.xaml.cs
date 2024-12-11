@@ -20,7 +20,7 @@ using System.Collections.ObjectModel;
 namespace Windows_Project.View
 {
     /// <summary>
-    /// An empty page that can be used on its own or navigated to within a Frame.
+    /// This class is used to display the comparison result page
     /// </summary>
     public sealed partial class ComparisonResultPage : Page
     {
@@ -56,7 +56,9 @@ namespace Windows_Project.View
             }
             else
             {
-                // Xử lý nếu không có xe nào được truyền đến
+                /// <summary>
+                /// Handled if no vehicles are transmitted
+                /// </summary>
                 var dialog = new ContentDialog
                 {
                     Title = "Thông báo",

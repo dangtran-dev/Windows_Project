@@ -23,7 +23,7 @@ using Windows_Project.View;
 namespace Windows_Project
 {
     /// <summary>
-    /// An empty page that can be used on its own or navigated to within a Frame.
+    /// This class is used to display the main page
     /// </summary>
     public sealed partial class MainPage : Page
     {
@@ -38,7 +38,11 @@ namespace Windows_Project
         public MainPage()
         {
             this.InitializeComponent();
-            this.NavigationCacheMode = NavigationCacheMode.Enabled; // khong tai lai trang khi quay lai MainPage
+            /// <summary>
+            /// Does not refresh the page when returning to MainPage
+            /// </summary>
+            this.NavigationCacheMode = NavigationCacheMode.Enabled;
+           
 
             ViewModel = new MainViewModel();
             Select_Car_Company.ItemsSource = ViewModel.Manufacturers;
@@ -46,7 +50,6 @@ namespace Windows_Project
 
             UpdateLoginButtons();
 
-            // Danh sách hình ảnh
             Pictures = new ObservableCollection<string>
             {
                 "../../Assets/mazda_bg.jpg",
@@ -57,7 +60,9 @@ namespace Windows_Project
 
             Gallery.ItemsSource = Pictures;
 
-            // Khởi tạo timer với khoảng 1 giây
+            /// <summary>
+            /// Initialize timer with 1 second interval
+            /// </summary>
             timer = new DispatcherTimer();
             timer.Interval = TimeSpan.FromSeconds(2.5);
             timer.Tick += Timer_Tick;
@@ -65,7 +70,9 @@ namespace Windows_Project
         }
 
 
-        //mo lai khi tat ung dung
+        /// <summary>
+        /// Open again when the app is finished
+        /// </summary>
         private void Page_Loaded(object sender, RoutedEventArgs e)
         {
             var localSettings = ApplicationData.Current.LocalSettings;
@@ -77,10 +84,15 @@ namespace Windows_Project
 
             if (localSettings.Values.ContainsKey("Password"))
             {
-                PasswordLogin.Password = localSettings.Values["Password"].ToString(); // Lưu ý: Mật khẩu nên được mã hóa
+                /// <summary>
+                /// Note: Passwords should be encrypted
+                /// </summary>
+                PasswordLogin.Password = localSettings.Values["Password"].ToString(); 
             }
 
-            // Tải trạng thái của checkbox
+            /// <summary>
+            /// Load the checkbox's state
+            /// </summary>
             if (localSettings.Values.ContainsKey("RememberMe"))
             {
                 rememberCheckBox.IsChecked = (bool)localSettings.Values["RememberMe"];

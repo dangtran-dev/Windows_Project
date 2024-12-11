@@ -1,0 +1,22 @@
+var searchData=
+[
+  ['pagenumbertextblock_0',['PageNumberTextBlock',['../class_windows___project_1_1_car_price_page.html#ad2cf89a13184fd3c9bb705733d787a57',1,'Windows_Project::CarPricePage::PageNumberTextBlock'],['../class_windows___project_1_1_view_1_1_old_car.html#ad440652ca59375b56d8fbdd51d56d454',1,'Windows_Project::View::OldCar::PageNumberTextBlock']]],
+  ['pagetitle_1',['PageTitle',['../class_windows___project_1_1_view_1_1_old_car.html#a47c489fbd1d6517e731125020df55a07',1,'Windows_Project::View::OldCar']]],
+  ['password_2',['Password',['../class_windows___project_1_1_users.html#ace2f176ff5a29f2f0e81408eb225dfff',1,'Windows_Project::Users']]],
+  ['passwordlogin_3',['PasswordLogin',['../class_windows___project_1_1_main_page.html#a3b66491b51e77b1008ba1d79900042ca',1,'Windows_Project::MainPage']]],
+  ['passwordregister_4',['PasswordRegister',['../class_windows___project_1_1_main_page.html#a8f73bad74e08f9cdf11a1d775f38d4b0',1,'Windows_Project::MainPage']]],
+  ['pathtext_5',['PathText',['../class_windows___project_1_1_post_page.html#a8601e3aefd7446afad5696c3cf9fb18a',1,'Windows_Project::PostPage']]],
+  ['personalinfobutton_6',['PersonalInfoButton',['../class_windows___project_1_1_information_page.html#a863159352c1b77b50f7dae07d3098ed6',1,'Windows_Project::InformationPage']]],
+  ['phone_7',['Phone',['../class_windows___project_1_1_users.html#a7ee025a36971e66734bdc8c91b2e1b18',1,'Windows_Project::Users']]],
+  ['picture_8',['Picture',['../class_cars.html#aeec878525c3fee093fe7237e3afdfbf7',1,'Cars']]],
+  ['pictures_9',['Pictures',['../class_windows___project_1_1_main_page.html#ab718daef68437759194f0c7bea1acebb',1,'Windows_Project::MainPage']]],
+  ['post_5fnews_10',['Post_News',['../class_windows___project_1_1_main_page.html#ad8e842fe462b4f0cb1c007d4f0e6300a',1,'Windows_Project::MainPage']]],
+  ['postbutton1_11',['PostButton1',['../class_windows___project_1_1_post_page.html#a09632b6634332325cab0e1dec221cf33',1,'Windows_Project::PostPage']]],
+  ['postbutton2_12',['PostButton2',['../class_windows___project_1_1_post_page.html#af1ffe89098637d28950c0f76a5e54f98',1,'Windows_Project::PostPage']]],
+  ['preview_13',['Preview',['../class_windows___project_1_1_post_page.html#a947f319ce8185b59548166d458327cf2',1,'Windows_Project::PostPage']]],
+  ['previewimage_14',['PreviewImage',['../class_windows___project_1_1_post_page.html#a5dc62ab473d9a06fd70e9bf12caf4d26',1,'Windows_Project::PostPage']]],
+  ['previewpopup_15',['PreviewPopup',['../class_windows___project_1_1_post_page.html#ad4c45debd69cdadabc580865d636017a',1,'Windows_Project::PostPage']]],
+  ['previouspagebutton_16',['PreviousPageButton',['../class_windows___project_1_1_car_price_page.html#ada647dde5ea34d5653cba6f4b9dcb13d',1,'Windows_Project::CarPricePage::PreviousPageButton'],['../class_windows___project_1_1_view_1_1_old_car.html#ab7c25de3bad0cda4f01f66b93742b999',1,'Windows_Project::View::OldCar::PreviousPageButton']]],
+  ['price_17',['Price',['../class_cars.html#aed7c31cf63b05d275280eb552403d6df',1,'Cars']]],
+  ['propertychanged_18',['PropertyChanged',['../class_cars.html#a3c8b46628bee942da0691ce4b52d2adc',1,'Cars::PropertyChanged'],['../class_windows___project_1_1_location.html#a42525640b24df6bffdadd9ad117bca28',1,'Windows_Project::Location::PropertyChanged'],['../class_manufacturers.html#aa64e513e9d45043267f58f52fc7f92f1',1,'Manufacturers::PropertyChanged'],['../class_windows___project_1_1_users.html#a00937cfa55229cb42f3756a8240d524e',1,'Windows_Project::Users::PropertyChanged'],['../class_main_view_model.html#a1d2bec953c589376c35ea098037ec9df',1,'MainViewModel::PropertyChanged']]]
+];

@@ -6,6 +6,9 @@ using System.Threading.Tasks;
 
 namespace Windows_Project.Model
 {
+    /// <summary>
+    /// This class is used to store the favorite listings of the users
+    /// </summary>
     public class Favorites
     {
         public int FavoriteID { get; set; }

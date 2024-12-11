@@ -6,6 +6,9 @@ using System.Threading.Tasks;
 
 namespace Windows_Project
 {
+    /// <summary>
+    /// This class is used to store the car models
+    /// </summary>
     public class CarModels
     {
         public int ModelID { get; set; }

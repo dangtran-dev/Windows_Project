@@ -19,7 +19,7 @@ using Windows.Foundation.Collections;
 namespace Windows_Project
 {
     /// <summary>
-    /// An empty page that can be used on its own or navigated to within a Frame.
+    /// This class is used to display the car details
     /// </summary>
     public sealed partial class CarDetailPage : Page
     {
@@ -41,7 +41,9 @@ namespace Windows_Project
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
             base.OnNavigatedTo(e);
-            // Lấy dữ liệu được truyền vào từ trang trước
+            /// <summary>
+            /// Gets the data passed in from the previous page
+            /// </summary>
             ViewModel = e.Parameter as CarWithUserItem;
             DataContext = ViewModel;
         }

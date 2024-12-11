@@ -19,7 +19,7 @@ using Windows.Foundation.Collections;
 namespace Windows_Project.View
 {
     /// <summary>
-    /// An empty page that can be used on its own or navigated to within a Frame.
+    /// This class is used to display the comparison page
     /// </summary>
     public sealed partial class ComparisonPage : Page
     {

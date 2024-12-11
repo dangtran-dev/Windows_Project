@@ -1,0 +1,19 @@
+var searchData=
+[
+  ['m_5fwindow_0',['m_window',['../class_windows___project_1_1_app.html#a01a7f3794dea535c748b5d8cbaafe307',1,'Windows_Project::App']]],
+  ['manufacturer_1',['Manufacturer',['../class_cars.html#a4c9fb71513d97cf01db1f3f3afca9f97',1,'Cars']]],
+  ['manufacturerid_2',['ManufacturerID',['../class_windows___project_1_1_car_models.html#ad79f7563c7105c8e506571cbe3a6fa09',1,'Windows_Project::CarModels::ManufacturerID'],['../class_manufacturers.html#a541ef651805bd47a5c6e313d9296fb1f',1,'Manufacturers::ManufacturerID']]],
+  ['manufacturername_3',['ManufacturerName',['../class_manufacturers.html#a58386204949ddd72b8cbababcece6571',1,'Manufacturers']]],
+  ['manufacturernametextblock_4',['ManufacturerNameTextBlock',['../class_windows___project_1_1_car_price_page.html#ab4d1c3ececdc279f07d7f742f96ac005',1,'Windows_Project::CarPricePage']]],
+  ['manufacturerpicture_5',['ManufacturerPicture',['../class_manufacturers.html#a3309a74b29f7cbe4661651c33976241e',1,'Manufacturers']]],
+  ['manufacturers_6',['Manufacturers',['../class_main_view_model.html#a34e337962bf30d539bc82c4ae610c013',1,'MainViewModel']]],
+  ['maxprice_7',['MaxPrice',['../class_windows___project_1_1_view_1_1_old_car.html#af54b02838b46002364968cf216f4f0b5',1,'Windows_Project::View::OldCar']]],
+  ['mileage_8',['Mileage',['../class_cars.html#a7b4b35c1109a63e2641ee26bdfec0c3e',1,'Cars']]],
+  ['minprice_9',['MinPrice',['../class_windows___project_1_1_view_1_1_old_car.html#a63d95e413f29f32dbfcc3d2edcd64794',1,'Windows_Project::View::OldCar']]],
+  ['model_10',['Model',['../class_cars.html#a64b7a9d95de71828adf78a18d715b542',1,'Cars']]],
+  ['modelid_11',['ModelID',['../class_windows___project_1_1_car_models.html#aa05c87b5db73ebfa244456b1c081dee5',1,'Windows_Project::CarModels']]],
+  ['modelname_12',['ModelName',['../class_windows___project_1_1_car_models.html#a307b7b8351dbd9ad05da8058c8dd31e0',1,'Windows_Project::CarModels']]],
+  ['myexpander1_13',['MyExpander1',['../class_windows___project_1_1_post_page.html#ab7b135471c463d4a5ec6f9ba1478be1c',1,'Windows_Project::PostPage']]],
+  ['myexpander2_14',['MyExpander2',['../class_windows___project_1_1_post_page.html#aa0064caf32f064b2bfa55be13bd050c5',1,'Windows_Project::PostPage']]],
+  ['myexpander3_15',['MyExpander3',['../class_windows___project_1_1_post_page.html#af12e20f3b05e9c323abef60285414ba3',1,'Windows_Project::PostPage']]]
+];

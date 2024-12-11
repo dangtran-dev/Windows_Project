@@ -6,6 +6,10 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace Windows_Project;
+
+/// <summary>
+/// This class is used to store the car details
+/// </summary>
 public class Cars : INotifyPropertyChanged
 {
     public int CarID { get; set; }

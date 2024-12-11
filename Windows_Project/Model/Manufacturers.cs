@@ -7,6 +7,9 @@ using System.Threading.Tasks;
 
 namespace Windows_Project;
 
+/// <summary>
+/// This class is used to store the manufacturer details
+/// </summary>
 public class Manufacturers : INotifyPropertyChanged
 {
     public int ManufacturerID { get; set; }

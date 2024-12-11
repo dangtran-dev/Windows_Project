@@ -12,6 +12,9 @@ using Windows_Project.Model;
 
 namespace Windows_Project;
 
+/// <summary>
+/// This class is used to store the main view model
+/// </summary>
 public class MainViewModel : INotifyPropertyChanged
 {
     public Users LoggedInUser { get; set; }

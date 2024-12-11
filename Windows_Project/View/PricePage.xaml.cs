@@ -20,7 +20,7 @@ using Microsoft.UI.Xaml.Media.Animation;
 namespace Windows_Project
 {
     /// <summary>
-    /// An empty page that can be used on its own or navigated to within a Frame.
+    /// This class is used to display the car prices
     /// </summary>
     public sealed partial class PricePage : Page
     {

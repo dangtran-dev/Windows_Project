@@ -31,8 +31,8 @@ using Windows_Project.Model;
 namespace Windows_Project
 {
     /// <summary>
-    /// An empty page that can be used on its own or navigated to within a Frame.
-    /// </summary>
+    /// This class is used to display the post page
+    /// </summary> 
     public sealed partial class PostPage : Page
     {
         public MainViewModel ViewModel { get; set; }

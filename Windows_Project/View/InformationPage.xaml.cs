@@ -20,7 +20,7 @@ using Windows.Foundation.Collections;
 namespace Windows_Project
 {
     /// <summary>
-    /// An empty page that can be used on its own or navigated to within a Frame.
+    /// This class is used to display the information page
     /// </summary>
     public sealed partial class InformationPage : Page
     {
@@ -49,7 +49,9 @@ namespace Windows_Project
                 CurrentUser = user;
                 DisplayPersonalInfo();
 
-                // Lọc xe dựa trên UserID và truyền vào ViewModel
+                /// <summary>
+                /// Filter vehicles based on UserID and pass to ViewModel
+                /// </summary>
                 ViewModel.CreateListingsByUserID(user.UserID);
 
             }
@@ -67,10 +69,14 @@ namespace Windows_Project
 
         private void DisplayPersonalInfo()
         {
-            // Xóa nội dung cũ
+            /// <summary>
+            /// Delete old content
+            /// </summary>
             ContentGrid.Children.Clear();
 
-            // Thêm StackPanel làm khung chính
+            /// <summary>
+            /// Add StackPanel as main frame
+            /// </summary>
             ContentGrid.Children.Add(new Border
             {
                 BorderBrush = new SolidColorBrush(Microsoft.UI.Colors.Gray),
@@ -129,7 +135,9 @@ namespace Windows_Project
             });
         }
 
-        // Hàm tạo một hàng thông tin với nhãn và giá trị
+        /// <summary>
+        /// The function creates a row of information with labels and values
+        /// </summary>
         private StackPanel CreateInfoRow(string label, string value)
         {
             return new StackPanel
@@ -159,23 +167,31 @@ namespace Windows_Project
 
         private void DisplayListings()
         {
-            // Xóa nội dung cũ
+            /// <summary>
+            /// Delete old content
+            /// </summary>
             ContentGrid.Children.Clear();
 
-            
 
-            // Tính toán chỉ số bắt đầu và kết thúc của trang hiện tại
+
+            /// <summary>
+            /// Calculate the start and end index of the current page
+            /// </summary>
             int startIndex = (currentPage - 1) * itemsPerPage;
             var carsToDisplay = ViewModel.FilteredCars.Skip(startIndex).Take(itemsPerPage).ToList();
             int totalPages = (int)Math.Ceiling((double)ViewModel.FilteredCars.Count / itemsPerPage);
 
-            // Tạo ListView và hiển thị danh sách xe
+            /// <summary>
+            /// Create a ListView and display a list of vehicles
+            /// </summary>
             ListView listView = new ListView();
             listView.ItemsSource = carsToDisplay;
             listView.ItemTemplate = (DataTemplate)this.Resources["ListingsTemplate"];
             ContentGrid.Children.Add(listView);
 
-            // Thêm các nút phân trang (Previous, Next)
+            /// <summary>
+            /// Add pagination buttons (Previous, Next)
+            /// </summary>
             StackPanel paginationPanel = new StackPanel
             {
                 Orientation = Orientation.Horizontal,
@@ -184,7 +200,9 @@ namespace Windows_Project
                 Margin = new Thickness(20)
             };
 
-            // Nút Previous
+            /// <summary>
+            /// Previous button
+            /// </summary>
             Button previousButton = new Button
             {
                 Content = "Previous",
@@ -194,7 +212,9 @@ namespace Windows_Project
             };
             previousButton.Click += PreviousPage_Click;
 
-            //So trang/Total
+            /// <summary>
+            /// Number of pages/Total
+            /// </summary>
             TextBlock numberPage = new TextBlock
             {
                 Text = $"{currentPage}/{totalPages}",
@@ -205,7 +225,9 @@ namespace Windows_Project
                 FontWeight = Microsoft.UI.Text.FontWeights.Bold
             };
 
-            // Nút Next
+            /// <summary>
+            /// Next button
+            /// </summary>
             Button nextButton = new Button
             {
                 Content = "Next",
@@ -227,7 +249,10 @@ namespace Windows_Project
             if (currentPage > 1)
             {
                 currentPage--;
-                DisplayListings(); // Hiển thị lại danh sách theo trang mới
+                DisplayListings();
+                /// <summary>
+                /// Redisplay the list on the new page
+                /// </summary>
             }
         }
 
@@ -237,7 +262,10 @@ namespace Windows_Project
             if (currentPage < totalPages)
             {
                 currentPage++;
-                DisplayListings(); // Hiển thị lại danh sách theo trang mới
+                DisplayListings();
+                /// <summary>
+                /// Redisplay the list on the new page
+                /// </summary>
             }
         }
 
