@@ -281,7 +281,7 @@
         Padding="0"/>
                 </Grid>
 
-                <Button Grid.Column="1" Margin="10" Background="Transparent" Padding="0">
+                <Button Grid.Column="1" Margin="10" Background="Transparent" Click="OnComparisonButtonClick" Padding="0">
                     <Grid>
                         <Image Source="../Assets/menu-bg3.png" Stretch="UniformToFill"/>
                         <TextBlock Text="So sánh xe"

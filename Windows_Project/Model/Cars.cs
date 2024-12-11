@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Linq;
 using System.Text;
@@ -21,9 +22,7 @@ public class Cars : INotifyPropertyChanged
     public string Price { get; set; }
     public string City { get; set; }
     public string District { get; set; }
-    public string Manufacturer { get; set; }
-    public string Picture { get; set; }
-
+    public List<CarImages> CarImages { get; set; }
 
     public event PropertyChangedEventHandler PropertyChanged;
 }

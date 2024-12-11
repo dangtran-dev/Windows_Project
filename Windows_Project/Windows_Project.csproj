@@ -52,7 +52,8 @@
     <None Remove="Assets\wolkswagen_logo.jpg" />
     <None Remove="View\CarDetailPage.xaml" />
     <None Remove="View\CarPricePage.xaml" />
-    <None Remove="View\InfomationPage.xaml" />
+    <None Remove="View\ComparisonPage.xaml" />
+    <None Remove="View\ComparisonResultPage.xaml" />
     <None Remove="View\MainPage.xaml" />
     <None Remove="View\OldCar.xaml" />
     <None Remove="View\PricePage.xaml" />
@@ -538,7 +539,10 @@
     <None Update="Assets\previous_icon.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <Page Update="View\InfomationPage.xaml">
+    <Page Update="View\ComparisonResultPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Update="View\ComparisonPage.xaml">
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Update="View\CarDetailPage.xaml">

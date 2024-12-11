@@ -10,7 +10,7 @@ exports.up = async function (knex) {
               Password VARCHAR(255) NOT NULL,
               FullName NVARCHAR(255),
               Phone VARCHAR(15),
-              Email VARCHAR(100) UNIQUE,
+              Email VARCHAR(100),
               Address NVARCHAR(255)
           );
       `);

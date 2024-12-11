@@ -107,18 +107,18 @@ public class MainViewModel : INotifyPropertyChanged
         PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
     }
 
-    //public void FilterSearchCars(string search)
-    //{
-    //    var filteredCars = Cars
-    //        .Where(c => c.Model != null && c.Model.ToLower().Contains(search.ToLower())) // Loại bỏ các xe có Model là null
-    //        .ToList();
+    public void FilterSearchCars(string search)
+    {
+        var filteredCars = Cars
+            .Where(c => c.CarName != null && c.CarName.ToLower().Contains(search.ToLower())) // Loại bỏ các xe có Model là null
+            .ToList();
 
-    //    FilteredSearchCars.Clear();
-    //    foreach (var car in filteredCars)
-    //    {
-    //        FilteredSearchCars.Add(car);
-    //    }
-    //}
+        FilteredSearchCars.Clear();
+        foreach (var car in filteredCars)
+        {
+            FilteredSearchCars.Add(car);
+        }
+    }
 
     public void CreateListingsByUserID(int userID)
     {
