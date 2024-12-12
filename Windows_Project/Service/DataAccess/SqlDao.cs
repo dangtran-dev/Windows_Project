@@ -59,6 +59,32 @@ namespace Windows_Project.Service.DataAccess
             }
             return manufacturers;
         }
+        public List<CarModels> GetCarModels()
+        {
+            var carModels = new List<CarModels>();
+
+            using (SqlConnection connection = new SqlConnection(_connectionString))
+            {
+                connection.Open();
+                string query = "SELECT ModelID, ManufacturerID, ModelName FROM CarModels";
+
+                using (SqlCommand command = new SqlCommand(query, connection))
+                using (SqlDataReader reader = command.ExecuteReader())
+                {
+                    while (reader.Read())
+                    {
+                        carModels.Add(new CarModels
+                        {
+                            ModelID = reader.GetInt32(0),
+                            ManufacturerID = reader.GetInt32(1),
+                            ModelName = reader.GetString(2),
+                        });
+                    }
+                }
+            }
+
+            return carModels;
+        }
         // Phương thức lấy danh sách Models cho mỗi nhà sản xuất
         private List<CarModels> GetModelsByManufacturer(int manufacturerId)
         {

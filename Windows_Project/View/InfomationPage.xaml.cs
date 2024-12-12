@@ -28,7 +28,7 @@ namespace Windows_Project.View
 
 
         private Users CurrentUser;
-        private List<Model.Listings> UserListings;
+        private List<Listings> UserListings;
 
         public List<Cars> Cars { get; set; }
         public MainViewModel ViewModel { get; set; }

@@ -1,5 +1,4 @@
 ﻿using Microsoft.UI.Xaml;
-using Microsoft.Data.SqlClient;
 using Microsoft.UI.Xaml.Controls;
 using Microsoft.UI.Xaml.Media.Imaging;
 using System;
@@ -20,6 +19,7 @@ using Windows.Graphics.Imaging;
 using System.Diagnostics;
 using System.Runtime.InteropServices.WindowsRuntime;
 using Windows.Storage.Streams;
+using Microsoft.Data.SqlClient;
 
 namespace Windows_Project;
 
@@ -60,8 +60,8 @@ public class MainViewModel : INotifyPropertyChanged
         get => _uploadStatus;
         set
         {
-             _uploadStatus = value;
-             OnPropertyChanged(nameof(UploadStatus));
+            _uploadStatus = value;
+            OnPropertyChanged(nameof(UploadStatus));
         }
     }
     // Thêm danh sách xe lọc theo phương thức tìm kiếm
@@ -111,6 +111,38 @@ public class MainViewModel : INotifyPropertyChanged
         UploadedImageURLs = new List<string>();
         _ = InitializeSupabaseClient();
     }
+    public void SaveUserInfo(Users currentUser)
+    {
+        // Giả sử CurrentUser là người dùng hiện tại đang chỉnh sửa
+        var user = Users.FirstOrDefault(u => u.UserID == currentUser.UserID);
+        if (user != null)
+        {
+            user.FullName = currentUser.FullName;
+            user.Address = currentUser.Address;
+            user.Phone = currentUser.Phone;
+            user.Email = currentUser.Email;
+
+            // Cập nhật vào cơ sở dữ liệu
+            using (var connection = new SqlConnection("Server=localhost,1433;Database=demoshop;User Id=sa;Password=SqlServer@123;TrustServerCertificate=True;"))
+            {
+                connection.Open();
+                var query = "UPDATE Users SET FullName = @FullName, Address = @Address, Phone = @Phone, Email = @Email WHERE UserID = @UserID";
+                using (var command = new SqlCommand(query, connection))
+                {
+                    command.Parameters.AddWithValue("@FullName", currentUser.FullName);
+                    command.Parameters.AddWithValue("@Address", currentUser.Address);
+                    command.Parameters.AddWithValue("@Phone", currentUser.Phone);
+                    command.Parameters.AddWithValue("@Email", currentUser.Email);
+                    command.Parameters.AddWithValue("@UserID", currentUser.UserID);
+                    command.ExecuteNonQuery();
+                }
+            }
+
+            // Thông báo cho UI biết dữ liệu đã thay đổi
+            OnPropertyChanged(nameof(Users));
+        }
+    }
+
     // kết nối tới supabase
     private async Task InitializeSupabaseClient()
     {
@@ -150,53 +182,6 @@ public class MainViewModel : INotifyPropertyChanged
         }
         // Lọc danh sách xe theo điều kiện
         if (condition != null)
-
-    public void SaveUserInfo(Users currentUser)
-    {
-        // Giả sử CurrentUser là người dùng hiện tại đang chỉnh sửa
-        var user = Users.FirstOrDefault(u => u.UserID == currentUser.UserID);
-        if (user != null)
-        {
-            user.FullName = currentUser.FullName;
-            user.Address = currentUser.Address;
-            user.Phone = currentUser.Phone;
-            user.Email = currentUser.Email;
-
-            // Cập nhật vào cơ sở dữ liệu
-            using (var connection = new SqlConnection("Server=localhost,1433;Database=demoshop;User Id=sa;Password=SqlServer@123;TrustServerCertificate=True;"))
-            {
-                connection.Open();
-                var query = "UPDATE Users SET FullName = @FullName, Address = @Address, Phone = @Phone, Email = @Email WHERE UserID = @UserID";
-                using (var command = new SqlCommand(query, connection))
-                {
-                    command.Parameters.AddWithValue("@FullName", currentUser.FullName);
-                    command.Parameters.AddWithValue("@Address", currentUser.Address);
-                    command.Parameters.AddWithValue("@Phone", currentUser.Phone);
-                    command.Parameters.AddWithValue("@Email", currentUser.Email);
-                    command.Parameters.AddWithValue("@UserID", currentUser.UserID);
-                    command.ExecuteNonQuery();
-                }
-            }
-
-            // Thông báo cho UI biết dữ liệu đã thay đổi
-            OnPropertyChanged(nameof(Users));
-        }
-    }
-
-    // Thêm phương thức để lọc xe dựa vào Condition
-    public void FilterCarsByCondition(string condition)
-    {
-        // Xóa danh sách hiện tại
-        FilteredCars.Clear();
-
-        // Lọc dữ liệu từ danh sách Manufacturers
-        var cars = Manufacturers
-            .SelectMany(m => m.Cars) // Lấy tất cả xe từ các hãng sản xuất
-            .Where(c => c.Condition == condition) // Lọc theo điều kiện
-            .ToList();
-
-        // Thêm xe đã lọc vào danh sách
-        foreach (var car in cars)
         {
             newList = new ObservableCollection<CarWithUserItem>(
                  newList.Where(c => c.car.Condition == condition)
@@ -368,7 +353,7 @@ public class MainViewModel : INotifyPropertyChanged
         {
             foreach (var model in manufacturer.CarsModels)
             {
-                if(model.ModelID == modelID)
+                if (model.ModelID == modelID)
                 {
                     return model.ModelName;
                 }
@@ -385,8 +370,8 @@ public class MainViewModel : INotifyPropertyChanged
              .Where(c => c.car != null && (string.IsNullOrEmpty(model) || GetModelName(c.car.ModelID) == model))
              .Where(c => c.car != null && (string.IsNullOrEmpty(year) || c.car.Year.ToString() == year))
              .Where(c => c.car != null && (string.IsNullOrEmpty(style) || c.car.Style == style))
-             .Where(c => c.car != null && (string.IsNullOrEmpty(minPrice) || c.car.Price >= long.Parse(minPrice)*1000000))
-             .Where(c => c.car != null && (string.IsNullOrEmpty(maxPrice) || c.car.Price <= long.Parse(maxPrice)*1000000))
+             .Where(c => c.car != null && (string.IsNullOrEmpty(minPrice) || c.car.Price >= long.Parse(minPrice) * 1000000))
+             .Where(c => c.car != null && (string.IsNullOrEmpty(maxPrice) || c.car.Price <= long.Parse(maxPrice) * 1000000))
              .Where(c => c.car != null && (string.IsNullOrEmpty(origin) || c.car.Origin == origin))
              .Where(c => c.car != null && (string.IsNullOrEmpty(fuel) || c.car.FuelType == fuel))
              .Where(c => c.car != null && (string.IsNullOrEmpty(gear) || c.car.Gear == gear))
@@ -400,7 +385,7 @@ public class MainViewModel : INotifyPropertyChanged
         }
         OnPropertyChanged(nameof(CarWithUserList));
     }
-}
+
     public void CreateListingsByUserID(int userID)
     {
         // Xóa danh sách hiện tại
@@ -434,5 +419,4 @@ public class MainViewModel : INotifyPropertyChanged
         FilteredCars = filteredCars;
         OnPropertyChanged(nameof(FilteredCars)); // Cập nhật UI
     }
-
 }
