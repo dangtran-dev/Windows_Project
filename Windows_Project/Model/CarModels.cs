@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Windows_Project.Model
+namespace Windows_Project
 {
     public class CarModels
     {

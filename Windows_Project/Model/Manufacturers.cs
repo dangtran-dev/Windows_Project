@@ -13,6 +13,7 @@ public class Manufacturers : INotifyPropertyChanged
     public string ManufacturerName { get; set; }
     public string ManufacturerPicture { get; set; }
     public List<Cars> Cars { get; set; }
+    public List<CarModels> CarsModels { get; set; }
 
     public event PropertyChangedEventHandler PropertyChanged;
 }

@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Windows_Project.Model
+namespace Windows_Project
 {
     public class Listings
     {
@@ -13,6 +13,6 @@ namespace Windows_Project.Model
         public int CarID { get; set; }
         public string Status { get; set; }
         public string Description { get; set; }
-        public string DatePosted { get; set; }
+        public DateTime DatePosted { get; set; }
     }
 }

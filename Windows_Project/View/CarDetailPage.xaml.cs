@@ -10,8 +10,10 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
+using System.Windows.Forms;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
+using Microsoft.UI.Xaml.Media.Imaging;
 
 // To learn more about WinUI, the WinUI project structure,
 // and more about our project templates, see: http://aka.ms/winui-project-info.
@@ -23,8 +25,8 @@ namespace Windows_Project
     /// </summary>
     public sealed partial class CarDetailPage : Page
     {
-        public Cars ViewModel { get; set; }
-
+        public CarWithUserItem ViewModel { get; set; }
+        public string FullAddress => $"{ViewModel.user.Address}, {ViewModel.car.District}, {ViewModel.car.City}";
         public CarDetailPage()
         {
             this.InitializeComponent();
@@ -42,8 +44,29 @@ namespace Windows_Project
         {
             base.OnNavigatedTo(e);
             // Lấy dữ liệu được truyền vào từ trang trước
-            ViewModel = e.Parameter as Cars;
+            ViewModel = e.Parameter as CarWithUserItem;
             DataContext = ViewModel;
+            if(ViewModel.car.CarImages.Count == 1)
+            {
+                UniqueImage.Visibility = Visibility.Visible;
+            }
+            else
+            {
+                for (int i = 0; i < 6; i++)
+                {
+                    var imageControl = (Image)FindName($"Image{i + 1}l");
+                    if (i < ViewModel.car.CarImages.Count)
+                    {
+                        imageControl.Source = new BitmapImage(new Uri(ViewModel.car.CarImages[i].ImageURL));
+                        imageControl.Visibility = Visibility.Visible;
+                    }
+                    else
+                    {
+                        imageControl.Source = null;
+                        imageControl.Visibility = Visibility.Collapsed;
+                    }
+                }
+            }
         }
     }
 
