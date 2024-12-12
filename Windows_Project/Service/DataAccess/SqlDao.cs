@@ -8,7 +8,7 @@ using Microsoft.Data.SqlClient;
 using Microsoft.UI.Xaml;
 using Newtonsoft.Json;
 using Windows.System;
-using Windows_Project.Model;
+using Windows_Project;
 using System.IO;
 using System.Diagnostics;
 
@@ -43,21 +43,51 @@ namespace Windows_Project.Service.DataAccess
 
                         // Tạo một kết nối mới cho mỗi truy vấn Cars
                         List<Cars> cars = GetCarsByManufacturer(manufacturerId);
-
+                        // Tạo một kết nối cho mỗi truy vấn CarModel
+                        List<CarModels> carmodels = GetModelsByManufacturer(manufacturerId);
                         // Đọc dữ liệu và ánh xạ vào đối tượng Manufacturers
                         manufacturers.Add(new Manufacturers
                         {
                             ManufacturerId = manufacturerId,
                             ManufacturerName = manufacturerName,
                             ManufacturerPicture = manufacturerPicture, // hoặc lấy từ cơ sở dữ liệu nếu cần
-                            Cars = cars // Gán danh sách Cars
+                            Cars = cars,     // Gán danh sách Cars
+                            CarsModels = carmodels // gán danh sách CarModels
                         });
                     }
                 }
             }
             return manufacturers;
         }
+        // Phương thức lấy danh sách Models cho mỗi nhà sản xuất
+        private List<CarModels> GetModelsByManufacturer(int manufacturerId)
+        {
+            var models = new List<CarModels>();
 
+            using (SqlConnection connection = new SqlConnection(_connectionString))
+            {
+                connection.Open();
+                string query = "SELECT ModelID, ModelName FROM CarModels WHERE ManufacturerID = @ManufacturerId";
+
+                using (SqlCommand command = new SqlCommand(query, connection))
+                {
+                    command.Parameters.AddWithValue("@ManufacturerId", manufacturerId);
+
+                    using (SqlDataReader reader = command.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            models.Add(new CarModels
+                            {
+                                ModelID = reader.GetInt32(0),
+                                ModelName = reader.GetString(1),
+                            });
+                        }
+                    }
+                }
+            }
+            return models;
+        }
         // Phương thức lấy danh sách Cars cho mỗi nhà sản xuất
         private List<Cars> GetCarsByManufacturer(int manufacturerId)
         {
@@ -112,7 +142,7 @@ namespace Windows_Project.Service.DataAccess
                                 Mileage = reader.GetDecimal(7), // Đảm bảo rằng kiểu dữ liệu phù hợp
                                 Gear = reader.GetString(8),
                                 FuelType = reader.GetString(9),
-                                Price = reader.GetDecimal(10).ToString(), // Chuyển đổi Decimal thành String
+                                Price = reader.GetDecimal(10),
                                 City = reader.GetString(11).ToString(),
                                 District = reader.GetString(12).ToString(),
                                 CarImages = GetCarImages(reader.GetInt32(0))
@@ -133,7 +163,7 @@ namespace Windows_Project.Service.DataAccess
             using (SqlConnection connection = new SqlConnection(_connectionString))
             {
                 connection.Open();
-                string query = "SELECT CarID, ModelID, CarName, Year, Style, Condition, Origin, Mileage, Gear, FuelType, Price, City, District FROM Cars";
+                string query = "SELECT CarID, ModelID, CarName, Year, Style, Condition, Origin, Mileage, Gear, FuelType, Price, City, District FROM Cars ORDER BY CarID DESC";
 
                 using (SqlCommand command = new SqlCommand(query, connection))
                 using (SqlDataReader reader = command.ExecuteReader())
@@ -152,7 +182,7 @@ namespace Windows_Project.Service.DataAccess
                             Mileage = reader.GetDecimal(7),
                             Gear = reader.GetString(8),
                             FuelType = reader.GetString(9),
-                            Price = reader.GetDecimal(10).ToString(),
+                            Price = reader.GetDecimal(10),
                             City = reader.GetString(11).ToString(),
                             District = reader.GetString(12).ToString(),
                             CarImages = GetCarImages(reader.GetInt32(0))
@@ -160,7 +190,6 @@ namespace Windows_Project.Service.DataAccess
                     }
                 }
             }
-
             return cars;
         }
 
@@ -195,7 +224,36 @@ namespace Windows_Project.Service.DataAccess
 
             return carImages;
         }
+        // phương lưu danh sách ảnh cho mỗi xe xuống cơ sở dữ liệu
+        public async Task<bool> SaveCarImagesAsync(CarImages carImages)
+        {
+            try
+            {
+                using (SqlConnection conn = new SqlConnection(_connectionString))
+                {
+                    await conn.OpenAsync();
 
+                    string query = @"
+                    INSERT INTO CarImages (CarID, ImageURL)
+                    VALUES (@CarID, @ImageURL)";
+
+                    using (SqlCommand cmd = new SqlCommand(query, conn))
+                    {
+                        cmd.Parameters.AddWithValue("@CarID", carImages.CarID);
+                        cmd.Parameters.AddWithValue("@ImageURL", carImages.ImageURL);
+
+                        await cmd.ExecuteNonQueryAsync();
+                    }
+                }
+                return true;
+            }
+            catch (Exception ex)
+            {
+                // Xử lý lỗi
+                Debug.WriteLine($"Error saving car images: {ex.Message}");
+                return false;
+            }
+        }
         public List<Users> GetUsers()
         {
             var users = new List<Users>();
@@ -279,192 +337,105 @@ namespace Windows_Project.Service.DataAccess
             }
         }
 
-
-        //public List<Listings> GetListings()
-        //{
-        //    var listings = new List<Listings>();
-        //    using (SqlConnection connection = new SqlConnection(_connectionString))
-        //    {
-        //        connection.Open();
-        //        string query = "SELECT ListingID, UserID, CarID, Status, Description, DatePosted FROM Listings";
-        //        using (SqlCommand command = new SqlCommand(query, connection))
-        //        using (SqlDataReader reader = command.ExecuteReader())
-        //        {
-        //            while (reader.Read())
-        //            {
-        //                listings.Add(new Listings
-        //                {
-        //                    ListingID = reader.GetInt32(0),
-        //                    UserID = reader.GetInt32(1),
-        //                    CarID = reader.GetInt32(2),
-        //                    Status = reader.GetString(3),
-        //                    Description = reader.GetString(4),
-        //                    DatePosted = reader.GetDateTime(5).ToString(),
-        //                });
-        //            }
-        //        }
-        //    }
-        //    return listings;
-        //}
-
-        public List<Listings> GetListings()
-        {
-            var result = new List<Listings>()
-        {
-            new Listings() { CarID = 1, UserID = 1, Status = "Bài Đăng 1", Description = "Bán xe", DatePosted = "" },
-            new Listings() { CarID = 2, UserID = 2, Status = "Bài Đăng 2", Description = "Bán xe", DatePosted = "" },
-            new Listings() { CarID = 3, UserID = 1, Status = "Bài Đăng 3", Description = "Bán xe", DatePosted = "" },
-            new Listings() { CarID = 4, UserID = 2, Status = "Bài Đăng 4", Description = "Bán xe", DatePosted = "" },
-            new Listings() { CarID = 5, UserID = 1, Status = "Bài Đăng 5", Description = "Bán xe", DatePosted = "" },
-            new Listings() { CarID = 6, UserID = 2, Status = "Bài Đăng 6", Description = "Bán xe", DatePosted = "" },
-            new Listings() { CarID = 7, UserID = 1, Status = "Bài Đăng 7", Description = "Bán xe", DatePosted = "" },
-            new Listings() { CarID = 8, UserID = 2, Status = "Bài Đăng 8", Description = "Bán xe", DatePosted = "" },
-            new Listings() { CarID = 9, UserID = 1, Status = "Bài Đăng 9", Description = "Bán xe", DatePosted = "" },
-            new Listings() { CarID = 10, UserID = 2, Status = "Bài Đăng 10", Description = "Bán xe", DatePosted = "" },
-            new Listings() { CarID = 11, UserID = 1, Status = "Bài Đăng 11", Description = "Bán xe", DatePosted = "" },
-            new Listings() { CarID = 12, UserID = 2, Status = "Bài Đăng 12", Description = "Bán xe", DatePosted = "" },
-            new Listings() { CarID = 13, UserID = 1, Status = "Bài Đăng 13", Description = "Bán xe", DatePosted = "" },
-            new Listings() { CarID = 14, UserID = 2, Status = "Bài Đăng 14", Description = "Bán xe", DatePosted = "" },
-            new Listings() { CarID = 15, UserID = 1, Status = "Bài Đăng 15", Description = "Bán xe", DatePosted = "" },
-            new Listings() { CarID = 16, UserID = 2, Status = "Bài Đăng 16", Description = "Bán xe", DatePosted = "" },
-            new Listings() { CarID = 17, UserID = 1, Status = "Bài Đăng 17", Description = "Bán xe", DatePosted = "" },
-            new Listings() { CarID = 18, UserID = 2, Status = "Bài Đăng 18", Description = "Bán xe", DatePosted = "" },
-            new Listings() { CarID = 19, UserID = 1, Status = "Bài Đăng 19", Description = "Bán xe", DatePosted = "" },
-            new Listings() { CarID = 20, UserID = 2, Status = "Bài Đăng 20", Description = "Bán xe", DatePosted = "" },
-            new Listings() { CarID = 21, UserID = 1, Status = "Bài Đăng 21", Description = "Bán xe", DatePosted = "" },
-            new Listings() { CarID = 22, UserID = 2, Status = "Bài Đăng 22", Description = "Bán xe", DatePosted = "" },
-            new Listings() { CarID = 23, UserID = 1, Status = "Bài Đăng 23", Description = "Bán xe", DatePosted = "" },
-            new Listings() { CarID = 24, UserID = 2, Status = "Bài Đăng 24", Description = "Bán xe", DatePosted = "" },
-            new Listings() { CarID = 25, UserID = 1, Status = "Bài Đăng 25", Description = "Bán xe", DatePosted = "" },
-            new Listings() { CarID = 26, UserID = 2, Status = "Bài Đăng 26", Description = "Bán xe", DatePosted = "" },
-            new Listings() { CarID = 27, UserID = 1, Status = "Bài Đăng 27", Description = "Bán xe", DatePosted = "" },
-            new Listings() { CarID = 28, UserID = 2, Status = "Bài Đăng 28", Description = "Bán xe", DatePosted = "" },
-            new Listings() { CarID = 29, UserID = 1, Status = "Bài Đăng 29", Description = "Bán xe", DatePosted = "" },
-            new Listings() { CarID = 30, UserID = 2, Status = "Bài Đăng 30", Description = "Bán xe", DatePosted = "" },
-            new Listings() { CarID = 31, UserID = 1, Status = "Bài Đăng 31", Description = "Bán xe", DatePosted = "" },
-            new Listings() { CarID = 32, UserID = 2, Status = "Bài Đăng 32", Description = "Bán xe", DatePosted = "" },
-            new Listings() { CarID = 33, UserID = 1, Status = "Bài Đăng 33", Description = "Bán xe", DatePosted = "" },
-            new Listings() { CarID = 34, UserID = 2, Status = "Bài Đăng 34", Description = "Bán xe", DatePosted = "" },
-            new Listings() { CarID = 35, UserID = 1, Status = "Bài Đăng 35", Description = "Bán xe", DatePosted = "" },
-            new Listings() { CarID = 36, UserID = 2, Status = "Bài Đăng 36", Description = "Bán xe", DatePosted = "" },
-            new Listings() { CarID = 37, UserID = 1, Status = "Bài Đăng 37", Description = "Bán xe", DatePosted = "" },
-            new Listings() { CarID = 38, UserID = 2, Status = "Bài Đăng 38", Description = "Bán xe", DatePosted = "" },
-            new Listings() { CarID = 39, UserID = 1, Status = "Bài Đăng 39", Description = "Bán xe", DatePosted = "" },
-            new Listings() { CarID = 40, UserID = 2, Status = "Bài Đăng 40", Description = "Bán xe", DatePosted = "" },
-            new Listings() { CarID = 41, UserID = 1, Status = "Bài Đăng 41", Description = "Bán xe", DatePosted = "" },
-            new Listings() { CarID = 42, UserID = 2, Status = "Bài Đăng 42", Description = "Bán xe", DatePosted = "" },
-            new Listings() { CarID = 43, UserID = 1, Status = "Bài Đăng 43", Description = "Bán xe", DatePosted = "" },
-            new Listings() { CarID = 44, UserID = 2, Status = "Bài Đăng 44", Description = "Bán xe", DatePosted = "" },
-            new Listings() { CarID = 45, UserID = 1, Status = "Bài Đăng 45", Description = "Bán xe", DatePosted = "" },
-            new Listings() { CarID = 46, UserID = 2, Status = "Bài Đăng 46", Description = "Bán xe", DatePosted = "" },
-            new Listings() { CarID = 47, UserID = 1, Status = "Bài Đăng 47", Description = "Bán xe", DatePosted = "" },
-            new Listings() { CarID = 48, UserID = 2, Status = "Bài Đăng 48", Description = "Bán xe", DatePosted = "" },
-            new Listings() { CarID = 49, UserID = 1, Status = "Bài Đăng 49", Description = "Bán xe", DatePosted = "" },
-            new Listings() { CarID = 50, UserID = 2, Status = "Bài Đăng 50", Description = "Bán xe", DatePosted = "" },
-            new Listings() { CarID = 51, UserID = 1, Status = "Bài Đăng 51", Description = "Bán xe", DatePosted = "" },
-            new Listings() { CarID = 52, UserID = 2, Status = "Bài Đăng 52", Description = "Bán xe", DatePosted = "" },
-            new Listings() { CarID = 53, UserID = 1, Status = "Bài Đăng 53", Description = "Bán xe", DatePosted = "" },
-            new Listings() { CarID = 54, UserID = 2, Status = "Bài Đăng 54", Description = "Bán xe", DatePosted = "" },
-            new Listings() { CarID = 55, UserID = 1, Status = "Bài Đăng 55", Description = "Bán xe", DatePosted = "" },
-            new Listings() { CarID = 56, UserID = 2, Status = "Bài Đăng 56", Description = "Bán xe", DatePosted = "" },
-            new Listings() { CarID = 57, UserID = 1, Status = "Bài Đăng 57", Description = "Bán xe", DatePosted = "" },
-            new Listings() { CarID = 58, UserID = 2, Status = "Bài Đăng 58", Description = "Bán xe", DatePosted = "" },
-            new Listings() { CarID = 59, UserID = 1, Status = "Bài Đăng 59", Description = "Bán xe", DatePosted = "" },
-            new Listings() { CarID = 60, UserID = 2, Status = "Bài Đăng 60", Description = "Bán xe", DatePosted = "" },
-            new Listings() { CarID = 61, UserID = 1, Status = "Bài Đăng 61", Description = "Bán xe", DatePosted = "" },
-            new Listings() { CarID = 62, UserID = 2, Status = "Bài Đăng 62", Description = "Bán xe", DatePosted = "" },
-            new Listings() { CarID = 63, UserID = 1, Status = "Bài Đăng 63", Description = "Bán xe", DatePosted = "" },
-            new Listings() { CarID = 64, UserID = 2, Status = "Bài Đăng 64", Description = "Bán xe", DatePosted = "" },
-            new Listings() { CarID = 65, UserID = 1, Status = "Bài Đăng 65", Description = "Bán xe", DatePosted = "" },
-            new Listings() { CarID = 66, UserID = 2, Status = "Bài Đăng 66", Description = "Bán xe", DatePosted = "" },
-            new Listings() { CarID = 67, UserID = 1, Status = "Bài Đăng 67", Description = "Bán xe", DatePosted = "" },
-            new Listings() { CarID = 68, UserID = 2, Status = "Bài Đăng 68", Description = "Bán xe", DatePosted = "" },
-            new Listings() { CarID = 69, UserID = 1, Status = "Bài Đăng 69", Description = "Bán xe", DatePosted = "" },
-            new Listings() { CarID = 70, UserID = 2, Status = "Bài Đăng 70", Description = "Bán xe", DatePosted = "" },
-            new Listings() { CarID = 71, UserID = 1, Status = "Bài Đăng 71", Description = "Bán xe", DatePosted = "" },
-            new Listings() { CarID = 72, UserID = 2, Status = "Bài Đăng 72", Description = "Bán xe", DatePosted = "" },
-            new Listings() { CarID = 73, UserID = 1, Status = "Bài Đăng 73", Description = "Bán xe", DatePosted = "" },
-            new Listings() { CarID = 74, UserID = 2, Status = "Bài Đăng 74", Description = "Bán xe", DatePosted = "" },
-            new Listings() { CarID = 75, UserID = 1, Status = "Bài Đăng 75", Description = "Bán xe", DatePosted = "" },
-            new Listings() { CarID = 76, UserID = 2, Status = "Bài Đăng 76", Description = "Bán xe", DatePosted = "" },
-            new Listings() { CarID = 77, UserID = 1, Status = "Bài Đăng 77", Description = "Bán xe", DatePosted = "" },
-            new Listings() { CarID = 78, UserID = 2, Status = "Bài Đăng 78", Description = "Bán xe", DatePosted = "" },
-            new Listings() { CarID = 79, UserID = 1, Status = "Bài Đăng 79", Description = "Bán xe", DatePosted = "" },
-            new Listings() { CarID = 80, UserID = 2, Status = "Bài Đăng 80", Description = "Bán xe", DatePosted = "" },
-            new Listings() { CarID = 81, UserID = 1, Status = "Bài Đăng 81", Description = "Bán xe", DatePosted = "" },
-            new Listings() { CarID = 82, UserID = 2, Status = "Bài Đăng 82", Description = "Bán xe", DatePosted = "" },
-            new Listings() { CarID = 83, UserID = 1, Status = "Bài Đăng 83", Description = "Bán xe", DatePosted = "" },
-            new Listings() { CarID = 84, UserID = 2, Status = "Bài Đăng 84", Description = "Bán xe", DatePosted = "" },
-            new Listings() { CarID = 85, UserID = 1, Status = "Bài Đăng 85", Description = "Bán xe", DatePosted = "" },
-            new Listings() { CarID = 86, UserID = 2, Status = "Bài Đăng 86", Description = "Bán xe", DatePosted = "" },
-            new Listings() { CarID = 87, UserID = 1, Status = "Bài Đăng 87", Description = "Bán xe", DatePosted = "" },
-            new Listings() { CarID = 88, UserID = 2, Status = "Bài Đăng 88", Description = "Bán xe", DatePosted = "" },
-            new Listings() { CarID = 89, UserID = 1, Status = "Bài Đăng 89", Description = "Bán xe", DatePosted = "" },
-            new Listings() { CarID = 90, UserID = 2, Status = "Bài Đăng 90", Description = "Bán xe", DatePosted = "" },
-            new Listings() { CarID = 91, UserID = 1, Status = "Bài Đăng 91", Description = "Bán xe", DatePosted = "" },
-            new Listings() { CarID = 92, UserID = 2, Status = "Bài Đăng 92", Description = "Bán xe", DatePosted = "" },
-            new Listings() { CarID = 93, UserID = 1, Status = "Bài Đăng 93", Description = "Bán xe", DatePosted = "" },
-            new Listings() { CarID = 94, UserID = 2, Status = "Bài Đăng 94", Description = "Bán xe", DatePosted = "" },
-            new Listings() { CarID = 95, UserID = 1, Status = "Bài Đăng 95", Description = "Bán xe", DatePosted = "" },
-            new Listings() { CarID = 96, UserID = 2, Status = "Bài Đăng 96", Description = "Bán xe", DatePosted = "" },
-            new Listings() { CarID = 97, UserID = 1, Status = "Bài Đăng 97", Description = "Bán xe", DatePosted = "" },
-            new Listings() { CarID = 98, UserID = 2, Status = "Bài Đăng 98", Description = "Bán xe", DatePosted = "" },
-            new Listings() { CarID = 99, UserID = 1, Status = "Bài Đăng 99", Description = "Bán xe", DatePosted = "" },
-            new Listings() { CarID = 100, UserID = 2, Status = "Bài Đăng 100", Description = "Bán xe", DatePosted = "" },
-            new Listings() { CarID = 101, UserID = 1, Status = "Bài Đăng 101", Description = "Bán xe", DatePosted = "" },
-            new Listings() { CarID = 102, UserID = 2, Status = "Bài Đăng 102", Description = "Bán xe", DatePosted = "" },
-            new Listings() { CarID = 103, UserID = 1, Status = "Bài Đăng 103", Description = "Bán xe", DatePosted = "" },
-            new Listings() { CarID = 104, UserID = 2, Status = "Bài Đăng 104", Description = "Bán xe", DatePosted = "" },
-            new Listings() { CarID = 105, UserID = 1, Status = "Bài Đăng 105", Description = "Bán xe", DatePosted = "" },
-            new Listings() { CarID = 106, UserID = 2, Status = "Bài Đăng 106", Description = "Bán xe", DatePosted = "" },
-            new Listings() { CarID = 107, UserID = 1, Status = "Bài Đăng 107", Description = "Bán xe", DatePosted = "" },
-            new Listings() { CarID = 108, UserID = 2, Status = "Bài Đăng 108", Description = "Bán xe", DatePosted = "" },
-            new Listings() { CarID = 109, UserID = 1, Status = "Bài Đăng 109", Description = "Bán xe", DatePosted = "" },
-            new Listings() { CarID = 110, UserID = 2, Status = "Bài Đăng 110", Description = "Bán xe", DatePosted = "" },
-            new Listings() { CarID = 111, UserID = 1, Status = "Bài Đăng 111", Description = "Bán xe", DatePosted = "" },
-            new Listings() { CarID = 112, UserID = 2, Status = "Bài Đăng 112", Description = "Bán xe", DatePosted = "" },
-            new Listings() { CarID = 113, UserID = 1, Status = "Bài Đăng 113", Description = "Bán xe", DatePosted = "" },
-            new Listings() { CarID = 114, UserID = 2, Status = "Bài Đăng 114", Description = "Bán xe", DatePosted = "" },
-            new Listings() { CarID = 115, UserID = 1, Status = "Bài Đăng 115", Description = "Bán xe", DatePosted = "" },
-            new Listings() { CarID = 116, UserID = 2, Status = "Bài Đăng 116", Description = "Bán xe", DatePosted = "" },
-            new Listings() { CarID = 117, UserID = 1, Status = "Bài Đăng 117", Description = "Bán xe", DatePosted = "" },
-            new Listings() { CarID = 118, UserID = 2, Status = "Bài Đăng 118", Description = "Bán xe", DatePosted = "" },
-            new Listings() { CarID = 119, UserID = 1, Status = "Bài Đăng 119", Description = "Bán xe", DatePosted = "" },
-            new Listings() { CarID = 120, UserID = 2, Status = "Bài Đăng 120", Description = "Bán xe", DatePosted = "" },
-            new Listings() { CarID = 121, UserID = 1, Status = "Bài Đăng 121", Description = "Bán xe", DatePosted = "" },
-            new Listings() { CarID = 122, UserID = 2, Status = "Bài Đăng 122", Description = "Bán xe", DatePosted = "" },
-            new Listings() { CarID = 123, UserID = 1, Status = "Bài Đăng 123", Description = "Bán xe", DatePosted = "" },
-            new Listings() { CarID = 124, UserID = 2, Status = "Bài Đăng 124", Description = "Bán xe", DatePosted = "" },
-            new Listings() { CarID = 125, UserID = 1, Status = "Bài Đăng 125", Description = "Bán xe", DatePosted = "" },
-            new Listings() { CarID = 126, UserID = 2, Status = "Bài Đăng 126", Description = "Bán xe", DatePosted = "" },
-            new Listings() { CarID = 127, UserID = 1, Status = "Bài Đăng 127", Description = "Bán xe", DatePosted = "" },
-            new Listings() { CarID = 128, UserID = 2, Status = "Bài Đăng 128", Description = "Bán xe", DatePosted = "" }
-        };
-            LoadDataListingFromJson(result);
-            return result;
-        }
-
-        public void LoadDataListingFromJson(List<Listings> listings)
+        // phương thức lưu thông tin xe xuống cơ sở dữ liệu
+        public async Task<bool> SaveCarAsync(Cars car)
         {
             try
             {
-                string assemblyLocation = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
-                string filePath = Path.Combine(assemblyLocation, "Listings.json");
-                string json = File.ReadAllText(filePath);
-
-                // Deserialize dữ liệu từ JSON thành List<Listings>
-                var listingsFromJson = JsonConvert.DeserializeObject<List<Listings>>(json);
-
-                foreach (var listing in listingsFromJson)
+                using (SqlConnection conn = new SqlConnection(_connectionString))
                 {
-                    listings.Add(listing);
+                    await conn.OpenAsync();
+
+                    string query = @"
+                    INSERT INTO Cars (ModelID, CarName, Year, Style, Condition, Origin, Mileage, Gear, FuelType, Price, City, District)
+                    VALUES (@ModelID, @CarName, @Year, @Style, @Condition, @Origin, @Mileage, @Gear, @FuelType, @Price, @City, @District)";
+
+                    using (SqlCommand cmd = new SqlCommand(query, conn))
+                    {
+                        cmd.Parameters.AddWithValue("@ModelID", car.ModelID);
+                        cmd.Parameters.AddWithValue("@CarName", car.CarName);
+                        cmd.Parameters.AddWithValue("@Year", car.Year);
+                        cmd.Parameters.AddWithValue("@Style", car.Style);
+                        cmd.Parameters.AddWithValue("@Condition", car.Condition);
+                        cmd.Parameters.AddWithValue("@Origin", car.Origin);
+                        cmd.Parameters.AddWithValue("@Mileage", car.Mileage);
+                        cmd.Parameters.AddWithValue("@Gear", car.Gear);
+                        cmd.Parameters.AddWithValue("@FuelType", car.FuelType);
+                        cmd.Parameters.AddWithValue("@Price", car.Price);
+                        cmd.Parameters.AddWithValue("@City", car.City);
+                        cmd.Parameters.AddWithValue("@District", car.District);
+
+                        await cmd.ExecuteNonQueryAsync();
+                    }
                 }
+                return true;
             }
             catch (Exception ex)
             {
-                // Xử lý lỗi nếu có vấn đề trong việc đọc file hoặc xử lý dữ liệu
-                Console.WriteLine("Error loading data from JSON: " + ex.Message);
+                // Xử lý lỗi
+                Debug.WriteLine($"Error saving car: {ex.Message}");
+                return false;
             }
+        }
+        // phương thức lưu bài đăng xuống cơ sở dữ liệu
+        public async Task<bool> SaveListingAsync(Listings listing)
+        {
+            try
+            {
+                using (SqlConnection conn = new SqlConnection(_connectionString))
+                {
+                    await conn.OpenAsync();
+
+                    string query = @"
+                    INSERT INTO Listings (UserID, CarID, Status, Description, DatePosted)
+                    VALUES (@UserID, @CarID, @Status, @Description, @DatePosted)";
+
+                    using (SqlCommand cmd = new SqlCommand(query, conn))
+                    {
+                        cmd.Parameters.AddWithValue("@UserID", listing.UserID);
+                        cmd.Parameters.AddWithValue("@CarID", listing.CarID);
+                        cmd.Parameters.AddWithValue("@Status", listing.Status);
+                        cmd.Parameters.AddWithValue("@Description", listing.Description);
+                        cmd.Parameters.AddWithValue("@DatePosted", listing.DatePosted);
+
+                        await cmd.ExecuteNonQueryAsync();
+                    }
+                }
+                return true;
+            }
+            catch (Exception ex)
+            {
+                // Xử lý lỗi
+                Debug.WriteLine($"Error saving listing: {ex.Message}");
+                return false;
+            }
+        }
+        // phương thức lấy danh sách bài đăng
+        public List<Listings> GetListings()
+        {
+            var listings = new List<Listings>();
+            using (SqlConnection connection = new SqlConnection(_connectionString))
+            {
+                connection.Open();
+                string query = "SELECT ListingID, UserID, CarID, Status, Description, DatePosted FROM Listings ORDER BY DatePosted DESC";
+                using (SqlCommand command = new SqlCommand(query, connection))
+                using (SqlDataReader reader = command.ExecuteReader())
+                {
+                    while (reader.Read())
+                    {
+                        listings.Add(new Listings
+                        {
+                            ListingID = reader.GetInt32(0),
+                            UserID = reader.GetInt32(1),
+                            CarID = reader.GetInt32(2),
+                            Status = reader.GetString(3),
+                            Description = reader.GetString(4),
+                            DatePosted = reader.GetDateTime(5),
+                        });
+                    }
+                }
+            }
+            return listings;
         }
 
         // Các phương thức khác (GetIsExpanderExpaned, GetLocations, GetUsers, GetListings) có thể triển khai tương tự.
@@ -542,18 +513,18 @@ namespace Windows_Project.Service.DataAccess
                     "Quận 10",
                     "Quận 11",
                     "Quận 12",
-                    "Quận Bình Tân",
-                    "Quận Bình Thạnh",
-                    "Quận Gò Vấp",
-                    "Quận Phú Nhuận",
-                    "Quận Tân Bình",
-                    "Quận Tân Phú",
-                    "Quận Thủ Đức",
-                    "Huyện Bình Chánh",
-                    "Huyện Cần Giờ",
-                    "Huyện Củ Chi",
-                    "Huyện Hóc Môn",
-                    "Huyện Nhà Bè"
+                    "Bình Tân",
+                    "Bình Thạnh",
+                    "Gò Vấp",
+                    "Phú Nhuận",
+                    "Tân Bình",
+                    "Tân Phú",
+                    "Thủ Đức",
+                    "Bình Chánh",
+                    "Cần Giờ",
+                    "Củ Chi",
+                    "Hóc Môn",
+                    "Nhà Bè"
                 }
             },
             new Location()
@@ -561,12 +532,12 @@ namespace Windows_Project.Service.DataAccess
                 City = "Đà Nẵng",
                 District = new List<string>()
                 {
-                    "Quận Hải Châu",
-                    "Quận Thanh Khê",
-                    "Quận Sơn Trà",
-                    "Quận Ngũ Hành Sơn",
-                    "Quận Liên Chiểu",
-                    "Huyện Hoàng Sa"
+                    "Hải Châu",
+                    "Thanh Khê",
+                    "Sơn Trà",
+                    "Ngũ Hành Sơn",
+                    "Liên Chiểu",
+                    "Hoàng Sa"
                 }
             },
         };

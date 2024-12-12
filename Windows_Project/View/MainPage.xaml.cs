@@ -17,6 +17,7 @@ using Windows.Storage;
 using Windows_Project.View;
 using Windows_Project.Service.DataAccess;
 using System.Threading.Tasks;
+using System.Diagnostics;
 
 
 // To learn more about WinUI, the WinUI project structure,
@@ -46,6 +47,9 @@ namespace Windows_Project
             this.NavigationCacheMode = NavigationCacheMode.Enabled; // khong tai lai trang khi quay lai MainPage
 
             ViewModel = new MainViewModel();
+
+            Select_Car_Company.ItemsSource = ViewModel.Manufacturers;
+            Select_Car_Company.DisplayMemberPath = "ManufacturerName";
 
             UpdateLoginButtons();
 
@@ -138,23 +142,23 @@ namespace Windows_Project
             Frame.Navigate(typeof(PricePage), this.ViewModel);
         }
 
-        //private async void OnSellCarButtonClick(object sender, RoutedEventArgs e)
-        //{
-        //    // nếu chưa đăng nhập thì yêu cầu đăng nhập
-        //    if (!isLoggedIn)
-        //    {
-        //        failedDialog.Content = new TextBlock()
-        //        {
-        //            Text = "Bạn cần đăng nhập/đăng kí để thực hiện chức năng này.",
-        //            TextWrapping = TextWrapping.WrapWholeWords
-        //        };
-        //        await failedDialog.ShowAsync();
-        //        return;
-        //    }
-        //    // lấy thông tin người dùng đăng nhập
-        //    var user = ViewModel.Users.FirstOrDefault(u => u.Username == loggedInUser);
-        //    Frame.Navigate(typeof(PostPage), user);
-        //}
+        private async void OnSellCarButtonClick(object sender, RoutedEventArgs e)
+        {
+            // nếu chưa đăng nhập thì yêu cầu đăng nhập
+            if (!isLoggedIn)
+            {
+                failedDialog.Content = new TextBlock()
+                {
+                    Text = "Bạn cần đăng nhập/đăng kí để thực hiện chức năng này.",
+                    TextWrapping = TextWrapping.WrapWholeWords
+                };
+                await failedDialog.ShowAsync();
+                return;
+            }
+            // lấy thông tin người dùng đăng nhập
+            var user = ViewModel.Users.FirstOrDefault(u => u.Username == loggedInUser);
+            Frame.Navigate(typeof(PostPage), user);
+        }
 
         private void OnComparisonButtonClick(object sender, RoutedEventArgs e)
         {
@@ -308,8 +312,40 @@ namespace Windows_Project
             isLoggedIn = false;
             UpdateLoginButtons();
         }
+        private void Old_Car_Checked(object sender, RoutedEventArgs e)
+        {
+            New_Car.IsChecked = false;
+        }
+        private void New_Car_Checked(object sender, RoutedEventArgs e)
+        {
+            Old_Car.IsChecked = false;
+        }
+        private void Select_Car_Company_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            var selectedManufacturer = Select_Car_Company.SelectedItem as Manufacturers;
+            if (selectedManufacturer != null)
+            {
+                Select_Car_Model.ItemsSource = selectedManufacturer.CarsModels.Select(c => c.ModelName).Distinct().ToList();
+            }
+        }
 
-        //User click vao ca nhan de chon
-
+        private async void Search_Car_Click(object sender, RoutedEventArgs e)
+        {
+            if (Old_Car.IsChecked == false && New_Car.IsChecked == false)
+            {
+                failedDialog.Content = new TextBlock()
+                {
+                    Text = "Vui lòng chọn đầy đủ điều kiện",
+                    TextWrapping = TextWrapping.WrapWholeWords
+                };
+                await failedDialog.ShowAsync();
+                return;
+            }
+            string carCondition = Old_Car.IsChecked == true ? "old" : "new";
+            string selectedManufacturer = Select_Car_Company.SelectedItem != null ? ((Manufacturers)Select_Car_Company.SelectedItem).ManufacturerName : null;
+            string selectedModel = Select_Car_Model.SelectedItem != null ? Select_Car_Model.SelectedItem.ToString() : null;
+            string data = $"{carCondition}|{selectedManufacturer}|{selectedModel}";
+            Frame.Navigate(typeof(OldCar), data);
+        }
     }
 }
