@@ -364,7 +364,8 @@ namespace Windows_Project
                 {
                     Title = "Lỗi",
                     Content = "Không tìm thấy thông tin người dùng.",
-                    CloseButtonText = "OK"
+                    CloseButtonText = "OK",
+                    XamlRoot = this.XamlRoot
                 };
                 _ = dialog.ShowAsync();
             }
