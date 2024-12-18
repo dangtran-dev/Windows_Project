@@ -114,7 +114,7 @@ public class MainViewModel : INotifyPropertyChanged
     public void SaveUserInfo(Users currentUser)
     {
         // Giả sử CurrentUser là người dùng hiện tại đang chỉnh sửa
-        var user = Users.FirstOrDefault(u => u.UserID == currentUser.UserID);
+        var user = Users.FirstOrDefault(u => u.Username == currentUser.Username);
         if (user != null)
         {
             user.FullName = currentUser.FullName;
@@ -126,14 +126,14 @@ public class MainViewModel : INotifyPropertyChanged
             using (var connection = new SqlConnection("Server=localhost,1433;Database=demoshop;User Id=sa;Password=SqlServer@123;TrustServerCertificate=True;"))
             {
                 connection.Open();
-                var query = "UPDATE Users SET FullName = @FullName, Address = @Address, Phone = @Phone, Email = @Email WHERE UserID = @UserID";
+                var query = "UPDATE Users SET FullName = @FullName, Address = @Address, Phone = @Phone, Email = @Email WHERE Username = @Username";
                 using (var command = new SqlCommand(query, connection))
                 {
                     command.Parameters.AddWithValue("@FullName", currentUser.FullName);
                     command.Parameters.AddWithValue("@Address", currentUser.Address);
                     command.Parameters.AddWithValue("@Phone", currentUser.Phone);
                     command.Parameters.AddWithValue("@Email", currentUser.Email);
-                    command.Parameters.AddWithValue("@UserID", currentUser.UserID);
+                    command.Parameters.AddWithValue("@Username", currentUser.Username);
                     command.ExecuteNonQuery();
                 }
             }
@@ -418,5 +418,72 @@ public class MainViewModel : INotifyPropertyChanged
         // Cập nhật FilteredCars với danh sách xe đã lọc
         FilteredCars = filteredCars;
         OnPropertyChanged(nameof(FilteredCars)); // Cập nhật UI
+    }
+
+
+    public bool DeleteCarFromDatabase(int carID)
+    {
+        try
+        {
+            using (var connection = new SqlConnection("Server=localhost,1433;Database=demoshop;User Id=sa;Password=SqlServer@123;TrustServerCertificate=True;"))
+            {
+                connection.Open();
+
+                //Lấy tất cả ListingID có CarID mà bạn muốn xóa
+                var getListingIDsCommand = new SqlCommand("SELECT ListingID FROM Listings WHERE CarID = @CarID", connection);
+                getListingIDsCommand.Parameters.AddWithValue("@CarID", carID);
+                var listingIDs = new List<int>();
+
+                using (var reader = getListingIDsCommand.ExecuteReader())
+                {
+                    while (reader.Read())
+                    {
+                        listingIDs.Add(reader.GetInt32(0)); // Lưu ListingID vào danh sách
+                    }
+                }
+
+                //Xóa các bản ghi trong bảng Favorites liên quan đến các ListingID
+                foreach (var listingID in listingIDs)
+                {
+                    var deleteFavoritesCommand = new SqlCommand("DELETE FROM Favorites WHERE ListingID = @ListingID", connection);
+                    deleteFavoritesCommand.Parameters.AddWithValue("@ListingID", listingID);
+                    deleteFavoritesCommand.ExecuteNonQuery();
+                }
+
+                var command = new SqlCommand("DELETE FROM Cars WHERE CarID = @CarID", connection);
+                command.Parameters.AddWithValue("@CarID", carID);
+
+                int rowsAffected = command.ExecuteNonQuery();
+                return rowsAffected > 0; // Trả về true nếu xóa thành công
+            }
+        }
+        catch (Exception ex)
+        {
+            // Log lỗi nếu cần
+            Console.WriteLine(ex.Message);
+            return false;
+        }
+    }
+    public void DeleteCarFromFilteredList(Cars car)
+    {
+
+        bool check = DeleteCarFromDatabase(car.ID);
+        if (check)
+        {
+            // Xóa khỏi danh sách FilteredCars
+            if (FilteredCars.Contains(car))
+            {
+                FilteredCars.Remove(car);
+            }
+
+            // Xóa khỏi danh sách Cars chính (nếu cần xóa luôn)
+            if (Cars.Contains(car))
+            {
+                Cars.Remove(car);
+            }
+        }
+
+        // Gửi thông báo cập nhật giao diện
+        OnPropertyChanged(nameof(FilteredCars));
     }
 }

@@ -49,6 +49,15 @@
                 </StackPanel>
             </ContentDialog>
 
+            <ContentDialog x:Name="successDialog"
+                    Title="Success"
+                    PrimaryButtonText="OK"
+                    PrimaryButtonClick="SuccessLogin_PrimaryButtonClick">
+                <StackPanel>
+                    <TextBlock x:Name="Noti2" Text="Đăng nhập thành công" />
+                </StackPanel>
+            </ContentDialog>
+
             <Grid VerticalAlignment="Top" Height="100" BorderBrush="Gray" BorderThickness="0, 0, 0, 0.3" Padding="50, 0, 50, 0">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="Auto"/>

@@ -288,5 +288,20 @@ namespace Windows_Project.View
                 Frame.GoBack();
             }
         }
+
+        private void OnDeleteClick(object sender, RoutedEventArgs e)
+        {
+            // Lấy Button mà người dùng nhấn
+            var button = sender as Button;
+
+            // Lấy đối tượng Cars từ DataContext của Button
+            var car = button?.DataContext as Cars;
+
+            if (car != null)
+            {
+                ViewModel.DeleteCarFromFilteredList(car);
+                DisplayListings(); // Làm mới giao diện
+            }
+        }
     }
 }
