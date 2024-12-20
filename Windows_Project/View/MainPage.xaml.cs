@@ -129,12 +129,31 @@ namespace Windows_Project
 
         private void OnCarOldButtonClick(object sender, RoutedEventArgs e)
         {
-            Frame.Navigate(typeof(OldCar), "old");
+            // Lấy thông tin người dùng đã đăng nhập
+            var user = ViewModel.Users.FirstOrDefault(u => u.Username == loggedInUser);
+
+            string carCondition = "old";
+            string selectedManufacturer = Select_Car_Company.SelectedItem != null ? ((Manufacturers)Select_Car_Company.SelectedItem).ManufacturerName : null;
+            string selectedModel = Select_Car_Model.SelectedItem != null ? Select_Car_Model.SelectedItem.ToString() : null;
+            string userName = user?.Username ?? string.Empty;
+            string data = $"{carCondition}|{selectedManufacturer}|{selectedModel}|{userName}";
+
+            //Frame.Navigate(typeof(OldCar), "old");
+            Frame.Navigate(typeof(OldCar), data);
         }
 
         private void OnCarNewButtonClick(object sender, RoutedEventArgs e)
         {
-            Frame.Navigate(typeof(OldCar), "new");
+            // Lấy thông tin người dùng đã đăng nhập
+            var user = ViewModel.Users.FirstOrDefault(u => u.Username == loggedInUser);
+
+            string carCondition = "new";
+            string selectedManufacturer = Select_Car_Company.SelectedItem != null ? ((Manufacturers)Select_Car_Company.SelectedItem).ManufacturerName : null;
+            string selectedModel = Select_Car_Model.SelectedItem != null ? Select_Car_Model.SelectedItem.ToString() : null;
+            string userName = user?.Username ?? string.Empty;
+            string data = $"{carCondition}|{selectedManufacturer}|{selectedModel}|{userName}";
+
+            Frame.Navigate(typeof(OldCar), data);
         }
 
         private void OnPriceButtonClick(object sender, RoutedEventArgs e)
@@ -202,6 +221,7 @@ namespace Windows_Project
                     }
                     else
                     {
+                        // Người dùng nhấn nút "Hủy"
                         // Người dùng nhấn nút "Hủy"
                         break;
                     }
@@ -343,6 +363,9 @@ namespace Windows_Project
 
         private async void Search_Car_Click(object sender, RoutedEventArgs e)
         {
+            // Lấy thông tin người dùng đã đăng nhập
+            var user = ViewModel.Users.FirstOrDefault(u => u.Username == loggedInUser);
+            
             if (Old_Car.IsChecked == false && New_Car.IsChecked == false)
             {
                 failedDialog.Content = new TextBlock()
@@ -356,7 +379,8 @@ namespace Windows_Project
             string carCondition = Old_Car.IsChecked == true ? "old" : "new";
             string selectedManufacturer = Select_Car_Company.SelectedItem != null ? ((Manufacturers)Select_Car_Company.SelectedItem).ManufacturerName : null;
             string selectedModel = Select_Car_Model.SelectedItem != null ? Select_Car_Model.SelectedItem.ToString() : null;
-            string data = $"{carCondition}|{selectedManufacturer}|{selectedModel}";
+            string userName = user.Username;
+            string data = $"{carCondition}|{selectedManufacturer}|{selectedModel}|{userName}";
             Frame.Navigate(typeof(OldCar), data);
         }
         private void onInfoButtonClick(object sender, RoutedEventArgs e)
@@ -383,7 +407,25 @@ namespace Windows_Project
             }
         }
 
-        
+        private void FavoriteClickButton(object sender, RoutedEventArgs e)
+        {
+            // Lấy thông tin người dùng đã đăng nhập
+            var user = ViewModel.Users.FirstOrDefault(u => u.Username == loggedInUser);
+            if (user != null) {
+                Frame.Navigate(typeof(FavoritePage), user);
+            }
+            else
+            {
+                ContentDialog dialog = new ContentDialog
+                {
+                    Title = "Lỗi",
+                    Content = "Vui lòng đăng nhập để xem danh sách yêu thích!",
+                    CloseButtonText = "OK",
+                    XamlRoot = this.XamlRoot
+                };
+                _ = dialog.ShowAsync();
+            }
+        }
     }
 
         //User click vao ca nhan de chon

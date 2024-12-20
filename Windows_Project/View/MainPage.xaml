@@ -83,7 +83,7 @@
 
                 <!-- Các nút đăng nhập, yêu thích, đăng ký -->
                 <StackPanel x:Name="UnLoginPanel" Grid.Column="2" Orientation="Horizontal" VerticalAlignment="Center">
-                    <HyperlinkButton x:Name="Favourite1" VerticalAlignment="Center" Margin="30, 0, 10, 0">
+                    <HyperlinkButton x:Name="Favourite1" VerticalAlignment="Center" Margin="30, 0, 10, 0" Click="FavoriteClickButton">
                         <FontIcon Glyph="&#xEB51;" Foreground="Black"/>
                     </HyperlinkButton>
                     <StackPanel x:Name="ControlLogin" Orientation="Horizontal" VerticalAlignment="Center">
@@ -94,7 +94,7 @@
                 </StackPanel>
 
                 <StackPanel x:Name="LoginPanel" Grid.Column="2" Orientation="Horizontal" VerticalAlignment="Center" Visibility="Collapsed">
-                    <HyperlinkButton x:Name="Favourite2" VerticalAlignment="Center" Margin="30, 0, 10, 0">
+                    <HyperlinkButton x:Name="Favourite2" VerticalAlignment="Center" Margin="30, 0, 10, 0" Click="FavoriteClickButton">
                         <FontIcon Glyph="&#xEB51;" Foreground="Black"/>
                     </HyperlinkButton>
                     <Button x:Name="Info" VerticalAlignment="Center" Foreground="Black" Margin="0, 0, 5, 0" MinWidth="100" MinHeight="30">

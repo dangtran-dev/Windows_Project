@@ -128,16 +128,6 @@ namespace Windows_Project.View
                         },
 
                         saveButton // Thêm nút Lưu
-
-                        //new Button
-                        //{
-                        //    Margin = new Thickness(10),
-                        //    HorizontalAlignment = HorizontalAlignment.Right,
-                        //    Content = "Lưu",
-                        //    Foreground = new SolidColorBrush(Microsoft.UI.Colors.White),
-                        //    Background = new SolidColorBrush(Microsoft.UI.Colors.Green),
-                        //}
-
                     }
                 }
             });
