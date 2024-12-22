@@ -62,8 +62,8 @@
                 <!-- Logo -->
                 <Image Grid.Column="0" Source="../Assets/car-logo.png" VerticalAlignment="Center"/>
 
-                <!-- Nút đăng tin -->
-                <Button Grid.Column="1" x:Name="Post_News" VerticalAlignment="Center" HorizontalAlignment="Right" Padding="10" Style="{StaticResource AccentButtonStyle}" Background="#4DB848">
+                <!-- Nút hỗ trợ -->
+                <Button Grid.Column="1" x:Name="Post_News" Click="SupportButton_Click" VerticalAlignment="Center" HorizontalAlignment="Right" Padding="10" Style="{StaticResource AccentButtonStyle}" Background="#4DB848">
                     <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
                         <FontIcon Glyph="&#xE804;" Foreground="White"/>
                         <TextBlock Margin="10, 0, 0, 0" Foreground="White">
