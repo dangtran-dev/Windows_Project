@@ -352,6 +352,7 @@ namespace Windows_Project.Service.DataAccess
 
                         await cmd.ExecuteNonQueryAsync();
                     }
+                    
                 }
                 return true;
             }
@@ -486,6 +487,32 @@ namespace Windows_Project.Service.DataAccess
                 },
             };
             return result;
+        }
+
+        public List<Favorites> GetFavorites()
+        {
+            var favorites = new List<Favorites>();
+
+            using (SqlConnection connection = new SqlConnection(_connectionString))
+            {
+                connection.Open();
+                string query = "SELECT FavoriteID, UserID, ListingID FROM Favorites";
+                using (SqlCommand command = new SqlCommand(query, connection))
+                using (SqlDataReader reader = command.ExecuteReader())
+                {
+                    while (reader.Read())
+                    {
+                        favorites.Add(new Favorites
+                        {
+                            FavoriteID = reader.GetInt32(0),
+                            UserID = reader.GetInt32(1),
+                            ListingID = reader.GetInt32(2)
+                        });
+                    }
+                }
+            }
+
+            return favorites;
         }
 
         public List<Location> GetLocations()

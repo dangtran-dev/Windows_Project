@@ -128,16 +128,6 @@ namespace Windows_Project.View
                         },
 
                         saveButton // Thêm nút Lưu
-
-                        //new Button
-                        //{
-                        //    Margin = new Thickness(10),
-                        //    HorizontalAlignment = HorizontalAlignment.Right,
-                        //    Content = "Lưu",
-                        //    Foreground = new SolidColorBrush(Microsoft.UI.Colors.White),
-                        //    Background = new SolidColorBrush(Microsoft.UI.Colors.Green),
-                        //}
-
                     }
                 }
             });
@@ -286,6 +276,21 @@ namespace Windows_Project.View
             if (Frame.CanGoBack)
             {
                 Frame.GoBack();
+            }
+        }
+
+        private void OnDeleteClick(object sender, RoutedEventArgs e)
+        {
+            // Lấy Button mà người dùng nhấn
+            var button = sender as Button;
+
+            // Lấy đối tượng Cars từ DataContext của Button
+            var car = button?.DataContext as Cars;
+
+            if (car != null)
+            {
+                ViewModel.DeleteCarFromFilteredList(car);
+                DisplayListings(); // Làm mới giao diện
             }
         }
     }

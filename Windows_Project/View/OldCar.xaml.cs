@@ -29,7 +29,15 @@ namespace Windows_Project.View
 
         public List<Cars> Cars { get; set; }
 
+        public Users user { get; set; }
+
         public MainViewModel ViewModel { get; set; }
+
+        public class CarDetailParameter
+        {
+            public CarWithUserItem SelectedCar { get; set; }
+            public Users User { get; set; }
+        }
 
         public OldCar()
         {
@@ -76,6 +84,12 @@ namespace Windows_Project.View
                 string carType = args[0];
                 string manufacturer = args.Length > 1 ? args[1] : null;
                 string model = args.Length > 2 ? args[2] : null;
+                string username = args.Length > 3 ? args[3] : null;
+
+
+                // Lấy thông tin User từ ViewModel dựa trên Username
+                user = ViewModel.Users.FirstOrDefault(u => u.Username == username);
+
                 // Cập nhật tiêu đề và lọc danh sách xe dựa trên tham số
                 if (carType == "old")
                 {
@@ -115,10 +129,17 @@ namespace Windows_Project.View
         {
             // Lấy thông tin của ô tô được chọn
             var selectedCar = e.ClickedItem as CarWithUserItem;
+
+            var parameter = new CarDetailParameter
+            {
+                SelectedCar = selectedCar,
+                User = user
+            };
+
             if (selectedCar != null)
             {
                 // Chuyển đến trang chi tiết và truyền dữ liệu
-                Frame.Navigate(typeof(CarDetailPage), selectedCar);
+                Frame.Navigate(typeof(CarDetailPage), parameter);
             }
         }
 

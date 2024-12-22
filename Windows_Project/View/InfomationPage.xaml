@@ -12,13 +12,30 @@
     <!-- Define Resources -->
     <Page.Resources>
         <DataTemplate x:Key="ListingsTemplate" x:DataType="local:Cars">
-            <StackPanel Grid.Column="0" Orientation="Horizontal">
-                <Image Source="{Binding CarImages[0].ImageURL}" Height="100" Width="100" Margin="10"/>
-                <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto"/>
+                    <!-- Ảnh -->
+                    <ColumnDefinition Width="*"/>
+                    <!-- Nội dung -->
+                    <ColumnDefinition Width="Auto"/>
+                    <!-- FontIcon -->
+                </Grid.ColumnDefinitions>
+
+                <!-- Ảnh -->
+                <Image Grid.Column="0" Source="{Binding CarImages[0].ImageURL}" Height="100" Width="100" Margin="10"/>
+
+                <!-- Nội dung -->
+                <StackPanel Grid.Column="1" VerticalAlignment="Center">
                     <TextBlock Text="{Binding CarName}" FontSize="20" FontWeight="Bold"/>
                     <TextBlock Text="{Binding Price}" FontSize="16" Foreground="Gray"/>
                 </StackPanel>
-            </StackPanel>
+
+                <!-- Biểu tượng FontIcon -->
+                <Button Grid.Column="2" Margin="10,0,50,0" Background="Transparent" BorderThickness="0" Click="OnDeleteClick">
+                    <FontIcon Glyph="&#xE74D;" VerticalAlignment="Center" Foreground="Gray" FontSize="20"/>
+                </Button>
+            </Grid>
         </DataTemplate>
     </Page.Resources>
 

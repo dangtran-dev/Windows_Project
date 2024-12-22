@@ -32,6 +32,7 @@ public class MainViewModel : INotifyPropertyChanged
     public List<Users> Users { get; set; }
     public List<Listings> Listings { get; set; }
     public List<CarModels> CarModels { get; set; }
+    public List<Favorites> Favorites { get; set; }
     // Danh sách chứa thông tin xe và người bán đã lọc theo điều kiện
     public ObservableCollection<CarWithUserItem> CarWithUserList { get; set; }
     // Thêm danh sách chứa thông tin xe và người bán ban đầu
@@ -83,6 +84,9 @@ public class MainViewModel : INotifyPropertyChanged
         Users = dao.GetUsers();
         Listings = dao.GetListings();
         CarModels = dao.GetCarModels();
+        Favorites = dao.GetFavorites();
+
+       
 
         // Khởi tạo danh sách xe lọc
         FilteredCars = new ObservableCollection<Cars>();
@@ -114,7 +118,7 @@ public class MainViewModel : INotifyPropertyChanged
     public void SaveUserInfo(Users currentUser)
     {
         // Giả sử CurrentUser là người dùng hiện tại đang chỉnh sửa
-        var user = Users.FirstOrDefault(u => u.UserID == currentUser.UserID);
+        var user = Users.FirstOrDefault(u => u.Username == currentUser.Username);
         if (user != null)
         {
             user.FullName = currentUser.FullName;
@@ -126,14 +130,14 @@ public class MainViewModel : INotifyPropertyChanged
             using (var connection = new SqlConnection("Server=localhost,1433;Database=demoshop;User Id=sa;Password=SqlServer@123;TrustServerCertificate=True;"))
             {
                 connection.Open();
-                var query = "UPDATE Users SET FullName = @FullName, Address = @Address, Phone = @Phone, Email = @Email WHERE UserID = @UserID";
+                var query = "UPDATE Users SET FullName = @FullName, Address = @Address, Phone = @Phone, Email = @Email WHERE Username = @Username";
                 using (var command = new SqlCommand(query, connection))
                 {
                     command.Parameters.AddWithValue("@FullName", currentUser.FullName);
                     command.Parameters.AddWithValue("@Address", currentUser.Address);
                     command.Parameters.AddWithValue("@Phone", currentUser.Phone);
                     command.Parameters.AddWithValue("@Email", currentUser.Email);
-                    command.Parameters.AddWithValue("@UserID", currentUser.UserID);
+                    command.Parameters.AddWithValue("@Username", currentUser.Username);
                     command.ExecuteNonQuery();
                 }
             }
@@ -418,5 +422,224 @@ public class MainViewModel : INotifyPropertyChanged
         // Cập nhật FilteredCars với danh sách xe đã lọc
         FilteredCars = filteredCars;
         OnPropertyChanged(nameof(FilteredCars)); // Cập nhật UI
+    }
+
+
+    public bool DeleteCarFromDatabase(int carID)
+    {
+        try
+        {
+            using (var connection = new SqlConnection("Server=localhost,1433;Database=demoshop;User Id=sa;Password=SqlServer@123;TrustServerCertificate=True;"))
+            {
+                connection.Open();
+
+                //Lấy tất cả ListingID có CarID mà bạn muốn xóa
+                var getListingIDsCommand = new SqlCommand("SELECT ListingID FROM Listings WHERE CarID = @CarID", connection);
+                getListingIDsCommand.Parameters.AddWithValue("@CarID", carID);
+                var listingIDs = new List<int>();
+
+                using (var reader = getListingIDsCommand.ExecuteReader())
+                {
+                    while (reader.Read())
+                    {
+                        listingIDs.Add(reader.GetInt32(0)); // Lưu ListingID vào danh sách
+                    }
+                }
+
+                //Xóa các bản ghi trong bảng Favorites liên quan đến các ListingID
+                foreach (var listingID in listingIDs)
+                {
+                    var deleteFavoritesCommand = new SqlCommand("DELETE FROM Favorites WHERE ListingID = @ListingID", connection);
+                    deleteFavoritesCommand.Parameters.AddWithValue("@ListingID", listingID);
+                    deleteFavoritesCommand.ExecuteNonQuery();
+                }
+
+                var command = new SqlCommand("DELETE FROM Cars WHERE CarID = @CarID", connection);
+                command.Parameters.AddWithValue("@CarID", carID);
+
+                int rowsAffected = command.ExecuteNonQuery();
+                return rowsAffected > 0; // Trả về true nếu xóa thành công
+            }
+        }
+        catch (Exception ex)
+        {
+            // Log lỗi nếu cần
+            Console.WriteLine(ex.Message);
+            return false;
+        }
+    }
+    public void DeleteCarFromFilteredList(Cars car)
+    {
+
+        bool check = DeleteCarFromDatabase(car.ID);
+        if (check)
+        {
+            // Xóa khỏi danh sách FilteredCars
+            if (FilteredCars.Contains(car))
+            {
+                FilteredCars.Remove(car);
+            }
+
+            // Xóa khỏi danh sách Cars chính (nếu cần xóa luôn)
+            if (Cars.Contains(car))
+            {
+                Cars.Remove(car);
+            }
+        }
+
+        // Gửi thông báo cập nhật giao diện
+        OnPropertyChanged(nameof(FilteredCars));
+    }
+
+
+    public void CreateFavoritesByUserID(int userID)
+    {
+        // Xóa danh sách hiện tại
+        FilteredCars.Clear();
+
+        // Lọc danh sách Favorites theo UserID
+        var favoriteListings = Favorites
+            .Where(favorite => favorite.UserID == userID)
+            .Select(favorite => favorite.ListingID)
+            .ToList(); // Lấy tất cả ListingID từ Favorites của UserID
+
+        // Tìm danh sách CarID từ Listings dựa trên ListingID
+        var carIDs = Listings
+            .Where(listing => favoriteListings.Contains(listing.ListingID))
+            .Select(listing => listing.CarID)
+            .ToList();
+
+        // Tạo một danh sách Cars từ CarID đã lấy
+        var filteredCars = new ObservableCollection<Cars>();
+
+        foreach (var carID in carIDs)
+        {
+            // Tìm kiếm xe trong danh sách Cars tương ứng với CarID
+            var car = Cars.FirstOrDefault(c => c.ID == carID);
+            if (car != null)
+            {
+                // Lấy ModelName từ CarModels dựa trên ModelID
+                var carModel = CarModels.FirstOrDefault(cm => cm.ModelID == car.ModelID);
+                if (carModel != null)
+                {
+                    car.ModelName = carModel.ModelName; // Gán ModelName vào đối tượng Car
+                }
+                filteredCars.Add(car); // Thêm xe vào danh sách kết quả
+            }
+        }
+
+        // Cập nhật FilteredCars với danh sách xe đã lọc
+        FilteredCars = filteredCars;
+        OnPropertyChanged(nameof(FilteredCars)); // Cập nhật UI
+    }
+
+
+    public bool checkFavoriteCar(int userID, int listingID)
+    {
+        // Kiểm tra xem xe đã được yêu thích chưa
+        var existingFavorite = Favorites.FirstOrDefault(f => f.ListingID == listingID && f.UserID == userID);
+        if (existingFavorite != null)
+        {
+            return false;
+        }
+        return true;
+    }
+    public void addFavoriteCar(int userID, int listingID)
+    {
+        // Kiểm tra xem xe đã được yêu thích chưa
+        var existingFavorite = Favorites.FirstOrDefault(f => f.ListingID == listingID && f.UserID == userID);
+
+        if (existingFavorite == null)
+        {
+            // Nếu xe chưa được yêu thích, thêm vào danh sách yêu thích
+            var newFavorite = new Favorites
+            {
+                UserID = userID,
+                ListingID = listingID
+            };
+
+            Favorites.Add(newFavorite);
+
+            // Cập nhật vào cơ sở dữ liệu
+            using (var connection = new SqlConnection("Server=localhost,1433;Database=demoshop;User Id=sa;Password=SqlServer@123;TrustServerCertificate=True;"))
+            {
+                connection.Open();
+                var query = "INSERT INTO Favorites (UserID, ListingID) VALUES (@UserID, @ListingID)";
+                using (var command = new SqlCommand(query, connection))
+                {
+                    command.Parameters.AddWithValue("@UserID", userID);
+                    command.Parameters.AddWithValue("@ListingID", listingID);
+                    command.ExecuteNonQuery();
+                }
+            }
+
+            // Thông báo cho UI biết danh sách yêu thích đã thay đổi
+            OnPropertyChanged(nameof(Favorites));
+        }
+        else
+        {
+            // Nếu xe đã có trong danh sách yêu thích, thông báo cho người dùng
+            Debug.WriteLine("Xe đã có trong danh sách yêu thích.");
+        }
+    }
+
+    public void deleteFavoriteCar(int carID, int userID)
+    {
+        try
+        {
+            // Kết nối đến cơ sở dữ liệu
+            using (var connection = new SqlConnection("Server=localhost,1433;Database=demoshop;User Id=sa;Password=SqlServer@123;TrustServerCertificate=True;"))
+            {
+                connection.Open();
+
+                // Lấy listingID từ bảng Listings dựa vào carID
+                var getListingIdQuery = "SELECT ListingID FROM Listings WHERE CarID = @CarID";
+                int listingID = 0;
+                using (var command = new SqlCommand(getListingIdQuery, connection))
+                {
+                    command.Parameters.AddWithValue("@CarID", carID);
+                    using (var reader = command.ExecuteReader())
+                    {
+                        if (reader.Read())
+                        {
+                            listingID = reader.GetInt32(0); // Lấy giá trị ListingID
+                        }
+                    }
+                }
+
+                // Nếu không tìm thấy listingID, kết thúc hàm
+                if (listingID == 0)
+                {
+                    throw new Exception("Không tìm thấy ListingID tương ứng với CarID.");
+                }
+
+                // Xóa xe khỏi bảng Favorites dựa trên listingID và userID
+                var deleteFavoriteQuery = "DELETE FROM Favorites WHERE ListingID = @ListingID AND UserID = @UserID";
+                using (var command = new SqlCommand(deleteFavoriteQuery, connection))
+                {
+                    command.Parameters.AddWithValue("@ListingID", listingID);
+                    command.Parameters.AddWithValue("@UserID", userID);
+
+                    // Thực thi câu lệnh xóa
+                    int rowsAffected = command.ExecuteNonQuery();
+                    if (rowsAffected == 0)
+                    {
+                        throw new Exception("Không tìm thấy mục yêu thích để xóa.");
+                    }
+                }
+            }
+            var carToRemove = FilteredCars.FirstOrDefault(c => c.ID == carID);
+            if (carToRemove != null)
+            {
+                FilteredCars.Remove(carToRemove);
+            }
+            // Gửi thông báo cập nhật giao diện
+            OnPropertyChanged(nameof(FilteredCars));
+        }
+        catch (Exception ex)
+        {
+            // Log lỗi hoặc xử lý thông báo cho người dùng
+            Console.WriteLine($"Có lỗi xảy ra: {ex.Message}");
+        }
     }
 }

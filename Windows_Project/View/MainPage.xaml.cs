@@ -132,12 +132,31 @@ namespace Windows_Project
         }
         private void OnCarOldButtonClick(object sender, RoutedEventArgs e)
         {
-            Frame.Navigate(typeof(OldCar), "old");
+            // Lấy thông tin người dùng đã đăng nhập
+            var user = ViewModel.Users.FirstOrDefault(u => u.Username == loggedInUser);
+
+            string carCondition = "old";
+            string selectedManufacturer = Select_Car_Company.SelectedItem != null ? ((Manufacturers)Select_Car_Company.SelectedItem).ManufacturerName : null;
+            string selectedModel = Select_Car_Model.SelectedItem != null ? Select_Car_Model.SelectedItem.ToString() : null;
+            string userName = user?.Username ?? string.Empty;
+            string data = $"{carCondition}|{selectedManufacturer}|{selectedModel}|{userName}";
+
+            //Frame.Navigate(typeof(OldCar), "old");
+            Frame.Navigate(typeof(OldCar), data);
         }
 
         private void OnCarNewButtonClick(object sender, RoutedEventArgs e)
         {
-            Frame.Navigate(typeof(OldCar), "new");
+            // Lấy thông tin người dùng đã đăng nhập
+            var user = ViewModel.Users.FirstOrDefault(u => u.Username == loggedInUser);
+
+            string carCondition = "new";
+            string selectedManufacturer = Select_Car_Company.SelectedItem != null ? ((Manufacturers)Select_Car_Company.SelectedItem).ManufacturerName : null;
+            string selectedModel = Select_Car_Model.SelectedItem != null ? Select_Car_Model.SelectedItem.ToString() : null;
+            string userName = user?.Username ?? string.Empty;
+            string data = $"{carCondition}|{selectedManufacturer}|{selectedModel}|{userName}";
+
+            Frame.Navigate(typeof(OldCar), data);
         }
 
         private void OnPriceButtonClick(object sender, RoutedEventArgs e)
@@ -169,47 +188,48 @@ namespace Windows_Project
         }
 
         private async void onLoginButtonClick(object sender, RoutedEventArgs e)
-        {
-            while (true)
             {
-                // Hiển thị hộp thoại đăng nhập
-                var result = await LoginDialog.ShowAsync();
-
-                // Kiểm tra kết quả khi người dùng nhấn nút
-                if (result == ContentDialogResult.Primary)
+                while (true)
                 {
-                    string username = UsernameLogin.Text;
-                    string password = PasswordLogin.Password;
+                    // Hiển thị hộp thoại đăng nhập
+                    var result = await LoginDialog.ShowAsync();
 
-                    // Lấy danh sách người dùng từ cơ sở dữ liệu
-                    var users = await Task.Run(() => _sqlDao.GetUsers());
-
-                    // Kiểm tra thông tin đăng nhập trong danh sách người dùng
-                    var user = users.FirstOrDefault(u => u.Username == username && u.Password == password);
-
-                    if (user != null)
+                    // Kiểm tra kết quả khi người dùng nhấn nút
+                    if (result == ContentDialogResult.Primary)
                     {
-                        // Nếu đăng nhập thành công
-                        isLoggedIn = true;
-                        loggedInUser = username;
-                        UpdateLoginButtons();
-                        Noti.Text = "Đăng nhập thành công!";
-                        break; // Đóng Dialog
+                        string username = UsernameLogin.Text;
+                        string password = PasswordLogin.Password;
+
+                        // Lấy danh sách người dùng từ cơ sở dữ liệu
+                        var users = await Task.Run(() => _sqlDao.GetUsers());
+
+                        // Kiểm tra thông tin đăng nhập trong danh sách người dùng
+                        var user = users.FirstOrDefault(u => u.Username == username && u.Password == password);
+
+                        if (user != null)
+                        {
+                            // Nếu đăng nhập thành công
+                            isLoggedIn = true;
+                            loggedInUser = username;
+                            UpdateLoginButtons();
+                            Noti.Text = "Đăng nhập thành công!";
+                            break; // Đóng Dialog
+                        }
+                        else
+                        {
+                            // Nếu đăng nhập thất bại
+                            Noti.Text = "Đăng nhập thất bại, xin thử lại.";
+                            await failedDialog.ShowAsync();
+                        }
                     }
                     else
                     {
-                        // Nếu đăng nhập thất bại
-                        Noti.Text = "Đăng nhập thất bại, xin thử lại.";
-                        await failedDialog.ShowAsync();
+                        // Người dùng nhấn nút "Hủy"
+                        // Người dùng nhấn nút "Hủy"
+                        break;
                     }
                 }
-                else
-                {
-                    // Người dùng nhấn nút "Hủy"
-                    break;
-                }
             }
-        }
 
         private void LoginDialog_PrimaryButtonClick(ContentDialog sender, ContentDialogButtonClickEventArgs args)
         {
@@ -273,7 +293,14 @@ namespace Windows_Project
                         bool isSaved = await _sqlDao.SaveUserAsync(username, password);
                         if (isSaved)
                         {
+                            // Thêm người dùng mới vào danh sách Users của ViewModel
+                            ViewModel.Users.Add(new Users
+                            {
+                                Username = username,
+                                Password = password // (Nếu cần bảo mật, không nên lưu mật khẩu dưới dạng plaintext)
+                            });
                             Noti.Text = "Đăng ký thành công";
+                            await successDialog.ShowAsync();
                             break;
                         }
                         else
@@ -310,6 +337,11 @@ namespace Windows_Project
 
         }
 
+        private void SuccessLogin_PrimaryButtonClick(ContentDialog sender, ContentDialogButtonClickEventArgs args)
+        {
+
+        }
+
         private void onLogoutClick(object sender, RoutedEventArgs e)
         {
             isLoggedIn = false;
@@ -334,6 +366,9 @@ namespace Windows_Project
 
         private async void Search_Car_Click(object sender, RoutedEventArgs e)
         {
+            // Lấy thông tin người dùng đã đăng nhập
+            var user = ViewModel.Users.FirstOrDefault(u => u.Username == loggedInUser);
+            
             if (Old_Car.IsChecked == false && New_Car.IsChecked == false)
             {
                 failedDialog.Content = new TextBlock()
@@ -347,7 +382,8 @@ namespace Windows_Project
             string carCondition = Old_Car.IsChecked == true ? "old" : "new";
             string selectedManufacturer = Select_Car_Company.SelectedItem != null ? ((Manufacturers)Select_Car_Company.SelectedItem).ManufacturerName : null;
             string selectedModel = Select_Car_Model.SelectedItem != null ? Select_Car_Model.SelectedItem.ToString() : null;
-            string data = $"{carCondition}|{selectedManufacturer}|{selectedModel}";
+            string userName = user.Username;
+            string data = $"{carCondition}|{selectedManufacturer}|{selectedModel}|{userName}";
             Frame.Navigate(typeof(OldCar), data);
         }
         private void onInfoButtonClick(object sender, RoutedEventArgs e)
@@ -367,6 +403,26 @@ namespace Windows_Project
                 {
                     Title = "Lỗi",
                     Content = "Không tìm thấy thông tin người dùng.",
+                    CloseButtonText = "OK",
+                    XamlRoot = this.XamlRoot
+                };
+                _ = dialog.ShowAsync();
+            }
+        }
+
+        private void FavoriteClickButton(object sender, RoutedEventArgs e)
+        {
+            // Lấy thông tin người dùng đã đăng nhập
+            var user = ViewModel.Users.FirstOrDefault(u => u.Username == loggedInUser);
+            if (user != null) {
+                Frame.Navigate(typeof(FavoritePage), user);
+            }
+            else
+            {
+                ContentDialog dialog = new ContentDialog
+                {
+                    Title = "Lỗi",
+                    Content = "Vui lòng đăng nhập để xem danh sách yêu thích!",
                     CloseButtonText = "OK",
                     XamlRoot = this.XamlRoot
                 };

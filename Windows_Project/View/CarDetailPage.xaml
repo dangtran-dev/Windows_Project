@@ -18,7 +18,7 @@
 
                 <TextBlock Text="{x:Bind ViewModel.car.CarName}" FontSize="26" FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Center" />
 
-                <HyperlinkButton x:Name="Favourite" VerticalAlignment="Center" HorizontalAlignment="Right">
+                <HyperlinkButton x:Name="Favourite" VerticalAlignment="Center" HorizontalAlignment="Right" Click="FavoriteClick">
                     <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
                         <FontIcon Glyph="&#xEB51;" Foreground="Black"/>
                         <TextBlock Text="Lưu tin" VerticalAlignment="Center" Margin="10, 0, 0, 0"/>
