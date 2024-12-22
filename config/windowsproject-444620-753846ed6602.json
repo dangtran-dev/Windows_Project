@@ -1,0 +1,13 @@
+{
+  "type": "service_account",
+  "project_id": "windowsproject-444620",
+  "private_key_id": "753846ed6602a1f73207a1c120a3087c382a61af",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvQIBADANBgkqhkiG9w0BAQEFAASCBKcwggSjAgEAAoIBAQC0AUFImDTbC8bt\nuvLeaQEBdCShfdv83zWrodMYWRrw/ieVO2cxfap4vFT8Ol6WyDYciwkzuAlmH6ld\nmgrxH5fhvtTDrg1AegHtv7r7e6UZVh3t/1TY2Eybxmvcg7XQJjxI77W5hucZ96K0\n6QSIPuU7NKc2zZRVfL83Ois3iw6GH6Xia0rYTPkIbyNfJdtDdnPo142erdEr7Ja7\nJMNl2U4DF82F8F+J106gmrk5rPWRr3BFaaNZetzmeqWZs2s/luNluX1hblaVSCZh\n9uZ+VUzoUWKZwSU69atiA9DboqkjwAlg3VEjOhy4JQWG+F60s6LmeHZ1nKC/AaoC\nsbF3NmZlAgMBAAECggEAI3Dh0TDCq2QwuSrnWboT7BzZf4Bf2XR7RT056l/U6aEo\n2v2Urk5fS6FNHFJDwG1QFiOb3rZ8B0Lxnk/PmrUNOvHPQ23YBxtemNh4sL4h/hCS\nGQN+Samgv8T8BLFcEU0N7pBf19UDWH4E55i/fzHfAV63E5e7fm9u2KlXy/pRlD9+\nrr62JbG6A2P3kvgd5vGsiKfg+h8v+IsTOvZ5Ng4N4ihVxFmJaGe5mgC1ot22x/PB\nxnFLrzGuccjD3JxKP9BVg/w4d3Gfigm8hLZhVEBZV3JhbfDo47va0SwH3Ulgd4KT\nfKsFw/AJHGN2bb7fgpp0NGLyEtJL5DdUQ3u+O44SIQKBgQD01rcmhUD+KJW2uvuy\nFgbWrAKUGI4E4NaPOHxoVbDBFr4Z1H4JQTDMdjYw+1xjKeIWXB/MYDGn89M6e8QR\neMzEzoZ4jTS8FkclqJU5HM1IgjmAUPrd2FCdxYVJWva0kMeb/G17noairS2D85MX\nvL+PsbLRfWDRwXmXq2hB0GhksQKBgQC8Neylq5+DTIfqB1bFz0ux8Y/zPqOSFt4L\n6fzwNOLYaJx7wv+mNWxZPfA9YJSmA3uJx70Bh6XEAHfUjo0jPEchzud19gAHhXTL\nn+E5n9V/sidhjweYFwLsUekOpL7Ep2JuJDI0J2jPPElbo2uFiHxHDNT9ugTwH0jB\nCDxlsjTZ9QKBgQDa7yFJTcDnRI1Tn/IvteiZj6iimy5riE30NdNxTKbIkricylmF\nlwi23EHrHOnpNmuYCPraO25LvAk287NI2Fdq6S5vn/z274jhUNVXA71BSEl4x3D8\nbVDxM83S4YdXwVrszhVshD3qO6dGpcjzYfF94a2ADHhGOJatHDYXG/AtkQKBgE2l\n+bIH8lFbG5/D01rcwR/yxy7Vouo8oPNNX9tCFmyuDBFLS+molMDkut63n9w2B5u6\nWhHtgsgwYT/CaBwnXDlogTm7ehugRaVUmrkJZi2+tFydg8aNh9kzmfE+qq27WPKT\n4Fp//8+v0ZwK+esneg5eDul2+16NqZhp63ERapiZAoGAR50egp0/H9YGPB3Gsg/7\nY4sJw1n/nJ+jTLd62Hr1yoS151MWefCb0KC0C9gBhTzqCN6HJdcQ+rLNfAHxTA+7\npm/8pEG7rKOILy/xBl39kaosKs3eCzm0ktet66quhc4StOBXZSN7I19T7LwZLmB0\nLDdmeIz/hYY/AQYXofMsqnM=\n-----END PRIVATE KEY-----\n",
+  "client_email": "windows@windowsproject-444620.iam.gserviceaccount.com",
+  "client_id": "114519812377497293180",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://oauth2.googleapis.com/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/windows%40windowsproject-444620.iam.gserviceaccount.com",
+  "universe_domain": "googleapis.com"
+}

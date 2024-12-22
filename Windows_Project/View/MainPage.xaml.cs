@@ -126,7 +126,10 @@ namespace Windows_Project
                 }
             }
         }
-
+        private void SupportButton_Click(object sender, RoutedEventArgs e)
+        {
+            Frame.Navigate(typeof(SupportPage));
+        }
         private void OnCarOldButtonClick(object sender, RoutedEventArgs e)
         {
             Frame.Navigate(typeof(OldCar), "old");
