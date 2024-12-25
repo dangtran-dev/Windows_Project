@@ -58,6 +58,17 @@
                 </StackPanel>
             </ContentDialog>
 
+            <ContentDialog x:Name="ChangePasswordDialog"
+               PrimaryButtonText="Đổi mật khẩu"
+               SecondaryButtonText="Hủy">
+                <StackPanel>
+                    <TextBlock Text="Đổi mật khẩu" FontWeight="Bold" FontSize="18" HorizontalAlignment="Center" />
+                    <PasswordBox Header="Mật khẩu cũ" x:Name="OldPassword" PlaceholderText="Nhập mật khẩu cũ" />
+                    <PasswordBox Header="Mật khẩu mới" x:Name="NewPassword" PlaceholderText="Nhập mật khẩu" />
+                    <PasswordBox Header="Nhập lại mật khẩu mới" x:Name="Renewpassword" PlaceholderText="Nhập lại mật khẩu mới" />
+                </StackPanel>
+            </ContentDialog>
+
             <Grid VerticalAlignment="Top" Height="100" BorderBrush="Gray" BorderThickness="0, 0, 0, 0.3" Padding="50, 0, 50, 0">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="Auto"/>
@@ -108,7 +119,7 @@
                         <Button.Flyout>
                             <MenuFlyout>
                                 <MenuFlyoutItem Text="Thông tin cá nhân" Click="onInfoButtonClick"></MenuFlyoutItem>
-                                <MenuFlyoutItem Text="Option 2"></MenuFlyoutItem>
+                                <MenuFlyoutItem Text="Đổi mật khẩu" Click="onChangePasswordClick"></MenuFlyoutItem>
                                 <MenuFlyoutItem Text="Đăng xuất" Click="onLogoutClick"></MenuFlyoutItem>
                             </MenuFlyout>
                         </Button.Flyout>
