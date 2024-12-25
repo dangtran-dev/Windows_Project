@@ -50,7 +50,6 @@ namespace Windows_Project.View
 
                 // Lọc xe dựa trên UserID và truyền vào ViewModel
                 ViewModel.CreateListingsByUserID(user.UserID);
-
             }
         }
 

@@ -436,6 +436,40 @@ namespace Windows_Project.Service.DataAccess
                 return false;
             }
         }
+
+        // phương thức cập nhật thông tin người dùng
+        public async Task<bool> UpdateUserAsync(Users user)
+        {
+            try
+            {
+                using (SqlConnection conn = new SqlConnection(_connectionString))
+                {
+                    await conn.OpenAsync();
+
+                    string query = @"
+                    UPDATE Users
+                    SET FullName = @FullName, Phone = @Phone, Address = @Address
+                    WHERE UserID = @UserID";
+
+                    using (SqlCommand cmd = new SqlCommand(query, conn))
+                    {
+                        cmd.Parameters.AddWithValue("@UserID", user.UserID);
+                        cmd.Parameters.AddWithValue("@FullName", user.FullName);
+                        cmd.Parameters.AddWithValue("@Phone", user.Phone);
+                        cmd.Parameters.AddWithValue("@Address", user.Address);
+
+                        await cmd.ExecuteNonQueryAsync();
+                    }
+                }
+                return true;
+            }
+            catch (Exception ex)
+            {
+                // Xử lý lỗi
+                Debug.WriteLine($"Error updating user: {ex.Message}");
+                return false;
+            }
+        }
         // phương thức lấy danh sách bài đăng
         public List<Listings> GetListings()
         {
@@ -462,6 +496,34 @@ namespace Windows_Project.Service.DataAccess
                 }
             }
             return listings;
+        }
+
+        // phương thức lấy danh sách các bài đánh giá
+        public List<Reviews> GetReviews()
+        {
+            var reviews = new List<Reviews>();
+            using (SqlConnection connection = new SqlConnection(_connectionString))
+            {
+                connection.Open();
+                string query = "select ReviewID, Title, Advantages, Disadvantages, Content, ImageURL from Reviews";
+                using (SqlCommand command = new SqlCommand(query, connection))
+                using (SqlDataReader reader = command.ExecuteReader())
+                {
+                    while (reader.Read())
+                    {
+                        reviews.Add(new Reviews
+                        {
+                            ReviewID = reader.GetInt32(0),
+                            Title = reader.GetString(1),
+                            Advantages = reader.GetString(2),
+                            Disadvantages = reader.GetString(3),
+                            Content = reader.GetString(4),
+                            ImageURL = reader.GetString(5),
+                        });
+                    }
+                }
+            }
+            return reviews;
         }
 
         // Các phương thức khác (GetIsExpanderExpaned, GetLocations, GetUsers, GetListings) có thể triển khai tương tự.

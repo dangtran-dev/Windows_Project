@@ -51,8 +51,8 @@
                             <RowDefinition/>
                         </Grid.RowDefinitions>
 
-                        <TextBlock Grid.Row="0" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="18" Foreground="Black">
-        <Bold>Tìm chiếc xe dành cho bạn</Bold>
+                        <TextBlock Grid.Row="0" HorizontalAlignment="Center" FontWeight="Bold" VerticalAlignment="Center" FontSize="18" Foreground="Black">
+                              Tìm chiếc xe dành cho bạn
                         </TextBlock>
 
                         <ComboBox x:Name="Select_Car_Company" Grid.Row="1" Width="240" SelectionChanged="Select_Car_Company_SelectionChanged"

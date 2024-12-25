@@ -68,6 +68,26 @@ namespace Windows_Project
                 }
             }
         }
-    }
 
+        private async void ZaloButton_Click(object sender, RoutedEventArgs e)
+        {
+            string zaloUrl = $"https://zalo.me/{ViewModel.user.Phone}";
+
+            // Mở trình duyệt hoặc ứng dụng Zalo
+            var success = await Windows.System.Launcher.LaunchUriAsync(new Uri(zaloUrl));
+
+            if (!success)
+            {
+                ContentDialog errorDialog = new ContentDialog
+                {
+                    XamlRoot = this.XamlRoot,
+                    Title = "Lỗi",
+                    Content = "Không thể mở Zalo. Vui lòng kiểm tra lại!",
+                    CloseButtonText = "OK"
+                };
+                await errorDialog.ShowAsync();
+            }
+        }
+
+    }
 }

@@ -165,6 +165,11 @@ namespace Windows_Project
             Frame.Navigate(typeof(ComparisonPage));
         }
 
+        private void OnReviewButtonClick(object sender, RoutedEventArgs e)
+        {
+            Frame.Navigate(typeof(ReviewPage));
+        }
+
         private async void onLoginButtonClick(object sender, RoutedEventArgs e)
         {
             while (true)

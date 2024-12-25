@@ -11,12 +11,13 @@
 
     <!-- Define Resources -->
     <Page.Resources>
+        <local:DecimalToVnCurrencyConverter x:Key="currency"/>
         <DataTemplate x:Key="ListingsTemplate" x:DataType="local:Cars">
             <StackPanel Grid.Column="0" Orientation="Horizontal">
                 <Image Source="{Binding CarImages[0].ImageURL}" Height="100" Width="100" Margin="10"/>
                 <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center">
                     <TextBlock Text="{Binding CarName}" FontSize="20" FontWeight="Bold"/>
-                    <TextBlock Text="{Binding Price}" FontSize="16" Foreground="Gray"/>
+                    <TextBlock Text="{Binding Price, Converter={StaticResource currency}}" FontSize="16" Foreground="Gray"/>
                 </StackPanel>
             </StackPanel>
         </DataTemplate>
