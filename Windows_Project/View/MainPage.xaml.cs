@@ -136,8 +136,10 @@ namespace Windows_Project
             var user = ViewModel.Users.FirstOrDefault(u => u.Username == loggedInUser);
 
             string carCondition = "old";
-            string selectedManufacturer = Select_Car_Company.SelectedItem != null ? ((Manufacturers)Select_Car_Company.SelectedItem).ManufacturerName : null;
-            string selectedModel = Select_Car_Model.SelectedItem != null ? Select_Car_Model.SelectedItem.ToString() : null;
+            //string selectedManufacturer = Select_Car_Company.SelectedItem != null ? ((Manufacturers)Select_Car_Company.SelectedItem).ManufacturerName : null;
+            string selectedManufacturer = "";
+            //string selectedModel = Select_Car_Model.SelectedItem != null ? Select_Car_Model.SelectedItem.ToString() : null;
+            string selectedModel = "";
             string userName = user?.Username ?? string.Empty;
             string data = $"{carCondition}|{selectedManufacturer}|{selectedModel}|{userName}";
 
@@ -151,8 +153,10 @@ namespace Windows_Project
             var user = ViewModel.Users.FirstOrDefault(u => u.Username == loggedInUser);
 
             string carCondition = "new";
-            string selectedManufacturer = Select_Car_Company.SelectedItem != null ? ((Manufacturers)Select_Car_Company.SelectedItem).ManufacturerName : null;
-            string selectedModel = Select_Car_Model.SelectedItem != null ? Select_Car_Model.SelectedItem.ToString() : null;
+            //string selectedManufacturer = Select_Car_Company.SelectedItem != null ? ((Manufacturers)Select_Car_Company.SelectedItem).ManufacturerName : null;
+            string selectedManufacturer = "";
+            //string selectedModel = Select_Car_Model.SelectedItem != null ? Select_Car_Model.SelectedItem.ToString() : null;
+            string selectedModel = "";
             string userName = user?.Username ?? string.Empty;
             string data = $"{carCondition}|{selectedManufacturer}|{selectedModel}|{userName}";
 
