@@ -135,17 +135,55 @@ namespace Windows_Project.View
         // Hàm xử lý sự kiện Click của nút "Lưu"
         private void OnSaveButtonClick(object sender, RoutedEventArgs e)
         {
-            // Cập nhật thông tin từ giao diện vào CurrentUser
-            CurrentUser.Username = (ContentGrid.FindName("UsernameTextBox") as TextBox)?.Text ?? CurrentUser.Username;
-            CurrentUser.FullName = (ContentGrid.FindName("FullNameTextBox") as TextBox)?.Text ?? CurrentUser.FullName;
-            CurrentUser.Address = (ContentGrid.FindName("AddressTextBox") as TextBox)?.Text ?? CurrentUser.Address;
-            CurrentUser.Phone = (ContentGrid.FindName("PhoneTextBox") as TextBox)?.Text ?? CurrentUser.Phone;
-            CurrentUser.Email = (ContentGrid.FindName("EmailTextBox") as TextBox)?.Text ?? CurrentUser.Email;
-            // Thực hiện logic lưu thông tin
+            // Lấy giá trị từ các TextBox
+            var usernameText = (ContentGrid.FindName("UsernameTextBox") as TextBox)?.Text ?? CurrentUser.Username;
+            var fullNameText = (ContentGrid.FindName("FullNameTextBox") as TextBox)?.Text ?? CurrentUser.FullName;
+            var addressText = (ContentGrid.FindName("AddressTextBox") as TextBox)?.Text ?? CurrentUser.Address;
+            var phoneText = (ContentGrid.FindName("PhoneTextBox") as TextBox)?.Text ?? CurrentUser.Phone;
+            var emailText = (ContentGrid.FindName("EmailTextBox") as TextBox)?.Text ?? CurrentUser.Email;
+
+            // Kiểm tra tính hợp lệ của số điện thoại (chỉ chứa số, độ dài tối thiểu)
+            if (!System.Text.RegularExpressions.Regex.IsMatch(phoneText, @"^\d{10,}$"))
+            {
+                var dialog = new ContentDialog
+                {
+                    Title = "Lỗi nhập liệu",
+                    Content = "Số điện thoại không hợp lệ. Vui lòng nhập số điện thoại có ít nhất 10 chữ số.",
+                    CloseButtonText = "Đóng",
+                    XamlRoot = this.Content.XamlRoot
+                };
+
+                _ = dialog.ShowAsync();
+                return;
+            }
+
+            // Kiểm tra tính hợp lệ của email (theo định dạng cơ bản)
+            if (!System.Text.RegularExpressions.Regex.IsMatch(emailText, @"^[^@\s]+@[^@\s]+\.[^@\s]+$"))
+            {
+                var dialog = new ContentDialog
+                {
+                    Title = "Lỗi nhập liệu",
+                    Content = "Email không hợp lệ. Vui lòng nhập địa chỉ email đúng định dạng.",
+                    CloseButtonText = "Đóng",
+                    XamlRoot = this.Content.XamlRoot
+                };
+
+                _ = dialog.ShowAsync();
+                return;
+            }
+
+            // Nếu tất cả dữ liệu hợp lệ, cập nhật thông tin
+            CurrentUser.Username = usernameText;
+            CurrentUser.FullName = fullNameText;
+            CurrentUser.Address = addressText;
+            CurrentUser.Phone = phoneText;
+            CurrentUser.Email = emailText;
+
+            // Lưu thông tin
             ViewModel.SaveUserInfo(CurrentUser);
 
             // Hiển thị thông báo thành công
-            var dialog = new ContentDialog
+            var successDialog = new ContentDialog
             {
                 Title = "Thông báo",
                 Content = "Thông tin người dùng đã được lưu thành công!",
@@ -153,8 +191,9 @@ namespace Windows_Project.View
                 XamlRoot = this.Content.XamlRoot
             };
 
-            _ = dialog.ShowAsync();
+            _ = successDialog.ShowAsync();
         }
+
 
         // Hàm tạo một hàng thông tin với nhãn và giá trị
         private StackPanel CreateInfoRow(string label, string value, string textBoxName = null)
@@ -178,7 +217,8 @@ namespace Windows_Project.View
                         Width = 300,
                         Foreground = new SolidColorBrush(Microsoft.UI.Colors.Black),
                         TextWrapping = TextWrapping.Wrap,
-                        Name = textBoxName
+                        Name = textBoxName,
+                        IsReadOnly = textBoxName == "UsernameTextBox"
                     }
                 }
             };

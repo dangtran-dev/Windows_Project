@@ -299,25 +299,41 @@ namespace Windows_Project
 
                     if (password == repassword && !string.IsNullOrEmpty(password))
                     {
-                        // Gọi phương thức SaveUserAsync từ Dao
-                        bool isSaved = await _sqlDao.SaveUserAsync(username, password);
-                        if (isSaved)
+
+                        // Lấy danh sách người dùng từ cơ sở dữ liệu
+                        var users = await Task.Run(() => _sqlDao.GetUsers());
+
+                        // Kiểm tra thông tin đăng nhập trong danh sách người dùng
+                        var user = users.FirstOrDefault(u => u.Username == username);
+
+                        if (user != null)
                         {
-                            // Thêm người dùng mới vào danh sách Users của ViewModel
-                            ViewModel.Users.Add(new Users
-                            {
-                                Username = username,
-                                Password = password // (Nếu cần bảo mật, không nên lưu mật khẩu dưới dạng plaintext)
-                            });
-                            Noti.Text = "Đăng ký thành công";
-                            await successDialog.ShowAsync();
-                            break;
+                            Noti.Text = "Đăng ký thất bại. Username đã tồn tại!";
+                            await failedDialog.ShowAsync();
                         }
                         else
                         {
-                            Noti.Text = "Lỗi khi lưu vào cơ sở dữ liệu";
-                            await failedDialog.ShowAsync();
+                            // Gọi phương thức SaveUserAsync từ Dao
+                            bool isSaved = await _sqlDao.SaveUserAsync(username, password);
+                            if (isSaved)
+                            {
+                                // Thêm người dùng mới vào danh sách Users của ViewModel
+                                ViewModel.Users.Add(new Users
+                                {
+                                    Username = username,
+                                    Password = password // (Nếu cần bảo mật, không nên lưu mật khẩu dưới dạng plaintext)
+                                });
+                                Noti2.Text = "Đăng ký thành công";
+                                await successDialog.ShowAsync();
+                                break;
+                            }
+                            else
+                            {
+                                Noti.Text = "Lỗi khi lưu vào cơ sở dữ liệu";
+                                await failedDialog.ShowAsync();
+                            }
                         }
+                        
                     }
                     else
                     {
@@ -355,6 +371,7 @@ namespace Windows_Project
         private void onLogoutClick(object sender, RoutedEventArgs e)
         {
             isLoggedIn = false;
+            loggedInUser = "";
             UpdateLoginButtons();
         }
         private void Old_Car_Checked(object sender, RoutedEventArgs e)
@@ -392,7 +409,11 @@ namespace Windows_Project
             string carCondition = Old_Car.IsChecked == true ? "old" : "new";
             string selectedManufacturer = Select_Car_Company.SelectedItem != null ? ((Manufacturers)Select_Car_Company.SelectedItem).ManufacturerName : null;
             string selectedModel = Select_Car_Model.SelectedItem != null ? Select_Car_Model.SelectedItem.ToString() : null;
-            string userName = user.Username;
+            string userName = "";
+            if(user != null)
+            {
+                userName = user.Username;
+            }
             string data = $"{carCondition}|{selectedManufacturer}|{selectedModel}|{userName}";
             Frame.Navigate(typeof(OldCar), data);
         }
@@ -439,7 +460,67 @@ namespace Windows_Project
                 _ = dialog.ShowAsync();
             }
         }
-    }
 
-        //User click vao ca nhan de chon
+        
+        private async void onChangePasswordClick(object sender, RoutedEventArgs e)
+        {
+            await ShowChangePasswordDialogAsync();
+        }
+
+        private async Task ShowChangePasswordDialogAsync()
+        {
+            // Hiển thị ChangePasswordDialog cho đến khi mật khẩu được đổi thành công
+            while (true)
+            {
+                var result = await ChangePasswordDialog.ShowAsync();
+
+                if (result == ContentDialogResult.Primary)
+                {
+                    string oldpassword = OldPassword.Password;
+                    string newpassword = NewPassword.Password;
+                    string renewpassword = Renewpassword.Password;
+
+                    var user = ViewModel.Users.FirstOrDefault(u => u.Username == loggedInUser);
+
+                    if (user != null)
+                    {
+                        bool check = oldpassword == user.Password;
+
+                        if (!check)
+                        {
+                            Noti.Text = "Mật khẩu cũ không chính xác. Vui lòng kiểm tra lại!";
+                            await failedDialog.ShowAsync();
+                        }
+                        else if (newpassword != renewpassword)
+                        {
+                            Noti.Text = "Mật khẩu mới không khớp. Vui lòng nhập lại!";
+                            await failedDialog.ShowAsync();
+                        }
+                        else if (oldpassword == newpassword && newpassword == renewpassword)
+                        {
+                            Noti.Text = "Vui lòng nhập mật khẩu mới khác mật khẩu cũ";
+                            await failedDialog.ShowAsync();
+                        }
+                        else
+                        {
+                            // Đổi mật khẩu thành công
+                            ViewModel.changePasswordUser(loggedInUser, newpassword);
+                            Noti2.Text = "Thay đổi mật khẩu thành công!";
+                            await successDialog.ShowAsync();
+                            break;
+                        }
+                    }
+                    else
+                    {
+                        Noti.Text = "Không tìm thấy người dùng. Vui lòng thử lại!";
+                        await failedDialog.ShowAsync();
+                    }
+                }
+                else
+                {
+                    break;
+                }
+            }
+        }
+    }
 }

@@ -150,6 +150,33 @@ public class MainViewModel : INotifyPropertyChanged
             OnPropertyChanged(nameof(Users));
         }
     }
+
+
+    public void changePasswordUser(string username, string password)
+    {
+        var user = Users.FirstOrDefault(u => u.Username == username);
+        if (user != null)
+        {
+            user.Password = password;
+
+            // Cập nhật vào cơ sở dữ liệu
+            using (var connection = new SqlConnection("Server=localhost,1433;Database=demoshop;User Id=sa;Password=SqlServer@123;TrustServerCertificate=True;"))
+            {
+                connection.Open();
+                var query = "UPDATE Users SET Password = @Password WHERE Username = @Username";
+                using (var command = new SqlCommand(query, connection))
+                {
+                    command.Parameters.AddWithValue("@Password", password);
+                    command.Parameters.AddWithValue("@Username", username);
+                    command.ExecuteNonQuery();
+                }
+            }
+
+            // Thông báo cho UI biết dữ liệu đã thay đổi
+            OnPropertyChanged(nameof(Users));
+        }
+    }
+
     // kết nối tới supabase
     private async Task InitializeSupabaseClient()
     {
