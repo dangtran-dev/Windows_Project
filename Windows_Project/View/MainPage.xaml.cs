@@ -361,6 +361,7 @@ namespace Windows_Project
         private void onLogoutClick(object sender, RoutedEventArgs e)
         {
             isLoggedIn = false;
+            loggedInUser = "";
             UpdateLoginButtons();
         }
         private void Old_Car_Checked(object sender, RoutedEventArgs e)
@@ -398,7 +399,11 @@ namespace Windows_Project
             string carCondition = Old_Car.IsChecked == true ? "old" : "new";
             string selectedManufacturer = Select_Car_Company.SelectedItem != null ? ((Manufacturers)Select_Car_Company.SelectedItem).ManufacturerName : null;
             string selectedModel = Select_Car_Model.SelectedItem != null ? Select_Car_Model.SelectedItem.ToString() : null;
-            string userName = user.Username;
+            string userName = "";
+            if(user != null)
+            {
+                userName = user.Username;
+            }
             string data = $"{carCondition}|{selectedManufacturer}|{selectedModel}|{userName}";
             Frame.Navigate(typeof(OldCar), data);
         }
