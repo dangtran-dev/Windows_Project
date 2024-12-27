@@ -187,6 +187,11 @@ namespace Windows_Project
             Frame.Navigate(typeof(ComparisonPage));
         }
 
+        private void OnNewsButtonClick(object sender, RoutedEventArgs e)
+        {
+            Frame.Navigate(typeof(NewsPage));
+        }
+
         private async void onLoginButtonClick(object sender, RoutedEventArgs e)
             {
                 while (true)

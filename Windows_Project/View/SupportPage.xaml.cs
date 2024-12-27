@@ -25,6 +25,7 @@ using Google.Cloud.Dialogflow.V2;
 using System.Windows.Resources;
 using Newtonsoft.Json.Linq;
 using Microsoft.IdentityModel.Tokens;
+using System.Text.RegularExpressions;
 
 // To learn more about WinUI, the WinUI project structure,
 // and more about our project templates, see: http://aka.ms/winui-project-info.
@@ -66,12 +67,11 @@ namespace Windows_Project
                 InputTextBox.Text = string.Empty;
 
                 // Gửi tin nhắn đến DialogFlow
-                //string botResponse = await SendMessageToDialogflow(userMessage);
-                //if (botResponse.IsNullOrEmpty() || botResponse.Equals("Default Fallback Intent", StringComparison.OrdinalIgnoreCase))
-                //{
-                //    botResponse = await SendMessageToGemini(userMessage);
-                //}
-                string botResponse = await SendMessageToGemini(userMessage);
+                string botResponse = await SendMessageToDialogflow(userMessage);
+                if (string.IsNullOrWhiteSpace(botResponse) || botResponse.Equals("Default Fallback Intent"))
+                {
+                    botResponse = await SendMessageToGemini(userMessage);
+                }
 
                 // Hiển thị tin nhắn của bot
                 Messages.Add($"Bot: {botResponse}");
@@ -107,6 +107,7 @@ namespace Windows_Project
 
                 // Trích xuất text từ JSON
                 var text = parsedJson["candidates"]?[0]?["content"]?["parts"]?[0]?["text"]?.ToString();
+                text = Regex.Replace(text, @"\*", "");
 
                 return text;
             }

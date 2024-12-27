@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Page
+    x:Class="Windows_Project.NewDetailPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:Windows_Project"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
+
+    <ScrollViewer>
+        <Grid Padding="20">
+            <StackPanel>
+                <Grid VerticalAlignment="Top" Height="100" BorderBrush="Gray" BorderThickness="0, 0, 0, 1" Padding="50, 0, 50, 0">
+                    <Button Click="Back_Click" VerticalAlignment="Center">
+                        <FontIcon Glyph="&#xE830;" Foreground="Gray"
+                                      HorizontalAlignment="Center" VerticalAlignment="Center" />
+                    </Button>
+
+                    <TextBlock x:Name="TitleNew" Width="1000" FontSize="26" FontWeight="Bold" TextWrapping="Wrap" 
+                                   HorizontalAlignment="Center" VerticalAlignment="Center" />
+                </Grid>
+
+                <Image x:Name="ImageNew" HorizontalAlignment="Center" Width="1000" Margin="0, 10, 0, 0" Stretch="UniformToFill" />
+
+                <TextBlock x:Name="DescriptionNew" HorizontalAlignment="Center" MaxWidth="1000" FontSize="16" TextWrapping="Wrap" Margin="0, 10, 0, 0" />
+
+                <Button x:Name="ReadMore" HorizontalAlignment="Center" Grid.Column="0" Click="ReadMoreButton_Click"
+                        Width="110" Margin="10" Style="{StaticResource AccentButtonStyle}" Content="Đọc thêm" 
+                        FontWeight="Bold" Foreground="White" Background="#4DB848"/>
+
+                <StackPanel Margin="0, 20, 0, 0">
+                    <Grid Width="1000">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="*" />
+                        </Grid.ColumnDefinitions>
+
+                        <TextBlock x:Name="DateNew" FontSize="12" HorizontalAlignment="Left" Grid.Column="0"/>
+                        <TextBlock x:Name="AuthorNew" FontSize="12" HorizontalAlignment="Right" Grid.Column="1"/>
+                    </Grid>
+                </StackPanel>
+            </StackPanel>
+        </Grid>
+    </ScrollViewer>
+</Page>
