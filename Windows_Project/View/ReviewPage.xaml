@@ -79,7 +79,12 @@
                                     <ColumnDefinition Width="5*"/>
                                 </Grid.ColumnDefinitions>
 
-                                <Image Grid.Column="0" Source="{x:Bind ImageURL}" Width="100" Height="100"/>
+                                <Grid Grid.Column="0">
+                                    <Image x:Name="PlaceholderImage" Source="/Assets/car-default.jpg" Visibility="Visible"
+                                           Width="100" Height="100"/>
+                                    <Image x:Name="MainImage" Source="{x:Bind ImageURL}" Visibility="Collapsed"
+                                           Width="100" Height="100" ImageOpened="MainImage_ImageOpened"/>
+                                </Grid>
                                 <TextBlock Grid.Column="1" Text="{x:Bind Title}" FontWeight="Bold" VerticalAlignment="Center"/>
                             </Grid>
                         </DataTemplate>

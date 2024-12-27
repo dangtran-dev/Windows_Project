@@ -34,9 +34,9 @@
 
                 <StackPanel Grid.Column="0">
                     <Image x:Name="UniqueImage" Source="{x:Bind ViewModel.car.CarImages[0].ImageURL}" 
-                    Height="400" Width="800" 
-                    HorizontalAlignment="Center"
-                    Stretch="Uniform" Visibility="Collapsed"/>
+                        Height="400" Width="800"
+                        HorizontalAlignment="Center"
+                        Stretch="Uniform" Visibility="Collapsed"/>
                     <Grid x:Name="ListImageContainer" HorizontalAlignment="Center" VerticalAlignment="Center"
                         Margin="0,10,0,5">
                         <Grid.ColumnDefinitions>

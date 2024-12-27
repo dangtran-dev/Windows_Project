@@ -155,7 +155,12 @@
                                     </Grid.ColumnDefinitions>
 
                                     <StackPanel Grid.Column="0" Orientation="Horizontal">
-                                        <Image Source="{x:Bind car.CarImages[0].ImageURL}" Height="100" Width="100" Margin="10"/>
+                                        <Grid>
+                                            <Image x:Name="PlaceholderImage" Source="/Assets/car-default.jpg" Visibility="Visible"
+                                                   Height="100" Width="100" Margin="10"/>
+                                            <Image x:Name="MainImage" Source="{x:Bind car.CarImages[0].ImageURL}" Visibility="Collapsed"
+                                                   Height="100" Width="100" Margin="10" ImageOpened="MainImage_ImageOpened"/>
+                                        </Grid>
                                         <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center">
                                             <TextBlock Text="{x:Bind car.CarName}" FontSize="20" FontWeight="Bold"/>
                                             <TextBlock Text="{x:Bind car.Price, Converter={StaticResource currency}}" FontSize="16" Foreground="Gray"/>

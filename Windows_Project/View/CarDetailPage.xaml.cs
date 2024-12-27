@@ -88,6 +88,5 @@ namespace Windows_Project
                 await errorDialog.ShowAsync();
             }
         }
-
     }
 }

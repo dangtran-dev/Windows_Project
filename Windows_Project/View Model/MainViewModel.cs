@@ -275,7 +275,7 @@ public class MainViewModel : INotifyPropertyChanged
                     }
                 }
                 // tạo name duy nhất cho ảnh tránh việc upload ảnh trùng tên
-                string fileName = (file.Name).ToString() + Guid.NewGuid().ToString();
+                string fileName = Guid.NewGuid().ToString() + (file.Name).ToString();
                 // Upload ảnh lên Supabase
                 bool uploadResult = await UploadToSupabaseAsync(fileBytes, fileName);
                 if (uploadResult)

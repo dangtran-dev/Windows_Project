@@ -37,7 +37,10 @@
                                         <RowDefinition Height="Auto" />
                                     </Grid.RowDefinitions>
                                     <Grid HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
-                                        <Image Source="{x:Bind ManufacturerPicture}" HorizontalAlignment="Center" VerticalAlignment="Center" Stretch="UniformToFill"/>
+                                        <Image x:Name="PlaceholderImage" Source="/Assets/car-default.jpg" Visibility="Visible"
+                                               HorizontalAlignment="Center" VerticalAlignment="Center" Stretch="UniformToFill"/>
+                                        <Image x:Name="MainPage" Source="{x:Bind ManufacturerPicture}" ImageOpened="MainPage_ImageOpened"
+                                               HorizontalAlignment="Center" VerticalAlignment="Center" Stretch="UniformToFill"/>
                                     </Grid>
                                     <Grid Height="50" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Grid.Row="1">
                                         <TextBlock Text="{x:Bind ManufacturerName}" FontSize="18" FontWeight="Bold" Foreground="#050B20" HorizontalAlignment="Center" VerticalAlignment="Center"/>
