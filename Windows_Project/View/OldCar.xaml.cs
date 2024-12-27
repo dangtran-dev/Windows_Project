@@ -185,13 +185,29 @@ namespace Windows_Project.View
         {
             string manufactutrer = Select_Car_Company.SelectedItem != null ? ((Manufacturers)Select_Car_Company.SelectedItem).ManufacturerName : null;
             string model = Select_Car_Model.SelectedItem != null ? Select_Car_Model.SelectedItem.ToString() : null;
-            string year = string.IsNullOrEmpty(Search_Year.Text) ? null : Search_Year.Text;
+            //string year = string.IsNullOrEmpty(Search_Year.Text) ? null : Search_Year.Text;
+            string year = null;
+            if (!string.IsNullOrEmpty(Search_Year.Text) && int.TryParse(Search_Year.Text, out int validYear))
+            {
+                year = Search_Year.Text;
+            }
 
             var selectedStyleItem = comboboxStyleCar.SelectedItem as ComboBoxItem;
             string style = selectedStyleItem != null ? selectedStyleItem.Content.ToString() : null;
 
-            string minPrice = string.IsNullOrEmpty(MinPrice.Text) ? null : MinPrice.Text;
-            string maxPrice = string.IsNullOrEmpty(MaxPrice.Text) ? null : MaxPrice.Text;
+            //string minPrice = string.IsNullOrEmpty(MinPrice.Text) ? null : MinPrice.Text;
+            //string maxPrice = string.IsNullOrEmpty(MaxPrice.Text) ? null : MaxPrice.Text;
+            string minPrice = null;
+            if (!string.IsNullOrEmpty(MinPrice.Text) && int.TryParse(MinPrice.Text, out int validMinPrice))
+            {
+                minPrice = MinPrice.Text;
+            }
+
+            string maxPrice = null;
+            if (!string.IsNullOrEmpty(MaxPrice.Text) && int.TryParse(MaxPrice.Text, out int validMaxPrice))
+            {
+                maxPrice = MaxPrice.Text;
+            }
 
             string origin = null;
             if (internalCar.IsChecked == true)

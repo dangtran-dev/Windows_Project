@@ -304,6 +304,7 @@ namespace Windows_Project.View
         //xử lý sự kiện cho nút xem trước tin đăng
         private async void Preview_Click(object sender, RoutedEventArgs e)
         {
+
             UpdateWarningState();
             if (warning)
             {
@@ -333,12 +334,36 @@ namespace Windows_Project.View
             }
             // lấy các dữ liệu từ các textbox, combobox, radiobutton để hiển thị lên popup
             var textYear = YearCarTextBox.Text;
+            // Kiểm tra điều kiện cho textYear
+            if (!int.TryParse(textYear, out _))
+            {
+                var dialog = new ContentDialog()
+                {
+                    XamlRoot = this.Content.XamlRoot,
+                    Content = "Năm sản xuất phải là số!",
+                    CloseButtonText = "Đóng",
+                };
+                await dialog.ShowAsync();
+                return;
+            }
 
             var selectedManufacturer = comboboxManufacturer.SelectedItem as Manufacturers;
             var textManufacturer = selectedManufacturer?.ManufacturerName;
             var textModel = comboboxModelCar.SelectedItem as string;
 
             var textPrice = texboxPrice.Text;
+            // Kiểm tra điều kiện cho textPrice
+            if (!int.TryParse(textPrice, out _))
+            {
+                var dialog = new ContentDialog()
+                {
+                    XamlRoot = this.Content.XamlRoot,
+                    Content = "Giá xe phải là số!",
+                    CloseButtonText = "Đóng",
+                };
+                await dialog.ShowAsync();
+                return;
+            }
             var textStyle = (comboboxStyleCar.SelectedItem as ComboBoxItem)?.Content.ToString();
             var textKm = "";
             var textCondition = "";
@@ -360,8 +385,23 @@ namespace Windows_Project.View
             else
             {
                 textCondition = "Xe cũ";
+                textKm = textBox_Km.Text;
+                // Kiểm tra điều kiện cho textKm (chỉ khi xe cũ)
+                if (!int.TryParse(textKm, out _))
+                {
+                    var dialog = new ContentDialog()
+                    {
+                        XamlRoot = this.Content.XamlRoot,
+                        Content = "Số km đã đi phải là số!",
+                        CloseButtonText = "Đóng",
+                    };
+                    await dialog.ShowAsync();
+                    return;
+                }
                 textKm = $"{textBox_Km.Text} km";
             }
+
+
 
             if (internalCar.IsChecked == true)
             {
