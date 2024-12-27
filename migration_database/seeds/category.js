@@ -24,6 +24,7 @@ exports.seed = async function (knex) {
   await knex("CarModels").del();
   await knex("Manufacturers").del();
   await knex("Users").del();
+  await knex("Reviews").del();
 
   // Thêm dữ liệu vào bảng Users
   await knex("Users").insert([
@@ -2321,761 +2322,1832 @@ exports.seed = async function (knex) {
     },
   ]);
 
+  // Thêm dữ liệu vào bảng Reviews
+  await knex("Reviews").insert([
+    {
+      Title: "Đánh giá Toyota Vios 1.5G AT 2022",
+      Advantages: "Thiết kế đẹp, tiết kiệm nhiên liệu, giá bán hợp lý",
+      Disadvantages:
+        "Không gian nội thất hạn chế, khả năng tăng tốc chưa ấn tượng",
+      Content:
+        "Toyota Vios 1.5G AT 2022 là một trong những mẫu sedan được ưa chuộng nhất tại Việt Nam nhờ sự bền bỉ, tiết kiệm nhiên liệu và giá trị bán lại cao. Tuy nhiên, mẫu xe này có không gian nội thất khá hạn chế và động cơ không mạnh mẽ.",
+      ImageURL:
+        "https://lxaqtnuuqvsscavvqcxs.supabase.co/storage/v1/object/public/images/Toyota%20Vios%201.5G%20AT%202022.jpg",
+    },
+    {
+      Title: "Đánh giá Toyota Innova 2.0V 2019",
+      Advantages: "Không gian rộng rãi, vận hành bền bỉ, phù hợp gia đình",
+      Disadvantages: "Thiết kế ngoại thất chưa nổi bật, giá bán cao",
+      Content:
+        "Toyota Innova 2.0V 2019 là mẫu MPV rất được yêu thích tại Việt Nam, nhờ sự rộng rãi và vận hành ổn định. Tuy nhiên, thiết kế ngoại thất của xe không thực sự ấn tượng và giá bán tương đối cao.",
+      ImageURL:
+        "https://lxaqtnuuqvsscavvqcxs.supabase.co/storage/v1/object/public/images/Toyota%20Innova%202.0V%202019.jpg",
+    },
+    {
+      Title: "Đánh giá Toyota Fortuner 2015",
+      Advantages:
+        "Khả năng vận hành mạnh mẽ, thiết kế cứng cáp, phù hợp off-road",
+      Disadvantages: "Trang bị nội thất đơn giản, giá bán cao",
+      Content:
+        "Toyota Fortuner 2015 là mẫu SUV rất phổ biến nhờ khả năng off-road tốt và thiết kế bền bỉ. Tuy nhiên, nội thất đơn giản và mức giá cao khiến mẫu xe này phù hợp hơn với những ai yêu cầu độ bền và tính năng vận hành.",
+      ImageURL:
+        "https://lxaqtnuuqvsscavvqcxs.supabase.co/storage/v1/object/public/images/Toyota%20Fortuner%202015.jpg",
+    },
+    {
+      Title: "Đánh giá Toyota Camry 2.5Q 2018",
+      Advantages: "Thiết kế sang trọng, vận hành êm ái, trang bị hiện đại",
+      Disadvantages: "Giá bán cao, bảo dưỡng tốn kém",
+      Content:
+        "Toyota Camry 2.5Q 2018 là dòng sedan cao cấp với thiết kế sang trọng, khả năng vận hành êm ái và nội thất tiện nghi. Tuy nhiên, mức giá cao và chi phí bảo dưỡng lớn là những điểm cần cân nhắc.",
+      ImageURL:
+        "https://lxaqtnuuqvsscavvqcxs.supabase.co/storage/v1/object/public/images/Toyota%20Camry%202.5Q%202018.jpg",
+    },
+    {
+      Title: "Đánh giá Toyota Corolla Altis 1.8 G 2012",
+      Advantages: "Độ bền cao, vận hành ổn định, tiết kiệm nhiên liệu",
+      Disadvantages: "Thiết kế cũ, trang bị không hiện đại",
+      Content:
+        "Toyota Corolla Altis 1.8 G 2012 là mẫu xe sedan có độ bền vượt trội, phù hợp với những ai yêu thích sự ổn định và tiết kiệm. Tuy nhiên, thiết kế đã lỗi thời và thiếu nhiều công nghệ hiện đại.",
+      ImageURL:
+        "https://lxaqtnuuqvsscavvqcxs.supabase.co/storage/v1/object/public/images/Toyota%20Corolla%20Altis%201.8%20G%202012.jpg",
+    },
+    {
+      Title: "Đánh giá Toyota Corolla Cross 1.8 V 2020",
+      Advantages:
+        "Thiết kế hiện đại, tiết kiệm nhiên liệu, trang bị an toàn cao",
+      Disadvantages: "Không gian nội thất chưa rộng rãi, giá bán cao",
+      Content:
+        "Toyota Corolla Cross 1.8 V 2020 là một mẫu crossover hiện đại với nhiều công nghệ an toàn và thiết kế hấp dẫn. Tuy nhiên, không gian nội thất hơi hạn chế và giá bán tương đối cao.",
+      ImageURL:
+        "https://lxaqtnuuqvsscavvqcxs.supabase.co/storage/v1/object/public/images/Toyota%20Corolla%20Cross%201.8%20V%202020.jpg",
+    },
+    {
+      Title: "Đánh giá Toyota Yaris 1.5G 2017",
+      Advantages:
+        "Kích thước nhỏ gọn, tiết kiệm nhiên liệu, vận hành linh hoạt",
+      Disadvantages: "Thiết kế không nổi bật, trang bị đơn giản",
+      Content:
+        "Toyota Yaris 1.5G 2017 là một mẫu hatchback nhỏ gọn, phù hợp cho việc di chuyển trong đô thị. Xe có khả năng tiết kiệm nhiên liệu tốt nhưng thiết kế không nổi bật và trang bị còn đơn giản.",
+      ImageURL:
+        "https://lxaqtnuuqvsscavvqcxs.supabase.co/storage/v1/object/public/images/Toyota%20Yaris%201.5G%202017.jpg",
+    },
+    {
+      Title: "Đánh giá Toyota Wigo 1.2 G MT 2020",
+      Advantages: "Giá bán rẻ, tiết kiệm nhiên liệu, vận hành ổn định",
+      Disadvantages: "Khả năng cách âm kém, không gian hạn chế",
+      Content:
+        "Toyota Wigo 1.2 G MT 2020 là mẫu xe hatchback giá rẻ, phù hợp cho những ai tìm kiếm một chiếc xe tiết kiệm nhiên liệu và vận hành ổn định. Tuy nhiên, xe có khả năng cách âm chưa tốt và không gian nội thất hạn chế.",
+      ImageURL:
+        "https://lxaqtnuuqvsscavvqcxs.supabase.co/storage/v1/object/public/images/Toyota%20Wigo%201.2%20G%20MT%202020.jpg",
+    },
+    {
+      Title: "Đánh giá Volkswagen Tiguan 2.0L TSI 2014",
+      Advantages:
+        "Khả năng vận hành mạnh mẽ, thiết kế sang trọng, trang bị đầy đủ",
+      Disadvantages: "Tiêu thụ nhiên liệu cao, giá bán cao",
+      Content:
+        "Volkswagen Tiguan 2.0L TSI 2014 là một mẫu SUV sang trọng, với khả năng vận hành mạnh mẽ và thiết kế thể thao. Tuy nhiên, mức tiêu thụ nhiên liệu của xe khá cao và giá bán cũng không hề rẻ.",
+      ImageURL:
+        "https://lxaqtnuuqvsscavvqcxs.supabase.co/storage/v1/object/public/images/Volkswagen%20Tiguan%202.0L%20TSI%202014.jpg",
+    },
+    {
+      Title: "Đánh giá Volkswagen Polo 1.6AT 2021",
+      Advantages: "Tiết kiệm nhiên liệu, thiết kế nhỏ gọn, vận hành ổn định",
+      Disadvantages: "Không gian nội thất hạn chế, động cơ không mạnh mẽ",
+      Content:
+        "Volkswagen Polo 1.6AT 2021 là mẫu xe nhỏ gọn, tiết kiệm nhiên liệu và vận hành ổn định. Tuy nhiên, không gian nội thất hạn chế và động cơ không thật sự mạnh mẽ, không phù hợp với những ai yêu cầu sức mạnh.",
+      ImageURL:
+        "https://lxaqtnuuqvsscavvqcxs.supabase.co/storage/v1/object/public/images/Volkswagen%20Polo%201.6AT%202021.jpg",
+    },
+    {
+      Title: "Đánh giá Volkswagen Teramont 2022",
+      Advantages: "Không gian rộng rãi, trang bị tiện nghi, vận hành mạnh mẽ",
+      Disadvantages: "Kích thước lớn, tiêu thụ nhiên liệu cao",
+      Content:
+        "Volkswagen Teramont 2022 là mẫu SUV cỡ lớn với không gian rộng rãi, trang bị tiện nghi và khả năng vận hành mạnh mẽ. Tuy nhiên, xe có kích thước lớn, khó khăn trong việc di chuyển ở đô thị và tiêu thụ nhiên liệu tương đối cao.",
+      ImageURL:
+        "https://lxaqtnuuqvsscavvqcxs.supabase.co/storage/v1/object/public/images/Volkswagen%20Teramont%202022.jpg",
+    },
+    {
+      Title: "Đánh giá Volkswagen Touareg 2008",
+      Advantages: "Khả năng off-road tuyệt vời, thiết kế mạnh mẽ, bền bỉ",
+      Disadvantages: "Giá bán cao, tiêu thụ nhiên liệu lớn",
+      Content:
+        "Volkswagen Touareg 2008 là một chiếc SUV mạnh mẽ, với khả năng off-road ấn tượng và thiết kế cứng cáp. Tuy nhiên, mức giá của xe khá cao và xe tiêu thụ nhiên liệu không ít.",
+      ImageURL:
+        "https://lxaqtnuuqvsscavvqcxs.supabase.co/storage/v1/object/public/images/Volkswagen%20Touareg%202008.jpg",
+    },
+    {
+      Title: "Đánh giá Volkswagen T-Cross 2024",
+      Advantages: "Thiết kế hiện đại, tiết kiệm nhiên liệu, vận hành linh hoạt",
+      Disadvantages:
+        "Không gian nội thất chưa rộng rãi, thiếu tính năng cao cấp",
+      Content:
+        "Volkswagen T-Cross 2024 là mẫu SUV cỡ nhỏ với thiết kế hiện đại, khả năng tiết kiệm nhiên liệu tốt và vận hành linh hoạt. Tuy nhiên, không gian nội thất của xe không quá rộng và thiếu một số tính năng cao cấp.",
+      ImageURL:
+        "https://lxaqtnuuqvsscavvqcxs.supabase.co/storage/v1/object/public/images/Volkswagen%20T-Cross%202024.jpg",
+    },
+    {
+      Title: "Đánh giá Volkswagen Beetle 2018",
+      Advantages: "Thiết kế độc đáo, cảm giác lái thú vị, vận hành ổn định",
+      Disadvantages: "Không gian nội thất hạn chế, giá bán cao",
+      Content:
+        "Volkswagen Beetle 2018 là mẫu xe có thiết kế đặc trưng và cảm giác lái thú vị. Tuy nhiên, không gian nội thất hạn chế và giá bán tương đối cao so với những mẫu xe khác trong phân khúc.",
+      ImageURL:
+        "https://lxaqtnuuqvsscavvqcxs.supabase.co/storage/v1/object/public/images/Volkswagen%20Beetle%202018.jpg",
+    },
+    {
+      Title: "Đánh giá Ford Ranger Wildtrak 4x4 AT 2023",
+      Advantages:
+        "Khả năng off-road xuất sắc, thiết kế mạnh mẽ, công nghệ tiên tiến",
+      Disadvantages: "Giá bán cao, tiêu thụ nhiên liệu lớn",
+      Content:
+        "Ford Ranger Wildtrak 4x4 AT 2023 là một mẫu xe bán tải mạnh mẽ với khả năng off-road ấn tượng và thiết kế thể thao, nổi bật với công nghệ tiên tiến. Tuy nhiên, xe có giá bán cao và mức tiêu thụ nhiên liệu tương đối lớn.",
+      ImageURL:
+        "https://lxaqtnuuqvsscavvqcxs.supabase.co/storage/v1/object/public/images/Ford%20Ranger%20Wildtrak%204x4%20AT%202023.jpg",
+    },
+    {
+      Title: "Đánh giá Ford Everest Titanium 2.0 AT 4x2 2020",
+      Advantages:
+        "Không gian rộng rãi, tiện nghi cao cấp, khả năng vận hành mượt mà",
+      Disadvantages: "Kích thước lớn, khả năng off-road hạn chế",
+      Content:
+        "Ford Everest Titanium 2.0 AT 4x2 2020 mang đến không gian rộng rãi và tiện nghi cao cấp. Tuy nhiên, xe có kích thước lớn, điều này có thể gây khó khăn trong việc di chuyển tại các khu vực đô thị, và khả năng off-road không mạnh mẽ như các mẫu xe SUV 4x4.",
+      ImageURL:
+        "https://lxaqtnuuqvsscavvqcxs.supabase.co/storage/v1/object/public/images/Ford%20Everest%20Titanium%202.0%20AT%204x2%202020.jpg",
+    },
+    {
+      Title: "Đánh giá Ford EcoSport Ambiente 1.5L MT 2019",
+      Advantages:
+        "Tiết kiệm nhiên liệu, thiết kế nhỏ gọn, phù hợp di chuyển đô thị",
+      Disadvantages: "Không gian nội thất hạn chế, động cơ không mạnh mẽ",
+      Content:
+        "Ford EcoSport Ambiente 1.5L MT 2019 là một mẫu SUV nhỏ gọn, phù hợp cho các chuyến đi trong đô thị. Tuy nhiên, không gian nội thất của xe khá hạn chế và động cơ không đủ mạnh mẽ đối với những ai muốn một chiếc xe có sức mạnh vượt trội.",
+      ImageURL:
+        "https://lxaqtnuuqvsscavvqcxs.supabase.co/storage/v1/object/public/images/Ford%20EcoSport%20Ambiente%201.5L%20MT%202019.jpg",
+    },
+    {
+      Title: "Đánh giá Ford Territory Titanium X 2023",
+      Advantages: "Thiết kế hiện đại, tiện nghi cao cấp, vận hành mạnh mẽ",
+      Disadvantages: "Giá bán cao, không gian chưa thực sự rộng rãi",
+      Content:
+        "Ford Territory Titanium X 2023 là một mẫu SUV hiện đại với thiết kế nổi bật và tiện nghi cao cấp. Tuy nhiên, giá bán khá cao và không gian nội thất vẫn chưa thực sự rộng rãi so với các đối thủ trong phân khúc.",
+      ImageURL:
+        "https://lxaqtnuuqvsscavvqcxs.supabase.co/storage/v1/object/public/images/Ford%20Territory%20Titanium%20X%202023.jpg",
+    },
+    {
+      Title: "Đánh giá Ford Explorer 2021",
+      Advantages:
+        "Không gian rộng rãi, khả năng off-road mạnh mẽ, công nghệ tiên tiến",
+      Disadvantages: "Giá bán cao, tiêu thụ nhiên liệu lớn",
+      Content:
+        "Ford Explorer 2021 là một mẫu SUV cỡ lớn, với không gian rộng rãi và khả năng off-road ấn tượng. Tuy nhiên, xe có giá bán cao và tiêu thụ nhiên liệu lớn, đặc biệt khi di chuyển trong các chuyến đi dài.",
+      ImageURL:
+        "https://lxaqtnuuqvsscavvqcxs.supabase.co/storage/v1/object/public/images/Ford%20Explorer%202021.jpg",
+    },
+    {
+      Title: "Đánh giá Ford F-150 Harley Davidson 2019",
+      Advantages: "Thiết kế mạnh mẽ, động cơ mạnh mẽ, trang bị đẳng cấp",
+      Disadvantages: "Kích thước lớn, tiêu thụ nhiên liệu cao",
+      Content:
+        "Ford F-150 Harley Davidson 2019 là một mẫu bán tải hạng nặng với động cơ mạnh mẽ và thiết kế ấn tượng. Tuy nhiên, kích thước lớn và mức tiêu thụ nhiên liệu cao có thể làm cho xe không phải là sự lựa chọn tối ưu cho việc di chuyển trong đô thị.",
+      ImageURL:
+        "https://lxaqtnuuqvsscavvqcxs.supabase.co/storage/v1/object/public/images/Ford%20F-150%20Harley%20Davidson%202019.jpg",
+    },
+    {
+      Title: "Đánh giá Ford Transit 2013",
+      Advantages:
+        "Không gian rộng rãi, khả năng vận hành bền bỉ, phù hợp với kinh doanh",
+      Disadvantages: "Ngoại thất không nổi bật, tiêu thụ nhiên liệu lớn",
+      Content:
+        "Ford Transit 2013 là một mẫu xe van rất phù hợp cho mục đích kinh doanh nhờ không gian rộng rãi và khả năng vận hành bền bỉ. Tuy nhiên, ngoại thất của xe không có gì đặc biệt và mức tiêu thụ nhiên liệu khá lớn.",
+      ImageURL:
+        "https://lxaqtnuuqvsscavvqcxs.supabase.co/storage/v1/object/public/images/Ford%20Transit%202013.jpg",
+    },
+    {
+      Title: "Đánh giá Ford Focus Titanium 2014",
+      Advantages: "Thiết kế hiện đại, vận hành ổn định, tiết kiệm nhiên liệu",
+      Disadvantages: "Không gian nội thất hơi chật, động cơ chưa mạnh mẽ",
+      Content:
+        "Ford Focus Titanium 2014 là một chiếc sedan với thiết kế hiện đại và khả năng vận hành ổn định, tiết kiệm nhiên liệu. Tuy nhiên, không gian nội thất có thể hơi chật đối với những ai cần một chiếc xe rộng rãi hơn.",
+      ImageURL:
+        "https://lxaqtnuuqvsscavvqcxs.supabase.co/storage/v1/object/public/images/Ford%20Focus%20Titanium%202014.jpg",
+    },
+    {
+      Title: "Đánh giá Chevrolet Aveo 2018",
+      Advantages: "Thiết kế hiện đại, giá bán hợp lý, tiết kiệm nhiên liệu",
+      Disadvantages: "Không gian nội thất hạn chế, động cơ không mạnh mẽ",
+      Content:
+        "Chevrolet Aveo 2018 là một chiếc sedan cỡ nhỏ có thiết kế hiện đại và giá bán hợp lý. Tuy nhiên, không gian nội thất của xe khá hạn chế và động cơ không đủ mạnh mẽ cho những ai muốn một chiếc xe có hiệu suất cao.",
+      ImageURL:
+        "https://lxaqtnuuqvsscavvqcxs.supabase.co/storage/v1/object/public/images/Chevrolet%20Aveo%202018.jpg",
+    },
+    {
+      Title: "Đánh giá Chevrolet Camaro RS 2012",
+      Advantages:
+        "Thiết kế thể thao, động cơ mạnh mẽ, khả năng vận hành ấn tượng",
+      Disadvantages: "Giá bán cao, không gian nội thất hạn chế",
+      Content:
+        "Chevrolet Camaro RS 2012 là một mẫu xe thể thao với động cơ mạnh mẽ và thiết kế nổi bật. Tuy nhiên, xe có giá bán khá cao và không gian nội thất hạn chế, điều này có thể không phù hợp với những ai tìm kiếm sự thoải mái trong một chiếc xe thể thao.",
+      ImageURL:
+        "https://lxaqtnuuqvsscavvqcxs.supabase.co/storage/v1/object/public/images/Chevrolet%20Camaro%20RS%202012.jpg",
+    },
+    {
+      Title: "Đánh giá Nissan Navara PRO4X 2022",
+      Advantages:
+        "Khả năng off-road ấn tượng, thiết kế mạnh mẽ, trang bị cao cấp",
+      Disadvantages:
+        "Tiêu thụ nhiên liệu cao, không gian nội thất chưa thực sự rộng rãi",
+      Content:
+        "Nissan Navara PRO4X 2022 là một mẫu xe bán tải mạnh mẽ, thích hợp cho những chuyến đi off-road. Với thiết kế hầm hố và trang bị cao cấp, chiếc xe này vẫn có một nhược điểm là tiêu thụ nhiên liệu khá cao và không gian nội thất không quá rộng rãi.",
+      ImageURL:
+        "https://lxaqtnuuqvsscavvqcxs.supabase.co/storage/v1/object/public/images/Nissan%20Navara%20PRO4X%202022.jpg",
+    },
+    {
+      Title: "Đánh giá Nissan Sunny XV Premium 1.5 AT 2018",
+      Advantages: "Giá bán hợp lý, tiết kiệm nhiên liệu, không gian rộng rãi",
+      Disadvantages:
+        "Thiết kế chưa bắt mắt, khả năng vận hành không quá mạnh mẽ",
+      Content:
+        "Nissan Sunny XV Premium 1.5 AT 2018 là một chiếc sedan với giá bán hợp lý và tiết kiệm nhiên liệu. Mặc dù không có thiết kế quá nổi bật, nhưng xe lại sở hữu không gian rộng rãi và khả năng vận hành ổn định, thích hợp cho nhu cầu di chuyển hàng ngày.",
+      ImageURL:
+        "https://lxaqtnuuqvsscavvqcxs.supabase.co/storage/v1/object/public/images/Nissan%20Sunny%20XV%20Premium%201.5%20AT%202018.jpg",
+    },
+    {
+      Title: "Đánh giá Nissan Almera CVT Cao cấp 2021",
+      Advantages: "Tiết kiệm nhiên liệu, trang bị hiện đại, giá bán hợp lý",
+      Disadvantages:
+        "Động cơ không mạnh mẽ, không gian nội thất chưa thực sự sang trọng",
+      Content:
+        "Nissan Almera CVT Cao cấp 2021 là một mẫu sedan tiết kiệm nhiên liệu với trang bị hiện đại và giá bán hợp lý. Tuy nhiên, động cơ của xe không mạnh mẽ và không gian nội thất chưa thực sự sang trọng như các đối thủ cùng phân khúc.",
+      ImageURL:
+        "https://lxaqtnuuqvsscavvqcxs.supabase.co/storage/v1/object/public/images/Nissan%20Almera%20CVT%20Cao%20cap%202021.jpg",
+    },
+    {
+      Title: "Đánh giá Nissan X trail 2.5 SV 4WD Premium 2019",
+      Advantages:
+        "Khả năng vận hành mạnh mẽ, trang bị hiện đại, khả năng off-road tốt",
+      Disadvantages: "Giá bán cao, không gian hàng ghế sau chưa rộng rãi",
+      Content:
+        "Nissan X trail 2.5 SV 4WD Premium 2019 là một chiếc SUV với khả năng vận hành mạnh mẽ và trang bị hiện đại. Với khả năng off-road tuyệt vời, xe này lại có một nhược điểm là giá bán khá cao và không gian hàng ghế sau chưa đủ rộng rãi.",
+      ImageURL:
+        "https://lxaqtnuuqvsscavvqcxs.supabase.co/storage/v1/object/public/images/Nissan%20X%20trail%202.5%20SV%204WD%20Premium%202019.jpg",
+    },
+    {
+      Title: "Đánh giá Nissan Terra 2018",
+      Advantages:
+        "Khả năng vận hành mạnh mẽ, không gian rộng rãi, tiện nghi đầy đủ",
+      Disadvantages: "Thiết kế chưa thực sự nổi bật, giá bán cao",
+      Content:
+        "Nissan Terra 2018 là một mẫu SUV với khả năng vận hành mạnh mẽ, không gian rộng rãi và tiện nghi đầy đủ. Tuy nhiên, thiết kế của xe chưa thực sự nổi bật và giá bán có phần cao so với một số đối thủ trong cùng phân khúc.",
+      ImageURL:
+        "https://lxaqtnuuqvsscavvqcxs.supabase.co/storage/v1/object/public/images/Nissan%20Terra%202018.jpg",
+    },
+    {
+      Title: "Đánh giá Nissan Teana SL 2.5 AT 2013",
+      Advantages: "Thiết kế sang trọng, trang bị cao cấp, vận hành êm ái",
+      Disadvantages: "Tiêu thụ nhiên liệu cao, giá bán cao",
+      Content:
+        "Nissan Teana SL 2.5 AT 2013 là một mẫu sedan sang trọng với trang bị cao cấp và khả năng vận hành êm ái. Tuy nhiên, xe có nhược điểm là tiêu thụ nhiên liệu khá cao và giá bán cũng khá cao so với các mẫu xe cùng phân khúc.",
+      ImageURL:
+        "https://lxaqtnuuqvsscavvqcxs.supabase.co/storage/v1/object/public/images/Nissan%20Teana%20SL%202.5%20AT%202013.jpg",
+    },
+    {
+      Title: "Đánh giá Hyundai Accent 1.4 AT Đặc biệt 2021",
+      Advantages: "Thiết kế trẻ trung, tiết kiệm nhiên liệu, giá bán hợp lý",
+      Disadvantages:
+        "Không gian nội thất hạn chế, khả năng vận hành chưa mạnh mẽ",
+      Content:
+        "Hyundai Accent 1.4 AT Đặc biệt 2021 nổi bật với thiết kế trẻ trung, tiết kiệm nhiên liệu và giá bán hợp lý. Tuy nhiên, mẫu xe này có không gian nội thất khá hạn chế và khả năng vận hành chưa thật sự mạnh mẽ.",
+      ImageURL:
+        "https://lxaqtnuuqvsscavvqcxs.supabase.co/storage/v1/object/public/images/Hyundai%20Accent%201.4%20AT%20Dac%20biet%202021.jpg",
+    },
+    {
+      Title: "Đánh giá Hyundai Avante 1.6 MT 2011",
+      Advantages:
+        "Vận hành ổn định, giá bán phải chăng, không gian nội thất vừa đủ",
+      Disadvantages: "Thiết kế đã cũ, tính năng tiện nghi không quá nổi bật",
+      Content:
+        "Hyundai Avante 1.6 MT 2011 là một chiếc sedan với giá bán phải chăng và khả năng vận hành ổn định. Tuy nhiên, thiết kế của xe đã có phần cũ và tính năng tiện nghi không thực sự nổi bật so với các mẫu xe mới.",
+      ImageURL:
+        "https://lxaqtnuuqvsscavvqcxs.supabase.co/storage/v1/object/public/images/Hyundai%20Avante%201.6%20MT%202011.jpg",
+    },
+    {
+      Title: "Đánh giá Hyundai Creta 1.5L Đặc biệt 2022",
+      Advantages:
+        "Thiết kế hiện đại, trang bị tiện nghi đầy đủ, khả năng vận hành mạnh mẽ",
+      Disadvantages: "Giá bán khá cao, không gian hàng ghế sau hơi chật",
+      Content:
+        "Hyundai Creta 1.5L Đặc biệt 2022 là một chiếc SUV hiện đại với trang bị tiện nghi đầy đủ và khả năng vận hành mạnh mẽ. Tuy nhiên, giá bán của xe khá cao và không gian hàng ghế sau hơi chật.",
+      ImageURL:
+        "https://lxaqtnuuqvsscavvqcxs.supabase.co/storage/v1/object/public/images/Hyundai%20Creta%201.5L%20Dac%20biet%202022.jpg",
+    },
+    {
+      Title: "Đánh giá Hyundai Elantra 2.0 AT Cao cấp 2020",
+      Advantages:
+        "Thiết kế sang trọng, trang bị cao cấp, khả năng vận hành êm ái",
+      Disadvantages: "Tiêu thụ nhiên liệu cao, giá bán cao",
+      Content:
+        "Hyundai Elantra 2.0 AT Cao cấp 2020 là một mẫu sedan sang trọng với trang bị cao cấp và khả năng vận hành êm ái. Tuy nhiên, mẫu xe này có nhược điểm là tiêu thụ nhiên liệu cao và giá bán cũng khá cao so với một số đối thủ trong cùng phân khúc.",
+      ImageURL:
+        "https://lxaqtnuuqvsscavvqcxs.supabase.co/storage/v1/object/public/images/Hyundai%20Elantra%202.0%20AT%20Cao%20cap%202020.jpg",
+    },
+    {
+      Title: "Đánh giá Hyundai Getz 1.1 MT 2009",
+      Advantages:
+        "Giá bán rẻ, tiết kiệm nhiên liệu, phù hợp cho di chuyển trong thành phố",
+      Disadvantages: "Không gian nội thất chật, khả năng vận hành chưa mạnh mẽ",
+      Content:
+        "Hyundai Getz 1.1 MT 2009 là một chiếc hatchback nhỏ gọn với giá bán rẻ và tiết kiệm nhiên liệu. Mặc dù nó phù hợp cho di chuyển trong thành phố, nhưng không gian nội thất khá chật và khả năng vận hành chưa mạnh mẽ.",
+      ImageURL:
+        "https://lxaqtnuuqvsscavvqcxs.supabase.co/storage/v1/object/public/images/Hyundai%20Getz%201.1%20MT%202009.jpg",
+    },
+    {
+      Title: "Đánh giá Hyundai Grand i10 Sedan 1.2 MT 2019",
+      Advantages: "Thiết kế hiện đại, tiết kiệm nhiên liệu, giá bán hợp lý",
+      Disadvantages:
+        "Không gian hàng ghế sau không rộng, khả năng vận hành không mạnh mẽ",
+      Content:
+        "Hyundai Grand i10 Sedan 1.2 MT 2019 là một mẫu sedan nhỏ gọn với thiết kế hiện đại và tiết kiệm nhiên liệu. Tuy nhiên, không gian hàng ghế sau không rộng và khả năng vận hành của xe không thật sự mạnh mẽ.",
+      ImageURL:
+        "https://lxaqtnuuqvsscavvqcxs.supabase.co/storage/v1/object/public/images/Hyundai%20Grand%20i10%20Sedan%201.2%20MT%202019.jpg",
+    },
+    {
+      Title: "Đánh giá Hyundai i20 Active 1.4 AT 2015",
+      Advantages: "Thiết kế thể thao, vận hành linh hoạt, tiết kiệm nhiên liệu",
+      Disadvantages:
+        "Không gian nội thất hạn chế, không có nhiều tính năng tiện nghi",
+      Content:
+        "Hyundai i20 Active 1.4 AT 2015 là một mẫu hatchback thể thao với khả năng vận hành linh hoạt và tiết kiệm nhiên liệu. Tuy nhiên, không gian nội thất của xe hơi hạn chế và xe không có nhiều tính năng tiện nghi so với các mẫu xe mới.",
+      ImageURL:
+        "https://lxaqtnuuqvsscavvqcxs.supabase.co/storage/v1/object/public/images/Hyundai%20i20%20Active%201.4%20AT%202015.jpg",
+    },
+    {
+      Title: "Đánh giá Hyundai Kona 2.0 AT Đặc biệt 2020",
+      Advantages:
+        "Thiết kế hiện đại, trang bị cao cấp, khả năng vận hành mạnh mẽ",
+      Disadvantages: "Giá bán khá cao, không gian hàng ghế sau không rộng",
+      Content:
+        "Hyundai Kona 2.0 AT Đặc biệt 2020 là một chiếc SUV với thiết kế hiện đại, trang bị cao cấp và khả năng vận hành mạnh mẽ. Tuy nhiên, giá bán của xe khá cao và không gian hàng ghế sau không thật sự rộng rãi.",
+      ImageURL:
+        "https://lxaqtnuuqvsscavvqcxs.supabase.co/storage/v1/object/public/images/Hyundai%20Kona%202.0%20AT%20Dac%20biet%202020.jpg",
+    },
+    {
+      Title: "Đánh giá Kia Morning Si 1.25 AT 2017",
+      Advantages:
+        "Thiết kế nhỏ gọn, tiết kiệm nhiên liệu, dễ dàng di chuyển trong thành phố",
+      Disadvantages:
+        "Không gian nội thất chật, khả năng vận hành không mạnh mẽ",
+      Content:
+        "Kia Morning Si 1.25 AT 2017 là một chiếc hatchback nhỏ gọn với thiết kế dễ thương và tiết kiệm nhiên liệu. Tuy nhiên, không gian nội thất hơi chật và khả năng vận hành chưa thật sự mạnh mẽ.",
+      ImageURL:
+        "https://lxaqtnuuqvsscavvqcxs.supabase.co/storage/v1/object/public/images/Kia%20Morning%20Si%201.25%20AT%202017.jpg",
+    },
+    {
+      Title: "Đánh giá Kia Cerato 1.6 AT Luxury 2021",
+      Advantages:
+        "Thiết kế sang trọng, trang bị tiện nghi đầy đủ, khả năng vận hành ổn định",
+      Disadvantages: "Giá bán cao, không gian hàng ghế sau hơi chật",
+      Content:
+        "Kia Cerato 1.6 AT Luxury 2021 nổi bật với thiết kế sang trọng và trang bị tiện nghi đầy đủ. Tuy nhiên, giá bán của xe khá cao và không gian hàng ghế sau không rộng rãi.",
+      ImageURL:
+        "https://lxaqtnuuqvsscavvqcxs.supabase.co/storage/v1/object/public/images/Kia%20Cerato%201.6%20AT%20Luxury%202021.jpg",
+    },
+    {
+      Title: "Đánh giá Kia Sorento 2.2D Premium AWD 2022",
+      Advantages:
+        "Thiết kế mạnh mẽ, không gian rộng rãi, khả năng vận hành vượt trội",
+      Disadvantages: "Giá bán cao, mức tiêu thụ nhiên liệu lớn",
+      Content:
+        "Kia Sorento 2.2D Premium AWD 2022 là một mẫu SUV mạnh mẽ với không gian nội thất rộng rãi và khả năng vận hành vượt trội. Tuy nhiên, giá bán của xe khá cao và mức tiêu thụ nhiên liệu cũng không phải là thấp.",
+      ImageURL:
+        "https://lxaqtnuuqvsscavvqcxs.supabase.co/storage/v1/object/public/images/Kia%20Sorento%202.2D%20Premium%20AWD%202022.jpg",
+    },
+    {
+      Title: "Đánh giá Kia K3 1.6 Premium 2022",
+      Advantages:
+        "Thiết kế trẻ trung, khả năng vận hành êm ái, trang bị tiện nghi đầy đủ",
+      Disadvantages: "Giá bán cao, không gian nội thất chưa rộng rãi",
+      Content:
+        "Kia K3 1.6 Premium 2022 mang đến một thiết kế trẻ trung và khả năng vận hành êm ái. Mẫu xe này có trang bị tiện nghi đầy đủ nhưng giá bán lại cao và không gian nội thất chưa thật sự rộng rãi.",
+      ImageURL:
+        "https://lxaqtnuuqvsscavvqcxs.supabase.co/storage/v1/object/public/images/Kia%20K3%201.6%20Premium%202022.jpg",
+    },
+    {
+      Title: "Đánh giá Kia Sedona 2.2 DATH 2018",
+      Advantages: "Không gian rộng rãi, tiện nghi cao cấp, vận hành mạnh mẽ",
+      Disadvantages: "Khó di chuyển trong thành phố, tiêu thụ nhiên liệu cao",
+      Content:
+        "Kia Sedona 2.2 DATH 2018 là một mẫu MPV với không gian rộng rãi và tiện nghi cao cấp. Tuy nhiên, mẫu xe này có nhược điểm là khó di chuyển trong thành phố và mức tiêu thụ nhiên liệu khá cao.",
+      ImageURL:
+        "https://lxaqtnuuqvsscavvqcxs.supabase.co/storage/v1/object/public/images/Kia%20Sedona%202.2%20DATH%202018.jpg",
+    },
+    {
+      Title: "Đánh giá Kia Seltos 1.4 Premium 2022",
+      Advantages:
+        "Thiết kế hiện đại, trang bị cao cấp, khả năng vận hành ổn định",
+      Disadvantages: "Giá bán khá cao, không gian hàng ghế sau hơi chật",
+      Content:
+        "Kia Seltos 1.4 Premium 2022 là một chiếc SUV với thiết kế hiện đại và trang bị cao cấp. Tuy nhiên, giá bán của xe khá cao và không gian hàng ghế sau không thật sự rộng rãi.",
+      ImageURL:
+        "https://lxaqtnuuqvsscavvqcxs.supabase.co/storage/v1/object/public/images/Kia%20Seltos%201.4%20Premium%202022.jpg",
+    },
+    {
+      Title: "Đánh giá Kia Carnival 2.2D Signature 2022",
+      Advantages: "Không gian rộng rãi, tiện nghi cao cấp, vận hành êm ái",
+      Disadvantages:
+        "Giá bán cao, kích thước lớn gây khó khăn trong việc di chuyển",
+      Content:
+        "Kia Carnival 2.2D Signature 2022 là một mẫu MPV cao cấp với không gian rộng rãi và tiện nghi cao cấp. Tuy nhiên, kích thước lớn của xe có thể gây khó khăn trong việc di chuyển, đặc biệt là trong khu vực thành phố.",
+      ImageURL:
+        "https://lxaqtnuuqvsscavvqcxs.supabase.co/storage/v1/object/public/images/Kia%20Carnival%202.2D%20Signature%202022.jpg",
+    },
+    {
+      Title: "Đánh giá Kia Soluto MT Deluxe 2021",
+      Advantages:
+        "Giá bán hợp lý, tiết kiệm nhiên liệu, dễ dàng di chuyển trong thành phố",
+      Disadvantages:
+        "Không gian nội thất không rộng rãi, khả năng vận hành chưa mạnh mẽ",
+      Content:
+        "Kia Soluto MT Deluxe 2021 là một mẫu sedan nhỏ gọn với giá bán hợp lý và khả năng tiết kiệm nhiên liệu. Tuy nhiên, không gian nội thất của xe không thật sự rộng rãi và khả năng vận hành cũng chưa mạnh mẽ.",
+      ImageURL:
+        "https://lxaqtnuuqvsscavvqcxs.supabase.co/storage/v1/object/public/images/Kia%20Soluto%20MT%20Deluxe%202021.jpg",
+    },
+    {
+      Title: "Đánh giá Subaru BRZ 2023",
+      Advantages:
+        "Thiết kế thể thao, khả năng vận hành mạnh mẽ, cảm giác lái tuyệt vời",
+      Disadvantages: "Không gian nội thất hạn chế, giá bán cao",
+      Content:
+        "Subaru BRZ 2023 là một mẫu xe thể thao mạnh mẽ với khả năng vận hành tuyệt vời. Tuy nhiên, không gian nội thất khá hạn chế và giá bán cũng khá cao so với các đối thủ cùng phân khúc.",
+      ImageURL:
+        "https://lxaqtnuuqvsscavvqcxs.supabase.co/storage/v1/object/public/images/Subaru%20BRZ%202023.jpg",
+    },
+    {
+      Title: "Đánh giá Subaru Forester 2.0i-S EyeSight 2021",
+      Advantages:
+        "Khả năng vận hành ổn định, công nghệ an toàn EyeSight, không gian rộng rãi",
+      Disadvantages: "Mức tiêu thụ nhiên liệu tương đối cao, giá bán khá cao",
+      Content:
+        "Subaru Forester 2.0i-S EyeSight 2021 mang đến khả năng vận hành ổn định, công nghệ an toàn EyeSight và không gian nội thất rộng rãi. Tuy nhiên, mức tiêu thụ nhiên liệu khá cao và giá bán của xe cũng tương đối đắt.",
+      ImageURL:
+        "https://lxaqtnuuqvsscavvqcxs.supabase.co/storage/v1/object/public/images/Subaru%20Forester%202.0i-S%20EyeSight%202021.jpg",
+    },
+    {
+      Title: "Đánh giá Subaru Outback 2016",
+      Advantages:
+        "Không gian rộng rãi, khả năng vận hành ổn định, hệ thống dẫn động 4 bánh toàn thời gian",
+      Disadvantages:
+        "Thiết kế chưa thật sự nổi bật, không gian hành lý hạn chế",
+      Content:
+        "Subaru Outback 2016 là một chiếc SUV với không gian nội thất rộng rãi và khả năng vận hành ổn định. Xe được trang bị hệ thống dẫn động 4 bánh toàn thời gian, tuy nhiên thiết kế của xe không thật sự nổi bật và không gian hành lý có phần hạn chế.",
+      ImageURL:
+        "https://lxaqtnuuqvsscavvqcxs.supabase.co/storage/v1/object/public/images/Subaru%20Outback%202016.jpg",
+    },
+    {
+      Title: "Đánh giá Mercedes-Benz C200 Exclusive 2021",
+      Advantages:
+        "Thiết kế sang trọng, khả năng vận hành êm ái, công nghệ tiên tiến",
+      Disadvantages: "Không gian nội thất khá chật, giá bán cao",
+      Content:
+        "Mercedes-Benz C200 Exclusive 2021 mang đến một thiết kế sang trọng và khả năng vận hành êm ái. Tuy nhiên, không gian nội thất hơi hạn chế và giá bán khá cao so với các đối thủ trong phân khúc.",
+      ImageURL:
+        "https://lxaqtnuuqvsscavvqcxs.supabase.co/storage/v1/object/public/images/Mercedes-Benz%20C200%20Exclusive%202021.jpg",
+    },
+    {
+      Title: "Đánh giá Mercedes-Benz E250 E250 2018",
+      Advantages:
+        "Khả năng vận hành mạnh mẽ, không gian rộng rãi, thiết kế thanh lịch",
+      Disadvantages: "Tiêu thụ nhiên liệu cao, giá bán khá đắt",
+      Content:
+        "Mercedes-Benz E250 2018 nổi bật với khả năng vận hành mạnh mẽ và không gian rộng rãi, cùng thiết kế thanh lịch đặc trưng của thương hiệu. Tuy nhiên, mức tiêu thụ nhiên liệu của xe khá cao và giá bán của nó cũng khá đắt.",
+      ImageURL:
+        "https://lxaqtnuuqvsscavvqcxs.supabase.co/storage/v1/object/public/images/Mercedes-Benz%20E250%20E250%202018.jpg",
+    },
+    {
+      Title: "Đánh giá Mercedes-Benz S450L 4Matic 2019",
+      Advantages:
+        "Tiện nghi cao cấp, khả năng vận hành vượt trội, hệ thống an toàn tiên tiến",
+      Disadvantages: "Kích thước lớn, giá bán rất cao",
+      Content:
+        "Mercedes-Benz S450L 4Matic 2019 mang lại sự thoải mái tuyệt đối với các tiện nghi cao cấp và khả năng vận hành vượt trội. Hệ thống an toàn của xe cũng rất tiên tiến, nhưng với kích thước lớn và giá bán rất cao, xe chỉ phù hợp với những khách hàng đẳng cấp.",
+      ImageURL:
+        "https://lxaqtnuuqvsscavvqcxs.supabase.co/storage/v1/object/public/images/Mercedes-Benz%20S450L%204Matic%202019.jpg",
+    },
+    {
+      Title: "Đánh giá Mercedes-Benz V250 2018",
+      Advantages: "Không gian rộng rãi, tiện nghi cao cấp, động cơ mạnh mẽ",
+      Disadvantages: "Khả năng tiết kiệm nhiên liệu chưa tốt, giá cao",
+      Content:
+        "Mercedes-Benz V250 2018 là lựa chọn tuyệt vời cho những ai cần một chiếc MPV với không gian rộng rãi và tiện nghi cao cấp. Tuy nhiên, khả năng tiết kiệm nhiên liệu chưa thực sự ấn tượng và giá bán khá cao.",
+      ImageURL:
+        "https://lxaqtnuuqvsscavvqcxs.supabase.co/storage/v1/object/public/images/Mercedes-Benz%20V250%202018.jpg",
+    },
+    {
+      Title: "Đánh giá Mercedes-Benz GLA 45 2015",
+      Advantages:
+        "Thiết kế thể thao, khả năng vận hành mạnh mẽ, trang bị đầy đủ",
+      Disadvantages: "Không gian nội thất hạn chế, giá cao",
+      Content:
+        "Mercedes-Benz GLA 45 2015 mang đến một thiết kế thể thao và khả năng vận hành mạnh mẽ. Tuy nhiên, không gian nội thất của xe khá hạn chế và giá bán của nó cũng khá cao trong phân khúc SUV hạng sang.",
+      ImageURL:
+        "https://lxaqtnuuqvsscavvqcxs.supabase.co/storage/v1/object/public/images/Mercedes-Benz%20GLA%2045%202015.jpg",
+    },
+    {
+      Title: "Đánh giá Mercedes-Benz GLB 35 2022",
+      Advantages:
+        "Thiết kế hiện đại, không gian rộng rãi, khả năng vận hành mạnh mẽ",
+      Disadvantages: "Giá bán cao, mức tiêu thụ nhiên liệu lớn",
+      Content:
+        "Mercedes-Benz GLB 35 2022 nổi bật với thiết kế hiện đại và không gian rộng rãi. Xe có khả năng vận hành mạnh mẽ và các trang bị cao cấp, tuy nhiên mức tiêu thụ nhiên liệu khá lớn và giá bán cũng không hề rẻ.",
+      ImageURL:
+        "https://lxaqtnuuqvsscavvqcxs.supabase.co/storage/v1/object/public/images/Mercedes-Benz%20GLB%2035%202022.jpg",
+    },
+    {
+      Title: "Đánh giá Mercedes-Benz GLC 300 4Matic 2022",
+      Advantages:
+        "Khả năng vận hành ổn định, công nghệ hiện đại, không gian thoải mái",
+      Disadvantages: "Giá bán khá cao, nội thất không có nhiều điểm mới",
+      Content:
+        "Mercedes-Benz GLC 300 4Matic 2022 là một chiếc SUV sang trọng với khả năng vận hành ổn định, công nghệ hiện đại và không gian thoải mái. Tuy nhiên, giá bán của xe khá cao và nội thất không có nhiều cải tiến đáng chú ý.",
+      ImageURL:
+        "https://lxaqtnuuqvsscavvqcxs.supabase.co/storage/v1/object/public/images/Mercedes-Benz%20GLC%20300%204Matic%202022.jpg",
+    },
+    {
+      Title: "Đánh giá Mercedes-Benz GLE 450 4Matic 2021",
+      Advantages:
+        "Tiện nghi sang trọng, khả năng vận hành mạnh mẽ, hệ thống an toàn tốt",
+      Disadvantages: "Kích thước lớn, mức tiêu thụ nhiên liệu cao",
+      Content:
+        "Mercedes-Benz GLE 450 4Matic 2021 mang lại trải nghiệm lái tuyệt vời với hệ thống an toàn hiện đại, tiện nghi sang trọng và khả năng vận hành mạnh mẽ. Tuy nhiên, với kích thước lớn và mức tiêu thụ nhiên liệu cao, xe có thể không phù hợp với mọi khách hàng.",
+      ImageURL:
+        "https://lxaqtnuuqvsscavvqcxs.supabase.co/storage/v1/object/public/images/Mercedes-Benz%20GLE%20450%204Matic%202021.jpg",
+    },
+    {
+      Title: "Đánh giá BMW 320i 2015",
+      Advantages:
+        "Thiết kế thể thao, khả năng vận hành mượt mà, tiết kiệm nhiên liệu",
+      Disadvantages: "Không gian nội thất hơi chật, giá khá cao",
+      Content:
+        "BMW 320i 2015 mang đến một thiết kế thể thao, khả năng vận hành mượt mà và tiết kiệm nhiên liệu. Tuy nhiên, không gian nội thất hơi chật và giá bán của xe khá cao so với các đối thủ cùng phân khúc.",
+      ImageURL:
+        "https://lxaqtnuuqvsscavvqcxs.supabase.co/storage/v1/object/public/images/BMW%20320i%202015.jpg",
+    },
+    {
+      Title: "Đánh giá BMW 420i 2018",
+      Advantages:
+        "Thiết kế sang trọng, khả năng vận hành mạnh mẽ, cảm giác lái tuyệt vời",
+      Disadvantages: "Không gian trong xe không rộng rãi, giá cao",
+      Content:
+        "BMW 420i 2018 nổi bật với thiết kế sang trọng và khả năng vận hành mạnh mẽ. Cảm giác lái của xe rất tuyệt vời, nhưng không gian trong xe không quá rộng rãi và giá của nó khá cao.",
+      ImageURL:
+        "https://lxaqtnuuqvsscavvqcxs.supabase.co/storage/v1/object/public/images/BMW%20420i%202018.jpg",
+    },
+    {
+      Title: "Đánh giá BMW 520i 2018",
+      Advantages:
+        "Thiết kế lịch lãm, khả năng vận hành tuyệt vời, nội thất sang trọng",
+      Disadvantages: "Giá khá cao, không gian khoang hành lý hạn chế",
+      Content:
+        "BMW 520i 2018 là một chiếc sedan sang trọng với thiết kế lịch lãm và khả năng vận hành tuyệt vời. Nội thất sang trọng và các tính năng cao cấp mang đến trải nghiệm tuyệt vời, nhưng giá bán khá cao và không gian khoang hành lý hơi hạn chế.",
+      ImageURL:
+        "https://lxaqtnuuqvsscavvqcxs.supabase.co/storage/v1/object/public/images/BMW%20520i%202018.jpg",
+    },
+    {
+      Title: "Đánh giá BMW 740Li Pure Excellence 2018",
+      Advantages:
+        "Tiện nghi đẳng cấp, khả năng vận hành mượt mà, hệ thống an toàn tiên tiến",
+      Disadvantages: "Giá rất cao, chi phí bảo dưỡng đắt",
+      Content:
+        "BMW 740Li Pure Excellence 2018 mang đến tiện nghi đẳng cấp và khả năng vận hành mượt mà. Hệ thống an toàn tiên tiến giúp xe trở nên an toàn hơn, nhưng giá bán rất cao và chi phí bảo dưỡng cũng không hề rẻ.",
+      ImageURL:
+        "https://lxaqtnuuqvsscavvqcxs.supabase.co/storage/v1/object/public/images/BMW%20740Li%20Pure%20Excellence%202018.jpg",
+    },
+    {
+      Title: "Đánh giá BMW X3 xDrive20i 2021",
+      Advantages:
+        "Thiết kế thể thao, khả năng vận hành mạnh mẽ, công nghệ tiên tiến",
+      Disadvantages: "Giá bán khá cao, không gian nội thất nhỏ",
+      Content:
+        "BMW X3 xDrive20i 2021 là một chiếc SUV thể thao với khả năng vận hành mạnh mẽ và công nghệ tiên tiến. Tuy nhiên, giá bán của xe khá cao và không gian nội thất hơi nhỏ đối với một chiếc SUV.",
+      ImageURL:
+        "https://lxaqtnuuqvsscavvqcxs.supabase.co/storage/v1/object/public/images/BMW%20X3%20xDrive20i%202021.jpg",
+    },
+    {
+      Title: "Đánh giá BMW X5 xDrive40i 2022",
+      Advantages:
+        "Khả năng vận hành ấn tượng, thiết kế sang trọng, không gian rộng rãi",
+      Disadvantages: "Giá cao, mức tiêu thụ nhiên liệu lớn",
+      Content:
+        "BMW X5 xDrive40i 2022 là một chiếc SUV sang trọng với khả năng vận hành ấn tượng. Xe có không gian rộng rãi và các trang bị cao cấp, tuy nhiên giá bán khá cao và mức tiêu thụ nhiên liệu cũng lớn.",
+      ImageURL:
+        "https://lxaqtnuuqvsscavvqcxs.supabase.co/storage/v1/object/public/images/BMW%20X5%20xDrive40i%202022.jpg",
+    },
+    {
+      Title: "Đánh giá BMW X7 xDrive40i 2020",
+      Advantages:
+        "Tiện nghi cao cấp, khả năng vận hành mạnh mẽ, không gian rộng rãi",
+      Disadvantages: "Giá bán rất cao, khó di chuyển trong thành phố",
+      Content:
+        "BMW X7 xDrive40i 2020 mang đến tiện nghi cao cấp, khả năng vận hành mạnh mẽ và không gian rộng rãi. Tuy nhiên, với kích thước lớn và giá bán rất cao, xe có thể không phù hợp cho những người sử dụng trong thành phố.",
+      ImageURL:
+        "https://lxaqtnuuqvsscavvqcxs.supabase.co/storage/v1/object/public/images/BMW%20X7%20xDrive40i%202020.jpg",
+    },
+    {
+      Title: "Đánh giá BMW X6 xDrive40i Msport 2022",
+      Advantages:
+        "Thiết kế thể thao, khả năng vận hành mạnh mẽ, trang bị cao cấp",
+      Disadvantages:
+        "Tiêu thụ nhiên liệu khá cao, không gian hàng ghế sau hơi hạn chế",
+      Content:
+        "BMW X6 xDrive40i Msport 2022 nổi bật với thiết kế thể thao và khả năng vận hành mạnh mẽ. Xe được trang bị nhiều tính năng cao cấp, nhưng mức tiêu thụ nhiên liệu khá cao và không gian hàng ghế sau hơi hạn chế.",
+      ImageURL:
+        "https://lxaqtnuuqvsscavvqcxs.supabase.co/storage/v1/object/public/images/BMW%20X6%20xDrive40i%20Msport%202022.jpg",
+    },
+    {
+      Title: "Đánh giá Lexus RX 300 2020",
+      Advantages:
+        "Thiết kế sang trọng, khả năng vận hành mạnh mẽ, không gian nội thất rộng rãi",
+      Disadvantages: "Giá cao, mức tiêu thụ nhiên liệu lớn",
+      Content:
+        "Lexus RX 300 2020 mang đến một thiết kế sang trọng, khả năng vận hành mạnh mẽ và không gian nội thất rộng rãi. Tuy nhiên, giá bán cao và mức tiêu thụ nhiên liệu cũng là điểm cần lưu ý.",
+      ImageURL:
+        "https://lxaqtnuuqvsscavvqcxs.supabase.co/storage/v1/object/public/images/Lexus%20RX%20300%202020.jpg",
+    },
+    {
+      Title: "Đánh giá Lexus LX 570 2016",
+      Advantages:
+        "Khả năng off-road tuyệt vời, nội thất sang trọng, sức mạnh động cơ mạnh mẽ",
+      Disadvantages: "Kích thước lớn, tiêu thụ nhiên liệu cao",
+      Content:
+        "Lexus LX 570 2016 là một chiếc SUV cao cấp với khả năng off-road tuyệt vời, nội thất sang trọng và động cơ mạnh mẽ. Tuy nhiên, với kích thước lớn và mức tiêu thụ nhiên liệu cao, xe có thể không phù hợp với những người sử dụng trong thành phố.",
+      ImageURL:
+        "https://lxaqtnuuqvsscavvqcxs.supabase.co/storage/v1/object/public/images/Lexus%20LX%20570%202016.jpg",
+    },
+    {
+      Title: "Đánh giá Lexus GX 470 2008",
+      Advantages:
+        "Khả năng off-road xuất sắc, nội thất bền bỉ, động cơ mạnh mẽ",
+      Disadvantages:
+        "Kích thước lớn, tiêu thụ nhiên liệu cao, công nghệ lạc hậu",
+      Content:
+        "Lexus GX 470 2008 nổi bật với khả năng off-road xuất sắc, nội thất bền bỉ và động cơ mạnh mẽ. Tuy nhiên, kích thước lớn và tiêu thụ nhiên liệu cao cùng công nghệ lạc hậu khiến chiếc xe này không còn phù hợp với xu hướng hiện đại.",
+      ImageURL:
+        "https://lxaqtnuuqvsscavvqcxs.supabase.co/storage/v1/object/public/images/Lexus%20GX%20470%202008.jpg",
+    },
+    {
+      Title: "Đánh giá Lexus ES 250 2019",
+      Advantages:
+        "Thiết kế thanh lịch, không gian nội thất rộng rãi, khả năng vận hành mượt mà",
+      Disadvantages: "Khả năng tăng tốc không mạnh mẽ, giá cao",
+      Content:
+        "Lexus ES 250 2019 mang đến một thiết kế thanh lịch và không gian nội thất rộng rãi, cùng khả năng vận hành mượt mà. Tuy nhiên, khả năng tăng tốc không quá mạnh mẽ và giá bán cao có thể là yếu tố cần cân nhắc.",
+      ImageURL:
+        "https://lxaqtnuuqvsscavvqcxs.supabase.co/storage/v1/object/public/images/Lexus%20ES%20250%202019.jpg",
+    },
+    {
+      Title: "Đánh giá Lexus ES 250 2021",
+      Advantages: "Thiết kế hiện đại, tính năng cao cấp, vận hành êm ái",
+      Disadvantages: "Giá cao, không gian hàng ghế sau hạn chế",
+      Content:
+        "Lexus ES 250 2021 mang đến thiết kế hiện đại và các tính năng cao cấp. Xe vận hành êm ái và mang lại sự thoải mái cho người lái, tuy nhiên giá bán khá cao và không gian hàng ghế sau có phần hạn chế.",
+      ImageURL:
+        "https://lxaqtnuuqvsscavvqcxs.supabase.co/storage/v1/object/public/images/Lexus%20ES%20250%202021.jpg",
+    },
+    {
+      Title: "Đánh giá Lexus ES 300h 2021",
+      Advantages: "Tiết kiệm nhiên liệu, thiết kế sang trọng, vận hành mượt mà",
+      Disadvantages: "Giá cao, không gian khoang hành lý hạn chế",
+      Content:
+        "Lexus ES 300h 2021 là mẫu xe hybrid với khả năng tiết kiệm nhiên liệu vượt trội. Thiết kế sang trọng và vận hành mượt mà giúp chiếc xe này nổi bật trong phân khúc, nhưng giá bán khá cao và không gian khoang hành lý hơi hạn chế.",
+      ImageURL:
+        "https://lxaqtnuuqvsscavvqcxs.supabase.co/storage/v1/object/public/images/Lexus%20ES%20300h%202021.jpg",
+    },
+    {
+      Title: "Đánh giá Lexus ES 350 2015",
+      Advantages:
+        "Nội thất sang trọng, khả năng vận hành mạnh mẽ, công nghệ cao cấp",
+      Disadvantages: "Giá khá cao, khả năng tiết kiệm nhiên liệu chưa ấn tượng",
+      Content:
+        "Lexus ES 350 2015 mang đến nội thất sang trọng, khả năng vận hành mạnh mẽ và các công nghệ tiên tiến. Tuy nhiên, giá bán khá cao và khả năng tiết kiệm nhiên liệu chưa thực sự ấn tượng.",
+      ImageURL:
+        "https://lxaqtnuuqvsscavvqcxs.supabase.co/storage/v1/object/public/images/Lexus%20ES%20350%202015.jpg",
+    },
+    {
+      Title: "Đánh giá Porsche 718 CaymanT 2022",
+      Advantages:
+        "Thiết kế thể thao, vận hành tuyệt vời, cảm giác lái chính xác",
+      Disadvantages: "Giá cao, không gian trong xe hạn chế",
+      Content:
+        "Porsche 718 CaymanT 2022 mang đến thiết kế thể thao với động cơ mạnh mẽ, cảm giác lái chính xác và tinh tế. Tuy nhiên, giá bán cao và không gian trong xe khá hạn chế, có thể không phù hợp với những ai cần không gian rộng rãi.",
+      ImageURL:
+        "https://lxaqtnuuqvsscavvqcxs.supabase.co/storage/v1/object/public/images/Porsche%20718%20CaymanT%202022.jpg",
+    },
+    {
+      Title: "Đánh giá Porsche Macan 2017",
+      Advantages: "Vận hành mạnh mẽ, thiết kế đẹp, nội thất sang trọng",
+      Disadvantages: "Tiêu thụ nhiên liệu cao, giá bán đắt đỏ",
+      Content:
+        "Porsche Macan 2017 mang đến một cảm giác lái mạnh mẽ và linh hoạt, thiết kế đẹp mắt và nội thất sang trọng. Tuy nhiên, mức tiêu thụ nhiên liệu khá cao và giá bán của xe cũng không hề rẻ.",
+      ImageURL:
+        "https://lxaqtnuuqvsscavvqcxs.supabase.co/storage/v1/object/public/images/Porsche%20Macan%202017.jpg",
+    },
+    {
+      Title: "Đánh giá Porsche Panamera 3.0 V6 2017",
+      Advantages:
+        "Khả năng vận hành tuyệt vời, không gian nội thất rộng rãi, công nghệ cao cấp",
+      Disadvantages:
+        "Giá rất cao, không phù hợp với những ai cần tiết kiệm nhiên liệu",
+      Content:
+        "Porsche Panamera 3.0 V6 2017 là mẫu xe sedan thể thao mang lại khả năng vận hành tuyệt vời, không gian nội thất rộng rãi và các tính năng công nghệ cao cấp. Tuy nhiên, mức giá của xe rất cao và khả năng tiết kiệm nhiên liệu không ấn tượng.",
+      ImageURL:
+        "https://lxaqtnuuqvsscavvqcxs.supabase.co/storage/v1/object/public/images/Porsche%20Panamera%203.0%20V6%202017.jpg",
+    },
+    {
+      Title: "Đánh giá Porsche 911 Carrera GTS 2022",
+      Advantages:
+        "Thiết kế biểu tượng, hiệu suất mạnh mẽ, cảm giác lái đỉnh cao",
+      Disadvantages: "Giá quá cao, không gian trong xe hạn chế",
+      Content:
+        "Porsche 911 Carrera GTS 2022 là một trong những chiếc xe thể thao đỉnh cao với thiết kế biểu tượng và hiệu suất mạnh mẽ. Cảm giác lái tuyệt vời khiến chiếc xe này trở thành một lựa chọn lý tưởng cho những tín đồ yêu thích tốc độ. Tuy nhiên, mức giá cao và không gian trong xe khá hạn chế là điểm cần lưu ý.",
+      ImageURL:
+        "https://lxaqtnuuqvsscavvqcxs.supabase.co/storage/v1/object/public/images/Porsche%20911%20Carrera%20GTS%202022.jpg",
+    },
+    {
+      Title: "Đánh giá Porsche Cayenne V6 3.0 2019",
+      Advantages:
+        "Khả năng vận hành mạnh mẽ, công nghệ tiên tiến, nội thất cao cấp",
+      Disadvantages: "Giá đắt đỏ, tiêu thụ nhiên liệu cao",
+      Content:
+        "Porsche Cayenne V6 3.0 2019 là một chiếc SUV sang trọng với khả năng vận hành mạnh mẽ, công nghệ tiên tiến và nội thất cao cấp. Tuy nhiên, giá bán của xe khá cao và mức tiêu thụ nhiên liệu không thực sự tiết kiệm.",
+      ImageURL:
+        "https://lxaqtnuuqvsscavvqcxs.supabase.co/storage/v1/object/public/images/Porsche%20Cayenne%20V6%203.0%202019.jpg",
+    },
+    {
+      Title: "Đánh giá Porsche Taycan 4S 2021",
+      Advantages: "Hiệu suất vượt trội, công nghệ tiên tiến, vận hành êm ái",
+      Disadvantages:
+        "Giá bán cực kỳ cao, khả năng di chuyển bị hạn chế bởi phạm vi pin",
+      Content:
+        "Porsche Taycan 4S 2021 là mẫu xe điện thể thao với hiệu suất vượt trội, công nghệ tiên tiến và khả năng vận hành êm ái. Tuy nhiên, giá bán rất cao và phạm vi di chuyển của xe còn hạn chế so với các mẫu xe điện khác.",
+      ImageURL:
+        "https://lxaqtnuuqvsscavvqcxs.supabase.co/storage/v1/object/public/images/Porsche%20Taycan%204S%202021.jpg",
+    },
+    {
+      Title: "Đánh giá Porsche Boxster 2009",
+      Advantages: "Thiết kế thể thao, cảm giác lái tuyệt vời, động cơ mạnh mẽ",
+      Disadvantages: "Không gian trong xe hạn chế, giá khá cao",
+      Content:
+        "Porsche Boxster 2009 mang đến thiết kế thể thao và cảm giác lái tuyệt vời. Động cơ mạnh mẽ và khả năng vận hành linh hoạt là những điểm nổi bật của mẫu xe này. Tuy nhiên, không gian trong xe khá hạn chế và giá bán cũng không hề rẻ.",
+      ImageURL:
+        "https://lxaqtnuuqvsscavvqcxs.supabase.co/storage/v1/object/public/images/Porsche%20Boxster%202009.jpg",
+    },
+    {
+      Title: "Đánh giá VinFast LUX A2.0 Tiêu chuẩn 2020",
+      Advantages: "Thiết kế sang trọng, vận hành mạnh mẽ, cảm giác lái êm ái",
+      Disadvantages: "Mức tiêu thụ nhiên liệu khá cao, giá bán cao",
+      Content:
+        "VinFast LUX A2.0 Tiêu chuẩn 2020 là một chiếc sedan sang trọng với động cơ mạnh mẽ và thiết kế đẳng cấp. Cảm giác lái êm ái cùng với trang bị tiện nghi hiện đại giúp xe trở thành một lựa chọn hấp dẫn. Tuy nhiên, mức tiêu thụ nhiên liệu có phần cao và giá bán khá đắt đỏ.",
+      ImageURL:
+        "https://lxaqtnuuqvsscavvqcxs.supabase.co/storage/v1/object/public/images/VinFast%20LUX%20A2.0%20Tieu%20chuan%202020.jpg",
+    },
+    {
+      Title: "Đánh giá VinFast LUX SA2.0 Tiêu chuẩn 2020",
+      Advantages: "Thiết kế thể thao, công nghệ tiên tiến, không gian rộng rãi",
+      Disadvantages: "Giá bán cao, tiêu thụ nhiên liệu lớn",
+      Content:
+        "VinFast LUX SA2.0 Tiêu chuẩn 2020 là một chiếc SUV sang trọng với thiết kế thể thao, không gian nội thất rộng rãi và công nghệ tiên tiến. Tuy nhiên, giá bán của xe cao và mức tiêu thụ nhiên liệu cũng không phải là điểm mạnh của chiếc xe này.",
+      ImageURL:
+        "https://lxaqtnuuqvsscavvqcxs.supabase.co/storage/v1/object/public/images/VinFast%20LUX%20SA2.0%20Tieu%20chuan%202020.jpg",
+    },
+    {
+      Title: "Đánh giá VinFast Fadil Nâng Cao 2019",
+      Advantages:
+        "Tiết kiệm nhiên liệu, giá bán hợp lý, dễ dàng di chuyển trong thành phố",
+      Disadvantages: "Không gian nội thất hạn chế, tính năng không quá nổi bật",
+      Content:
+        "VinFast Fadil Nâng Cao 2019 là một chiếc xe đô thị với mức tiêu thụ nhiên liệu thấp và giá bán hợp lý. Xe dễ dàng di chuyển trong thành phố và phù hợp với những người tìm kiếm một phương tiện nhỏ gọn. Tuy nhiên, không gian nội thất khá hạn chế và tính năng không quá nổi bật.",
+      ImageURL:
+        "https://lxaqtnuuqvsscavvqcxs.supabase.co/storage/v1/object/public/images/VinFast%20Fadil%20Nang%20Cao%202019.jpg",
+    },
+    {
+      Title: "Đánh giá VinFast VF e34 2022",
+      Advantages:
+        "Xe điện tiết kiệm nhiên liệu, công nghệ tiên tiến, không gian rộng rãi",
+      Disadvantages: "Giá bán cao, phạm vi di chuyển còn hạn chế",
+      Content:
+        "VinFast VF e34 2022 là một chiếc xe điện với khả năng tiết kiệm nhiên liệu vượt trội và công nghệ tiên tiến. Không gian nội thất rộng rãi và các tính năng hiện đại là điểm mạnh của xe. Tuy nhiên, giá bán của xe còn khá cao và phạm vi di chuyển còn hạn chế đối với những ai cần di chuyển quãng đường dài.",
+      ImageURL:
+        "https://lxaqtnuuqvsscavvqcxs.supabase.co/storage/v1/object/public/images/VinFast%20VF%20e34%202022.jpg",
+    },
+    {
+      Title: "Đánh giá VinFast VF8 Plus 2022",
+      Advantages: "Thiết kế sang trọng, vận hành mạnh mẽ, công nghệ hiện đại",
+      Disadvantages: "Giá bán cao, không gian khoang hành lý hạn chế",
+      Content:
+        "VinFast VF8 Plus 2022 là mẫu SUV điện mang đến thiết kế sang trọng, khả năng vận hành mạnh mẽ và công nghệ hiện đại. Xe được trang bị nhiều tính năng tiện nghi, nhưng giá bán khá cao và không gian khoang hành lý hạn chế.",
+      ImageURL:
+        "https://lxaqtnuuqvsscavvqcxs.supabase.co/storage/v1/object/public/images/VinFast%20VF8%20Plus%202022.jpg",
+    },
+    {
+      Title: "Đánh giá VinFast VF9 2023",
+      Advantages:
+        "Thiết kế mạnh mẽ, không gian rộng rãi, tính năng công nghệ cao",
+      Disadvantages: "Giá khá cao, tiêu thụ năng lượng lớn",
+      Content:
+        "VinFast VF9 2023 là một chiếc SUV điện với thiết kế mạnh mẽ và không gian nội thất rộng rãi, có thể chứa nhiều hành khách và đồ đạc. Xe cũng được trang bị nhiều tính năng công nghệ cao, nhưng giá bán cao và mức tiêu thụ năng lượng không phải là điểm mạnh.",
+      ImageURL:
+        "https://lxaqtnuuqvsscavvqcxs.supabase.co/storage/v1/object/public/images/VinFast%20VF9%202023.jpg",
+    },
+    {
+      Title: "Đánh giá VinFast VF 3 2024",
+      Advantages: "Tiết kiệm năng lượng, thiết kế hiện đại, giá bán hợp lý",
+      Disadvantages: "Phạm vi di chuyển hạn chế, không gian nội thất nhỏ",
+      Content:
+        "VinFast VF 3 2024 là mẫu xe điện mới của VinFast với thiết kế hiện đại và tiết kiệm năng lượng. Tuy nhiên, phạm vi di chuyển của xe còn hạn chế và không gian nội thất khá nhỏ, phù hợp với những ai tìm kiếm một chiếc xe nhỏ gọn và tiết kiệm.",
+      ImageURL:
+        "https://lxaqtnuuqvsscavvqcxs.supabase.co/storage/v1/object/public/images/VinFast%20VF%203%202024.jpg",
+    },
+    {
+      Title: "Đánh giá Mazda 3 1.5 Hatchback 2018",
+      Advantages: "Thiết kế thể thao, vận hành ổn định, cảm giác lái tốt",
+      Disadvantages:
+        "Không gian nội thất hơi chật, mức giá cao so với các đối thủ",
+      Content:
+        "Mazda 3 1.5 Hatchback 2018 mang đến một thiết kế thể thao cuốn hút cùng khả năng vận hành ổn định và cảm giác lái tuyệt vời. Tuy nhiên, không gian nội thất hơi chật và giá bán cao hơn so với một số đối thủ cùng phân khúc.",
+      ImageURL:
+        "https://lxaqtnuuqvsscavvqcxs.supabase.co/storage/v1/object/public/images/Mazda%203%201.5%20Hatchback%202018.jpg",
+    },
+    {
+      Title: "Đánh giá Mazda CX-5 2.5 2WD 2018",
+      Advantages: "Thiết kế đẹp, nội thất sang trọng, hệ thống giải trí tốt",
+      Disadvantages: "Tiêu thụ nhiên liệu khá cao, giá bán đắt",
+      Content:
+        "Mazda CX-5 2.5 2WD 2018 là một mẫu crossover với thiết kế đẹp và nội thất sang trọng. Xe được trang bị hệ thống giải trí hiện đại, tuy nhiên mức tiêu thụ nhiên liệu khá cao và giá bán cũng đắt hơn so với một số đối thủ.",
+      ImageURL:
+        "https://lxaqtnuuqvsscavvqcxs.supabase.co/storage/v1/object/public/images/Mazda%20CX-5%202.5%202WD%202018.jpg",
+    },
+    {
+      Title: "Đánh giá Mazda 6 2.0 Premium 2020",
+      Advantages:
+        "Thiết kế sang trọng, khả năng vận hành mượt mà, nội thất tiện nghi",
+      Disadvantages: "Không gian phía sau hơi chật, giá bán khá cao",
+      Content:
+        "Mazda 6 2.0 Premium 2020 là một chiếc sedan sang trọng với khả năng vận hành mượt mà và nội thất tiện nghi. Tuy nhiên, không gian ở hàng ghế sau hơi chật và giá bán cũng cao so với các đối thủ trong cùng phân khúc.",
+      ImageURL:
+        "https://lxaqtnuuqvsscavvqcxs.supabase.co/storage/v1/object/public/images/Mazda%206%202.0%20Premium%202020.jpg",
+    },
+    {
+      Title: "Đánh giá Mazda 2 1.5AT 2015",
+      Advantages:
+        "Tiết kiệm nhiên liệu, dễ dàng di chuyển trong thành phố, giá bán hợp lý",
+      Disadvantages:
+        "Không gian nội thất hạn chế, cảm giác lái chưa thật sự ấn tượng",
+      Content:
+        "Mazda 2 1.5AT 2015 là một chiếc xe nhỏ gọn với mức tiêu thụ nhiên liệu thấp và giá bán hợp lý. Xe rất phù hợp cho việc di chuyển trong thành phố, nhưng không gian nội thất hạn chế và cảm giác lái chưa thật sự ấn tượng.",
+      ImageURL:
+        "https://lxaqtnuuqvsscavvqcxs.supabase.co/storage/v1/object/public/images/Mazda%202%201.5AT%202015.jpg",
+    },
+    {
+      Title: "Đánh giá Mazda BT-50 2015",
+      Advantages:
+        "Động cơ mạnh mẽ, khả năng vận hành vượt trội, không gian chứa đồ rộng rãi",
+      Disadvantages:
+        "Khả năng tiêu thụ nhiên liệu cao, không gian nội thất không thoải mái",
+      Content:
+        "Mazda BT-50 2015 là một chiếc bán tải mạnh mẽ với khả năng vận hành vượt trội và không gian chứa đồ rộng rãi. Tuy nhiên, khả năng tiêu thụ nhiên liệu khá cao và không gian nội thất không được thoải mái cho những chuyến đi dài.",
+      ImageURL:
+        "https://lxaqtnuuqvsscavvqcxs.supabase.co/storage/v1/object/public/images/Mazda%20BT-50%202015.jpg",
+    },
+    {
+      Title: "Đánh giá Mazda CX-8 Premium 2024",
+      Advantages:
+        "Thiết kế hiện đại, không gian nội thất rộng rãi, công nghệ tiên tiến",
+      Disadvantages: "Giá bán cao, khả năng tiết kiệm nhiên liệu chưa tối ưu",
+      Content:
+        "Mazda CX-8 Premium 2024 là một mẫu SUV 7 chỗ với thiết kế hiện đại và không gian nội thất rộng rãi. Xe được trang bị nhiều công nghệ tiên tiến, nhưng giá bán khá cao và khả năng tiết kiệm nhiên liệu chưa tối ưu.",
+      ImageURL:
+        "https://lxaqtnuuqvsscavvqcxs.supabase.co/storage/v1/object/public/images/Mazda%20CX-8%20Premium%202024.jpg",
+    },
+    {
+      Title: "Đánh giá Mazda CX-3 1.5L Deluxe 2022",
+      Advantages:
+        "Thiết kế nhỏ gọn, tiết kiệm nhiên liệu, tính năng an toàn cao",
+      Disadvantages:
+        "Không gian nội thất hạn chế, khả năng vận hành chưa mạnh mẽ",
+      Content:
+        "Mazda CX-3 1.5L Deluxe 2022 là mẫu crossover nhỏ gọn với khả năng tiết kiệm nhiên liệu tốt và các tính năng an toàn cao. Tuy nhiên, không gian nội thất hạn chế và khả năng vận hành chưa thật sự mạnh mẽ.",
+      ImageURL:
+        "https://lxaqtnuuqvsscavvqcxs.supabase.co/storage/v1/object/public/images/Mazda%20CX-3%201.5L%20Deluxe%202022.jpg",
+    },
+    {
+      Title: "Đánh giá Mazda CX-30 2.0L Premium 2022",
+      Advantages: "Thiết kế hiện đại, vận hành mượt mà, nội thất cao cấp",
+      Disadvantages: "Giá bán cao, không gian hành lý hạn chế",
+      Content:
+        "Mazda CX-30 2.0L Premium 2022 là một chiếc crossover với thiết kế hiện đại, khả năng vận hành mượt mà và nội thất cao cấp. Tuy nhiên, giá bán cao và không gian hành lý hạn chế.",
+      ImageURL:
+        "https://lxaqtnuuqvsscavvqcxs.supabase.co/storage/v1/object/public/images/Mazda%20CX-30%202.0L%20Premium%202022.jpg",
+    },
+    {
+      Title: "Đánh giá Honda City RS 2021",
+      Advantages: "Thiết kế thể thao, tiện nghi cao, tiết kiệm nhiên liệu",
+      Disadvantages:
+        "Không gian nội thất hạn chế, cảm giác lái chưa thực sự ấn tượng",
+      Content:
+        "Honda City RS 2021 mang đến thiết kế thể thao, các tiện nghi hiện đại và khả năng tiết kiệm nhiên liệu tốt. Tuy nhiên, không gian nội thất còn hạn chế và cảm giác lái chưa thật sự ấn tượng so với các đối thủ trong cùng phân khúc.",
+      ImageURL:
+        "https://lxaqtnuuqvsscavvqcxs.supabase.co/storage/v1/object/public/images/Honda%20City%20RS%202021.jpg",
+    },
+    {
+      Title: "Đánh giá Honda Civic 1.5 G 2020",
+      Advantages:
+        "Hiệu suất vận hành mạnh mẽ, thiết kế hiện đại, tính năng an toàn cao",
+      Disadvantages: "Giá bán cao, không gian phía sau hơi chật",
+      Content:
+        "Honda Civic 1.5 G 2020 mang đến hiệu suất vận hành mạnh mẽ, thiết kế hiện đại và các tính năng an toàn đầy đủ. Tuy nhiên, giá bán cao và không gian hàng ghế sau có thể hơi chật cho những chuyến đi dài.",
+      ImageURL:
+        "https://lxaqtnuuqvsscavvqcxs.supabase.co/storage/v1/object/public/images/Honda%20Civic%201.5%20G%202020.jpg",
+    },
+    {
+      Title: "Đánh giá Honda CR-V 2.0 2014",
+      Advantages:
+        "Không gian rộng rãi, khả năng vận hành ổn định, tính năng an toàn tốt",
+      Disadvantages:
+        "Thiết kế không còn hiện đại, cảm giác lái chưa thật sự nổi bật",
+      Content:
+        "Honda CR-V 2.0 2014 là mẫu SUV với không gian rộng rãi và khả năng vận hành ổn định. Tuy nhiên, thiết kế không còn hiện đại và cảm giác lái chưa thật sự nổi bật so với các đối thủ trong phân khúc.",
+      ImageURL:
+        "https://lxaqtnuuqvsscavvqcxs.supabase.co/storage/v1/object/public/images/Honda%20CR-V%202.0%202014.jpg",
+    },
+    {
+      Title: "Đánh giá Honda Accord 2008",
+      Advantages:
+        "Nội thất sang trọng, động cơ mạnh mẽ, khả năng vận hành ổn định",
+      Disadvantages: "Thiết kế đã cũ, tiêu thụ nhiên liệu khá cao",
+      Content:
+        "Honda Accord 2008 mang đến một không gian nội thất sang trọng, động cơ mạnh mẽ và khả năng vận hành ổn định. Tuy nhiên, thiết kế đã cũ và tiêu thụ nhiên liệu khá cao so với các mẫu xe hiện đại.",
+      ImageURL:
+        "https://lxaqtnuuqvsscavvqcxs.supabase.co/storage/v1/object/public/images/Honda%20Accord%202008.jpg",
+    },
+    {
+      Title: "Đánh giá Honda Brio RS 2019",
+      Advantages: "Kích thước nhỏ gọn, tiết kiệm nhiên liệu, giá bán hợp lý",
+      Disadvantages:
+        "Không gian nội thất hạn chế, khả năng vận hành chưa mạnh mẽ",
+      Content:
+        "Honda Brio RS 2019 là chiếc xe nhỏ gọn, tiết kiệm nhiên liệu và có giá bán hợp lý. Tuy nhiên, không gian nội thất hạn chế và khả năng vận hành chưa mạnh mẽ so với các mẫu xe khác trong phân khúc.",
+      ImageURL:
+        "https://lxaqtnuuqvsscavvqcxs.supabase.co/storage/v1/object/public/images/Honda%20Brio%20RS%202019.jpg",
+    },
+    {
+      Title: "Đánh giá Honda HR-V G 2023",
+      Advantages:
+        "Thiết kế hiện đại, công nghệ tiên tiến, không gian nội thất rộng rãi",
+      Disadvantages: "Giá bán khá cao, khả năng vận hành chưa ấn tượng",
+      Content:
+        "Honda HR-V G 2023 mang đến thiết kế hiện đại với công nghệ tiên tiến và không gian nội thất rộng rãi. Tuy nhiên, giá bán khá cao và khả năng vận hành chưa thật sự ấn tượng so với các đối thủ trong phân khúc.",
+      ImageURL:
+        "https://lxaqtnuuqvsscavvqcxs.supabase.co/storage/v1/object/public/images/Honda%20HR-V%20G%202023.jpg",
+    },
+    {
+      Title: "Đánh giá Honda Jazz 2019",
+      Advantages:
+        "Tiết kiệm nhiên liệu, không gian rộng rãi, tính năng an toàn cao",
+      Disadvantages:
+        "Hiệu suất vận hành không mạnh mẽ, thiết kế chưa thật sự nổi bật",
+      Content:
+        "Honda Jazz 2019 là mẫu hatchback tiết kiệm nhiên liệu, không gian rộng rãi và tính năng an toàn tốt. Tuy nhiên, hiệu suất vận hành không mạnh mẽ và thiết kế chưa thật sự nổi bật so với các đối thủ cùng phân khúc.",
+      ImageURL:
+        "https://lxaqtnuuqvsscavvqcxs.supabase.co/storage/v1/object/public/images/Honda%20Jazz%202019.jpg",
+    },
+    {
+      Title: "Đánh giá Honda Odyssey 2.4 CVT 2016",
+      Advantages: "Không gian rộng rãi, tiện nghi đầy đủ, vận hành êm ái",
+      Disadvantages: "Giá bán khá cao, tiêu thụ nhiên liệu không thấp",
+      Content:
+        "Honda Odyssey 2.4 CVT 2016 là chiếc MPV với không gian rộng rãi, tiện nghi đầy đủ và khả năng vận hành êm ái. Tuy nhiên, giá bán khá cao và mức tiêu thụ nhiên liệu không thấp.",
+      ImageURL:
+        "https://lxaqtnuuqvsscavvqcxs.supabase.co/storage/v1/object/public/images/Honda%20Odyssey%202.4%20CVT%202016.jpg",
+    },
+    {
+      Title: "Đánh giá Audi A4 1.8L TFSI 2013",
+      Advantages:
+        "Thiết kế sang trọng, cảm giác lái mượt mà, tiết kiệm nhiên liệu",
+      Disadvantages:
+        "Không gian nội thất khá hạn chế, khả năng vận hành chưa mạnh mẽ",
+      Content:
+        "Audi A4 1.8L TFSI 2013 có thiết kế sang trọng và cảm giác lái mượt mà, cùng khả năng tiết kiệm nhiên liệu tốt. Tuy nhiên, không gian nội thất khá hạn chế và khả năng vận hành chưa mạnh mẽ như các mẫu xe khác trong phân khúc.",
+      ImageURL:
+        "https://lxaqtnuuqvsscavvqcxs.supabase.co/storage/v1/object/public/images/Audi%20A4%201.8L%20TFSI%202013.jpg",
+    },
+    {
+      Title: "Đánh giá Audi A5 Sportback 2.0 TFSI 2013",
+      Advantages:
+        "Thiết kế thể thao, tiện nghi đầy đủ, khả năng vận hành ổn định",
+      Disadvantages: "Giá cao, không gian hàng ghế sau hơi hạn chế",
+      Content:
+        "Audi A5 Sportback 2.0 TFSI 2013 mang đến thiết kế thể thao, tiện nghi đầy đủ và khả năng vận hành ổn định. Tuy nhiên, giá bán khá cao và không gian hàng ghế sau hơi hạn chế.",
+      ImageURL:
+        "https://lxaqtnuuqvsscavvqcxs.supabase.co/storage/v1/object/public/images/Audi%20A5%20Sportback%202.0%20TFSI%202013.jpg",
+    },
+    {
+      Title: "Đánh giá Audi Q5 45 TFSI Quattro 2018",
+      Advantages:
+        "Động cơ mạnh mẽ, hệ dẫn động 4 bánh Quattro, không gian rộng rãi",
+      Disadvantages: "Giá khá cao, tính năng giải trí chưa thật sự nổi bật",
+      Content:
+        "Audi Q5 45 TFSI Quattro 2018 sở hữu động cơ mạnh mẽ, hệ dẫn động 4 bánh Quattro và không gian nội thất rộng rãi. Tuy nhiên, giá bán khá cao và tính năng giải trí chưa thật sự nổi bật so với các đối thủ cùng phân khúc.",
+      ImageURL:
+        "https://lxaqtnuuqvsscavvqcxs.supabase.co/storage/v1/object/public/images/Audi%20Q5%2045%20TFSI%20Quattro%202018.jpg",
+    },
+    {
+      Title: "Đánh giá Audi A6 45 TFSI 2022",
+      Advantages:
+        "Thiết kế sang trọng, công nghệ tiên tiến, khả năng vận hành êm ái",
+      Disadvantages: "Giá khá cao, không gian nội thất chưa thực sự rộng rãi",
+      Content:
+        "Audi A6 45 TFSI 2022 nổi bật với thiết kế sang trọng, công nghệ tiên tiến và khả năng vận hành êm ái. Tuy nhiên, giá bán khá cao và không gian nội thất chưa thực sự rộng rãi như những mẫu xe đối thủ.",
+      ImageURL:
+        "https://lxaqtnuuqvsscavvqcxs.supabase.co/storage/v1/object/public/images/Audi%20A6%2045%20TFSI%202022.jpg",
+    },
+    {
+      Title: "Đánh giá Audi A8 4.2 2011",
+      Advantages:
+        "Nội thất sang trọng, khả năng vận hành mạnh mẽ, trang bị đầy đủ",
+      Disadvantages: "Thiết kế có phần lỗi thời, tiêu thụ nhiên liệu khá cao",
+      Content:
+        "Audi A8 4.2 2011 mang đến nội thất sang trọng, khả năng vận hành mạnh mẽ và trang bị đầy đủ. Tuy nhiên, thiết kế có phần lỗi thời và mức tiêu thụ nhiên liệu khá cao so với các mẫu xe hiện đại.",
+      ImageURL:
+        "https://lxaqtnuuqvsscavvqcxs.supabase.co/storage/v1/object/public/images/Audi%20A8%204.2%202011.jpg",
+    },
+    {
+      Title: "Đánh giá Audi Q7 2013",
+      Advantages:
+        "Không gian rộng rãi, khả năng vận hành ấn tượng, trang bị cao cấp",
+      Disadvantages: "Giá cao, cảm giác lái chưa thật sự ấn tượng",
+      Content:
+        "Audi Q7 2013 là chiếc SUV có không gian rộng rãi, khả năng vận hành ấn tượng và trang bị cao cấp. Tuy nhiên, giá bán khá cao và cảm giác lái chưa thật sự ấn tượng so với các đối thủ trong phân khúc.",
+      ImageURL:
+        "https://lxaqtnuuqvsscavvqcxs.supabase.co/storage/v1/object/public/images/Audi%20Q7%202013.jpg",
+    },
+  ]);
+
   // Thêm dữ liệu vào bảng Listings
   await knex("Listings").insert([
     {
       UserID: 1,
       CarID: 1,
-      Status: "available",
+      Status: "Xe đẹp, đủ hồ sơ giấy tờ sang tên ngay",
       Description: "Vios E CVT 2022",
       DatePosted: new Date(),
     },
     {
       UserID: 2,
       CarID: 2,
-      Status: "available",
+      Status: "Xe đẹp, trả góp lãi xuất ưu đãi, giá tốt",
       Description: "Toyota Innova 2. 0V Full Options 2019 siêu lướt",
       DatePosted: new Date(),
     },
     {
       UserID: 1,
       CarID: 3,
-      Status: "available",
+      Status: "Xe đẹp, đủ hồ sơ giấy tờ sang tên ngay",
       Description: "Car description 3",
       DatePosted: new Date(),
     },
     {
       UserID: 2,
       CarID: 4,
-      Status: "available",
+      Status: "Xe đẹp, trả góp lãi xuất ưu đãi, giá tốt",
       Description: "Car description 4",
       DatePosted: new Date(),
     },
     {
       UserID: 1,
       CarID: 5,
-      Status: "available",
+      Status: "Xe đẹp, đủ hồ sơ giấy tờ sang tên ngay",
       Description: "Car description 5",
       DatePosted: new Date(),
     },
     {
       UserID: 2,
       CarID: 6,
-      Status: "available",
+      Status: "Xe đẹp, trả góp lãi xuất ưu đãi, giá tốt",
       Description: "Car description 6",
       DatePosted: new Date(),
     },
     {
       UserID: 1,
       CarID: 7,
-      Status: "available",
+      Status: "Xe đẹp, đủ hồ sơ giấy tờ sang tên ngay",
       Description: "Car description 7",
       DatePosted: new Date(),
     },
     {
       UserID: 2,
       CarID: 8,
-      Status: "available",
+      Status: "Xe đẹp, trả góp lãi xuất ưu đãi, giá tốt",
       Description: "Car description 8",
       DatePosted: new Date(),
     },
     {
       UserID: 1,
       CarID: 9,
-      Status: "available",
+      Status: "Xe đẹp, đủ hồ sơ giấy tờ sang tên ngay",
       Description: "Car description 9",
       DatePosted: new Date(),
     },
     {
       UserID: 2,
       CarID: 10,
-      Status: "available",
+      Status: "Xe đẹp, đủ hồ sơ giấy tờ sang tên ngay",
       Description: "Car description 10",
       DatePosted: new Date(),
     },
     {
       UserID: 1,
       CarID: 11,
-      Status: "available",
+      Status: "Xe đẹp, trả góp lãi xuất ưu đãi, giá tốt",
       Description: "Car description 11",
       DatePosted: new Date(),
     },
     {
       UserID: 2,
       CarID: 12,
-      Status: "available",
+      Status: "Xe đẹp, đủ hồ sơ giấy tờ sang tên ngay",
       Description: "Car description 12",
       DatePosted: new Date(),
     },
     {
       UserID: 1,
       CarID: 13,
-      Status: "available",
+      Status: "Xe đẹp, trả góp lãi xuất ưu đãi, giá tốt",
       Description: "Car description 13",
       DatePosted: new Date(),
     },
     {
       UserID: 2,
       CarID: 14,
-      Status: "available",
+      Status: "Xe đẹp, đủ hồ sơ giấy tờ sang tên ngay",
       Description: "Car description 14",
       DatePosted: new Date(),
     },
     {
       UserID: 1,
       CarID: 15,
-      Status: "available",
+      Status: "Xe đẹp, trả góp lãi xuất ưu đãi, giá tốt",
       Description: "Car description 15",
       DatePosted: new Date(),
     },
     {
       UserID: 2,
       CarID: 16,
-      Status: "available",
+      Status: "Xe đẹp, đủ hồ sơ giấy tờ sang tên ngay",
       Description: "Car description 16",
       DatePosted: new Date(),
     },
     {
       UserID: 1,
       CarID: 17,
-      Status: "available",
+      Status: "Xe đẹp, trả góp lãi xuất ưu đãi, giá tốt",
       Description: "Car description 17",
       DatePosted: new Date(),
     },
     {
       UserID: 2,
       CarID: 18,
-      Status: "available",
+      Status: "Xe đẹp, đủ hồ sơ giấy tờ sang tên ngay",
       Description: "Car description 18",
       DatePosted: new Date(),
     },
     {
       UserID: 1,
       CarID: 19,
-      Status: "available",
+      Status: "Xe đẹp, đủ hồ sơ giấy tờ sang tên ngay",
       Description: "Car description 19",
       DatePosted: new Date(),
     },
     {
       UserID: 2,
       CarID: 20,
-      Status: "available",
+      Status: "Xe đẹp, trả góp lãi xuất ưu đãi, giá tốt",
       Description: "Car description 20",
       DatePosted: new Date(),
     },
     {
       UserID: 1,
       CarID: 21,
-      Status: "available",
+      Status: "Xe đẹp, đủ hồ sơ giấy tờ sang tên ngay",
       Description: "Car description 21",
       DatePosted: new Date(),
     },
     {
       UserID: 2,
       CarID: 22,
-      Status: "available",
+      Status: "Xe đẹp, trả góp lãi xuất ưu đãi, giá tốt",
       Description: "Car description 22",
       DatePosted: new Date(),
     },
     {
       UserID: 1,
       CarID: 23,
-      Status: "available",
+      Status: "Xe đẹp, đủ hồ sơ giấy tờ sang tên ngay",
       Description: "Car description 23",
       DatePosted: new Date(),
     },
     {
       UserID: 2,
       CarID: 24,
-      Status: "available",
+      Status: "Xe đẹp, trả góp lãi xuất ưu đãi, giá tốt",
       Description: "Car description 24",
       DatePosted: new Date(),
     },
     {
       UserID: 1,
       CarID: 25,
-      Status: "available",
+      Status: "Xe đẹp, đủ hồ sơ giấy tờ sang tên ngay",
       Description: "Car description 25",
       DatePosted: new Date(),
     },
     {
       UserID: 2,
       CarID: 26,
-      Status: "available",
+      Status: "Xe đẹp, trả góp lãi xuất ưu đãi, giá tốt",
       Description: "Car description 26",
       DatePosted: new Date(),
     },
     {
       UserID: 1,
       CarID: 27,
-      Status: "available",
+      Status: "Xe đẹp, đủ hồ sơ giấy tờ sang tên ngay",
       Description: "Car description 27",
       DatePosted: new Date(),
     },
     {
       UserID: 2,
       CarID: 28,
-      Status: "available",
+      Status: "Xe đẹp, trả góp lãi xuất ưu đãi, giá tốt",
       Description: "Car description 28",
       DatePosted: new Date(),
     },
     {
       UserID: 1,
       CarID: 29,
-      Status: "available",
+      Status: "Xe đẹp, đủ hồ sơ giấy tờ sang tên ngay",
       Description: "Car description 29",
       DatePosted: new Date(),
     },
     {
       UserID: 2,
       CarID: 30,
-      Status: "available",
+      Status: "Xe đẹp, trả góp lãi xuất ưu đãi, giá tốt",
       Description: "Car description 30",
       DatePosted: new Date(),
     },
     {
       UserID: 1,
       CarID: 31,
-      Status: "available",
+      Status: "Xe đẹp, đủ hồ sơ giấy tờ sang tên ngay",
       Description: "Car description 31",
       DatePosted: new Date(),
     },
     {
       UserID: 2,
       CarID: 32,
-      Status: "available",
+      Status: "Xe đẹp, trả góp lãi xuất ưu đãi, giá tốt",
       Description: "Car description 32",
       DatePosted: new Date(),
     },
     {
       UserID: 1,
       CarID: 33,
-      Status: "available",
+      Status: "Xe đẹp, đủ hồ sơ giấy tờ sang tên ngay",
       Description: "Car description 33",
       DatePosted: new Date(),
     },
     {
       UserID: 2,
       CarID: 34,
-      Status: "available",
+      Status: "Xe đẹp, trả góp lãi xuất ưu đãi, giá tốt",
       Description: "Car description 34",
       DatePosted: new Date(),
     },
     {
       UserID: 1,
       CarID: 35,
-      Status: "available",
+      Status: "Xe đẹp, đủ hồ sơ giấy tờ sang tên ngay",
       Description: "Car description 35",
       DatePosted: new Date(),
     },
     {
       UserID: 2,
       CarID: 36,
-      Status: "available",
+      Status: "Xe đẹp, trả góp lãi xuất ưu đãi, giá tốt",
       Description: "Car description 36",
       DatePosted: new Date(),
     },
     {
       UserID: 1,
       CarID: 37,
-      Status: "available",
+      Status: "Xe đẹp, đủ hồ sơ giấy tờ sang tên ngay",
       Description: "Car description 37",
       DatePosted: new Date(),
     },
     {
       UserID: 2,
       CarID: 38,
-      Status: "available",
+      Status: "Xe đẹp, trả góp lãi xuất ưu đãi, giá tốt",
       Description: "Car description 38",
       DatePosted: new Date(),
     },
     {
       UserID: 1,
       CarID: 39,
-      Status: "available",
+      Status: "Xe đẹp, đủ hồ sơ giấy tờ sang tên ngay",
       Description: "Car description 39",
       DatePosted: new Date(),
     },
     {
       UserID: 2,
       CarID: 40,
-      Status: "available",
+      Status: "Xe đẹp, trả góp lãi xuất ưu đãi, giá tốt",
       Description: "Car description 40",
       DatePosted: new Date(),
     },
     {
       UserID: 1,
       CarID: 41,
-      Status: "available",
+      Status: "Xe đẹp, đủ hồ sơ giấy tờ sang tên ngay",
       Description: "Car description 41",
       DatePosted: new Date(),
     },
     {
       UserID: 2,
       CarID: 42,
-      Status: "available",
+      Status: "Xe đẹp, trả góp lãi xuất ưu đãi, giá tốt",
       Description: "Car description 42",
       DatePosted: new Date(),
     },
     {
       UserID: 1,
       CarID: 43,
-      Status: "available",
+      Status: "Xe đẹp, đủ hồ sơ giấy tờ sang tên ngay",
       Description: "Car description 43",
       DatePosted: new Date(),
     },
     {
       UserID: 2,
       CarID: 44,
-      Status: "available",
+      Status: "Xe đẹp, trả góp lãi xuất ưu đãi, giá tốt",
       Description: "Car description 44",
       DatePosted: new Date(),
     },
     {
       UserID: 1,
       CarID: 45,
-      Status: "available",
+      Status: "Xe đẹp, đủ hồ sơ giấy tờ sang tên ngay",
       Description: "Car description 45",
       DatePosted: new Date(),
     },
     {
       UserID: 2,
       CarID: 46,
-      Status: "available",
+      Status: "Xe đẹp, trả góp lãi xuất ưu đãi, giá tốt",
       Description: "Car description 46",
       DatePosted: new Date(),
     },
     {
       UserID: 1,
       CarID: 47,
-      Status: "available",
+      Status: "Xe đẹp, đủ hồ sơ giấy tờ sang tên ngay",
       Description: "Car description 47",
       DatePosted: new Date(),
     },
     {
       UserID: 2,
       CarID: 48,
-      Status: "available",
+      Status: "Xe đẹp, trả góp lãi xuất ưu đãi, giá tốt",
       Description: "Car description 48",
       DatePosted: new Date(),
     },
     {
       UserID: 1,
       CarID: 49,
-      Status: "available",
+      Status: "Xe đẹp, đủ hồ sơ giấy tờ sang tên ngay",
       Description: "Car description 49",
       DatePosted: new Date(),
     },
     {
       UserID: 2,
       CarID: 50,
-      Status: "available",
+      Status: "Xe đẹp, trả góp lãi xuất ưu đãi, giá tốt",
       Description: "Car description 50",
       DatePosted: new Date(),
     },
     {
       UserID: 1,
       CarID: 51,
-      Status: "available",
+      Status: "Xe đẹp, đủ hồ sơ giấy tờ sang tên ngay",
       Description: "Car description 51",
       DatePosted: new Date(),
     },
     {
       UserID: 2,
       CarID: 52,
-      Status: "available",
+      Status: "Xe đẹp, trả góp lãi xuất ưu đãi, giá tốt",
       Description: "Car description 52",
       DatePosted: new Date(),
     },
     {
       UserID: 1,
       CarID: 53,
-      Status: "available",
+      Status: "Xe đẹp, đủ hồ sơ giấy tờ sang tên ngay",
       Description: "Car description 53",
       DatePosted: new Date(),
     },
     {
       UserID: 2,
       CarID: 54,
-      Status: "available",
+      Status: "Xe đẹp, trả góp lãi xuất ưu đãi, giá tốt",
       Description: "Car description 54",
       DatePosted: new Date(),
     },
     {
       UserID: 1,
       CarID: 55,
-      Status: "available",
+      Status: "Xe đẹp, đủ hồ sơ giấy tờ sang tên ngay",
       Description: "Car description 55",
       DatePosted: new Date(),
     },
     {
       UserID: 2,
       CarID: 56,
-      Status: "available",
+      Status: "Xe đẹp, trả góp lãi xuất ưu đãi, giá tốt",
       Description: "Car description 56",
       DatePosted: new Date(),
     },
     {
       UserID: 1,
       CarID: 57,
-      Status: "available",
+      Status: "Xe đẹp, đủ hồ sơ giấy tờ sang tên ngay",
       Description: "Car description 57",
       DatePosted: new Date(),
     },
     {
       UserID: 2,
       CarID: 58,
-      Status: "available",
+      Status: "Xe đẹp, trả góp lãi xuất ưu đãi, giá tốt",
       Description: "Car description 58",
       DatePosted: new Date(),
     },
     {
       UserID: 1,
       CarID: 59,
-      Status: "available",
+      Status: "Xe đẹp, đủ hồ sơ giấy tờ sang tên ngay",
       Description: "Car description 59",
       DatePosted: new Date(),
     },
     {
       UserID: 2,
       CarID: 60,
-      Status: "available",
+      Status: "Xe đẹp, trả góp lãi xuất ưu đãi, giá tốt",
       Description: "Car description 60",
       DatePosted: new Date(),
     },
     {
       UserID: 1,
       CarID: 61,
-      Status: "available",
+      Status: "Xe đẹp, đủ hồ sơ giấy tờ sang tên ngay",
       Description: "Car description 61",
       DatePosted: new Date(),
     },
     {
       UserID: 2,
       CarID: 62,
-      Status: "available",
+      Status: "Xe đẹp, trả góp lãi xuất ưu đãi, giá tốt",
       Description: "Car description 62",
       DatePosted: new Date(),
     },
     {
       UserID: 1,
       CarID: 63,
-      Status: "available",
+      Status: "Xe đẹp, đủ hồ sơ giấy tờ sang tên ngay",
       Description: "Car description 63",
       DatePosted: new Date(),
     },
     {
       UserID: 2,
       CarID: 64,
-      Status: "available",
+      Status: "Xe đẹp, trả góp lãi xuất ưu đãi, giá tốt",
       Description: "Car description 64",
       DatePosted: new Date(),
     },
     {
       UserID: 1,
       CarID: 65,
-      Status: "available",
+      Status: "Xe đẹp, đủ hồ sơ giấy tờ sang tên ngay",
       Description: "Car description 65",
       DatePosted: new Date(),
     },
     {
       UserID: 2,
       CarID: 66,
-      Status: "available",
+      Status: "Xe đẹp, trả góp lãi xuất ưu đãi, giá tốt",
       Description: "Car description 66",
       DatePosted: new Date(),
     },
     {
       UserID: 1,
       CarID: 67,
-      Status: "available",
+      Status: "Xe đẹp, đủ hồ sơ giấy tờ sang tên ngay",
       Description: "Car description 67",
       DatePosted: new Date(),
     },
     {
       UserID: 2,
       CarID: 68,
-      Status: "available",
+      Status: "Xe đẹp, trả góp lãi xuất ưu đãi, giá tốt",
       Description: "Car description 68",
       DatePosted: new Date(),
     },
     {
       UserID: 1,
       CarID: 69,
-      Status: "available",
+      Status: "Xe đẹp, đủ hồ sơ giấy tờ sang tên ngay",
       Description: "Car description 69",
       DatePosted: new Date(),
     },
     {
       UserID: 2,
       CarID: 70,
-      Status: "available",
+      Status: "Xe đẹp, trả góp lãi xuất ưu đãi, giá tốt",
       Description: "Car description 70",
       DatePosted: new Date(),
     },
     {
       UserID: 1,
       CarID: 71,
-      Status: "available",
+      Status: "Xe đẹp, đủ hồ sơ giấy tờ sang tên ngay",
       Description: "Car description 71",
       DatePosted: new Date(),
     },
     {
       UserID: 2,
       CarID: 72,
-      Status: "available",
+      Status: "Xe đẹp, trả góp lãi xuất ưu đãi, giá tốt",
       Description: "Car description 72",
       DatePosted: new Date(),
     },
     {
       UserID: 1,
       CarID: 73,
-      Status: "available",
+      Status: "Xe đẹp, đủ hồ sơ giấy tờ sang tên ngay",
       Description: "Car description 73",
       DatePosted: new Date(),
     },
     {
       UserID: 2,
       CarID: 74,
-      Status: "available",
+      Status: "Xe đẹp, trả góp lãi xuất ưu đãi, giá tốt",
       Description: "Car description 74",
       DatePosted: new Date(),
     },
     {
       UserID: 1,
       CarID: 75,
-      Status: "available",
+      Status: "Xe đẹp, đủ hồ sơ giấy tờ sang tên ngay",
       Description: "Car description 75",
       DatePosted: new Date(),
     },
     {
       UserID: 2,
       CarID: 76,
-      Status: "available",
+      Status: "Xe đẹp, trả góp lãi xuất ưu đãi, giá tốt",
       Description: "Car description 76",
       DatePosted: new Date(),
     },
     {
       UserID: 1,
       CarID: 77,
-      Status: "available",
+      Status: "Xe đẹp, đủ hồ sơ giấy tờ sang tên ngay",
       Description: "Car description 77",
       DatePosted: new Date(),
     },
     {
       UserID: 2,
       CarID: 78,
-      Status: "available",
+      Status: "Xe đẹp, trả góp lãi xuất ưu đãi, giá tốt",
       Description: "Car description 78",
       DatePosted: new Date(),
     },
     {
       UserID: 1,
       CarID: 79,
-      Status: "available",
+      Status: "Xe đẹp, đủ hồ sơ giấy tờ sang tên ngay",
       Description: "Car description 79",
       DatePosted: new Date(),
     },
     {
       UserID: 2,
       CarID: 80,
-      Status: "available",
+      Status: "Xe đẹp, trả góp lãi xuất ưu đãi, giá tốt",
       Description: "Car description 80",
       DatePosted: new Date(),
     },
     {
       UserID: 1,
       CarID: 81,
-      Status: "available",
+      Status: "Xe đẹp, đủ hồ sơ giấy tờ sang tên ngay",
       Description: "Car description 81",
       DatePosted: new Date(),
     },
     {
       UserID: 2,
       CarID: 82,
-      Status: "available",
+      Status: "Xe đẹp, trả góp lãi xuất ưu đãi, giá tốt",
       Description: "Car description 82",
       DatePosted: new Date(),
     },
     {
       UserID: 1,
       CarID: 83,
-      Status: "available",
+      Status: "Xe đẹp, đủ hồ sơ giấy tờ sang tên ngay",
       Description: "Car description 83",
       DatePosted: new Date(),
     },
     {
       UserID: 2,
       CarID: 84,
-      Status: "available",
+      Status: "Xe đẹp, trả góp lãi xuất ưu đãi, giá tốt",
       Description: "Car description 84",
       DatePosted: new Date(),
     },
     {
       UserID: 1,
       CarID: 85,
-      Status: "available",
+      Status: "Xe đẹp, đủ hồ sơ giấy tờ sang tên ngay",
       Description: "Car description 85",
       DatePosted: new Date(),
     },
     {
       UserID: 2,
       CarID: 86,
-      Status: "available",
+      Status: "Xe đẹp, trả góp lãi xuất ưu đãi, giá tốt",
       Description: "Car description 86",
       DatePosted: new Date(),
     },
     {
       UserID: 1,
       CarID: 87,
-      Status: "available",
+      Status: "Xe đẹp, đủ hồ sơ giấy tờ sang tên ngay",
       Description: "Car description 87",
       DatePosted: new Date(),
     },
     {
       UserID: 2,
       CarID: 88,
-      Status: "available",
+      Status: "Xe đẹp, trả góp lãi xuất ưu đãi, giá tốt",
       Description: "Car description 88",
       DatePosted: new Date(),
     },
     {
       UserID: 1,
       CarID: 89,
-      Status: "available",
+      Status: "Xe đẹp, đủ hồ sơ giấy tờ sang tên ngay",
       Description: "Car description 89",
       DatePosted: new Date(),
     },
     {
       UserID: 2,
       CarID: 90,
-      Status: "available",
+      Status: "Xe đẹp, trả góp lãi xuất ưu đãi, giá tốt",
       Description: "Car description 90",
       DatePosted: new Date(),
     },
     {
       UserID: 1,
       CarID: 91,
-      Status: "available",
+      Status: "Xe đẹp, đủ hồ sơ giấy tờ sang tên ngay",
       Description: "Car description 91",
       DatePosted: new Date(),
     },
     {
       UserID: 2,
       CarID: 92,
-      Status: "available",
+      Status: "Xe đẹp, trả góp lãi xuất ưu đãi, giá tốt",
       Description: "Car description 92",
       DatePosted: new Date(),
     },
     {
       UserID: 1,
       CarID: 93,
-      Status: "available",
+      Status: "Xe đẹp, đủ hồ sơ giấy tờ sang tên ngay",
       Description: "Car description 93",
       DatePosted: new Date(),
     },
     {
       UserID: 2,
       CarID: 94,
-      Status: "available",
+      Status: "Xe đẹp, trả góp lãi xuất ưu đãi, giá tốt",
       Description: "Car description 94",
       DatePosted: new Date(),
     },
     {
       UserID: 1,
       CarID: 95,
-      Status: "available",
+      Status: "Xe đẹp, đủ hồ sơ giấy tờ sang tên ngay",
       Description: "Car description 95",
       DatePosted: new Date(),
     },
     {
       UserID: 2,
       CarID: 96,
-      Status: "available",
+      Status: "Xe đẹp, trả góp lãi xuất ưu đãi, giá tốt",
       Description: "Car description 96",
       DatePosted: new Date(),
     },
     {
       UserID: 1,
       CarID: 97,
-      Status: "available",
+      Status: "Xe đẹp, đủ hồ sơ giấy tờ sang tên ngay",
       Description: "Car description 97",
       DatePosted: new Date(),
     },
     {
       UserID: 2,
       CarID: 98,
-      Status: "available",
+      Status: "Xe đẹp, trả góp lãi xuất ưu đãi, giá tốt",
       Description: "Car description 98",
       DatePosted: new Date(),
     },
     {
       UserID: 1,
       CarID: 99,
-      Status: "available",
+      Status: "Xe đẹp, đủ hồ sơ giấy tờ sang tên ngay",
       Description: "Car description 99",
       DatePosted: new Date(),
     },
     {
       UserID: 2,
       CarID: 100,
-      Status: "available",
+      Status: "Xe đẹp, trả góp lãi xuất ưu đãi, giá tốt",
       Description: "Car description 100",
       DatePosted: new Date(),
     },
     {
       UserID: 1,
       CarID: 101,
-      Status: "available",
+      Status: "Xe đẹp, đủ hồ sơ giấy tờ sang tên ngay",
       Description: "Car description 101",
       DatePosted: new Date(),
     },
     {
       UserID: 2,
       CarID: 102,
-      Status: "available",
+      Status: "Xe đẹp, trả góp lãi xuất ưu đãi, giá tốt",
       Description: "Car description 102",
       DatePosted: new Date(),
     },
     {
       UserID: 1,
       CarID: 103,
-      Status: "available",
+      Status: "Xe đẹp, đủ hồ sơ giấy tờ sang tên ngay",
       Description: "Car description 103",
       DatePosted: new Date(),
     },
     {
       UserID: 2,
       CarID: 104,
-      Status: "available",
+      Status: "Xe đẹp, trả góp lãi xuất ưu đãi, giá tốt",
       Description: "Car description 104",
       DatePosted: new Date(),
     },
     {
       UserID: 1,
       CarID: 105,
-      Status: "available",
+      Status: "Xe đẹp, đủ hồ sơ giấy tờ sang tên ngay",
       Description: "Car description 105",
       DatePosted: new Date(),
     },
     {
       UserID: 2,
       CarID: 106,
-      Status: "available",
+      Status: "Xe đẹp, trả góp lãi xuất ưu đãi, giá tốt",
       Description: "Car description 106",
       DatePosted: new Date(),
     },
     {
       UserID: 1,
       CarID: 107,
-      Status: "available",
+      Status: "Xe đẹp, đủ hồ sơ giấy tờ sang tên ngay",
       Description: "Car description 107",
       DatePosted: new Date(),
     },
     {
       UserID: 2,
       CarID: 108,
-      Status: "available",
+      Status: "Xe đẹp, trả góp lãi xuất ưu đãi, giá tốt",
       Description: "Car description 108",
       DatePosted: new Date(),
     },

@@ -38,7 +38,10 @@
                                         <RowDefinition Height="Auto" />
                                     </Grid.RowDefinitions>
                                     <Grid Grid.Row="0" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
-                                        <Image Source="{x:Bind CarImages[0].ImageURL}" HorizontalAlignment="Center" VerticalAlignment="Center" Stretch="UniformToFill"/>
+                                        <Image x:Name="PlaceholderImage" Source="/Assets/car-default.jpg" Visibility="Visible"
+                                               HorizontalAlignment="Center" VerticalAlignment="Center" Stretch="UniformToFill"/>
+                                        <Image x:Name="MainImage" Source="{x:Bind CarImages[0].ImageURL}" ImageOpened="MainImage_ImageOpened"
+                                               HorizontalAlignment="Center" VerticalAlignment="Center" Stretch="UniformToFill"/>
                                     </Grid>
                                     <Grid Height="110" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Grid.Row="1" Padding="15">
                                         <StackPanel Orientation="Vertical">

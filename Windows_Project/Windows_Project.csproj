@@ -23,6 +23,7 @@
     <None Remove="Assets\audi_bg.jpg" />
     <None Remove="Assets\audi_logo.jpg" />
     <None Remove="Assets\bmw_logo.jpg" />
+    <None Remove="Assets\car-default.jpg" />
     <None Remove="Assets\car-logo.png" />
     <None Remove="Assets\chevrolet_logo.jpg" />
     <None Remove="Assets\ford_logo.jpg" />
@@ -54,6 +55,7 @@
     <None Remove="View\CarPricePage.xaml" />
     <None Remove="View\ComparisonPage.xaml" />
     <None Remove="View\ComparisonResultPage.xaml" />
+    <None Remove="View\DetailReviewPage.xaml" />
     <None Remove="View\FavoritePage.xaml" />
     <None Remove="View\MainPage.xaml" />
     <None Remove="View\NewDetailPage.xaml" />
@@ -61,6 +63,7 @@
     <None Remove="View\OldCar.xaml" />
     <None Remove="View\PostPage.xaml" />
     <None Remove="View\PricePage.xaml" />
+    <None Remove="View\ReviewPage.xaml" />
     <None Remove="View\SupportPage.xaml" />
   </ItemGroup>
 
@@ -165,6 +168,9 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Update="Assets\bmw_z4_sdrive30i.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Update="Assets\car-default.jpg">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Update="Assets\car-logo.png">
@@ -561,6 +567,12 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Update="View\SupportPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Update="View\DetailReviewPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Update="View\ReviewPage.xaml">
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Update="View\PostPage.xaml">

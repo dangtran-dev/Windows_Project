@@ -11,6 +11,7 @@
 
     <!-- Define Resources -->
     <Page.Resources>
+        <local:DecimalToVnCurrencyConverter x:Key="currency"/>
         <DataTemplate x:Key="ListingsTemplate" x:DataType="local:Cars">
             <Grid>
                 <Grid.ColumnDefinitions>
@@ -28,7 +29,7 @@
                 <!-- Nội dung -->
                 <StackPanel Grid.Column="1" VerticalAlignment="Center">
                     <TextBlock Text="{Binding CarName}" FontSize="20" FontWeight="Bold"/>
-                    <TextBlock Text="{Binding Price}" FontSize="16" Foreground="Gray"/>
+                    <TextBlock Text="{Binding Price, Converter={StaticResource currency}}" FontSize="16" Foreground="Gray"/>
                 </StackPanel>
 
                 <!-- Biểu tượng FontIcon -->

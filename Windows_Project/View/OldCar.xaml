@@ -51,8 +51,8 @@
                             <RowDefinition/>
                         </Grid.RowDefinitions>
 
-                        <TextBlock Grid.Row="0" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="18" Foreground="Black">
-        <Bold>Tìm chiếc xe dành cho bạn</Bold>
+                        <TextBlock Grid.Row="0" HorizontalAlignment="Center" FontWeight="Bold" VerticalAlignment="Center" FontSize="18" Foreground="Black">
+                              Tìm chiếc xe dành cho bạn
                         </TextBlock>
 
                         <ComboBox x:Name="Select_Car_Company" Grid.Row="1" Width="240" SelectionChanged="Select_Car_Company_SelectionChanged"
@@ -155,7 +155,12 @@
                                     </Grid.ColumnDefinitions>
 
                                     <StackPanel Grid.Column="0" Orientation="Horizontal">
-                                        <Image Source="{x:Bind car.CarImages[0].ImageURL}" Height="100" Width="100" Margin="10"/>
+                                        <Grid>
+                                            <Image x:Name="PlaceholderImage" Source="/Assets/car-default.jpg" Visibility="Visible"
+                                                   Height="100" Width="100" Margin="10"/>
+                                            <Image x:Name="MainImage" Source="{x:Bind car.CarImages[0].ImageURL}" Visibility="Collapsed"
+                                                   Height="100" Width="100" Margin="10" ImageOpened="MainImage_ImageOpened"/>
+                                        </Grid>
                                         <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center">
                                             <TextBlock Text="{x:Bind car.CarName}" FontSize="20" FontWeight="Bold"/>
                                             <TextBlock Text="{x:Bind car.Price, Converter={StaticResource currency}}" FontSize="16" Foreground="Gray"/>

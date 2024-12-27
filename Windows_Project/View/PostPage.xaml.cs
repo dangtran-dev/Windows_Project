@@ -41,6 +41,7 @@ namespace Windows_Project.View
             // Kiểm tra giá trị ban đầu của FullName
             if (!string.IsNullOrEmpty(user.FullName))
             {
+                textboxNameSeller.Text = user.FullName;
                 warningNameSeller.Visibility = Visibility.Collapsed;
             }
             else
@@ -50,6 +51,7 @@ namespace Windows_Project.View
             // Kiểm tra giá trị ban đầu của Phone
             if (!string.IsNullOrEmpty(user.Phone))
             {
+                textboxPhoneSeller.Text = user.Phone;
                 warningPhoneSeller.Visibility = Visibility.Collapsed;
             }
             else
@@ -59,6 +61,7 @@ namespace Windows_Project.View
             // Kiểm tra giá trị ban đầu của Address
             if (!string.IsNullOrEmpty(user.Address))
             {
+                textboxAddressSeller.Text = user.Address;
                 warningAddressSeller.Visibility = Visibility.Collapsed;
             }
             else
@@ -396,7 +399,7 @@ namespace Windows_Project.View
             DescriptionCarTextBlock.Text = $"{textDes}";
 
             //vị tri hiển thị popup, làm mờ phần còn lại của trang khi popup hiển thị
-            PreviewPopup.HorizontalOffset = 150;
+            PreviewPopup.HorizontalOffset = 100;
             PreviewPopup.VerticalOffset = 100;
             PreviewPopup.IsOpen = true;
             AllPage.Opacity = 0.5;
@@ -453,15 +456,15 @@ namespace Windows_Project.View
                 var car = new Cars()
                 {
                     ModelID = selectedManufacturer.CarsModels.FirstOrDefault(c => c.ModelName == comboboxModelCar.SelectedItem.ToString()).ModelID,
-                    CarName = $"{selectedManufacturer.ManufacturerName} {comboboxModelCar.SelectedItem.ToString()} {YearCarTextBox.Text}",
-                    Year = int.Parse(YearCarTextBox.Text),
+                    CarName = $"{selectedManufacturer.ManufacturerName} {comboboxModelCar.SelectedItem.ToString()} {YearCarTextBox.Text.Trim()}",
+                    Year = int.Parse(YearCarTextBox.Text.Trim()),
                     Style = (comboboxStyleCar.SelectedItem as ComboBoxItem)?.Content.ToString(),
                     Condition = newCar.IsChecked == true ? "Xe mới" : "Xe cũ",
                     Origin = internalCar.IsChecked == true ? "Trong nước" : "Nhập khẩu",
-                    Mileage = textBox_Km.IsEnabled == true ? decimal.Parse(textBox_Km.Text) : 0,
+                    Mileage = textBox_Km.IsEnabled == true ? decimal.Parse(textBox_Km.Text.Trim()) : 0,
                     Gear = (comboboxGearBoxCar.SelectedItem as ComboBoxItem)?.Content.ToString(),
                     FuelType = (comboboxFuelCar.SelectedItem as ComboBoxItem)?.Content.ToString(),
-                    Price = decimal.Parse(texboxPrice.Text)*1000000,
+                    Price = decimal.Parse(texboxPrice.Text.Trim()) *1000000,
                     City = (comboboxCitySeller.SelectedItem as Location)?.City,
                     District = comboboxDistrictSeller.SelectedItem as string,
                 };
@@ -472,8 +475,8 @@ namespace Windows_Project.View
                     {
                         UserID = user.UserID,
                         CarID = ViewModel.Cars.Count + 1,
-                        Status = texBoxTitle.Text,
-                        Description = textDescription.Text,
+                        Status = texBoxTitle.Text.Trim(),
+                        Description = textDescription.Text.Trim(),
                         DatePosted = DateTime.Now,
                     };
                     bool isSavedListing = await _sqlDao.SaveListingAsync(listing);
@@ -487,7 +490,15 @@ namespace Windows_Project.View
                         };
                         isSavedCarImage = await _sqlDao.SaveCarImagesAsync(image);
                     }
-                    if (isSavedListing && isSavedCarImage)
+                    var userChange = new Users()
+                    {
+                        UserID = user.UserID,
+                        FullName = textboxNameSeller.Text.Trim(),
+                        Phone = textboxPhoneSeller.Text.Trim(),
+                        Address = textboxAddressSeller.Text.Trim(),
+                    };
+                    bool isUpdatedUser = await _sqlDao.UpdateUserAsync(userChange);
+                    if (isSavedListing && isSavedCarImage && isUpdatedUser)
                     {
                         var newdialog = new ContentDialog()
                         {

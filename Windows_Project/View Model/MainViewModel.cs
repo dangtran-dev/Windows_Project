@@ -20,6 +20,7 @@ using System.Diagnostics;
 using System.Runtime.InteropServices.WindowsRuntime;
 using Windows.Storage.Streams;
 using Microsoft.Data.SqlClient;
+using System.Windows.Forms;
 
 namespace Windows_Project;
 
@@ -33,6 +34,8 @@ public class MainViewModel : INotifyPropertyChanged
     public List<Listings> Listings { get; set; }
     public List<CarModels> CarModels { get; set; }
     public List<Favorites> Favorites { get; set; }
+    public List<Reviews> Reviews { get; set; }
+    public List<Reviews> ReviewListOriginal { get; set; }
     // Danh sách chứa thông tin xe và người bán đã lọc theo điều kiện
     public ObservableCollection<CarWithUserItem> CarWithUserList { get; set; }
     // Thêm danh sách chứa thông tin xe và người bán ban đầu
@@ -88,6 +91,7 @@ public class MainViewModel : INotifyPropertyChanged
 
        
 
+        Reviews = dao.GetReviews();
         // Khởi tạo danh sách xe lọc
         FilteredCars = new ObservableCollection<Cars>();
 
@@ -146,7 +150,6 @@ public class MainViewModel : INotifyPropertyChanged
             OnPropertyChanged(nameof(Users));
         }
     }
-
     // kết nối tới supabase
     private async Task InitializeSupabaseClient()
     {
@@ -277,7 +280,7 @@ public class MainViewModel : INotifyPropertyChanged
                     }
                 }
                 // tạo name duy nhất cho ảnh tránh việc upload ảnh trùng tên
-                string fileName = (file.Name).ToString() + Guid.NewGuid().ToString();
+                string fileName = Guid.NewGuid().ToString() + (file.Name).ToString();
                 // Upload ảnh lên Supabase
                 bool uploadResult = await UploadToSupabaseAsync(fileBytes, fileName);
                 if (uploadResult)
@@ -389,7 +392,23 @@ public class MainViewModel : INotifyPropertyChanged
         }
         OnPropertyChanged(nameof(CarWithUserList));
     }
+    // phương thức tìm kiếm bài đánh giá theo keyword
+    public void Search_Review_By_Keyword(string keyword)
+    {
+        string connectionString = "Server=localhost,1433;Database=demoshop;User Id=sa;Password=SqlServer@123;TrustServerCertificate=True;";
+        IDao dao = new SqlDao(connectionString);
+        ReviewListOriginal = dao.GetReviews();
+        var filteredReviews = ReviewListOriginal
+            .Where(r => r.Title != null && r.Title.ToLower().Contains(keyword.ToLower()))
+            .ToList();
 
+        Reviews.Clear();
+        foreach (var review in filteredReviews)
+        {
+            Reviews.Add(review);
+        }
+        OnPropertyChanged(nameof(Reviews));
+    }
     public void CreateListingsByUserID(int userID)
     {
         // Xóa danh sách hiện tại

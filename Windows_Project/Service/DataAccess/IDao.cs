@@ -17,6 +17,7 @@ public interface IDao
     List<Listings> GetListings();
     List<CarModels> GetCarModels();
     List<Favorites> GetFavorites();
+    List<Reviews> GetReviews();
 
     // Phương thức lưu người dùng mới vào cơ sở dữ liệu
     Task<bool> SaveUserAsync(string username, string password);

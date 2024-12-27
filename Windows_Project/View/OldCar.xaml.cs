@@ -240,5 +240,27 @@ namespace Windows_Project.View
             comboboxCitySeller.SelectedItem = null;
             comboboxDistrictSeller.SelectedItem = null;
         }
+
+        private void MainImage_ImageOpened(object sender, RoutedEventArgs e)
+        {
+            var mainImage = sender as Image;
+            if (mainImage != null)
+            {
+                var parentGrid = mainImage.Parent as Grid;
+                if (parentGrid != null)
+                {
+                    var placeholderImage = parentGrid.FindName("PlaceholderImage") as Image;
+                    if (placeholderImage != null)
+                    {
+                        placeholderImage.Visibility = Visibility.Collapsed;
+                    }
+                    var MainImage = parentGrid.FindName("MainImage") as Image;
+                    if (MainImage != null)
+                    {
+                        MainImage.Visibility = Visibility.Visible;
+                    }
+                }
+            }
+        }
     }
 }

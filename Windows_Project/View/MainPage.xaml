@@ -254,17 +254,20 @@
                     <ColumnDefinition Width="*"></ColumnDefinition>
                 </Grid.ColumnDefinitions>
 
-                <Grid Grid.Column="0" Margin="10">
-                    <Image Source="../Assets/menu-bg3.png" Stretch="UniformToFill"/>
-                    <TextBlock Text="Đánh giá xe"
-        HorizontalAlignment="Center"
-        VerticalAlignment="Center"
-        Foreground="DarkBlue"
-        FontSize="20"
-        FontWeight="Bold"
-        Opacity="0.5" 
-        Padding="0"/>
-                </Grid>
+                <Button Grid.Column="0" Margin="10" Background="Transparent" Click="OnReviewButtonClick" Padding="0">
+                    <Grid>
+                        <Image Source="../Assets/menu-bg3.png" Stretch="UniformToFill"/>
+                        <TextBlock Text="Đánh giá xe"
+                        HorizontalAlignment="Center"
+                        VerticalAlignment="Center"
+                        Foreground="DarkBlue"
+                        FontSize="20"
+                        FontWeight="Bold"
+                        Opacity="0.5" 
+                        Padding="0"/>
+                    </Grid>
+                </Button>
+                
 
                 <Button Grid.Column="1" Margin="10" Background="Transparent" Click="OnComparisonButtonClick" Padding="0">
                     <Grid>
