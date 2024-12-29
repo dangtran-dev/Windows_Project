@@ -26,7 +26,7 @@ namespace Windows_Project.View
         private int currentPage = 1;
         private int itemsPerPage = 5;
 
-        private Users CurrentUser;
+        public Users CurrentUser { get; set; }
         public MainViewModel ViewModel { get; set; }
         public FavoritePage()
         {
@@ -53,7 +53,7 @@ namespace Windows_Project.View
 
         private void UpdatePageInfo()
         {
-            int totalPages = (int)Math.Ceiling((double)ViewModel.FilteredCars.Count / itemsPerPage);
+            int totalPages = (int)Math.Ceiling((double)ViewModel.CarWithUserList.Count / itemsPerPage);
             PageInfoTextBlock.Text = $"{currentPage}/{totalPages}";
 
             // Kiểm tra để vô hiệu hóa nút nếu không thể bấm
@@ -65,7 +65,7 @@ namespace Windows_Project.View
         {
             // Tính toán chỉ số bắt đầu và kết thúc của trang hiện tại
             int startIndex = (currentPage - 1) * itemsPerPage;
-            var carsToDisplay = ViewModel.FilteredCars.Skip(startIndex).Take(itemsPerPage).ToList();
+            var carsToDisplay = ViewModel.CarWithUserList.Skip(startIndex).Take(itemsPerPage).ToList();
 
             CarListView.ItemsSource = carsToDisplay;
             // Cập nhật thông tin trang
@@ -83,7 +83,7 @@ namespace Windows_Project.View
 
         private void NextPage_Click(object sender, RoutedEventArgs e)
         {
-            if (currentPage * itemsPerPage < ViewModel.FilteredCars.Count)
+            if (currentPage * itemsPerPage < ViewModel.CarWithUserList.Count)
             {
                 currentPage++;
                 LoadPagedCars();
@@ -93,11 +93,11 @@ namespace Windows_Project.View
         private void OnDeleteClick(object sender, RoutedEventArgs e)
         {
             var button = sender as Button;
-            var favoriteCar = button?.DataContext as Cars; // Giả sử Cars là đối tượng xe yêu thích
+            var favoriteCar = button?.DataContext as CarWithUserItem;
 
             if (favoriteCar != null)
             {
-                ViewModel.deleteFavoriteCar(favoriteCar.ID, CurrentUser.UserID);
+                ViewModel.deleteFavoriteCar(favoriteCar.car.ID, CurrentUser.UserID);
 
                 // Cập nhật lại danh sách xe yêu thích sau khi xóa
                 LoadPagedCars();
@@ -115,12 +115,34 @@ namespace Windows_Project.View
 
         private void OnCarItemClick(object sender, ItemClickEventArgs e)
         {
-            //var selectedCar = e.ClickedItem as Cars;
-            //if (selectedCar != null)
-            //{
-            //    // Chuyển đến trang chi tiết và truyền dữ liệu
-            //    Frame.Navigate(typeof(CarDetailPage), selectedCar);
-            //}
+            var selectedCar = e.ClickedItem as CarWithUserItem;
+            var parameter = new Tuple<CarWithUserItem, Users>(selectedCar, CurrentUser);
+            if (selectedCar != null && CurrentUser != null)
+            {
+                // Chuyển đến trang chi tiết và truyền dữ liệu
+                Frame.Navigate(typeof(CarDetailPage), parameter);
+            }
+        }
+        private void MainImage_ImageOpened(object sender, RoutedEventArgs e)
+        {
+            var mainImage = sender as Image;
+            if (mainImage != null)
+            {
+                var parentGrid = mainImage.Parent as Grid;
+                if (parentGrid != null)
+                {
+                    var placeholderImage = parentGrid.FindName("PlaceholderImage") as Image;
+                    if (placeholderImage != null)
+                    {
+                        placeholderImage.Visibility = Visibility.Collapsed;
+                    }
+                    var MainImage = parentGrid.FindName("MainImage") as Image;
+                    if (MainImage != null)
+                    {
+                        MainImage.Visibility = Visibility.Visible;
+                    }
+                }
+            }
         }
     }
 }

@@ -8,6 +8,10 @@
     mc:Ignorable="d"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
+    <Page.Resources>
+        <local:DecimalToVnCurrencyConverter x:Key="currency"/>
+    </Page.Resources>
+
     <Grid>
         <!-- Định nghĩa các hàng -->
         <Grid.RowDefinitions>
@@ -32,25 +36,49 @@
         <!-- Nội dung danh sách -->
         <ListView Grid.Row="1" x:Name="CarListView" IsItemClickEnabled="True" ItemClick="OnCarItemClick">
             <ListView.ItemTemplate>
-                <DataTemplate x:DataType="local:Cars">
+                <DataTemplate x:DataType="local:CarWithUserItem">
                     <Grid>
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="Auto"/>
                             <ColumnDefinition Width="*"/>
                             <ColumnDefinition Width="Auto"/>
+                            <ColumnDefinition Width="Auto"/>
                         </Grid.ColumnDefinitions>
 
                         <!-- Ảnh -->
-                        <Image Grid.Column="0" Source="{Binding CarImages[0].ImageURL}" Height="100" Width="100" Margin="10"/>
+                        <Grid Grid.Column="0">
+                            <Image x:Name="PlaceholderImage" Source="/Assets/car-default.jpg" Visibility="Visible"
+                                Height="100" Width="100" Margin="10"/>
+                            <Image x:Name="MainImage" Source="{x:Bind car.CarImages[0].ImageURL}" Visibility="Collapsed"
+                                Height="100" Width="100" Margin="10" ImageOpened="MainImage_ImageOpened"/>
+                        </Grid>
 
                         <!-- Nội dung -->
                         <StackPanel Grid.Column="1" VerticalAlignment="Center">
-                            <TextBlock Text="{Binding CarName}" FontSize="20" FontWeight="Bold"/>
-                            <TextBlock Text="{Binding Price}" FontSize="16" Foreground="Gray"/>
+                            <TextBlock Text="{x:Bind car.CarName}" FontSize="20" FontWeight="Bold"/>
+                            <TextBlock Text="{x:Bind car.Price, Converter={StaticResource currency}}" FontSize="16" Foreground="Gray"/>
                         </StackPanel>
-
+                        
+                        <!--Thông tin người bán-->
+                        <StackPanel Grid.Column="2" Orientation="Vertical" Margin="0,20,10,0">
+                            <StackPanel  Orientation="Horizontal">
+                                <FontIcon Glyph="&#xE748;"/>
+                                <TextBlock Text="{x:Bind user.FullName}" FontSize="16" Margin="5,0,0,0"/>
+                                <FontIcon Glyph="&#xE930;" Margin="5,0,0,0"/>
+                            </StackPanel>
+                            <StackPanel  Orientation="Horizontal" Margin="0,5,0,0">
+                                <FontIcon Glyph="&#xE707;" />
+                                <TextBlock Text="{x:Bind car.City}" FontSize="16" Margin="5,0,0,0"/>
+                            </StackPanel>
+                            <StackPanel  Orientation="Horizontal" Margin="0,5,0,0">
+                                <FontIcon Glyph="&#xE717;" />
+                                <TextBlock Text="{x:Bind user.Phone}" FontSize="16" Margin="5,0,0,0"/>
+                                <Button Content="Gọi ngay" Foreground="White" Background="Blue" FontSize="10" Margin="5,0,0,0"/>
+                            </StackPanel>
+                        </StackPanel>
+                        
                         <!-- Nút xóa -->
-                        <Button Grid.Column="2" Margin="10,0,50,0" Background="Transparent" BorderThickness="0" Click="OnDeleteClick">
+                        <Button Grid.Column="3" Margin="10,0,50,0" Background="Transparent" BorderThickness="0" Click="OnDeleteClick">
                             <FontIcon Glyph="&#xE74D;" VerticalAlignment="Center" Foreground="Gray" FontSize="20"/>
                         </Button>
                     </Grid>

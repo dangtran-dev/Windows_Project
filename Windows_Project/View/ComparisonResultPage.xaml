@@ -63,7 +63,13 @@
                                         <ColumnDefinition Width="*" />
                                     </Grid.ColumnDefinitions>
 
-                                    <Image Grid.Column="0" Source="{x:Bind CarImages[0].ImageURL}" Width="115" Height="85" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="10, 10, 15, 0"  Stretch="UniformToFill" />
+                                    <Grid Grid.Column="0">
+                                        <Image x:Name="PlaceholderImage" Source="/Assets/car-default.jpg" Visibility="Visible"
+                                            Width="115" Height="85" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="10, 10, 15, 0"  Stretch="UniformToFill"/>
+                                        <Image x:Name="MainImage" Source="{x:Bind CarImages[0].ImageURL}" Visibility="Collapsed"
+                                            Width="115" Height="85" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="10, 10, 15, 0"  Stretch="UniformToFill" ImageOpened="MainImage_ImageOpened"/>
+                                    </Grid>
+                                    
                                     <TextBlock Grid.Column="1" Text="{x:Bind CarName}" Margin="0, 25, 0, 0" FontSize="14" FontWeight="Bold" TextWrapping="Wrap" Foreground="#222" TextAlignment="Center" />
                                 </Grid>
                             </DataTemplate>
