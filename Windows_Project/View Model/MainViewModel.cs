@@ -541,7 +541,7 @@ public class MainViewModel : INotifyPropertyChanged
     public void CreateFavoritesByUserID(int userID)
     {
         // Xóa danh sách hiện tại
-        FilteredCars.Clear();
+        CarWithUserList.Clear();
 
         // Lọc danh sách Favorites theo UserID
         var favoriteListings = Favorites
@@ -554,29 +554,36 @@ public class MainViewModel : INotifyPropertyChanged
             .Where(listing => favoriteListings.Contains(listing.ListingID))
             .Select(listing => listing.CarID)
             .ToList();
-
-        // Tạo một danh sách Cars từ CarID đã lấy
-        var filteredCars = new ObservableCollection<Cars>();
-
-        foreach (var carID in carIDs)
+        // tìm danh sách UserIDs từ Listings dựa trên ListingID
+        var userIDs = Listings
+            .Where(listing => favoriteListings.Contains(listing.ListingID))
+            .Select(listing => listing.UserID)
+            .ToList();
+        // tạo một danh sách CarWithUserItem từ CarID và UserID đã lấy
+        var filteredCarWithUserList = new ObservableCollection<CarWithUserItem>();
+        for (int i = 0; i < carIDs.Count; i++)
         {
-            // Tìm kiếm xe trong danh sách Cars tương ứng với CarID
-            var car = Cars.FirstOrDefault(c => c.ID == carID);
-            if (car != null)
+            var car = Cars.FirstOrDefault(c => c.ID == carIDs[i]);
+            var user = Users.FirstOrDefault(u => u.UserID == userIDs[i]);
+            if (car != null && user != null)
             {
-                // Lấy ModelName từ CarModels dựa trên ModelID
                 var carModel = CarModels.FirstOrDefault(cm => cm.ModelID == car.ModelID);
                 if (carModel != null)
                 {
-                    car.ModelName = carModel.ModelName; // Gán ModelName vào đối tượng Car
+                    car.ModelName = carModel.ModelName;
                 }
-                filteredCars.Add(car); // Thêm xe vào danh sách kết quả
+                filteredCarWithUserList.Add(new CarWithUserItem
+                {
+                    car = car,
+                    user = user,
+                    listing = Listings.FirstOrDefault(l => l.CarID == car.ID && l.UserID == user.UserID)
+                });
             }
         }
 
-        // Cập nhật FilteredCars với danh sách xe đã lọc
-        FilteredCars = filteredCars;
-        OnPropertyChanged(nameof(FilteredCars)); // Cập nhật UI
+        // Cập nhật CarWithUserList với danh sách xe đã lọc
+        CarWithUserList = filteredCarWithUserList;
+        OnPropertyChanged(nameof(CarWithUserList)); // Cập nhật UI
     }
 
 
@@ -674,13 +681,13 @@ public class MainViewModel : INotifyPropertyChanged
                     }
                 }
             }
-            var carToRemove = FilteredCars.FirstOrDefault(c => c.ID == carID);
+            var carToRemove = CarWithUserList.FirstOrDefault(c => c.car.ID == carID);
             if (carToRemove != null)
             {
-                FilteredCars.Remove(carToRemove);
+                CarWithUserList.Remove(carToRemove);
             }
             // Gửi thông báo cập nhật giao diện
-            OnPropertyChanged(nameof(FilteredCars));
+            OnPropertyChanged(nameof(CarWithUserList));
         }
         catch (Exception ex)
         {

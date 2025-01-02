@@ -8,6 +8,10 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d">
 
+    <Page.Resources>
+        <local:DecimalToVnCurrencyConverter x:Key="currency"/>
+    </Page.Resources>
+
     <StackPanel Padding="20">
         <StackPanel>
             <Grid VerticalAlignment="Top" Height="100" BorderBrush="Gray" BorderThickness="0, 0, 0, 1" Padding="50, 0, 50, 0">
@@ -63,7 +67,13 @@
                                         <ColumnDefinition Width="*" />
                                     </Grid.ColumnDefinitions>
 
-                                    <Image Grid.Column="0" Source="{x:Bind CarImages[0].ImageURL}" Width="115" Height="85" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="10, 10, 15, 0"  Stretch="UniformToFill" />
+                                    <Grid Grid.Column="0">
+                                        <Image x:Name="PlaceholderImage" Source="/Assets/car-default.jpg" Visibility="Visible"
+                                            Width="115" Height="85" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="10, 10, 15, 0"  Stretch="UniformToFill"/>
+                                        <Image x:Name="MainImage" Source="{x:Bind CarImages[0].ImageURL}" Visibility="Collapsed"
+                                            Width="115" Height="85" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="10, 10, 15, 0"  Stretch="UniformToFill" ImageOpened="MainImage_ImageOpened"/>
+                                    </Grid>
+                                    
                                     <TextBlock Grid.Column="1" Text="{x:Bind CarName}" Margin="0, 25, 0, 0" FontSize="14" FontWeight="Bold" TextWrapping="Wrap" Foreground="#222" TextAlignment="Center" />
                                 </Grid>
                             </DataTemplate>
@@ -105,7 +115,7 @@
                                     </Grid.RowDefinitions>
 
                                     <Grid Grid.Row="0" Width="250" BorderThickness="0, 0, 1, 1" BorderBrush="#E1E1E1">
-                                        <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" Text="{x:Bind Price}" FontSize="14" Foreground="#222" />
+                                        <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" Text="{x:Bind Price, Converter={StaticResource currency}}" FontSize="14" Foreground="#222" />
                                     </Grid>
 
                                     <Grid Grid.Row="1" Width="250" BorderThickness="0, 0, 1, 1" BorderBrush="#E1E1E1">

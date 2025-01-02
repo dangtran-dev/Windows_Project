@@ -36,7 +36,12 @@
                 </Grid.RowDefinitions>
 
                 <TextBlock Grid.Row="0" Text="{x:Bind Review.Title}" FontSize="20" FontWeight="Bold" Margin="10"/>
-                <Image Grid.Row="1" Source="{x:Bind Review.ImageURL}" Margin="10"/>
+                <Grid Grid.Row="1">
+                    <Image x:Name="PlaceholderImage" Source="/Assets/car-default.jpg" Visibility="Visible"
+                             Margin="10"/>
+                    <Image x:Name="MainImage" Source="{x:Bind Review.ImageURL}" Visibility="Collapsed"
+                             Margin="10" ImageOpened="MainImage_ImageOpened"/>
+                </Grid>
                 <TextBlock Grid.Row="2" FontSize="16" TextWrapping="Wrap" Margin="10,0,0,0">
                         <Run Text="- Ưu điểm:" FontWeight="Bold" />
                         <Run Text="{x:Bind Review.Advantages}" />

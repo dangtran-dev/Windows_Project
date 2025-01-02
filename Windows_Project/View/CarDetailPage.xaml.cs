@@ -49,38 +49,13 @@ namespace Windows_Project
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
             // Lấy dữ liệu được truyền vào từ trang trước
-            //ViewModel = e.Parameter as CarWithUserItem;
-            //DataContext = ViewModel;
-            //if (ViewModel.car.CarImages.Count == 1)
-            //{
-            //    UniqueImage.Visibility = Visibility.Visible;
-            //}
-            //else
-            //{
-            //    for (int i = 0; i < 6; i++)
-            //    {
-            //        var imageControl = (Image)FindName($"Image{i + 1}l");
-            //        if (i < ViewModel.car.CarImages.Count)
-            //        {
-            //            imageControl.Source = new BitmapImage(new Uri(ViewModel.car.CarImages[i].ImageURL));
-            //            imageControl.Visibility = Visibility.Visible;
-            //        }
-            //        else
-            //        {
-            //            imageControl.Source = null;
-            //            imageControl.Visibility = Visibility.Collapsed;
-            //        }
-            //    }
-            //}
-
-            // Lấy dữ liệu được truyền vào từ trang trước (CarDetailParameter)
-            var parameter = e.Parameter as CarDetailParameter;
+            var parameter = e.Parameter as Tuple<CarWithUserItem, Users>;
 
             if (parameter != null)
             {
                 // Gán dữ liệu từ parameter vào ViewModel
-                var selectedCar = parameter.SelectedCar;
-                users = parameter.User;
+                var selectedCar = parameter.Item1;
+                users = parameter.Item2;
 
                 ViewModel = selectedCar;
                 // Cập nhật DataContext nếu cần
@@ -96,15 +71,32 @@ namespace Windows_Project
                     for (int i = 0; i < 6; i++)
                     {
                         var imageControl = (Image)FindName($"Image{i + 1}l");
+                        var placeholderControl = (Image)FindName($"PlaceholderImage{i + 1}");
                         if (i < selectedCar.car.CarImages.Count)
                         {
                             imageControl.Source = new BitmapImage(new Uri(selectedCar.car.CarImages[i].ImageURL));
-                            imageControl.Visibility = Visibility.Visible;
+                            imageControl.Visibility = Visibility.Collapsed;
+                            if (placeholderControl != null)
+                            {
+                                placeholderControl.Visibility = Visibility.Visible;
+                            }
+                            imageControl.ImageOpened += (s, e) =>
+                            {
+                                if (placeholderControl != null)
+                                {
+                                    placeholderControl.Visibility = Visibility.Collapsed;
+                                }
+                                imageControl.Visibility = Visibility.Visible;
+                            };
                         }
                         else
                         {
                             imageControl.Source = null;
                             imageControl.Visibility = Visibility.Collapsed;
+                            if (placeholderControl != null)
+                            {
+                                placeholderControl.Visibility = Visibility.Collapsed;
+                            }
                         }
                     }
                 }

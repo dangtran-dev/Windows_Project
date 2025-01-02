@@ -64,7 +64,7 @@ namespace Windows_Project
                         Q = "vinfast",
                         SortBy = SortBys.PublishedAt,
                         Language = Languages.VI,
-                        From = new DateTime(2024, 11, 27)
+                        From = new DateTime(2024, 12, 02)
                     });
 
                     DispatcherQueue.TryEnqueue(() =>
@@ -127,6 +127,27 @@ namespace Windows_Project
             if (selectedNews != null)
             {
                 Frame.Navigate(typeof(NewDetailPage), selectedNews);
+            }
+        }
+        private void MainImage_ImageOpened(object sender, RoutedEventArgs e)
+        {
+            var mainImage = sender as Image;
+            if (mainImage != null)
+            {
+                var parentGrid = mainImage.Parent as Grid;
+                if (parentGrid != null)
+                {
+                    var placeholderImage = parentGrid.FindName("PlaceholderImage") as Image;
+                    if (placeholderImage != null)
+                    {
+                        placeholderImage.Visibility = Visibility.Collapsed;
+                    }
+                    var MainImage = parentGrid.FindName("MainImage") as Image;
+                    if (MainImage != null)
+                    {
+                        MainImage.Visibility = Visibility.Visible;
+                    }
+                }
             }
         }
     }

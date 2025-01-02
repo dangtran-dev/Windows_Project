@@ -33,12 +33,6 @@ namespace Windows_Project.View
 
         public MainViewModel ViewModel { get; set; }
 
-        public class CarDetailParameter
-        {
-            public CarWithUserItem SelectedCar { get; set; }
-            public Users User { get; set; }
-        }
-
         public OldCar()
         {
             this.InitializeComponent();
@@ -129,12 +123,7 @@ namespace Windows_Project.View
         {
             // Lấy thông tin của ô tô được chọn
             var selectedCar = e.ClickedItem as CarWithUserItem;
-
-            var parameter = new CarDetailParameter
-            {
-                SelectedCar = selectedCar,
-                User = user
-            };
+            var parameter = new Tuple<CarWithUserItem, Users>(selectedCar, user);
 
             if (selectedCar != null)
             {
@@ -185,7 +174,7 @@ namespace Windows_Project.View
         {
             string manufactutrer = Select_Car_Company.SelectedItem != null ? ((Manufacturers)Select_Car_Company.SelectedItem).ManufacturerName : null;
             string model = Select_Car_Model.SelectedItem != null ? Select_Car_Model.SelectedItem.ToString() : null;
-            //string year = string.IsNullOrEmpty(Search_Year.Text) ? null : Search_Year.Text;
+
             string year = null;
             if (!string.IsNullOrEmpty(Search_Year.Text) && int.TryParse(Search_Year.Text, out int validYear))
             {
@@ -195,8 +184,6 @@ namespace Windows_Project.View
             var selectedStyleItem = comboboxStyleCar.SelectedItem as ComboBoxItem;
             string style = selectedStyleItem != null ? selectedStyleItem.Content.ToString() : null;
 
-            //string minPrice = string.IsNullOrEmpty(MinPrice.Text) ? null : MinPrice.Text;
-            //string maxPrice = string.IsNullOrEmpty(MaxPrice.Text) ? null : MaxPrice.Text;
             string minPrice = null;
             if (!string.IsNullOrEmpty(MinPrice.Text) && int.TryParse(MinPrice.Text, out int validMinPrice))
             {

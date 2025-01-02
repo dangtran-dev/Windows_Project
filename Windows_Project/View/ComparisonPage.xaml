@@ -61,7 +61,12 @@
                                     </Grid.ColumnDefinitions>
 
                                     <Grid Grid.Column="0" Margin="0, 0, 10, 0">
-                                        <Image Source="{x:Bind CarImages[0].ImageURL}" Height="100" VerticalAlignment="Center" HorizontalAlignment="Center" Stretch="UniformToFill" />
+                                        <Grid>
+                                            <Image x:Name="PlaceholderImage" Source="/Assets/car-default.jpg" Visibility="Visible"
+                                                Height="100" VerticalAlignment="Center" HorizontalAlignment="Center" Stretch="UniformToFill" />
+                                            <Image x:Name="MainImage" Source="{x:Bind CarImages[0].ImageURL}" Visibility="Collapsed"
+                                            Height="100" VerticalAlignment="Center" HorizontalAlignment="Center" Stretch="UniformToFill"  ImageOpened="MainImage_ImageOpened"/>
+                                        </Grid>
 
                                         <Button Click="Delete_Click" Width="30" Height="30" VerticalAlignment="Top" HorizontalAlignment="Right" Margin="5" CornerRadius="15">
                                             <FontIcon Glyph="&#xEF2C;" FontSize="6" />
