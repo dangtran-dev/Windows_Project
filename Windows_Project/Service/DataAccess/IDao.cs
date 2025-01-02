@@ -20,5 +20,5 @@ public interface IDao
     List<Reviews> GetReviews();
 
     // Phương thức lưu người dùng mới vào cơ sở dữ liệu
-    Task<bool> SaveUserAsync(string username, string password);
+    Task<int> SaveUserAsync(string username, string password);
 }

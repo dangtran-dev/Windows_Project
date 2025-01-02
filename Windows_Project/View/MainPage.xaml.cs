@@ -183,7 +183,22 @@ namespace Windows_Project
             }
             // lấy thông tin người dùng đăng nhập
             var user = ViewModel.Users.FirstOrDefault(u => u.Username == loggedInUser);
-            Frame.Navigate(typeof(PostPage), user);
+            if (user != null)
+            {
+                Frame.Navigate(typeof(PostPage), user);
+            }
+            else
+            {
+                // Nếu không tìm thấy người dùng, hiển thị thông báo
+                ContentDialog dialog = new ContentDialog
+                {
+                    Title = "Lỗi",
+                    Content = "Không tìm thấy thông tin người dùng.",
+                    CloseButtonText = "OK",
+                    XamlRoot = this.XamlRoot
+                };
+                _ = dialog.ShowAsync();
+            }
         }
 
         private void OnComparisonButtonClick(object sender, RoutedEventArgs e)
@@ -318,12 +333,13 @@ namespace Windows_Project
                         else
                         {
                             // Gọi phương thức SaveUserAsync từ Dao
-                            bool isSaved = await _sqlDao.SaveUserAsync(username, password);
-                            if (isSaved)
+                            int userId = await _sqlDao.SaveUserAsync(username, password);
+                            if (userId > 0)
                             {
                                 // Thêm người dùng mới vào danh sách Users của ViewModel
                                 ViewModel.Users.Add(new Users
                                 {
+                                    UserID = userId,
                                     Username = username,
                                     Password = password // (Nếu cần bảo mật, không nên lưu mật khẩu dưới dạng plaintext)
                                 });

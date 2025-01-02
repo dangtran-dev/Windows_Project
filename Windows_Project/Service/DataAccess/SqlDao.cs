@@ -308,61 +308,56 @@ namespace Windows_Project.Service.DataAccess
             return users;
         }
 
-        public async Task<bool> SaveUserAsync(string username, string password)
+        public async Task<int> SaveUserAsync(string username, string password)
         {
             try
             {
                 if (string.IsNullOrEmpty(username))
                 {
-                    // Return false if the username is invalid (null or empty)
                     Debug.WriteLine("Username cannot be null or empty.");
-                    return false;
+                    return 0; // Trả về 0 nếu username không hợp lệ
                 }
 
-                // Check if the username already exists in the database
                 using (SqlConnection conn = new SqlConnection(_connectionString))
                 {
                     await conn.OpenAsync();
 
+                    // Kiểm tra xem username đã tồn tại chưa
                     string checkQuery = "SELECT COUNT(*) FROM Users WHERE Username = @Username";
                     using (SqlCommand checkCmd = new SqlCommand(checkQuery, conn))
                     {
                         checkCmd.Parameters.AddWithValue("@Username", username);
                         int count = (int)await checkCmd.ExecuteScalarAsync();
-
                         if (count > 0)
                         {
-                            // Return false if the username already exists
                             Debug.WriteLine("Username already exists.");
-                            return false;
+                            return 0; // Trả về 0 nếu username đã tồn tại
                         }
                     }
-                }
 
-                // If the username is valid and does not exist, insert the new user
-                using (SqlConnection conn = new SqlConnection(_connectionString))
-                {
-                    await conn.OpenAsync();
+                    // Chèn người dùng mới và lấy UserID
+                    string query = @"
+                INSERT INTO Users (Username, Password) 
+                VALUES (@Username, @Password);
+                SELECT SCOPE_IDENTITY();"; // Lấy UserID mới được tạo
 
-                    string query = "INSERT INTO Users (Username, Password) VALUES (@Username, @Password)";
                     using (SqlCommand cmd = new SqlCommand(query, conn))
                     {
                         cmd.Parameters.AddWithValue("@Username", username);
                         cmd.Parameters.AddWithValue("@Password", password);
 
-                        await cmd.ExecuteNonQueryAsync();
+                        var userId = await cmd.ExecuteScalarAsync();
+                        return Convert.ToInt32(userId); // Trả về UserID
                     }
-                    
                 }
-                return true;
             }
             catch (Exception ex)
             {
-                // Xử lý lỗi
                 Debug.WriteLine($"Error saving user: {ex.Message}");
-                return false;
+                return 0; // Trả về 0 nếu xảy ra lỗi
             }
         }
+
 
         // phương thức lưu thông tin xe xuống cơ sở dữ liệu
         public async Task<bool> SaveCarAsync(Cars car)
