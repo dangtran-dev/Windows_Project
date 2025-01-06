@@ -122,7 +122,8 @@ namespace Windows_Project
             try
             {
                 // Đường dẫn đến file JSON API Key
-                string jsonPath = @"D:\KHTN\HKI\Windows\Windows_Project\config\windowsproject-444620-753846ed6602.json";
+                //string jsonPath = @"D:\KHTN\HKI\Windows\Windows_Project\config\windowsproject-444620-753846ed6602.json";
+                string jsonPath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "config", "windowsproject-444620-753846ed6602.json");
                 var credential = GoogleCredential.FromFile(jsonPath).ToChannelCredentials();
                 var client = new SessionsClientBuilder { ChannelCredentials = credential }.Build();
 

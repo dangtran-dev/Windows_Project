@@ -557,6 +557,9 @@
     <None Update="Assets\previous_icon.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
+    <None Update="config\windowsproject-444620-753846ed6602.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
     <Page Update="View\NewDetailPage.xaml">
       <Generator>MSBuild:Compile</Generator>
     </Page>

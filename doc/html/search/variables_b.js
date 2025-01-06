@@ -1,0 +1,21 @@
+var searchData=
+[
+  ['m_5fwindow_0',['m_window',['../class_windows___project_1_1_app.html#a01a7f3794dea535c748b5d8cbaafe307',1,'Windows_Project::App']]],
+  ['mainimage_1',['MainImage',['../class_windows___project_1_1_view_1_1_detail_review_page.html#ac061187ac2166842fe4d913d44908a72',1,'Windows_Project::View::DetailReviewPage']]],
+  ['mainviewmodel_2',['MainViewModel',['../class_windows___project_1_1_car_detail_page.html#ad4dbd6d5c1c496a2c845971a6ec260ca',1,'Windows_Project::CarDetailPage']]],
+  ['manufacturerid_3',['ManufacturerID',['../class_windows___project_1_1_car_models.html#ad79f7563c7105c8e506571cbe3a6fa09',1,'Windows_Project::CarModels']]],
+  ['manufacturerid_4',['ManufacturerId',['../class_manufacturers.html#a8ddd0a5f81328f625c11c18deb53b5ab',1,'Manufacturers']]],
+  ['manufacturername_5',['ManufacturerName',['../class_manufacturers.html#a58386204949ddd72b8cbababcece6571',1,'Manufacturers']]],
+  ['manufacturernametextblock_6',['ManufacturerNameTextBlock',['../class_windows___project_1_1_car_price_page.html#ab4d1c3ececdc279f07d7f742f96ac005',1,'Windows_Project::CarPricePage']]],
+  ['manufacturerpicture_7',['ManufacturerPicture',['../class_manufacturers.html#a3309a74b29f7cbe4661651c33976241e',1,'Manufacturers']]],
+  ['manufacturers_8',['Manufacturers',['../class_main_view_model.html#a34e337962bf30d539bc82c4ae610c013',1,'MainViewModel']]],
+  ['maxprice_9',['MaxPrice',['../class_windows___project_1_1_view_1_1_old_car.html#af54b02838b46002364968cf216f4f0b5',1,'Windows_Project::View::OldCar']]],
+  ['messages_10',['Messages',['../class_windows___project_1_1_support_page.html#a58bcd123b447961e14881f943109196d',1,'Windows_Project::SupportPage']]],
+  ['mileage_11',['Mileage',['../class_cars.html#a956173251d2528581d50af2a4252c33f',1,'Cars']]],
+  ['minprice_12',['MinPrice',['../class_windows___project_1_1_view_1_1_old_car.html#a63d95e413f29f32dbfcc3d2edcd64794',1,'Windows_Project::View::OldCar']]],
+  ['modelid_13',['ModelID',['../class_windows___project_1_1_car_models.html#aa05c87b5db73ebfa244456b1c081dee5',1,'Windows_Project::CarModels::ModelID'],['../class_cars.html#a129c7d7a69716549e12690e13e129e8e',1,'Cars::ModelID']]],
+  ['modelname_14',['ModelName',['../class_windows___project_1_1_car_models.html#a307b7b8351dbd9ad05da8058c8dd31e0',1,'Windows_Project::CarModels::ModelName'],['../class_cars.html#aea0a38eb2e7a4b54fc322a5c2e1bb970',1,'Cars::ModelName']]],
+  ['myexpander1_15',['MyExpander1',['../class_windows___project_1_1_view_1_1_post_page.html#aecb1d9c9d1baf316cc1c06d96d645f54',1,'Windows_Project::View::PostPage']]],
+  ['myexpander2_16',['MyExpander2',['../class_windows___project_1_1_view_1_1_post_page.html#ab6cdd94a8be0ef80958d409808b6b5f9',1,'Windows_Project::View::PostPage']]],
+  ['myexpander3_17',['MyExpander3',['../class_windows___project_1_1_view_1_1_post_page.html#a39c4f898e0099f332b5454257e3bc0bc',1,'Windows_Project::View::PostPage']]]
+];

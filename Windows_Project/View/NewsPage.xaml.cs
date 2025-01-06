@@ -64,7 +64,7 @@ namespace Windows_Project
                         Q = "vinfast",
                         SortBy = SortBys.PublishedAt,
                         Language = Languages.VI,
-                        From = new DateTime(2024, 12, 02)
+                        From = new DateTime(2024, 12, 06)
                     });
 
                     DispatcherQueue.TryEnqueue(() =>

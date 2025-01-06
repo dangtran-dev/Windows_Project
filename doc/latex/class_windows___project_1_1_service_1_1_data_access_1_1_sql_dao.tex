@@ -1,0 +1,183 @@
+\doxysection{Windows\+\_\+\+Project\+::Service\+::Data\+Access\+::Sql\+Dao Class Reference}
+\hypertarget{class_windows___project_1_1_service_1_1_data_access_1_1_sql_dao}{}\label{class_windows___project_1_1_service_1_1_data_access_1_1_sql_dao}\index{Windows\_Project::Service::DataAccess::SqlDao@{Windows\_Project::Service::DataAccess::SqlDao}}
+Inheritance diagram for Windows\+\_\+\+Project\+::Service\+::Data\+Access\+::Sql\+Dao\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_windows___project_1_1_service_1_1_data_access_1_1_sql_dao}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_windows___project_1_1_service_1_1_data_access_1_1_sql_dao_a867556930ababe7d1c0c1cc55762b51e}{Sql\+Dao}} (string connection\+String)
+\item 
+List$<$ \mbox{\hyperlink{class_manufacturers}{Manufacturers}} $>$ \mbox{\hyperlink{class_windows___project_1_1_service_1_1_data_access_1_1_sql_dao_a17c06cc6647ffc9ede2f5f43b99a702b}{Get\+Manufacturers}} ()
+\item 
+List$<$ \mbox{\hyperlink{class_windows___project_1_1_car_models}{Car\+Models}} $>$ \mbox{\hyperlink{class_windows___project_1_1_service_1_1_data_access_1_1_sql_dao_a851bb097f6de7b253d6999f59ea3815e}{Get\+Car\+Models}} ()
+\item 
+List$<$ \mbox{\hyperlink{class_cars}{Cars}} $>$ \mbox{\hyperlink{class_windows___project_1_1_service_1_1_data_access_1_1_sql_dao_a2d7865809e6eec446cb0f55a25580e68}{Get\+Cars}} ()
+\item 
+List$<$ \mbox{\hyperlink{class_car_images}{Car\+Images}} $>$ \mbox{\hyperlink{class_windows___project_1_1_service_1_1_data_access_1_1_sql_dao_a071bc03da8cc01f27b550e293949280c}{Get\+Car\+Images}} (int car\+Id)
+\item 
+async Task$<$ bool $>$ \mbox{\hyperlink{class_windows___project_1_1_service_1_1_data_access_1_1_sql_dao_a26993b09463af39dc2faf838fb2dae6f}{Save\+Car\+Images\+Async}} (\mbox{\hyperlink{class_car_images}{Car\+Images}} car\+Images)
+\item 
+List$<$ \mbox{\hyperlink{class_windows___project_1_1_users}{Users}} $>$ \mbox{\hyperlink{class_windows___project_1_1_service_1_1_data_access_1_1_sql_dao_a067e725af0a6f8bf418ccd1098090aa8}{Get\+Users}} ()
+\item 
+async Task$<$ int $>$ \mbox{\hyperlink{class_windows___project_1_1_service_1_1_data_access_1_1_sql_dao_af52f03dbea4928a72ee0476be0ba6e59}{Save\+User\+Async}} (string username, string password)
+\item 
+async Task$<$ bool $>$ \mbox{\hyperlink{class_windows___project_1_1_service_1_1_data_access_1_1_sql_dao_a46508c3e0e61c12deede9c8c7decf4cd}{Save\+Car\+Async}} (\mbox{\hyperlink{class_cars}{Cars}} car)
+\item 
+async Task$<$ bool $>$ \mbox{\hyperlink{class_windows___project_1_1_service_1_1_data_access_1_1_sql_dao_ab653ac6260fc418c17e4dc8f5b6d619a}{Save\+Listing\+Async}} (\mbox{\hyperlink{class_windows___project_1_1_listings}{Listings}} listing)
+\item 
+async Task$<$ bool $>$ \mbox{\hyperlink{class_windows___project_1_1_service_1_1_data_access_1_1_sql_dao_aba4b7b75e82e8327a335b6130ec5dcb5}{Update\+User\+Async}} (\mbox{\hyperlink{class_windows___project_1_1_users}{Users}} user)
+\item 
+List$<$ \mbox{\hyperlink{class_windows___project_1_1_listings}{Listings}} $>$ \mbox{\hyperlink{class_windows___project_1_1_service_1_1_data_access_1_1_sql_dao_ac77aba647267cdeb24106aebeef356f4}{Get\+Listings}} ()
+\item 
+List$<$ \mbox{\hyperlink{class_windows___project_1_1_reviews}{Reviews}} $>$ \mbox{\hyperlink{class_windows___project_1_1_service_1_1_data_access_1_1_sql_dao_ae80eefdbdddaf35d3c0d012fc74ae909}{Get\+Reviews}} ()
+\item 
+List$<$ \mbox{\hyperlink{class_windows___project_1_1_is_expander_expaned}{Is\+Expander\+Expaned}} $>$ \mbox{\hyperlink{class_windows___project_1_1_service_1_1_data_access_1_1_sql_dao_a1317ef9c748177adbbb7252ec76ca0b0}{Get\+Is\+Expander\+Expaned}} ()
+\item 
+List$<$ \mbox{\hyperlink{class_windows___project_1_1_favorites}{Favorites}} $>$ \mbox{\hyperlink{class_windows___project_1_1_service_1_1_data_access_1_1_sql_dao_a2d63883ac11f979ac7653de13891bc43}{Get\+Favorites}} ()
+\item 
+List$<$ \mbox{\hyperlink{class_windows___project_1_1_location}{Location}} $>$ \mbox{\hyperlink{class_windows___project_1_1_service_1_1_data_access_1_1_sql_dao_afbd5be496f50265814586058dfc49c59}{Get\+Locations}} ()
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Private Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+List$<$ \mbox{\hyperlink{class_windows___project_1_1_car_models}{Car\+Models}} $>$ \mbox{\hyperlink{class_windows___project_1_1_service_1_1_data_access_1_1_sql_dao_aa9238a78d07a607201eed01e71fec5f6}{Get\+Models\+By\+Manufacturer}} (int manufacturer\+Id)
+\item 
+List$<$ \mbox{\hyperlink{class_cars}{Cars}} $>$ \mbox{\hyperlink{class_windows___project_1_1_service_1_1_data_access_1_1_sql_dao_a9705e15b22787f7d64dd7a55aeb911a9}{Get\+Cars\+By\+Manufacturer}} (int manufacturer\+Id)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+readonly string \mbox{\hyperlink{class_windows___project_1_1_service_1_1_data_access_1_1_sql_dao_a6ad63d12632a734aed81f43d6270ccbd}{\+\_\+connection\+String}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{class_windows___project_1_1_service_1_1_data_access_1_1_sql_dao_a867556930ababe7d1c0c1cc55762b51e}\index{Windows\_Project::Service::DataAccess::SqlDao@{Windows\_Project::Service::DataAccess::SqlDao}!SqlDao@{SqlDao}}
+\index{SqlDao@{SqlDao}!Windows\_Project::Service::DataAccess::SqlDao@{Windows\_Project::Service::DataAccess::SqlDao}}
+\doxysubsubsection{\texorpdfstring{SqlDao()}{SqlDao()}}
+{\footnotesize\ttfamily \label{class_windows___project_1_1_service_1_1_data_access_1_1_sql_dao_a867556930ababe7d1c0c1cc55762b51e} 
+Windows\+\_\+\+Project\+::\+Service\+::\+Data\+Access\+::\+Sql\+Dao\+::\+Sql\+Dao (\begin{DoxyParamCaption}\item[{string}]{connection\+String}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_windows___project_1_1_service_1_1_data_access_1_1_sql_dao_a071bc03da8cc01f27b550e293949280c}\index{Windows\_Project::Service::DataAccess::SqlDao@{Windows\_Project::Service::DataAccess::SqlDao}!GetCarImages@{GetCarImages}}
+\index{GetCarImages@{GetCarImages}!Windows\_Project::Service::DataAccess::SqlDao@{Windows\_Project::Service::DataAccess::SqlDao}}
+\doxysubsubsection{\texorpdfstring{GetCarImages()}{GetCarImages()}}
+{\footnotesize\ttfamily \label{class_windows___project_1_1_service_1_1_data_access_1_1_sql_dao_a071bc03da8cc01f27b550e293949280c} 
+List$<$ \mbox{\hyperlink{class_car_images}{Car\+Images}} $>$ Windows\+\_\+\+Project\+::\+Service\+::\+Data\+Access\+::\+Sql\+Dao\+::\+Get\+Car\+Images (\begin{DoxyParamCaption}\item[{int}]{car\+Id}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+\Hypertarget{class_windows___project_1_1_service_1_1_data_access_1_1_sql_dao_a851bb097f6de7b253d6999f59ea3815e}\index{Windows\_Project::Service::DataAccess::SqlDao@{Windows\_Project::Service::DataAccess::SqlDao}!GetCarModels@{GetCarModels}}
+\index{GetCarModels@{GetCarModels}!Windows\_Project::Service::DataAccess::SqlDao@{Windows\_Project::Service::DataAccess::SqlDao}}
+\doxysubsubsection{\texorpdfstring{GetCarModels()}{GetCarModels()}}
+{\footnotesize\ttfamily \label{class_windows___project_1_1_service_1_1_data_access_1_1_sql_dao_a851bb097f6de7b253d6999f59ea3815e} 
+List$<$ \mbox{\hyperlink{class_windows___project_1_1_car_models}{Car\+Models}} $>$ Windows\+\_\+\+Project\+::\+Service\+::\+Data\+Access\+::\+Sql\+Dao\+::\+Get\+Car\+Models (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+\Hypertarget{class_windows___project_1_1_service_1_1_data_access_1_1_sql_dao_a2d7865809e6eec446cb0f55a25580e68}\index{Windows\_Project::Service::DataAccess::SqlDao@{Windows\_Project::Service::DataAccess::SqlDao}!GetCars@{GetCars}}
+\index{GetCars@{GetCars}!Windows\_Project::Service::DataAccess::SqlDao@{Windows\_Project::Service::DataAccess::SqlDao}}
+\doxysubsubsection{\texorpdfstring{GetCars()}{GetCars()}}
+{\footnotesize\ttfamily \label{class_windows___project_1_1_service_1_1_data_access_1_1_sql_dao_a2d7865809e6eec446cb0f55a25580e68} 
+List$<$ \mbox{\hyperlink{class_cars}{Cars}} $>$ Windows\+\_\+\+Project\+::\+Service\+::\+Data\+Access\+::\+Sql\+Dao\+::\+Get\+Cars (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+\Hypertarget{class_windows___project_1_1_service_1_1_data_access_1_1_sql_dao_a9705e15b22787f7d64dd7a55aeb911a9}\index{Windows\_Project::Service::DataAccess::SqlDao@{Windows\_Project::Service::DataAccess::SqlDao}!GetCarsByManufacturer@{GetCarsByManufacturer}}
+\index{GetCarsByManufacturer@{GetCarsByManufacturer}!Windows\_Project::Service::DataAccess::SqlDao@{Windows\_Project::Service::DataAccess::SqlDao}}
+\doxysubsubsection{\texorpdfstring{GetCarsByManufacturer()}{GetCarsByManufacturer()}}
+{\footnotesize\ttfamily \label{class_windows___project_1_1_service_1_1_data_access_1_1_sql_dao_a9705e15b22787f7d64dd7a55aeb911a9} 
+List$<$ \mbox{\hyperlink{class_cars}{Cars}} $>$ Windows\+\_\+\+Project\+::\+Service\+::\+Data\+Access\+::\+Sql\+Dao\+::\+Get\+Cars\+By\+Manufacturer (\begin{DoxyParamCaption}\item[{int}]{manufacturer\+Id}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+\Hypertarget{class_windows___project_1_1_service_1_1_data_access_1_1_sql_dao_a2d63883ac11f979ac7653de13891bc43}\index{Windows\_Project::Service::DataAccess::SqlDao@{Windows\_Project::Service::DataAccess::SqlDao}!GetFavorites@{GetFavorites}}
+\index{GetFavorites@{GetFavorites}!Windows\_Project::Service::DataAccess::SqlDao@{Windows\_Project::Service::DataAccess::SqlDao}}
+\doxysubsubsection{\texorpdfstring{GetFavorites()}{GetFavorites()}}
+{\footnotesize\ttfamily \label{class_windows___project_1_1_service_1_1_data_access_1_1_sql_dao_a2d63883ac11f979ac7653de13891bc43} 
+List$<$ \mbox{\hyperlink{class_windows___project_1_1_favorites}{Favorites}} $>$ Windows\+\_\+\+Project\+::\+Service\+::\+Data\+Access\+::\+Sql\+Dao\+::\+Get\+Favorites (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+\Hypertarget{class_windows___project_1_1_service_1_1_data_access_1_1_sql_dao_a1317ef9c748177adbbb7252ec76ca0b0}\index{Windows\_Project::Service::DataAccess::SqlDao@{Windows\_Project::Service::DataAccess::SqlDao}!GetIsExpanderExpaned@{GetIsExpanderExpaned}}
+\index{GetIsExpanderExpaned@{GetIsExpanderExpaned}!Windows\_Project::Service::DataAccess::SqlDao@{Windows\_Project::Service::DataAccess::SqlDao}}
+\doxysubsubsection{\texorpdfstring{GetIsExpanderExpaned()}{GetIsExpanderExpaned()}}
+{\footnotesize\ttfamily \label{class_windows___project_1_1_service_1_1_data_access_1_1_sql_dao_a1317ef9c748177adbbb7252ec76ca0b0} 
+List$<$ \mbox{\hyperlink{class_windows___project_1_1_is_expander_expaned}{Is\+Expander\+Expaned}} $>$ Windows\+\_\+\+Project\+::\+Service\+::\+Data\+Access\+::\+Sql\+Dao\+::\+Get\+Is\+Expander\+Expaned (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+\Hypertarget{class_windows___project_1_1_service_1_1_data_access_1_1_sql_dao_ac77aba647267cdeb24106aebeef356f4}\index{Windows\_Project::Service::DataAccess::SqlDao@{Windows\_Project::Service::DataAccess::SqlDao}!GetListings@{GetListings}}
+\index{GetListings@{GetListings}!Windows\_Project::Service::DataAccess::SqlDao@{Windows\_Project::Service::DataAccess::SqlDao}}
+\doxysubsubsection{\texorpdfstring{GetListings()}{GetListings()}}
+{\footnotesize\ttfamily \label{class_windows___project_1_1_service_1_1_data_access_1_1_sql_dao_ac77aba647267cdeb24106aebeef356f4} 
+List$<$ \mbox{\hyperlink{class_windows___project_1_1_listings}{Listings}} $>$ Windows\+\_\+\+Project\+::\+Service\+::\+Data\+Access\+::\+Sql\+Dao\+::\+Get\+Listings (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+\Hypertarget{class_windows___project_1_1_service_1_1_data_access_1_1_sql_dao_afbd5be496f50265814586058dfc49c59}\index{Windows\_Project::Service::DataAccess::SqlDao@{Windows\_Project::Service::DataAccess::SqlDao}!GetLocations@{GetLocations}}
+\index{GetLocations@{GetLocations}!Windows\_Project::Service::DataAccess::SqlDao@{Windows\_Project::Service::DataAccess::SqlDao}}
+\doxysubsubsection{\texorpdfstring{GetLocations()}{GetLocations()}}
+{\footnotesize\ttfamily \label{class_windows___project_1_1_service_1_1_data_access_1_1_sql_dao_afbd5be496f50265814586058dfc49c59} 
+List$<$ \mbox{\hyperlink{class_windows___project_1_1_location}{Location}} $>$ Windows\+\_\+\+Project\+::\+Service\+::\+Data\+Access\+::\+Sql\+Dao\+::\+Get\+Locations (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+\Hypertarget{class_windows___project_1_1_service_1_1_data_access_1_1_sql_dao_a17c06cc6647ffc9ede2f5f43b99a702b}\index{Windows\_Project::Service::DataAccess::SqlDao@{Windows\_Project::Service::DataAccess::SqlDao}!GetManufacturers@{GetManufacturers}}
+\index{GetManufacturers@{GetManufacturers}!Windows\_Project::Service::DataAccess::SqlDao@{Windows\_Project::Service::DataAccess::SqlDao}}
+\doxysubsubsection{\texorpdfstring{GetManufacturers()}{GetManufacturers()}}
+{\footnotesize\ttfamily \label{class_windows___project_1_1_service_1_1_data_access_1_1_sql_dao_a17c06cc6647ffc9ede2f5f43b99a702b} 
+List$<$ \mbox{\hyperlink{class_manufacturers}{Manufacturers}} $>$ Windows\+\_\+\+Project\+::\+Service\+::\+Data\+Access\+::\+Sql\+Dao\+::\+Get\+Manufacturers (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+\Hypertarget{class_windows___project_1_1_service_1_1_data_access_1_1_sql_dao_aa9238a78d07a607201eed01e71fec5f6}\index{Windows\_Project::Service::DataAccess::SqlDao@{Windows\_Project::Service::DataAccess::SqlDao}!GetModelsByManufacturer@{GetModelsByManufacturer}}
+\index{GetModelsByManufacturer@{GetModelsByManufacturer}!Windows\_Project::Service::DataAccess::SqlDao@{Windows\_Project::Service::DataAccess::SqlDao}}
+\doxysubsubsection{\texorpdfstring{GetModelsByManufacturer()}{GetModelsByManufacturer()}}
+{\footnotesize\ttfamily \label{class_windows___project_1_1_service_1_1_data_access_1_1_sql_dao_aa9238a78d07a607201eed01e71fec5f6} 
+List$<$ \mbox{\hyperlink{class_windows___project_1_1_car_models}{Car\+Models}} $>$ Windows\+\_\+\+Project\+::\+Service\+::\+Data\+Access\+::\+Sql\+Dao\+::\+Get\+Models\+By\+Manufacturer (\begin{DoxyParamCaption}\item[{int}]{manufacturer\+Id}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+\Hypertarget{class_windows___project_1_1_service_1_1_data_access_1_1_sql_dao_ae80eefdbdddaf35d3c0d012fc74ae909}\index{Windows\_Project::Service::DataAccess::SqlDao@{Windows\_Project::Service::DataAccess::SqlDao}!GetReviews@{GetReviews}}
+\index{GetReviews@{GetReviews}!Windows\_Project::Service::DataAccess::SqlDao@{Windows\_Project::Service::DataAccess::SqlDao}}
+\doxysubsubsection{\texorpdfstring{GetReviews()}{GetReviews()}}
+{\footnotesize\ttfamily \label{class_windows___project_1_1_service_1_1_data_access_1_1_sql_dao_ae80eefdbdddaf35d3c0d012fc74ae909} 
+List$<$ \mbox{\hyperlink{class_windows___project_1_1_reviews}{Reviews}} $>$ Windows\+\_\+\+Project\+::\+Service\+::\+Data\+Access\+::\+Sql\+Dao\+::\+Get\+Reviews (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+\Hypertarget{class_windows___project_1_1_service_1_1_data_access_1_1_sql_dao_a067e725af0a6f8bf418ccd1098090aa8}\index{Windows\_Project::Service::DataAccess::SqlDao@{Windows\_Project::Service::DataAccess::SqlDao}!GetUsers@{GetUsers}}
+\index{GetUsers@{GetUsers}!Windows\_Project::Service::DataAccess::SqlDao@{Windows\_Project::Service::DataAccess::SqlDao}}
+\doxysubsubsection{\texorpdfstring{GetUsers()}{GetUsers()}}
+{\footnotesize\ttfamily \label{class_windows___project_1_1_service_1_1_data_access_1_1_sql_dao_a067e725af0a6f8bf418ccd1098090aa8} 
+List$<$ \mbox{\hyperlink{class_windows___project_1_1_users}{Users}} $>$ Windows\+\_\+\+Project\+::\+Service\+::\+Data\+Access\+::\+Sql\+Dao\+::\+Get\+Users (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+\Hypertarget{class_windows___project_1_1_service_1_1_data_access_1_1_sql_dao_a46508c3e0e61c12deede9c8c7decf4cd}\index{Windows\_Project::Service::DataAccess::SqlDao@{Windows\_Project::Service::DataAccess::SqlDao}!SaveCarAsync@{SaveCarAsync}}
+\index{SaveCarAsync@{SaveCarAsync}!Windows\_Project::Service::DataAccess::SqlDao@{Windows\_Project::Service::DataAccess::SqlDao}}
+\doxysubsubsection{\texorpdfstring{SaveCarAsync()}{SaveCarAsync()}}
+{\footnotesize\ttfamily \label{class_windows___project_1_1_service_1_1_data_access_1_1_sql_dao_a46508c3e0e61c12deede9c8c7decf4cd} 
+async Task$<$ bool $>$ Windows\+\_\+\+Project\+::\+Service\+::\+Data\+Access\+::\+Sql\+Dao\+::\+Save\+Car\+Async (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_cars}{Cars}}}]{car}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+\Hypertarget{class_windows___project_1_1_service_1_1_data_access_1_1_sql_dao_a26993b09463af39dc2faf838fb2dae6f}\index{Windows\_Project::Service::DataAccess::SqlDao@{Windows\_Project::Service::DataAccess::SqlDao}!SaveCarImagesAsync@{SaveCarImagesAsync}}
+\index{SaveCarImagesAsync@{SaveCarImagesAsync}!Windows\_Project::Service::DataAccess::SqlDao@{Windows\_Project::Service::DataAccess::SqlDao}}
+\doxysubsubsection{\texorpdfstring{SaveCarImagesAsync()}{SaveCarImagesAsync()}}
+{\footnotesize\ttfamily \label{class_windows___project_1_1_service_1_1_data_access_1_1_sql_dao_a26993b09463af39dc2faf838fb2dae6f} 
+async Task$<$ bool $>$ Windows\+\_\+\+Project\+::\+Service\+::\+Data\+Access\+::\+Sql\+Dao\+::\+Save\+Car\+Images\+Async (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_car_images}{Car\+Images}}}]{car\+Images}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+\Hypertarget{class_windows___project_1_1_service_1_1_data_access_1_1_sql_dao_ab653ac6260fc418c17e4dc8f5b6d619a}\index{Windows\_Project::Service::DataAccess::SqlDao@{Windows\_Project::Service::DataAccess::SqlDao}!SaveListingAsync@{SaveListingAsync}}
+\index{SaveListingAsync@{SaveListingAsync}!Windows\_Project::Service::DataAccess::SqlDao@{Windows\_Project::Service::DataAccess::SqlDao}}
+\doxysubsubsection{\texorpdfstring{SaveListingAsync()}{SaveListingAsync()}}
+{\footnotesize\ttfamily \label{class_windows___project_1_1_service_1_1_data_access_1_1_sql_dao_ab653ac6260fc418c17e4dc8f5b6d619a} 
+async Task$<$ bool $>$ Windows\+\_\+\+Project\+::\+Service\+::\+Data\+Access\+::\+Sql\+Dao\+::\+Save\+Listing\+Async (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_windows___project_1_1_listings}{Listings}}}]{listing}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+\Hypertarget{class_windows___project_1_1_service_1_1_data_access_1_1_sql_dao_af52f03dbea4928a72ee0476be0ba6e59}\index{Windows\_Project::Service::DataAccess::SqlDao@{Windows\_Project::Service::DataAccess::SqlDao}!SaveUserAsync@{SaveUserAsync}}
+\index{SaveUserAsync@{SaveUserAsync}!Windows\_Project::Service::DataAccess::SqlDao@{Windows\_Project::Service::DataAccess::SqlDao}}
+\doxysubsubsection{\texorpdfstring{SaveUserAsync()}{SaveUserAsync()}}
+{\footnotesize\ttfamily \label{class_windows___project_1_1_service_1_1_data_access_1_1_sql_dao_af52f03dbea4928a72ee0476be0ba6e59} 
+async Task$<$ int $>$ Windows\+\_\+\+Project\+::\+Service\+::\+Data\+Access\+::\+Sql\+Dao\+::\+Save\+User\+Async (\begin{DoxyParamCaption}\item[{string}]{username}{, }\item[{string}]{password}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+\Hypertarget{class_windows___project_1_1_service_1_1_data_access_1_1_sql_dao_aba4b7b75e82e8327a335b6130ec5dcb5}\index{Windows\_Project::Service::DataAccess::SqlDao@{Windows\_Project::Service::DataAccess::SqlDao}!UpdateUserAsync@{UpdateUserAsync}}
+\index{UpdateUserAsync@{UpdateUserAsync}!Windows\_Project::Service::DataAccess::SqlDao@{Windows\_Project::Service::DataAccess::SqlDao}}
+\doxysubsubsection{\texorpdfstring{UpdateUserAsync()}{UpdateUserAsync()}}
+{\footnotesize\ttfamily \label{class_windows___project_1_1_service_1_1_data_access_1_1_sql_dao_aba4b7b75e82e8327a335b6130ec5dcb5} 
+async Task$<$ bool $>$ Windows\+\_\+\+Project\+::\+Service\+::\+Data\+Access\+::\+Sql\+Dao\+::\+Update\+User\+Async (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_windows___project_1_1_users}{Users}}}]{user}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+\doxysubsection{Member Data Documentation}
+\Hypertarget{class_windows___project_1_1_service_1_1_data_access_1_1_sql_dao_a6ad63d12632a734aed81f43d6270ccbd}\index{Windows\_Project::Service::DataAccess::SqlDao@{Windows\_Project::Service::DataAccess::SqlDao}!\_connectionString@{\_connectionString}}
+\index{\_connectionString@{\_connectionString}!Windows\_Project::Service::DataAccess::SqlDao@{Windows\_Project::Service::DataAccess::SqlDao}}
+\doxysubsubsection{\texorpdfstring{\_connectionString}{\_connectionString}}
+{\footnotesize\ttfamily \label{class_windows___project_1_1_service_1_1_data_access_1_1_sql_dao_a6ad63d12632a734aed81f43d6270ccbd} 
+readonly string Windows\+\_\+\+Project\+::\+Service\+::\+Data\+Access\+::\+Sql\+Dao\+::\+\_\+connection\+String\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+Windows\+\_\+\+Project/\+Service/\+Data\+Access/\mbox{\hyperlink{_sql_dao_8cs}{Sql\+Dao.\+cs}}\end{DoxyCompactItemize}
